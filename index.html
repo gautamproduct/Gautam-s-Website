@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://kumargautam.com/">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Gautam Kumar">
-<meta name="theme-color" content="#050505">
+<meta name="theme-color" content="#f7f1e4">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -62,17 +62,21 @@
 
 <style>
   :root {
-    --bg: #050505;
-    --panel: #0c0c0a;
-    --amber: #ffb300;
-    --amber-dim: #7a5a10;
-    --green: #00e676;
-    --text: #f3f1e7;
-    --muted: #9a9789;
-    --muted-2: #5c5a4f;
-    --line: rgba(243,241,231,0.14);
+    --bg: #f7f1e4;
+    --bg-2: #efe6d3;
+    --panel: #fffdf7;
+    --amber: #b8720a;
+    --amber-soft: rgba(184,114,10,0.10);
+    --maroon: #9c2f26;
+    --maroon-soft: rgba(156,47,38,0.09);
+    --green: #1c7a5a;
+    --text: #241f17;
+    --muted: #6b6152;
+    --muted-2: #a89c85;
+    --line: rgba(36,31,23,0.14);
     --mono: "SF Mono", "IBM Plex Mono", "Menlo", "Consolas", monospace;
     --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --serif: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -82,26 +86,26 @@
     overflow-x: hidden;
     position: relative;
   }
-  ::selection { background: var(--amber); color: #000; }
+  ::selection { background: var(--amber); color: #fff; }
 
-  /* Scanline texture overlay */
-  body::before {
-    content: "";
+  /* Ambient warm wash */
+  .wash {
     position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 3px);
+    border-radius: 50%;
+    filter: blur(100px);
     pointer-events: none;
-    z-index: 50;
-    mix-blend-mode: overlay;
+    z-index: 0;
   }
+  .wash-1 { width: 520px; height: 520px; background: radial-gradient(circle, rgba(184,114,10,0.16), transparent 70%); top: -160px; right: -140px; }
+  .wash-2 { width: 480px; height: 480px; background: radial-gradient(circle, rgba(156,47,38,0.10), transparent 70%); bottom: -180px; left: -120px; }
+  .wash-3 { width: 420px; height: 420px; background: radial-gradient(circle, rgba(28,122,90,0.08), transparent 70%); top: 46vh; left: 40vw; }
 
   #progressBar {
     position: fixed;
     top: 0; left: 0;
     height: 3px;
     width: 0%;
-    background: var(--amber);
-    box-shadow: 0 0 8px var(--amber);
+    background: linear-gradient(90deg, var(--maroon), var(--amber));
     z-index: 100;
     transition: width 0.1s linear;
   }
@@ -147,13 +151,13 @@
     font-family: var(--mono);
     font-size: 13px;
     letter-spacing: 0.05em;
-    color: var(--amber);
+    color: var(--maroon);
     padding: 0 28px;
     display: inline-flex;
     align-items: center;
     gap: 10px;
   }
-  .ticker-track span.dim { color: var(--muted); }
+  .ticker-track span.dim { color: var(--amber); }
   @keyframes tickerScroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
@@ -178,8 +182,8 @@
     font-family: var(--mono);
     font-weight: 700;
     font-size: min(60vw, 640px);
-    color: var(--text);
-    opacity: 0.035;
+    color: var(--amber);
+    opacity: 0.07;
     line-height: 1;
     pointer-events: none;
     user-select: none;
@@ -192,7 +196,7 @@
     font-family: var(--mono);
     font-size: 12.5px;
     letter-spacing: 0.1em;
-    color: var(--amber);
+    color: var(--maroon);
     margin-bottom: 28px;
     text-transform: uppercase;
   }
@@ -200,7 +204,7 @@
     width: 8px; height: 8px;
     border-radius: 50%;
     background: var(--green);
-    box-shadow: 0 0 8px var(--green);
+    box-shadow: 0 0 6px rgba(28,122,90,0.5);
     animation: blink 1.6s ease-in-out infinite;
     flex-shrink: 0;
   }
@@ -238,13 +242,15 @@
     margin-top: 44px;
     display: inline-flex;
     align-items: stretch;
-    border: 1px dashed var(--line);
+    background: var(--panel);
+    border: 1px dashed var(--amber);
     border-radius: 8px;
     font-family: var(--mono);
     font-size: 11.5px;
     letter-spacing: 0.08em;
     color: var(--muted);
     overflow: hidden;
+    box-shadow: 0 8px 24px rgba(36,31,23,0.06);
   }
   .boarding-pass > div {
     padding: 12px 20px;
@@ -253,7 +259,7 @@
   .boarding-pass > div:last-child { border-right: none; }
   .boarding-pass .bp-label { display: block; color: var(--muted-2); margin-bottom: 4px; text-transform: uppercase; font-size: 10px; }
   .boarding-pass .bp-value { color: var(--text); font-weight: 700; font-size: 13px; }
-  .boarding-pass .bp-value.amber { color: var(--amber); }
+  .boarding-pass .bp-value.amber { color: var(--maroon); }
 
   .scroll-cue {
     position: absolute;
@@ -295,7 +301,8 @@
     font-family: var(--mono);
     font-size: 13px;
     color: var(--amber);
-    border: 1px solid var(--amber-dim);
+    background: var(--amber-soft);
+    border: 1px solid var(--amber);
     border-radius: 4px;
     padding: 3px 8px;
     flex-shrink: 0;
@@ -319,7 +326,7 @@
     border-left: 2px solid var(--line);
     transition-delay: calc(var(--i) * 0.06s);
   }
-  .story p b { color: var(--text); font-weight: 700; }
+  .story p b { color: var(--maroon); font-weight: 700; }
   .story p:last-child { color: var(--text); border-left-color: var(--amber); }
 
   /* ---------- Timeline (station stops) ---------- */
@@ -340,7 +347,7 @@
     width: 8px; height: 8px; border-radius: 50%;
     background: var(--muted-2);
   }
-  .tl-item.current .tl-dot { background: var(--green); box-shadow: 0 0 10px var(--green); }
+  .tl-item.current .tl-dot { background: var(--green); box-shadow: 0 0 0 4px rgba(28,122,90,0.15); }
   .tl-meta {
     font-family: var(--mono);
     font-size: 12px;
@@ -351,16 +358,17 @@
   }
   .tl-item.current .tl-meta { color: var(--green); }
   .tl-role { font-family: var(--sans); font-size: 21px; font-weight: 800; margin: 0 0 3px; color: var(--text); }
-  .tl-org { font-family: var(--mono); font-size: 13px; color: var(--amber); margin: 0 0 12px; }
+  .tl-org { font-family: var(--mono); font-size: 13px; color: var(--maroon); margin: 0 0 12px; }
   .tl-desc { font-size: 15px; line-height: 1.7; color: var(--muted); margin: 0; }
   .tl-desc b { color: var(--text); font-weight: 700; }
 
   /* ---------- Impact — departure board ---------- */
   .board {
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     background: var(--panel);
+    box-shadow: 0 12px 32px rgba(36,31,23,0.06);
   }
   .board-row {
     display: grid;
@@ -380,11 +388,11 @@
     font-family: var(--mono);
     font-weight: 700;
     font-size: clamp(24px, 4vw, 32px);
-    color: var(--amber);
-    text-shadow: 0 0 14px rgba(255,179,0,0.35);
+    color: var(--maroon);
     letter-spacing: 0.02em;
     white-space: nowrap;
   }
+  .board-row:nth-child(even) .value { color: var(--amber); }
 
   /* ---------- Skills — ticket stubs ---------- */
   .skills { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -397,22 +405,27 @@
     border: 1px dashed var(--line);
     padding: 9px 16px;
     border-radius: 6px;
-    transition: border-color 0.2s ease, color 0.2s ease;
+    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(36,31,23,0.05);
   }
-  .skills span:hover { border-color: var(--amber); color: var(--amber); }
+  .skills span:nth-child(3n+1):hover { border-color: var(--amber); color: var(--amber); }
+  .skills span:nth-child(3n+2):hover { border-color: var(--maroon); color: var(--maroon); }
+  .skills span:nth-child(3n+3):hover { border-color: var(--green); color: var(--green); }
+  .skills span:hover { transform: translateY(-2px); }
 
   /* ---------- Education ---------- */
   .edu-grid { display: grid; gap: 14px; }
   .edu-card {
     background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 20px 24px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     flex-wrap: wrap;
     gap: 6px;
+    box-shadow: 0 8px 20px rgba(36,31,23,0.05);
   }
   .edu-name { font-family: var(--sans); font-size: 16px; font-weight: 700; color: var(--text); }
   .edu-degree { font-family: var(--mono); font-size: 13px; color: var(--muted); }
@@ -422,9 +435,9 @@
     font-size: 10.5px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--amber);
-    background: rgba(255,179,0,0.08);
-    border: 1px solid var(--amber-dim);
+    color: var(--maroon);
+    background: var(--maroon-soft);
+    border: 1px solid var(--maroon);
     padding: 3px 9px;
     border-radius: 999px;
     margin-left: 6px;
@@ -450,11 +463,12 @@
     padding: 13px 24px;
     border: 1px solid var(--line);
     border-radius: 8px;
-    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    background: var(--panel);
   }
-  .links a.primary { background: var(--amber); border-color: var(--amber); color: #000; font-weight: 700; }
-  .links a:hover { border-color: var(--amber); color: var(--amber); }
-  .links a.primary:hover { background: #ffc633; color: #000; }
+  .links a.primary { background: var(--maroon); border-color: var(--maroon); color: #fff; font-weight: 700; }
+  .links a:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
+  .links a.primary:hover { background: #82251e; border-color: #82251e; color: #fff; }
 
   footer {
     text-align: center;
@@ -474,6 +488,9 @@
 </head>
 <body>
   <div id="progressBar"></div>
+  <div class="wash wash-1"></div>
+  <div class="wash wash-2"></div>
+  <div class="wash wash-3"></div>
 
   <header class="hero">
     <div class="hero-watermark">G</div>
