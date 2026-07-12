@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gautam Kumar</title>
+<style>
+  :root {
+    --bg: #0b0b0f;
+    --bg-soft: #14141b;
+    --text: #f2f2f5;
+    --muted: #9a9aa5;
+    --accent: #6c5ce7;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  body {
+    background: radial-gradient(circle at 50% 0%, var(--bg-soft), var(--bg) 60%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+  .card {
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(108, 92, 231, 0.4);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-size: 42px;
+    line-height: 1.15;
+    margin: 0 0 12px;
+    font-weight: 700;
+  }
+  p.tagline {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  .links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .links a:hover {
+    border-color: var(--accent);
+    background: rgba(108, 92, 231, 0.12);
+  }
+  footer {
+    margin-top: 48px;
+    color: #55555f;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <span class="badge">Coming soon</span>
+    <h1>Gautam Kumar</h1>
+    <p class="tagline">Building products, tools, and experiments on the internet. This site is under construction — check back soon.</p>
+    <div class="links">
+      <a href="https://github.com/gautamproduct" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:hello@kumargautam.com">Email</a>
+    </div>
+    <footer>&copy; <span id="year"></span> kumargautam.com</footer>
+  </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
