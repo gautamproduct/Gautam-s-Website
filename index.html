@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gautam Kumar</title>
+<title>Gautam Kumar — Product Manager</title>
 <style>
   :root {
     --bg: #0b0b0f;
@@ -11,30 +11,78 @@
     --text: #f2f2f5;
     --muted: #9a9aa5;
     --accent: #6c5ce7;
+    --accent-2: #00d4b8;
   }
   * { box-sizing: border-box; }
   html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    min-height: 100%;
   }
   body {
-    background: radial-gradient(circle at 50% 0%, var(--bg-soft), var(--bg) 60%);
+    background: var(--bg);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    padding: 24px;
+    padding: 48px 24px;
+    overflow-x: hidden;
+    position: relative;
   }
+
+  /* Ambient floating blobs */
+  .blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.25;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .blob-1 {
+    width: 420px; height: 420px;
+    background: var(--accent);
+    top: -120px; left: -100px;
+    animation: float1 14s ease-in-out infinite;
+  }
+  .blob-2 {
+    width: 360px; height: 360px;
+    background: var(--accent-2);
+    bottom: -140px; right: -100px;
+    animation: float2 16s ease-in-out infinite;
+  }
+  @keyframes float1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, 30px) scale(1.08); }
+  }
+  @keyframes float2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-30px, -40px) scale(1.1); }
+  }
+
   .card {
-    max-width: 560px;
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
     width: 100%;
     text-align: center;
   }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   .badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 13px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -42,25 +90,72 @@
     border: 1px solid rgba(108, 92, 231, 0.4);
     padding: 6px 14px;
     border-radius: 999px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
+    animation-delay: 0.05s;
   }
+  .badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
   h1 {
-    font-size: 42px;
+    font-size: 44px;
     line-height: 1.15;
-    margin: 0 0 12px;
+    margin: 0 0 6px;
     font-weight: 700;
+    animation-delay: 0.15s;
+  }
+  .role {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--accent-2);
+    margin: 0 0 20px;
+    animation-delay: 0.22s;
   }
   p.tagline {
     color: var(--muted);
-    font-size: 17px;
-    line-height: 1.6;
-    margin: 0 0 32px;
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0 0 36px;
+    animation-delay: 0.3s;
   }
+
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+    animation-delay: 0.4s;
+  }
+  .skills span {
+    font-size: 13px;
+    color: var(--text);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  }
+  .skills span:hover {
+    border-color: var(--accent);
+    background: rgba(108, 92, 231, 0.12);
+    transform: translateY(-2px);
+  }
+
   .links {
     display: flex;
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
+    animation-delay: 0.5s;
   }
   .links a {
     color: var(--text);
@@ -75,24 +170,44 @@
     border-color: var(--accent);
     background: rgba(108, 92, 231, 0.12);
   }
+
   footer {
-    margin-top: 48px;
+    margin-top: 52px;
     color: #55555f;
     font-size: 13px;
+    animation-delay: 0.6s;
   }
 </style>
 </head>
 <body>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
   <div class="card">
-    <span class="badge">Under maintenance</span>
-    <h1>Gautam Kumar</h1>
-    <p class="tagline">This website is currently under maintenance. We'll be back shortly — thanks for your patience.</p>
-    <div class="links">
+    <span class="badge fade-up"><span class="dot"></span>Launching soon</span>
+    <h1 class="fade-up">Gautam Kumar</h1>
+    <p class="role fade-up">Product Manager</p>
+    <p class="tagline fade-up">I build products people actually want — turning fuzzy problems into clear roadmaps, backed by data, user research, and a bias for shipping. This site is getting a proper home soon.</p>
+
+    <div class="skills fade-up">
+      <span>Product Strategy</span>
+      <span>Roadmapping</span>
+      <span>User Research</span>
+      <span>Data-Driven Decisions</span>
+      <span>A/B Testing</span>
+      <span>Stakeholder Management</span>
+      <span>Agile / Scrum</span>
+      <span>Growth &amp; Metrics</span>
+    </div>
+
+    <div class="links fade-up">
       <a href="https://github.com/gautamproduct" target="_blank" rel="noopener">GitHub</a>
       <a href="mailto:hello@kumargautam.com">Email</a>
     </div>
-    <footer>&copy; <span id="year"></span> kumargautam.com</footer>
+
+    <footer class="fade-up">&copy; <span id="year"></span> kumargautam.com</footer>
   </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
