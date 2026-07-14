@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://kumargautam.com/">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Gautam Kumar">
-<meta name="theme-color" content="#f7f1e4">
+<meta name="theme-color" content="#fffaf3">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -62,601 +62,497 @@
 
 <style>
   :root {
-    --bg: #f7f1e4;
-    --bg-2: #efe6d3;
-    --panel: #fffdf7;
-    --amber: #b8720a;
-    --amber-soft: rgba(184,114,10,0.10);
-    --maroon: #9c2f26;
-    --maroon-soft: rgba(156,47,38,0.09);
-    --green: #1c7a5a;
-    --text: #241f17;
-    --muted: #6b6152;
-    --muted-2: #a89c85;
-    --line: rgba(36,31,23,0.14);
-    --mono: "SF Mono", "IBM Plex Mono", "Menlo", "Consolas", monospace;
-    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --bg: #fffaf3;
+    --peach: #fdf1e6;
+    --mint: #eaf6f1;
+    --blush: #fbecee;
+    --lavender: #f1eefa;
+    --panel: #ffffff;
+    --coral: #d9673f;
+    --coral-soft: #f6e2d8;
+    --teal: #2a8f7f;
+    --teal-soft: #dcefe9;
+    --gold: #c1911a;
+    --gold-soft: #f3e6c8;
+    --plum: #7d5ba6;
+    --plum-soft: #ebe3f3;
+    --ink: #2b2419;
+    --muted: #756a5a;
+    --muted-2: #a89a84;
+    --line: rgba(43,36,25,0.09);
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --serif: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
   body {
     font-family: var(--sans);
     overflow-x: hidden;
     position: relative;
+    -webkit-font-smoothing: antialiased;
   }
-  ::selection { background: var(--amber); color: #fff; }
-
-  /* Ambient warm wash */
-  .wash {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(100px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .wash-1 { width: 520px; height: 520px; background: radial-gradient(circle, rgba(184,114,10,0.16), transparent 70%); top: -160px; right: -140px; }
-  .wash-2 { width: 480px; height: 480px; background: radial-gradient(circle, rgba(156,47,38,0.10), transparent 70%); bottom: -180px; left: -120px; }
-  .wash-3 { width: 420px; height: 420px; background: radial-gradient(circle, rgba(28,122,90,0.08), transparent 70%); top: 46vh; left: 40vw; }
+  ::selection { background: var(--coral); color: #fff; }
+  p { margin: 0; }
 
   #progressBar {
     position: fixed;
     top: 0; left: 0;
-    height: 3px;
+    height: 4px;
     width: 0%;
-    background: linear-gradient(90deg, var(--maroon), var(--amber));
+    background: linear-gradient(90deg, var(--coral), var(--gold));
     z-index: 100;
     transition: width 0.1s linear;
   }
 
-  section, .wrap {
+  section {
     position: relative;
     z-index: 1;
-    max-width: 920px;
+  }
+  .inner {
+    max-width: 780px;
     margin: 0 auto;
-    padding: clamp(56px, 8vw, 108px) 24px;
+    padding: clamp(72px, 11vw, 128px) 28px;
   }
-
-  /* ---------- Track divider ---------- */
-  .track {
-    height: 16px;
-    max-width: 920px;
+  .inner-wide {
+    max-width: 980px;
     margin: 0 auto;
-    background-image:
-      linear-gradient(var(--muted-2) 1.5px, transparent 1.5px),
-      linear-gradient(var(--muted-2) 1.5px, transparent 1.5px),
-      repeating-linear-gradient(90deg, var(--muted-2) 0 2px, transparent 2px 20px);
-    background-position: top left, bottom left, center;
-    background-repeat: no-repeat, no-repeat, repeat-x;
-    background-size: 100% 1.5px, 100% 1.5px, auto 10px;
-    opacity: 0.4;
-  }
-
-  /* ---------- Ticker ---------- */
-  .ticker-bar {
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    background: var(--panel);
-    overflow: hidden;
-    padding: 14px 0;
-  }
-  .ticker-track {
-    display: flex;
-    width: max-content;
-    animation: tickerScroll 26s linear infinite;
-    white-space: nowrap;
-  }
-  .ticker-track span {
-    font-family: var(--mono);
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    color: var(--maroon);
-    padding: 0 28px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .ticker-track span.dim { color: var(--amber); }
-  @keyframes tickerScroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    padding: clamp(72px, 11vw, 128px) 28px;
   }
 
   /* ---------- HERO ---------- */
   .hero {
-    position: relative;
-    min-height: 100svh;
+    min-height: 92svh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 980px;
-    padding-top: 90px;
-    overflow: hidden;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 120px 28px 80px;
   }
-  .hero-watermark {
-    position: absolute;
-    top: 50%;
-    right: -4vw;
-    transform: translateY(-50%);
-    font-family: var(--mono);
-    font-weight: 700;
-    font-size: min(60vw, 640px);
-    color: var(--amber);
-    opacity: 0.07;
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
-  }
-  .board-meta {
-    display: flex;
+  .kicker {
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
-    font-family: var(--mono);
-    font-size: 12.5px;
-    letter-spacing: 0.1em;
-    color: var(--maroon);
-    margin-bottom: 28px;
-    text-transform: uppercase;
+    gap: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--coral);
+    background: var(--coral-soft);
+    padding: 9px 18px 9px 14px;
+    border-radius: 999px;
+    margin-bottom: 32px;
+    width: fit-content;
   }
-  .board-meta .led {
-    width: 8px; height: 8px;
+  .kicker .dot {
+    width: 7px; height: 7px;
     border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 6px rgba(28,122,90,0.5);
-    animation: blink 1.6s ease-in-out infinite;
+    background: var(--teal);
+    animation: pulse 1.8s ease-in-out infinite;
     flex-shrink: 0;
   }
-  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 
   .hero h1 {
-    font-family: var(--sans);
-    font-weight: 800;
-    font-size: clamp(48px, 9vw, 108px);
-    line-height: 0.98;
-    letter-spacing: -0.02em;
-    margin: 0 0 20px;
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(46px, 8vw, 92px);
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    margin: 0 0 22px;
+    color: var(--ink);
   }
-  .flip-line {
-    font-family: var(--mono);
-    font-size: clamp(15px, 2vw, 20px);
-    letter-spacing: 0.04em;
-    color: var(--muted);
-    margin: 0 0 34px;
-    min-height: 1.4em;
+  .hero .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(20px, 2.6vw, 28px);
+    color: var(--coral);
+    margin: 0 0 26px;
+    line-height: 1.4;
   }
-  .flip-line b { color: var(--amber); font-weight: 700; }
-
   .hero .sub {
-    font-family: var(--sans);
-    font-size: 16px;
+    font-size: 18px;
     color: var(--muted);
-    max-width: 600px;
-    line-height: 1.7;
-    margin: 0;
+    max-width: 620px;
+    line-height: 1.75;
+    margin: 0 0 40px;
   }
-  .hero .sub b { color: var(--text); font-weight: 700; }
+  .hero .sub b { color: var(--ink); font-weight: 700; }
 
-  .boarding-pass {
-    margin-top: 44px;
-    display: inline-flex;
-    align-items: stretch;
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-pills span {
+    font-size: 14.5px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 999px;
     background: var(--panel);
-    border: 1px dashed var(--amber);
-    border-radius: 8px;
-    font-family: var(--mono);
-    font-size: 11.5px;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(36,31,23,0.06);
+    box-shadow: 0 6px 18px rgba(43,36,25,0.07);
   }
-  .boarding-pass > div {
-    padding: 12px 20px;
-    border-right: 1px dashed var(--line);
-  }
-  .boarding-pass > div:last-child { border-right: none; }
-  .boarding-pass .bp-label { display: block; color: var(--muted-2); margin-bottom: 4px; text-transform: uppercase; font-size: 10px; }
-  .boarding-pass .bp-value { color: var(--text); font-weight: 700; font-size: 13px; }
-  .boarding-pass .bp-value.amber { color: var(--maroon); }
-
-  .scroll-cue {
-    position: absolute;
-    bottom: 36px;
-    left: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--muted-2);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  .scroll-cue::before {
-    content: "";
-    width: 20px; height: 1px;
-    background: var(--muted-2);
-    animation: pulse-w 1.8s ease-in-out infinite;
-  }
-  @keyframes pulse-w { 0%,100% { width: 10px; } 50% { width: 26px; } }
+  .hero-pills span:nth-child(1) { color: var(--teal); }
+  .hero-pills span:nth-child(2) { color: var(--coral); }
+  .hero-pills span:nth-child(3) { color: var(--gold); }
 
   /* ---------- Reveal ---------- */
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s cubic-bezier(.16,.84,.44,1), transform 0.7s cubic-bezier(.16,.84,.44,1);
+    transform: translateY(26px);
+    transition: opacity 0.75s cubic-bezier(.16,.84,.44,1), transform 0.75s cubic-bezier(.16,.84,.44,1);
   }
   .reveal.in-view { opacity: 1; transform: translateY(0); }
 
   /* ---------- Section headers ---------- */
-  .sec-head {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    margin-bottom: 40px;
-  }
-  .sec-num {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--amber);
-    background: var(--amber-soft);
-    border: 1px solid var(--amber);
-    border-radius: 4px;
-    padding: 3px 8px;
-    flex-shrink: 0;
+  .eyebrow {
+    display: inline-block;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 999px;
+    margin-bottom: 22px;
   }
   .sec-title {
-    font-family: var(--sans);
-    font-weight: 800;
-    font-size: clamp(26px, 4vw, 40px);
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(30px, 4.4vw, 46px);
     letter-spacing: -0.01em;
-    margin: 0;
+    line-height: 1.15;
+    margin: 0 0 48px;
+    color: var(--ink);
   }
+
+  /* ---------- Impact ---------- */
+  .impact-section { background: var(--peach); }
+  .eyebrow.impact-e { background: var(--coral-soft); color: var(--coral); }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .stat-card {
+    background: var(--panel);
+    border-radius: 20px;
+    padding: 32px 26px;
+    box-shadow: 0 14px 34px rgba(43,36,25,0.06);
+  }
+  .stat-card .num {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(32px, 4.6vw, 42px);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .stat-card:nth-child(6n+1) .num { color: var(--coral); }
+  .stat-card:nth-child(6n+2) .num { color: var(--teal); }
+  .stat-card:nth-child(6n+3) .num { color: var(--gold); }
+  .stat-card:nth-child(6n+4) .num { color: var(--plum); }
+  .stat-card:nth-child(6n+5) .num { color: var(--coral); }
+  .stat-card:nth-child(6n+6) .num { color: var(--teal); }
+  .stat-card .label { font-size: 15px; color: var(--muted); line-height: 1.5; }
+  @media (max-width: 720px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ---------- Skills ---------- */
+  .skills-section { background: var(--mint); }
+  .eyebrow.skills-e { background: var(--teal-soft); color: var(--teal); }
+  .skills { display: flex; flex-wrap: wrap; gap: 14px; }
+  .skills span {
+    font-size: 15.5px;
+    font-weight: 600;
+    padding: 13px 22px;
+    border-radius: 999px;
+    background: var(--panel);
+    box-shadow: 0 8px 20px rgba(43,36,25,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .skills span:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(43,36,25,0.1); }
+  .skills span:nth-child(6n+1) { color: var(--coral); }
+  .skills span:nth-child(6n+2) { color: var(--teal); }
+  .skills span:nth-child(6n+3) { color: var(--gold); }
+  .skills span:nth-child(6n+4) { color: var(--plum); }
+  .skills span:nth-child(6n+5) { color: var(--coral); }
+  .skills span:nth-child(6n+6) { color: var(--teal); }
 
   /* ---------- Story ---------- */
+  .story-section { background: var(--bg); }
+  .eyebrow.story-e { background: var(--gold-soft); color: var(--gold); }
   .story p {
-    font-family: var(--sans);
-    font-size: clamp(18px, 2.2vw, 23px);
-    line-height: 1.6;
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.6vw, 25px);
+    line-height: 1.7;
     color: var(--muted);
-    margin: 0 0 28px;
-    padding-left: 20px;
-    border-left: 2px solid var(--line);
+    margin: 0 0 30px;
     transition-delay: calc(var(--i) * 0.06s);
   }
-  .story p b { color: var(--maroon); font-weight: 700; }
-  .story p:last-child { color: var(--text); border-left-color: var(--amber); }
+  .story p b { color: var(--coral); font-weight: 700; font-style: normal; }
+  .story p:last-child { color: var(--ink); }
 
-  /* ---------- Timeline (station stops) ---------- */
-  .timeline { position: relative; margin-top: 10px; }
+  /* ---------- Journey ---------- */
+  .journey-section { background: var(--blush); }
+  .eyebrow.journey-e { background: var(--plum-soft); color: var(--plum); }
+  .timeline { position: relative; margin-top: 8px; }
   .timeline::before {
     content: "";
     position: absolute;
-    left: 3px;
-    top: 6px;
-    bottom: 6px;
-    width: 1px;
-    background: repeating-linear-gradient(to bottom, var(--muted-2) 0, var(--muted-2) 5px, transparent 5px, transparent 11px);
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--line);
   }
-  .tl-item { position: relative; padding-left: 40px; margin-bottom: 44px; }
+  .tl-item { position: relative; padding-left: 44px; margin-bottom: 52px; }
   .tl-item:last-child { margin-bottom: 0; }
   .tl-dot {
-    position: absolute; left: 0; top: 5px;
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--muted-2);
+    position: absolute; left: 0; top: 6px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--panel);
+    border: 3px solid var(--muted-2);
   }
-  .tl-item.current .tl-dot { background: var(--green); box-shadow: 0 0 0 4px rgba(28,122,90,0.15); }
+  .tl-item.current .tl-dot { border-color: var(--teal); }
   .tl-meta {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
+    font-size: 14px;
+    font-weight: 600;
     color: var(--muted-2);
     margin-bottom: 8px;
-    text-transform: uppercase;
   }
-  .tl-item.current .tl-meta { color: var(--green); }
-  .tl-role { font-family: var(--sans); font-size: 21px; font-weight: 800; margin: 0 0 3px; color: var(--text); }
-  .tl-org { font-family: var(--mono); font-size: 13px; color: var(--maroon); margin: 0 0 12px; }
-  .tl-desc { font-size: 15px; line-height: 1.7; color: var(--muted); margin: 0; }
-  .tl-desc b { color: var(--text); font-weight: 700; }
-
-  /* ---------- Impact — departure board ---------- */
-  .board {
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    overflow: hidden;
-    background: var(--panel);
-    box-shadow: 0 12px 32px rgba(36,31,23,0.06);
-  }
-  .board-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 16px;
-    align-items: center;
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--line);
-  }
-  .board-row:last-child { border-bottom: none; }
-  .board-row .label {
-    font-family: var(--sans);
-    font-size: 14.5px;
-    color: var(--muted);
-  }
-  .board-row .value {
-    font-family: var(--mono);
-    font-weight: 700;
-    font-size: clamp(24px, 4vw, 32px);
-    color: var(--maroon);
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-  .board-row:nth-child(even) .value { color: var(--amber); }
-
-  /* ---------- Skills — ticket stubs ---------- */
-  .skills { display: flex; flex-wrap: wrap; gap: 12px; }
-  .skills span {
-    font-family: var(--mono);
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    color: var(--text);
-    background: var(--panel);
-    border: 1px dashed var(--line);
-    padding: 9px 16px;
-    border-radius: 6px;
-    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    box-shadow: 0 4px 12px rgba(36,31,23,0.05);
-  }
-  .skills span:nth-child(3n+1):hover { border-color: var(--amber); color: var(--amber); }
-  .skills span:nth-child(3n+2):hover { border-color: var(--maroon); color: var(--maroon); }
-  .skills span:nth-child(3n+3):hover { border-color: var(--green); color: var(--green); }
-  .skills span:hover { transform: translateY(-2px); }
+  .tl-item.current .tl-meta { color: var(--teal); }
+  .tl-role { font-family: var(--serif); font-size: 24px; font-weight: 700; margin: 0 0 4px; color: var(--ink); }
+  .tl-org { font-size: 15px; font-weight: 600; color: var(--coral); margin: 0 0 14px; }
+  .tl-desc { font-size: 16.5px; line-height: 1.75; color: var(--muted); margin: 0; max-width: 640px; }
+  .tl-desc b { color: var(--ink); font-weight: 700; }
 
   /* ---------- Education ---------- */
-  .edu-grid { display: grid; gap: 14px; }
+  .education-section { background: var(--lavender); }
+  .eyebrow.edu-e { background: var(--plum-soft); color: var(--plum); }
+  .edu-grid { display: grid; gap: 16px; }
   .edu-card {
     background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 20px 24px;
+    border-radius: 18px;
+    padding: 26px 30px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     flex-wrap: wrap;
-    gap: 6px;
-    box-shadow: 0 8px 20px rgba(36,31,23,0.05);
+    gap: 8px;
+    box-shadow: 0 10px 26px rgba(43,36,25,0.06);
   }
-  .edu-name { font-family: var(--sans); font-size: 16px; font-weight: 700; color: var(--text); }
-  .edu-degree { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .edu-name { font-family: var(--serif); font-size: 19px; font-weight: 700; color: var(--ink); }
+  .edu-degree { font-size: 15px; color: var(--muted); }
   .edu-tag {
     display: inline-block;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--maroon);
-    background: var(--maroon-soft);
-    border: 1px solid var(--maroon);
-    padding: 3px 9px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--plum);
+    background: var(--plum-soft);
+    padding: 4px 12px;
     border-radius: 999px;
-    margin-left: 6px;
+    margin-left: 8px;
     vertical-align: middle;
   }
 
   /* ---------- Contact ---------- */
-  .contact h2 {
-    font-family: var(--sans);
-    font-weight: 800;
-    font-size: clamp(34px, 6vw, 60px);
-    letter-spacing: -0.01em;
-    margin: 0 0 20px;
+  .contact-section {
+    background: linear-gradient(135deg, var(--coral), #c1531f);
+    color: #fff;
+    text-align: center;
   }
-  .contact p { color: var(--muted); font-size: 16px; margin: 0 0 36px; font-family: var(--mono); }
-  .links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .contact-section .eyebrow { background: rgba(255,255,255,0.18); color: #fff; }
+  .contact-section h2 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(36px, 6vw, 62px);
+    line-height: 1.12;
+    margin: 0 0 22px;
+    color: #fff;
+  }
+  .contact-section p { color: rgba(255,255,255,0.85); font-size: 18px; margin: 0 0 40px; }
+  .links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
   .links a {
-    color: var(--text);
+    color: var(--coral);
     text-decoration: none;
-    font-family: var(--mono);
-    font-size: 13.5px;
-    letter-spacing: 0.03em;
-    padding: 13px 24px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    background: var(--panel);
+    font-size: 15.5px;
+    font-weight: 700;
+    padding: 15px 28px;
+    border-radius: 999px;
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.15);
   }
-  .links a.primary { background: var(--maroon); border-color: var(--maroon); color: #fff; font-weight: 700; }
-  .links a:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
-  .links a.primary:hover { background: #82251e; border-color: #82251e; color: #fff; }
+  .links a.secondary {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    box-shadow: none;
+  }
+  .links a:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,0.2); }
 
   footer {
     text-align: center;
-    padding: 32px 24px 50px;
+    padding: 36px 24px;
     color: var(--muted-2);
-    font-family: var(--mono);
-    font-size: 12px;
-    position: relative;
-    z-index: 1;
-  }
-
-  @media (max-width: 640px) {
-    .board-row .value { font-size: 22px; }
-    .boarding-pass { flex-wrap: wrap; }
+    font-size: 14px;
+    background: var(--bg);
   }
 </style>
 </head>
 <body>
   <div id="progressBar"></div>
-  <div class="wash wash-1"></div>
-  <div class="wash wash-2"></div>
-  <div class="wash wash-3"></div>
 
   <header class="hero">
-    <div class="hero-watermark">G</div>
-    <div class="board-meta"><span class="led"></span>ACTIVELY BUILDING · PRODUCT MANAGEMENT</div>
+    <span class="kicker"><span class="dot"></span>Actively building · Product Management</span>
     <h1>Gautam Kumar</h1>
-    <p class="flip-line" id="flipLine">TURNING <b>USER PROBLEMS</b> INTO <b>SHIPPED PRODUCT</b></p>
-    <p class="sub">Product Manager at <b>PhysicsWallah</b>, building <b>Pi Lens</b> — scaled 0 to 300K+ users. Data-driven strategy, GTM, and 0→1 execution that moves real metrics.</p>
-
-    <div class="boarding-pass">
-      <div><span class="bp-label">Role</span><span class="bp-value">Product Manager</span></div>
-      <div><span class="bp-label">Focus</span><span class="bp-value amber">0→1 Growth</span></div>
-      <div><span class="bp-label">Status</span><span class="bp-value amber">Shipping</span></div>
-      <div><span class="bp-label">Team</span><span class="bp-value">AI Pod · PW</span></div>
+    <p class="lede">Turning user problems into shipped product.</p>
+    <p class="sub">Product Manager at <b>PhysicsWallah</b>, building <b>Pi Lens</b> — scaled from 0 to 300K+ users. Data-driven strategy, GTM, and 0→1 execution that moves real metrics.</p>
+    <div class="hero-pills">
+      <span>300K+ downloads</span>
+      <span>₹320Cr+ scaled</span>
+      <span>4.7★ rating</span>
     </div>
-
-    <div class="scroll-cue">Scroll</div>
   </header>
 
-  <div class="ticker-bar">
-    <div class="ticker-track" id="tickerTrack">
-      <span><b class="dim">●</b> 300K+ PI LENS DOWNLOADS</span>
-      <span class="dim"><b>●</b> ₹320CR+ CATEGORY SCALED</span>
-      <span><b class="dim">●</b> 97% AI ACCURACY</span>
-      <span class="dim"><b>●</b> IIM MBA OFFER HOLDER</span>
-      <span><b class="dim">●</b> 0→1 PRODUCT BUILDER</span>
-      <span class="dim"><b>●</b> EX STATION MASTER, INDIAN RAILWAYS</span>
-      <span><b class="dim">●</b> 300K+ PI LENS DOWNLOADS</span>
-      <span class="dim"><b>●</b> ₹320CR+ CATEGORY SCALED</span>
-      <span><b class="dim">●</b> 97% AI ACCURACY</span>
-      <span class="dim"><b>●</b> IIM MBA OFFER HOLDER</span>
-      <span><b class="dim">●</b> 0→1 PRODUCT BUILDER</span>
-      <span class="dim"><b>●</b> EX STATION MASTER, INDIAN RAILWAYS</span>
-    </div>
-  </div>
-
-  <section class="impact">
-    <div class="sec-head"><span class="sec-num reveal">01</span><h2 class="sec-title reveal">Impact</h2></div>
-    <div class="board reveal">
-      <div class="board-row"><span class="label">Pi Lens app downloads, 0 to 300K</span><span class="value">300K+</span></div>
-      <div class="board-row"><span class="label">AI content accuracy, up from 75%</span><span class="value">97%</span></div>
-      <div class="board-row"><span class="label">Play Store rating, up from 4.3★</span><span class="value">4.7★</span></div>
-      <div class="board-row"><span class="label">IITJEE category business scaled</span><span class="value">₹320Cr+</span></div>
-      <div class="board-row"><span class="label">User retention lift</span><span class="value">15→30%</span></div>
-      <div class="board-row"><span class="label">Products built from scratch</span><span class="value">0→1</span></div>
+  <section class="impact-section">
+    <div class="inner-wide">
+      <span class="eyebrow impact-e reveal">Impact</span>
+      <h2 class="sec-title reveal">Not just shipped. Moved the needle.</h2>
+      <div class="stat-grid">
+        <div class="stat-card reveal"><div class="num" data-count="300" data-suffix="K+">0</div><div class="label">Pi Lens app downloads, 0 to 300K</div></div>
+        <div class="stat-card reveal"><div class="num" data-count="97" data-suffix="%">0</div><div class="label">AI content accuracy, up from 75%</div></div>
+        <div class="stat-card reveal"><div class="num" data-count="4.7" data-suffix="★" data-decimal="1">0</div><div class="label">Play Store rating, up from 4.3★</div></div>
+        <div class="stat-card reveal"><div class="num" data-count="320" data-suffix="Cr+">0</div><div class="label">IITJEE category business scaled</div></div>
+        <div class="stat-card reveal"><div class="num" data-count="15" data-suffix="→30%">0</div><div class="label">User retention lift</div></div>
+        <div class="stat-card reveal"><div class="num" data-count="0" data-suffix="→1">0</div><div class="label">Products built from scratch</div></div>
+      </div>
     </div>
   </section>
-
-  <div class="track"></div>
 
   <section class="skills-section">
-    <div class="sec-head"><span class="sec-num reveal">02</span><h2 class="sec-title reveal">Skills</h2></div>
-    <div class="skills reveal">
-      <span>PRODUCT STRATEGY</span>
-      <span>GTM &amp; GROWTH</span>
-      <span>DATA-DRIVEN DECISIONS</span>
-      <span>0→1 BUILDING</span>
-      <span>CROSS-FUNCTIONAL LEADERSHIP</span>
-      <span>RETENTION &amp; ENGAGEMENT</span>
-      <span>A/B TESTING</span>
-      <span>STAKEHOLDER MANAGEMENT</span>
-      <span>USER RESEARCH</span>
-    </div>
-  </section>
-
-  <section class="story">
-    <div class="sec-head"><span class="sec-num reveal">03</span><h2 class="sec-title reveal">The story</h2></div>
-    <p class="reveal" style="--i:0">It all started with my own startup. That's where I learned what <b>entrepreneurship</b> really means.</p>
-    <p class="reveal" style="--i:1">From there, I dove into the startup ecosystem — working across <b>EdTech, E-Mobility, and more</b>.</p>
-    <p class="reveal" style="--i:2">Somewhere in between, I took an unexpected turn and served with the <b>Government of India as a Station Master</b> in the Railways.</p>
-    <p class="reveal" style="--i:3">Every chapter taught me something — how to <b>align teams</b>, <b>scale fast</b>, and persevere when it gets hard.</p>
-    <p class="reveal" style="--i:4">Today, I'm using those skills to shape the future of learning in India, at PhysicsWallah — building products that matter, feature by feature, release by release.</p>
-  </section>
-
-  <div class="track"></div>
-
-  <section class="journey">
-    <div class="sec-head"><span class="sec-num reveal">04</span><h2 class="sec-title reveal">The full journey</h2></div>
-
-    <div class="timeline">
-      <div class="tl-item reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-meta">2019 – 2021 · Stop 01</div>
-        <div class="tl-role">Founder</div>
-        <div class="tl-org">ReaderSpace — WhatsApp News Analysis</div>
-        <p class="tl-desc">Built a WhatsApp-based news service that demystified daily current affairs for readers. Grew to <b>4,000+ members</b>, including 500 active paid subscribers, reaching an <b>₹18,000 ARR</b> milestone.</p>
-      </div>
-
-      <div class="tl-item reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-meta">2021 – 2023 · Stop 02</div>
-        <div class="tl-role">Early Member, Product &amp; Growth</div>
-        <div class="tl-org">MathonGo · MARKS App</div>
-        <p class="tl-desc">Scaled MathonGo's YouTube channel and the MARKS app for JEE/NEET aspirants. Grew a <b>30,000+ student Telegram community</b>, MARKS crossed <b>100K+ downloads</b> at a 4.8 rating, and MARKS YouTube reached <b>52K+ subscribers</b> and 15.4M views.</p>
-      </div>
-
-      <div class="tl-item reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-meta">2022 · Stop 03</div>
-        <div class="tl-role">Intern, Community Building</div>
-        <div class="tl-org">Yulu Bikes</div>
-        <p class="tl-desc">Spent two months understanding gig-economy delivery partners across Bengaluru. The empowerment program he proposed became the seed for Yulu's <b>#YuSmart</b> initiative, launched two years later.</p>
-      </div>
-
-      <div class="tl-item current reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-meta">Sept 2023 – Jan 2025 · Stop 04</div>
-        <div class="tl-role">Station Master</div>
-        <div class="tl-org">Indian Railways — Dedicated Freight Corridor</div>
-        <p class="tl-desc">A full-time government posting at one of India's largest freight junctions. Handled <b>2,400+ monthly train operations</b>, coordinated across 5+ departments, and kept the wheel — literally — never stopping.</p>
-      </div>
-
-      <div class="tl-item current reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-meta">May 2025 – Nov 2025 · Stop 05</div>
-        <div class="tl-role">Category Business Lead</div>
-        <div class="tl-org">PhysicsWallah — IITJEE</div>
-        <p class="tl-desc">Ran growth &amp; strategy for a <b>₹320 Cr+ business</b>, PW's IITJEE category. Built pricing, GTM, and engagement plays that lifted attendance uptick by 4% and shipped new offerings like the PYQ Blueprint.</p>
-      </div>
-
-      <div class="tl-item current reveal">
-        <div class="tl-dot"></div>
-        <div class="tl-meta">Dec 2025 – Present · Stop 06</div>
-        <div class="tl-role">Product, AI Pod</div>
-        <div class="tl-org">PhysicsWallah — Pi Lens</div>
-        <p class="tl-desc">Building <b>Pi Lens</b>, India's first YouTube-layer learning app — summaries, quizzes, and AI answers on any video. Scaled it <b>0 → 300K downloads</b> and counting, while pushing the Play Store rating from 4.3★ to 4.7★.</p>
+    <div class="inner-wide">
+      <span class="eyebrow skills-e reveal">Skills</span>
+      <h2 class="sec-title reveal">A product mind, sharpened by scale.</h2>
+      <div class="skills">
+        <span class="reveal">Product Strategy</span>
+        <span class="reveal">GTM &amp; Growth</span>
+        <span class="reveal">Data-Driven Decisions</span>
+        <span class="reveal">0→1 Building</span>
+        <span class="reveal">Cross-Functional Leadership</span>
+        <span class="reveal">Retention &amp; Engagement</span>
+        <span class="reveal">A/B Testing</span>
+        <span class="reveal">Stakeholder Management</span>
+        <span class="reveal">User Research</span>
       </div>
     </div>
   </section>
 
-  <div class="track"></div>
-
-  <section class="education">
-    <div class="sec-head"><span class="sec-num reveal">05</span><h2 class="sec-title reveal">Education</h2></div>
-    <div class="edu-grid">
-      <div class="edu-card reveal">
-        <span class="edu-name">Gati Shakti Vishwavidyalaya</span>
-        <span class="edu-degree">BBA, Transportation Management</span>
-      </div>
-      <div class="edu-card reveal">
-        <span class="edu-name">Indian Institute of Management (IIM)</span>
-        <span class="edu-degree">MBA <span class="edu-tag">Admission offer, not joined</span></span>
-      </div>
-      <div class="edu-card reveal">
-        <span class="edu-name">Mesa School of Business</span>
-        <span class="edu-degree">PGP in Startup Leadership <span class="edu-tag">Admission offer, not joined</span></span>
+  <section class="story-section">
+    <div class="inner">
+      <span class="eyebrow story-e reveal">The story</span>
+      <div class="story">
+        <p class="reveal" style="--i:0">It all started with my own startup. That's where I learned what <b>entrepreneurship</b> really means.</p>
+        <p class="reveal" style="--i:1">From there, I dove into the startup ecosystem — working across <b>EdTech, E-Mobility, and more</b>.</p>
+        <p class="reveal" style="--i:2">Somewhere in between, I took an unexpected turn and served with the Government of India as a <b>Station Master</b> in the Railways.</p>
+        <p class="reveal" style="--i:3">Every chapter taught me something — how to align teams, scale fast, and persevere when it gets hard.</p>
+        <p class="reveal" style="--i:4">Today, I'm using those skills to shape the future of learning in India, at PhysicsWallah — building products that matter, feature by feature, release by release.</p>
       </div>
     </div>
   </section>
 
-  <section class="contact">
-    <div class="sec-head"><span class="sec-num reveal">06</span><span class="sec-title reveal" style="font-family:var(--mono);font-size:13px;color:var(--muted-2);letter-spacing:0.1em;text-transform:uppercase;">Contact</span></div>
-    <h2 class="reveal">Let's build something<br>worth shipping.</h2>
-    <p class="reveal">// open to product conversations, collaborations, and good ideas</p>
-    <div class="links reveal">
-      <a class="primary" href="mailto:gautamprep@gmail.com">Email me</a>
-      <a href="https://www.linkedin.com/in/gautamkumar42" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/gautamproduct" target="_blank" rel="noopener">GitHub</a>
+  <section class="journey-section">
+    <div class="inner-wide">
+      <span class="eyebrow journey-e reveal">The full journey</span>
+      <h2 class="sec-title reveal">Six roles. One thread — building for people at scale.</h2>
+
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-meta">2019 – 2021</div>
+          <div class="tl-role">Founder</div>
+          <div class="tl-org">ReaderSpace — WhatsApp News Analysis</div>
+          <p class="tl-desc">Built a WhatsApp-based news service that demystified daily current affairs for readers. Grew to <b>4,000+ members</b>, including 500 active paid subscribers, reaching an <b>₹18,000 ARR</b> milestone.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-meta">2021 – 2023</div>
+          <div class="tl-role">Early Member, Product &amp; Growth</div>
+          <div class="tl-org">MathonGo · MARKS App</div>
+          <p class="tl-desc">Scaled MathonGo's YouTube channel and the MARKS app for JEE/NEET aspirants. Grew a <b>30,000+ student Telegram community</b>, MARKS crossed <b>100K+ downloads</b> at a 4.8 rating, and MARKS YouTube reached <b>52K+ subscribers</b> and 15.4M views.</p>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-meta">2022</div>
+          <div class="tl-role">Intern, Community Building</div>
+          <div class="tl-org">Yulu Bikes</div>
+          <p class="tl-desc">Spent two months understanding gig-economy delivery partners across Bengaluru. The empowerment program he proposed became the seed for Yulu's <b>#YuSmart</b> initiative, launched two years later.</p>
+        </div>
+
+        <div class="tl-item current reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-meta">Sept 2023 – Jan 2025</div>
+          <div class="tl-role">Station Master</div>
+          <div class="tl-org">Indian Railways — Dedicated Freight Corridor</div>
+          <p class="tl-desc">A full-time government posting at one of India's largest freight junctions. Handled <b>2,400+ monthly train operations</b>, coordinated across 5+ departments, and kept the wheel — literally — never stopping.</p>
+        </div>
+
+        <div class="tl-item current reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-meta">May 2025 – Nov 2025</div>
+          <div class="tl-role">Category Business Lead</div>
+          <div class="tl-org">PhysicsWallah — IITJEE</div>
+          <p class="tl-desc">Ran growth &amp; strategy for a <b>₹320 Cr+ business</b>, PW's IITJEE category. Built pricing, GTM, and engagement plays that lifted attendance uptick by 4% and shipped new offerings like the PYQ Blueprint.</p>
+        </div>
+
+        <div class="tl-item current reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-meta">Dec 2025 – Present</div>
+          <div class="tl-role">Product, AI Pod</div>
+          <div class="tl-org">PhysicsWallah — Pi Lens</div>
+          <p class="tl-desc">Building <b>Pi Lens</b>, India's first YouTube-layer learning app — summaries, quizzes, and AI answers on any video. Scaled it <b>0 → 300K downloads</b> and counting, while pushing the Play Store rating from 4.3★ to 4.7★.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer>© <span id="year"></span> KUMARGAUTAM.COM — ALL SYSTEMS OPERATIONAL</footer>
+  <section class="education-section">
+    <div class="inner-wide">
+      <span class="eyebrow edu-e reveal">Education</span>
+      <h2 class="sec-title reveal">Grounded in both business and the ground reality.</h2>
+      <div class="edu-grid">
+        <div class="edu-card reveal">
+          <span class="edu-name">Gati Shakti Vishwavidyalaya</span>
+          <span class="edu-degree">BBA, Transportation Management</span>
+        </div>
+        <div class="edu-card reveal">
+          <span class="edu-name">Indian Institute of Management (IIM)</span>
+          <span class="edu-degree">MBA <span class="edu-tag">Admission offer, not joined</span></span>
+        </div>
+        <div class="edu-card reveal">
+          <span class="edu-name">Mesa School of Business</span>
+          <span class="edu-degree">PGP in Startup Leadership <span class="edu-tag">Admission offer, not joined</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="inner">
+      <span class="eyebrow reveal">Get in touch</span>
+      <h2 class="reveal">Let's build something<br>worth shipping.</h2>
+      <p class="reveal">Open to product conversations, collaborations, and good ideas.</p>
+      <div class="links reveal">
+        <a href="mailto:gautamprep@gmail.com">Email me</a>
+        <a class="secondary" href="https://www.linkedin.com/in/gautamkumar42" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="secondary" href="https://github.com/gautamproduct" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>&copy; <span id="year"></span> kumargautam.com</footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Scroll progress bar
     const bar = document.getElementById('progressBar');
     function updateProgress() {
       const h = document.documentElement;
@@ -688,26 +584,22 @@
     window.addEventListener('resize', onScrollReveal);
     checkReveals();
 
-    // Departure-board number scramble for the impact values
-    let statEls = Array.from(document.querySelectorAll('.board-row .value'));
-    const scrambleChars = "0123456789%★→CRK.";
-    function scrambleIn(el) {
-      const target = el.textContent;
-      const len = target.length;
-      const duration = 700;
+    // Count-up stats
+    let statEls = Array.from(document.querySelectorAll('.stat-card .num'));
+    function animateStat(el) {
+      const target = parseFloat(el.getAttribute('data-count'));
+      const suffix = el.getAttribute('data-suffix') || '';
+      const decimals = parseInt(el.getAttribute('data-decimal') || '0');
+      const duration = 1200;
       const start = performance.now();
-      function frame(now) {
+      function tick(now) {
         const p = Math.min((now - start) / duration, 1);
-        let out = "";
-        for (let i = 0; i < len; i++) {
-          const charP = Math.min(Math.max((p * len - i) / 2, 0), 1);
-          out += charP >= 1 ? target[i] : scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-        }
-        el.textContent = out;
-        if (p < 1) requestAnimationFrame(frame);
-        else el.textContent = target;
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = target * eased;
+        el.textContent = (decimals ? val.toFixed(decimals) : Math.round(val)) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
       }
-      requestAnimationFrame(frame);
+      requestAnimationFrame(tick);
     }
     let statTicking = false;
     function checkStats() {
@@ -715,7 +607,7 @@
       for (let i = statEls.length - 1; i >= 0; i--) {
         const el = statEls[i];
         if (el.getBoundingClientRect().top < vh * 0.9) {
-          scrambleIn(el);
+          animateStat(el);
           statEls.splice(i, 1);
         }
       }
@@ -727,31 +619,6 @@
     document.addEventListener('scroll', onScrollStats, { passive: true });
     window.addEventListener('resize', onScrollStats);
     checkStats();
-
-    // Hero flip-line scramble-in on load
-    (function heroScramble() {
-      const el = document.getElementById('flipLine');
-      const targetHTML = el.innerHTML;
-      const targetText = el.textContent;
-      const len = targetText.length;
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      const duration = 1100;
-      const start = performance.now() + 300;
-      function frame(now) {
-        if (now < start) { requestAnimationFrame(frame); return; }
-        const p = Math.min((now - start) / duration, 1);
-        let out = "";
-        for (let i = 0; i < len; i++) {
-          const charP = Math.min(Math.max((p * len - i) / 3, 0), 1);
-          const c = targetText[i];
-          out += charP >= 1 ? c : (c === " " ? " " : chars[Math.floor(Math.random() * chars.length)]);
-        }
-        el.textContent = out;
-        if (p < 1) requestAnimationFrame(frame);
-        else el.innerHTML = targetHTML;
-      }
-      requestAnimationFrame(frame);
-    })();
   </script>
 </body>
 </html>
