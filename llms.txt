@@ -27,6 +27,7 @@ BBA, Transportation Management, Gati Shakti Vishwavidyalaya. Received IIM MBA an
 - GitHub: https://github.com/gautamproduct
 
 ## Pages
+- Entrepreneurship: https://kumargautam.com/entrepreneurship/
 - About: https://kumargautam.com/about/
 - Pi Lens App: https://kumargautam.com/pi-lens/
 - PW Test Series: https://kumargautam.com/pw-test-series/
