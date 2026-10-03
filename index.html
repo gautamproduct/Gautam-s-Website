@@ -6,6 +6,9 @@
 <title>Gautam Kumar – Product Manager at PhysicsWallah | Pi Lens, MARKS</title>
 <meta name="description" content="Gautam Kumar is a Product Manager at PhysicsWallah (PW). He took Pi Lens from 0 to 400K downloads, drives product-led growth for PW Test Series, and scaled the MARKS app at MathonGo.">
 <link rel="canonical" href="https://kumargautam.com/">
+<link rel="alternate" hreflang="en-IN" href="https://kumargautam.com/">
+<link rel="alternate" hreflang="x-default" href="https://kumargautam.com/">
+<link rel="alternate" type="text/plain" href="https://kumargautam.com/llms.txt" title="LLM summary">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Gautam Kumar">
 <meta name="theme-color" content="#fefcf8">
@@ -28,6 +31,7 @@
 <meta property="og:title" content="Gautam Kumar – Product Manager at PhysicsWallah | Pi Lens, MARKS">
 <meta property="og:description" content="Gautam Kumar is a Product Manager at PhysicsWallah (PW). He took Pi Lens from 0 to 400K downloads, drives product-led growth for PW Test Series, and scaled the MARKS app at MathonGo.">
 <meta property="og:image" content="https://kumargautam.com/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Gautam Kumar, Product Manager at PhysicsWallah: 400K+ Pi Lens downloads, 100K+ MARKS app, ₹320 Cr category">
@@ -40,6 +44,7 @@
 <meta name="twitter:title" content="Gautam Kumar – Product Manager at PhysicsWallah | Pi Lens, MARKS">
 <meta name="twitter:description" content="Gautam Kumar is a Product Manager at PhysicsWallah (PW). He took Pi Lens from 0 to 400K downloads, drives product-led growth for PW Test Series, and scaled the MARKS app at MathonGo.">
 <meta name="twitter:image" content="https://kumargautam.com/assets/og-image.png">
+<meta name="twitter:image:alt" content="Gautam Kumar, Product Manager at PhysicsWallah">
 
 <!-- Favicons -->
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
@@ -849,6 +854,7 @@
   .proof b span { font-size: inherit !important; color: inherit !important; white-space: nowrap; }
   .hero-proof { background: #0b2a5a4d !important; border-color: #ffffff40 !important; }
   .hero::after { height: 90px; }
+  .hero-sub { max-width: 620px !important; font-size: 18px; line-height: 1.65; margin-bottom: 30px !important; }
 </style>
 </head>
 <body>
@@ -871,7 +877,7 @@
 <section class="hero" id="top">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-content" id="heroContent">
-    <a href="#connect" class="hero-badge"><span class="live-dot"></span>Open to Product roles · PM @ PhysicsWallah</a>
+    <a href="#connect" class="hero-badge"><span class="live-dot"></span>Open to Product roles</a>
     <h1 class="hero-headline"><span class="hero-name">Hi, I’m Gautam Kumar</span>
       <span class="hero-line"><span class="w" style="--i:0">I</span> <span class="w" style="--i:1">ship</span>
         <span class="hero-squircle sq-green" style="--i:2;--px:-14;--py:-10" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span>
@@ -883,17 +889,10 @@
         <em class="w" style="--i:7">actually</em> <em class="w" style="--i:8">use.</em>
       </span>
     </h1>
-    <p class="hero-sub">Product Manager at <span class="chip"><img src="assets/logos/pw.png" alt="">PhysicsWallah</span>. I took <span class="chip"><img src="assets/logos/pilens.png" alt="">Pi Lens</span> from <mark class="m1">0 → 400K downloads</mark> and I'm growing <span class="chip"><img src="assets/logos/pw.png" alt="">PW Test Series</span> with <mark class="m2">product-led growth</mark>. Before that, I scaled the <span class="chip"><img src="assets/logos/marks.png" alt="">MARKS app</span> to <mark class="m3">100K+ downloads at 4.8★</mark>. On weekends I ship side projects.</p>
+    <p class="hero-sub">Product Manager at PhysicsWallah. I took Pi Lens from 0 to 400K downloads, I’m growing PW Test Series, and before that I scaled the MARKS app to 100K+ downloads.</p>
     <div class="hero-ctas">
       <a href="#builds" class="btn-hero">See the Work</a>
       <a href="https://www.linkedin.com/in/gautamkumar42" target="_blank" rel="noopener" class="btn-ghost">LinkedIn ↗</a>
-    </div>
-    <div class="hero-worked">
-      <span class="lbl">Built at</span>
-      <span class="co"><img src="assets/logos/pw.png" alt="">PhysicsWallah</span>
-      <span class="co"><img src="assets/logos/mathongo.png" alt="">MathonGo</span>
-      <span class="co"><img src="assets/logos/yulu.png" alt="">Yulu</span>
-      <span class="co"><img src="assets/logos/dfccil.png" alt="" class="wide">Indian Railways</span>
     </div>
   </div>
   <div class="hero-proof">
@@ -1180,7 +1179,7 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 // Showcase
 const card = s => `<a class="browser" href="${s.href}" target="_blank" rel="noopener">
   <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">${s.url}</span></div>
-  <div class="browser-shot"><img src="assets/showcase/${s.img}.jpg" alt="${esc(s.name)} website preview" loading="lazy"></div>
+  <div class="browser-shot"><img src="assets/showcase/${s.img}.jpg" alt="${esc(s.name)} website preview" loading="lazy" decoding="async"></div>
   <div class="browser-foot"><div><b>${esc(s.name)}</b><span>${esc(s.line)}</span></div><em>Visit ↗</em></div></a>`;
 $('track').innerHTML = SHOWCASE.map(card).join('') + SHOWCASE.map(card).join('');
 
@@ -1224,7 +1223,7 @@ const shotHtml = b => {
   if (b.illus) return `<div class="card-shot">${ILLUS[b.illus]}</div>`;
   const src = b.shot.startsWith('http') ? b.shot : `assets/showcase/${b.shot}.jpg`;
   const href = b.links[0] ? b.links[0][1] : null;
-  const img = `<img src="${src}" alt="${esc(b.name)} preview" loading="lazy">`;
+  const img = `<img src="${src}" alt="${esc(b.name)} preview" loading="lazy" decoding="async">`;
   return href ? `<a class="card-shot" href="${href}" target="_blank" rel="noopener">${img}</a>` : `<div class="card-shot">${img}</div>`;
 };
 $('grid').innerHTML = BUILDS.map(b => {
@@ -1235,7 +1234,7 @@ $('grid').innerHTML = BUILDS.map(b => {
     <div class="build-links">${linksHtml(b)}</div>`;
   return b.tag === 'feat'
     ? `<div class="build-card featured reveal" data-cat="${b.cat}" style="--c:${c}"><div class="feat-body">${body}</div>
-        <a class="feat-shot" href="${b.links[0][1]}" target="_blank" rel="noopener"><img src="assets/showcase/${b.shot}.jpg" alt="${esc(b.name)} preview" loading="lazy"></a></div>`
+        <a class="feat-shot" href="${b.links[0][1]}" target="_blank" rel="noopener"><img src="assets/showcase/${b.shot}.jpg" alt="${esc(b.name)} preview" loading="lazy" decoding="async"></a></div>`
     : `<div class="build-card reveal" data-cat="${b.cat}" style="--c:${c}">${shotHtml(b)}${body}</div>`;
 }).join('');
 $('count').textContent = `${BUILDS.length}+ products`;
@@ -1255,7 +1254,7 @@ $('filters').addEventListener('click', e => {
 $('series').innerHTML = SERIES.map(([id, branch, iit, col]) => {
   const [c] = C[col];
   return `<a class="yt-card" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener" style="--c:${c}">
-    <div class="yt-thumb"><img src="https://i.ytimg.com/vi/${id}/mqdefault.jpg" alt="" loading="lazy"><span class="yt-play"></span></div>
+    <div class="yt-thumb"><img src="https://i.ytimg.com/vi/${id}/mqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play"></span></div>
     <span class="yt-iit">${iit}</span><b>${branch}</b></a>`;
 }).join('');
 document.querySelectorAll('.series-nav button').forEach(btn => btn.addEventListener('click', () =>
@@ -1264,7 +1263,7 @@ document.querySelectorAll('.series-nav button').forEach(btn => btn.addEventListe
 // Videos
 $('videos').innerHTML = VIDEOS.map(([id, title, meta]) => `
   <a class="video" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">
-    <div class="video-thumb"><img src="https://i.ytimg.com/vi/${id}/mqdefault.jpg" alt="" loading="lazy"></div>
+    <div class="video-thumb"><img src="https://i.ytimg.com/vi/${id}/mqdefault.jpg" alt="" loading="lazy" decoding="async"></div>
     <div><b>${esc(title)}</b><span>${esc(meta)}</span></div></a>`).join('');
 
 // Story
@@ -1272,7 +1271,7 @@ $('chapterCount').textContent = ['Zero','One','Two','Three','Four','Five','Six',
 $('chapters').innerHTML = STORY.map(ch => {
   const [c, g] = C[ch.color];
   return `<div class="ch reveal${ch.now ? ' now' : ''}" style="--c:${c};--g:${g}"><div class="ch-card">
-    <div class="ch-head"><div class="ch-logo${ch.wide ? ' wide' : ''}"><img src="assets/logos/${ch.logo}.png" alt="${esc(ch.org)} logo" loading="lazy"></div>
+    <div class="ch-head"><div class="ch-logo${ch.wide ? ' wide' : ''}"><img src="assets/logos/${ch.logo}.png" alt="${esc(ch.org)} logo" loading="lazy" decoding="async"></div>
       <div class="ch-meta"><span class="ch-org">${esc(ch.org)}${ch.kind ? ` <i class="ch-kind">· ${esc(ch.kind)}</i>` : ''}</span><span class="ch-when">${ch.when}</span></div>
       <div class="ch-ico"><svg viewBox="0 0 24 24">${ICONS[ch.icon]}</svg></div></div>
     <h3>${esc(ch.title)}</h3><div class="role">${esc(ch.role)}</div><p>${esc(ch.text)}</p></div></div>`;
