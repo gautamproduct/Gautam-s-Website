@@ -855,6 +855,20 @@
   .hero-proof { background: #0b2a5a4d !important; border-color: #ffffff40 !important; }
   .hero::after { height: 90px; }
   .hero-sub { margin-bottom: 30px !important; }
+
+  /* Ticker band below hero */
+  .ticker { position: relative; overflow: hidden; padding: 18px 0; background: var(--cream); border-bottom: 1px solid var(--border-strong); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .ticker-track { display: flex; align-items: center; gap: 44px; width: max-content; animation: tick 48s linear infinite; }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  @keyframes tick { to { transform: translateX(-50%); } }
+  .tk-logo { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--text); white-space: nowrap; filter: grayscale(1) opacity(.7); transition: filter .3s; }
+  .tk-logo:hover { filter: none; }
+  .tk-logo img { width: 28px; height: 28px; object-fit: contain; border-radius: 8px; }
+  .tk-logo img.wide { width: 44px; }
+  .tk-stat { display: inline-flex; align-items: baseline; gap: 8px; font-size: 13.5px; color: var(--text-faint); white-space: nowrap; }
+  .tk-stat b { font-family: var(--font-heading); font-weight: 400; font-size: 26px; color: #d9622a; }
+  @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+  .showcase { margin-top: 36px; }
 </style>
 </head>
 <body>
@@ -895,13 +909,12 @@
       <a href="https://www.linkedin.com/in/gautamkumar42" target="_blank" rel="noopener" class="btn-ghost">LinkedIn ↗</a>
     </div>
   </div>
-  <div class="hero-proof">
-    <div class="proof"><b><span data-count="400">400</span>K+</b><span>Pi Lens downloads</span></div>
-    <div class="proof"><b>4.3→<span data-count="4.7" data-from="4.3" data-dec="1">4.7</span>★</b><span>Pi Lens rating</span></div>
-    <div class="proof"><b>₹<span data-count="320">320</span> Cr</b><span>category led at PW</span></div>
-    <div class="proof"><b><span data-count="18" id="proofCount">18</span>+</b><span>products shipped</span></div>
-  </div>
 </section>
+
+
+<div class="ticker" aria-label="Companies and highlights">
+  <div class="ticker-track"><span class="tk-logo"><img src="assets/logos/pw.png" alt="PhysicsWallah">PhysicsWallah</span><span class="tk-stat"><b>400K+</b>Pi Lens downloads</span><span class="tk-logo"><img src="assets/logos/mathongo.png" alt="MathonGo">MathonGo</span><span class="tk-stat"><b>4.3→4.7★</b>Pi Lens rating</span><span class="tk-logo"><img src="assets/logos/marks.png" alt="MARKS">MARKS</span><span class="tk-stat"><b>100K+</b>MARKS downloads</span><span class="tk-logo"><img src="assets/logos/quizrr.png" alt="Quizrr">Quizrr</span><span class="tk-stat"><b>₹320 Cr</b>category led at PW</span><span class="tk-logo"><img src="assets/logos/yulu.png" alt="Yulu">Yulu</span><span class="tk-stat"><b><span id="proofCount">18</span>+</b>products shipped</span><span class="tk-logo"><img src="assets/logos/dfccil.png" alt="Indian Railways" class="wide">Indian Railways</span><span class="tk-stat"><b>52K+</b>YouTube subscribers</span><span aria-hidden="true" style="display:contents"><span class="tk-logo"><img src="assets/logos/pw.png" alt="">PhysicsWallah</span><span class="tk-stat"><b>400K+</b>Pi Lens downloads</span><span class="tk-logo"><img src="assets/logos/mathongo.png" alt="">MathonGo</span><span class="tk-stat"><b>4.3→4.7★</b>Pi Lens rating</span><span class="tk-logo"><img src="assets/logos/marks.png" alt="">MARKS</span><span class="tk-stat"><b>100K+</b>MARKS downloads</span><span class="tk-logo"><img src="assets/logos/quizrr.png" alt="">Quizrr</span><span class="tk-stat"><b>₹320 Cr</b>category led at PW</span><span class="tk-logo"><img src="assets/logos/yulu.png" alt="">Yulu</span><span class="tk-stat"><b><span>18</span>+</b>products shipped</span><span class="tk-logo"><img src="assets/logos/dfccil.png" alt="" class="wide">Indian Railways</span><span class="tk-stat"><b>52K+</b>YouTube subscribers</span></span></div>
+</div>
 
 <!-- ============ BUILDS ============ -->
 <section id="builds">
@@ -909,10 +922,6 @@
     <p class="section-label reveal">The Work</p>
     <h2 class="section-title reveal">Shipped, <em class="accent-green">and measured.</em></h2>
     <p class="section-sub reveal">Everything below started as a user problem and shipped to real people, on the Play Store, the Chrome Web Store, YouTube and the web.</p>
-
-    <div class="showcase-bar reveal">Live now — quick view
-      <span class="speed" id="speed"><button class="on" data-s="1">1×</button><button data-s="2">2×</button><button data-s="3">3×</button></span>
-    </div>
     <div class="showcase reveal" id="showcase"><div class="showcase-track" id="track"></div></div>
 
     <div class="filters" id="filters"></div>
@@ -1183,16 +1192,12 @@ const card = s => `<a class="browser" href="${s.href}" target="_blank" rel="noop
   <div class="browser-foot"><div><b>${esc(s.name)}</b><span>${esc(s.line)}</span></div><em>Visit ↗</em></div></a>`;
 $('track').innerHTML = SHOWCASE.map(card).join('') + SHOWCASE.map(card).join('');
 
-let speed = 1, offset = 0, paused = false, last = performance.now();
+let speed = 4, offset = 0, paused = false, last = performance.now();
 const track = $('track');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 $('showcase').addEventListener('mouseenter', () => paused = true);
 $('showcase').addEventListener('mouseleave', () => paused = false);
-$('speed').addEventListener('click', e => {
-  const b = e.target.closest('button'); if (!b) return;
-  speed = +b.dataset.s;
-  $('speed').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
-});
+
 (function tick(t) {
   const dt = Math.min(t - last, 64); last = t;
   if (!paused && !reduce) {
@@ -1302,7 +1307,7 @@ $('fireflies').innerHTML = Array.from({ length: 14 }, () =>
     hero.addEventListener('pointerleave', () => { hero.style.setProperty('--mx', 0); hero.style.setProperty('--my', 0); });
   }
   $('proofCount').dataset.count = BUILDS.length; $('proofCount').textContent = BUILDS.length;
-  document.querySelectorAll('.hero-proof [data-count]').forEach((el, i) => {
+  document.querySelectorAll('.hero-proof-none [data-count]').forEach((el, i) => {
     const end = +el.dataset.count, from = +(el.dataset.from || 0), dec = +(el.dataset.dec || 0);
     if (reduceM) return;
     el.textContent = from.toFixed(dec);
