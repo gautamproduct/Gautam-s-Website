@@ -331,8 +331,8 @@
   },
   {
    "@type": "VideoObject",
-   "name": "How to install the Pi Lens app on mobile",
-   "description": "How to install the Pi Lens app on mobile by Gautam Kumar",
+   "name": "How to install the Pi Lens App on mobile",
+   "description": "How to install the Pi Lens App on mobile by Gautam Kumar",
    "thumbnailUrl": "https://i.ytimg.com/vi/GFTES9bikTc/hqdefault.jpg",
    "uploadDate": "2026-05-03T08:18:59-07:00",
    "contentUrl": "https://www.youtube.com/watch?v=GFTES9bikTc",
@@ -1083,6 +1083,18 @@
   .vw.out { opacity: 0; transform: translateY(-.7em) rotateX(70deg); }
   .vw:nth-child(2).on, .vw:nth-child(2) { color: #ffe1be; } .vw:nth-child(3) { color: #c9e7ff; } .vw:nth-child(4) { color: #d4f5c9; }
   @media (prefers-reduced-motion: reduce) { .vw { transition: none; } }
+  .lbl-logo { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .lbl-logo img { width: 26px; height: 26px; border-radius: 8px; background: #fff; box-shadow: 0 3px 10px #0000001f; }
+  .lbl-logo .host-badge { margin-left: 4px; }
+
+  /* Growth: numbers below Pi Lens App videos */
+  #growth .activity-grid { grid-template-columns: minmax(0,1fr) !important; gap: 44px; }
+  #growth .videos { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  #growth .video { grid-template-columns: minmax(0,1fr); align-items: start; }
+  #growth .stats { grid-template-columns: repeat(6, minmax(0,1fr)); }
+  #growth .stat { aspect-ratio: 1 / 1.05; }
+  @media (max-width: 900px) { #growth .videos { grid-template-columns: minmax(0,1fr); } #growth .video { grid-template-columns: 150px minmax(0,1fr); align-items: center; } #growth .stats { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+  @media (max-width: 640px) { #growth .video { grid-template-columns: 120px minmax(0,1fr); } }
 </style>
 </head>
 <body>
@@ -1173,14 +1185,14 @@
     </div>
 
     <div class="series-head reveal">
-      <div><p class="col-label" style="margin:0">MARKS · Know Your Branch <span class="host-badge"><span class="live-dot"></span>Hosted by me</span></p><span>A podcast where IIT students say what their branch is really like, made for JEE aspirants choosing one. I was the host and ran it end to end, from bringing guests on board to bringing users to the app.</span></div>
+      <div><p class="col-label lbl-logo" style="margin:0"><img src="assets/logos/marks.png" alt="MARKS logo">MARKS · Know Your Branch <span class="host-badge"><span class="live-dot"></span>Hosted by me</span></p><span>A podcast where IIT students say what their branch is really like, made for JEE aspirants choosing one. I was the host and ran it end to end, from bringing guests on board to bringing users to the app.</span></div>
       <div class="series-nav"><button aria-label="Scroll left" data-d="-1">←</button><button aria-label="Scroll right" data-d="1">→</button></div>
     </div>
     <div class="series reveal" id="series"></div>
 
     <div class="activity-grid">
       <div class="reveal">
-        <p class="col-label">Pi Lens App · created &amp; presented by me <span class="host-badge"><span class="live-dot"></span>Creator</span></p>
+        <p class="col-label lbl-logo"><img src="assets/logos/pilens.png" alt="Pi Lens App logo">Pi Lens App · created &amp; presented by me <span class="host-badge"><span class="live-dot"></span>Creator</span></p>
         <p class="creator-note">I script, record and present the Pi Lens App launch and how-to videos myself, so students hear about the product from the person who builds it.</p>
         <div class="videos" id="videos"></div>
         <a class="follow" href="https://www.youtube.com/@gautamkumarproduct" target="_blank" rel="noopener">Watch my channel on YouTube ↗</a>
@@ -1343,7 +1355,7 @@ const BUILDS = [
   { name: 'Brain Games', cat: 'side', tag: 'AI', icon: 'brain', color: 'purple', shot: 'braingames',
     desc: 'A prototype I vibe-coded myself. It earned a spot on the Pi Lens App roadmap.',
     links: [['Visit', 'https://brain-games-pi-lens.netlify.app/']] },
-  { name: 'YESPYQ', cat: 'side', tag: 'Web', icon: 'book', color: 'blue', shot: 'yespyq',
+  { name: 'YESPYQ', cat: 'founder', tag: 'Founder', icon: 'book', color: 'blue', shot: 'yespyq',
     desc: 'Free previous-year papers with answers: 20,000+ questions for UPSC, JEE, NEET, SSC, Defence and Boards, plus a ₹149/year PYQ Pass.',
     links: [['Visit', 'https://yespyq.com/']] },
   { name: 'Padhle Beta', cat: 'side', tag: 'Web', icon: 'print', color: 'green', shot: 'padhlebeta',
@@ -1364,7 +1376,7 @@ const BUILDS = [
   { name: 'Pause', cat: 'chrome', tag: 'Chrome', icon: 'pause', color: 'teal', illus: 'pause',
     desc: 'Asks you to set an intention before you open a distracting site, then keeps you on track with mindful timers.',
     links: [['GitHub', 'https://github.com/gautamproduct/Pause-Chrome-Extension']] },
-  { name: 'ReaderSpace', cat: 'side', tag: 'Startup', icon: 'chat', color: 'green', shot: 'readerspace',
+  { name: 'ReaderSpace', cat: 'founder', tag: 'Founder', icon: 'chat', color: 'green', shot: 'readerspace',
     desc: 'My first startup, a WhatsApp news-analysis service. It reached 4,000+ members, 500 of them paying, and ₹30,000 ARR.',
     links: [['Visit', 'https://gautamproduct.github.io/readerspace/']] },
   { name: 'MARKS on YouTube', cat: 'mathongo', tag: 'Growth', icon: 'play', color: 'red', shot: 'marksyt',
@@ -1374,7 +1386,7 @@ const BUILDS = [
     desc: 'Pi Lens App launches, install guides and walkthroughs, posted by the team that builds it.',
     links: [['YouTube', 'https://www.youtube.com/@gautamkumarproduct']] }
 ];
-const FILTERS = [['all', 'All'], ['pw', 'PhysicsWallah'], ['mathongo', 'MathonGo'], ['side', 'Side Projects'], ['chrome', 'Chrome']];
+const FILTERS = [['all', 'All'], ['pw', 'PhysicsWallah'], ['mathongo', 'MathonGo'], ['founder', 'Entrepreneurship'], ['side', 'Side Projects'], ['chrome', 'Chrome']];
 
 const SERIES = [
   ['ANm3bSTvb3k', 'Computer Science', 'IIT Kharagpur', 'blue'],
@@ -1388,7 +1400,7 @@ const SERIES = [
 
 const VIDEOS = [
   ['PrMyjmJV0n4', 'Meet Pi Lens App: PYQs and notes on any YouTube video', 'Launch video · Created & presented by me'],
-  ['GFTES9bikTc', 'How to install the Pi Lens app on mobile', 'Tutorial · Created & presented by me'],
+  ['GFTES9bikTc', 'How to install the Pi Lens App on mobile', 'Tutorial · Created & presented by me'],
   ['NezTj3EZpFc', 'How to install Pi Lens App on a laptop', 'Tutorial · Created & presented by me']
 ];
 
