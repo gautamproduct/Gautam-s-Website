@@ -1115,6 +1115,12 @@
   .num-track .stat:nth-child(6n) { background: linear-gradient(150deg, #a983ff, #5b3fc9); }
   @media (max-width: 640px) { .num-track .stat { flex-basis: 160px; } .numbers { padding: 40px 0 48px; } }
   @media (prefers-reduced-motion: reduce) { .num-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; } .num-track > span { display: none !important; } }
+
+  .num-track .stat { aspect-ratio: auto !important; justify-content: flex-start; gap: 8px; padding: 18px 64px 18px 20px; flex-basis: 250px; min-height: 0; }
+  .num-track .stat b { font-size: 40px; }
+  .num-track .stat span:not(.stat-logo) { font-size: 13.5px; line-height: 1.4; opacity: .92; }
+  .num-track .stat-logo { top: 16px; right: 16px; }
+  @media (max-width: 640px) { .num-track .stat { flex-basis: 200px; padding: 14px 54px 14px 16px; } .num-track .stat b { font-size: 32px; } }
 </style>
 </head>
 <body>
