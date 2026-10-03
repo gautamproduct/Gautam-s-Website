@@ -25,3 +25,13 @@ BBA, Transportation Management, Gati Shakti Vishwavidyalaya. Received IIM MBA an
 - LinkedIn: https://www.linkedin.com/in/gautamkumar42
 - X: https://x.com/__Gautam_Kumar
 - GitHub: https://github.com/gautamproduct
+
+## Pages
+- About: https://kumargautam.com/about/
+- Pi Lens: https://kumargautam.com/pi-lens/
+- PW Test Series: https://kumargautam.com/pw-test-series/
+- MARKS App: https://kumargautam.com/marks-app/
+- Know Your Branch: https://kumargautam.com/know-your-branch/
+- MathonGo & Quizrr: https://kumargautam.com/mathongo-quizrr/
+- Side Projects: https://kumargautam.com/side-projects/
+- Indian Railways: https://kumargautam.com/indian-railways/

@@ -3,8 +3,47 @@
   <url>
     <loc>https://kumargautam.com/</loc>
     <lastmod>2026-10-03</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image><image:loc>https://kumargautam.com/assets/og-image.png</image:loc><image:title>Gautam Kumar – Product Manager at PhysicsWallah</image:title></image:image>
+    <image:image><image:loc>https://kumargautam.com/assets/og-image.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://kumargautam.com/about/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kumargautam.com/pi-lens/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kumargautam.com/pw-test-series/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kumargautam.com/marks-app/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kumargautam.com/know-your-branch/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kumargautam.com/mathongo-quizrr/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kumargautam.com/side-projects/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kumargautam.com/indian-railways/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
