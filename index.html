@@ -556,6 +556,12 @@
   @media (prefers-reduced-motion: reduce) { .hero-sub mark { background-size: 100% 34%; } }
   .build-card.hide, .build-card.featured.hide { display: none !important; }
   .creator-note { font-size: 14px; color: var(--text-faint); margin: -6px 0 14px; max-width: 460px; }
+  #story .edu { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin: 26px auto 0; max-width: 820px; }
+  .edu-pill { font-size: 13px; color: #fff; background: #ffffff21; border: 1px solid #ffffff40; padding: 6px 12px; border-radius: 999px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); white-space: nowrap; }
+  .edu-pill.main { background: #ffffffe6; color: #3a2f4f; border-color: #fff; }
+  .edu-pill b { font-weight: 600; }
+  .edu-note { font-size: 12px; font-style: italic; color: #ffffffbf; }
+  @media (max-width: 640px) { .edu-pill { white-space: normal; text-align: center; } }
 </style>
 </head>
 <body>
@@ -686,7 +692,12 @@
     <h2 class="section-title reveal"><span id="chapterCount">Eight</span> chapters. <em>One thread.</em></h2>
     <p class="section-sub reveal">Building for people at scale, whether they were readers, students, riders, trains or learners.</p>
     <div class="timeline" id="chapters"></div>
-    <p class="edu-line reveal"><b>Education</b> · BBA, Transportation Management, Gati Shakti Vishwavidyalaya · IIM MBA offer and Mesa School PGP offer, both declined to keep building</p>
+    <div class="edu reveal">
+      <span class="edu-pill main">🎓 <b>BBA, Transportation Management</b> · Gati Shakti Vishwavidyalaya</span>
+      <span class="edu-pill">IIM · MBA offer</span>
+      <span class="edu-pill">Mesa · PGP offer</span>
+      <span class="edu-note">offers declined to keep building</span>
+    </div>
   </div>
 </section>
 
@@ -730,7 +741,7 @@
 <footer>
   <div class="foot">
     <span class="foot-logo">kumargautam</span>
-    <small>Built with love for solving problems · © <span id="yr">2026</span> Gautam Kumar · Hero photo via <a href="https://unsplash.com/photos/a-green-field-with-a-few-clouds-in-the-sky-FQkQxgO9Kh8" target="_blank" rel="noopener">Unsplash</a></small>
+    <small>Built with love for solving problems · © <span id="yr">2026</span> Gautam Kumar</small>
   </div>
 </footer>
 
@@ -803,7 +814,7 @@ const BUILDS = [
     desc: 'The JEE/NEET edtech company behind MARKS and Quizrr. I joined early, grew the MathonGo YouTube channel and built a 30K+ student Telegram community.',
     links: [['Website', 'https://www.mathongo.com/']] },
   { name: 'Quizrr', cat: 'mathongo', tag: 'Test Series', icon: 'test', color: 'purple', shot: 'quizrr',
-    desc: 'MathonGo’s online test series for JEE Main, JEE Advanced, BITSAT, WBJEE and MHT CET. I worked on its growth.',
+    desc: 'MathonGo’s online test series, with mock tests for many competitive exams including JEE, BITSAT, WBJEE and MHT CET. I worked on its growth.',
     links: [['Website', 'https://www.quizrr.in/']] },
   { name: 'MARKS App', cat: 'mathongo', tag: 'App', icon: 'phone', color: 'teal', shot: 'marks',
     desc: 'A JEE/NEET PYQ practice app. As an early team member I helped scale it to 100K+ downloads at a 4.8★ rating.',
@@ -864,7 +875,7 @@ const STORY = [
   { logo: 'readerspace', org: 'ReaderSpace', icon: 'chat', color: 'green', when: '2019 – 21', title: 'Started a startup', role: 'Founder · ReaderSpace', text: 'A WhatsApp news service that grew to 4,000+ members, 500 of them paying. It taught me what entrepreneurship actually involves.' },
   { logo: 'mathongo', org: 'MathonGo', kind: 'Parent company', icon: 'send', color: 'blue', when: '2021 – 23', title: 'EdTech at scale', role: 'Early Member, Product & Growth · MathonGo', text: 'Joined early at the JEE/NEET edtech company behind MARKS and Quizrr. Grew the MathonGo YouTube channel and built a 30K+ student Telegram community.' },
   { logo: 'marks', org: 'MARKS', kind: 'PYQ practice app', icon: 'phone', color: 'sky', when: '2021 – 23', title: '100K+ downloads at 4.8★', role: 'Product & Growth · MARKS App (MathonGo)', text: 'Scaled the chapter-wise PYQ app for JEE/NEET. Grew the MARKS YouTube channel to 52K+ subscribers and 15.4M views, and hosted the Know Your Branch podcast.' },
-  { logo: 'quizrr', org: 'Quizrr', kind: 'Online test series', icon: 'test', color: 'purple', when: '2021 – 23', title: 'Mock tests for JEE', role: 'Product & Growth · Quizrr (MathonGo)', text: 'Worked on growth for MathonGo’s online test series for JEE Main, JEE Advanced, BITSAT, WBJEE and MHT CET.' },
+  { logo: 'quizrr', org: 'Quizrr', kind: 'Online test series', icon: 'test', color: 'purple', when: '2021 – 23', title: 'Mock tests for competitive exams', role: 'Product & Growth · Quizrr (MathonGo)', text: 'Worked on growth for MathonGo’s online test series, with mock tests for a wide range of competitive exams, from JEE Main and Advanced to BITSAT, WBJEE and MHT CET.' },
   { logo: 'yulu', org: 'Yulu', icon: 'bike', color: 'sky', when: '2022', title: 'Ground truth', role: 'Intern, Community Building · Yulu', text: 'Embedded with gig-economy riders across Bengaluru. The program I proposed seeded #YuSmart two years later.' },
   { logo: 'dfccil', org: 'DFCCIL · Indian Railways', wide: true, icon: 'train', color: 'red', when: '2023 – 25', title: '2,400 trains a month', role: 'Station Master · Indian Railways (DFC)', text: 'Ran a major freight junction and coordinated 5+ departments to keep the trains moving at real scale.' },
   { logo: 'pw', org: 'PhysicsWallah', icon: 'chart', color: 'slate', when: '2025', title: 'A ₹320 Cr category', role: 'Category Business Lead · PhysicsWallah', text: 'Led IITJEE pricing, GTM and engagement. Attendance went up 4%, and I shipped the PYQ Blueprint.' },
