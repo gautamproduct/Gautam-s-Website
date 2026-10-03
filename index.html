@@ -301,8 +301,7 @@
   .chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
   .chips span { font-size: 12.5px; font-weight: 500; padding: 5px 12px; border-radius: 999px; color: var(--k); background: color-mix(in srgb, var(--k) 10%, #fff); border: 1px solid color-mix(in srgb, var(--k) 25%, transparent); }
 
-  /* Activity: afternoon tint + vivid tiles */
-  #activity { background: linear-gradient(180deg, #fff7ef 0%, #eef5ff 45%, #fff3e2 100%); }
+  /* Stat tiles */
   .stat { border-radius: 16px; position: relative; overflow: hidden; box-shadow: 0 10px 22px #0000001a; transition: transform .25s; }
   .stat:hover { transform: translateY(-3px) rotate(-1deg); }
   .stat::after { content: ""; position: absolute; width: 120%; height: 60%; left: -10%; top: -30%; background: radial-gradient(closest-side, #ffffff40, transparent); pointer-events: none; }
@@ -395,6 +394,108 @@
     #connect { padding: 56px 16px 190px; }
     .night-hills { height: 170px; }
   }
+
+  /* Growth chapter */
+  .accent-red { color: #e0453a; }
+  #growth { background: linear-gradient(180deg, #fff7ef 0%, #fff0ee 30%, #eef5ff 70%, #fff3e2 100%); }
+  .funnel { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: 14px; margin-top: 48px; }
+  .f-step { position: relative; overflow: hidden; border-radius: 22px; padding: 22px 24px; color: #fff; box-shadow: 0 14px 30px #0000001f; }
+  .f-step::after { content: ""; position: absolute; width: 140%; height: 70%; left: -20%; top: -40%; background: radial-gradient(closest-side, #ffffff40, transparent); }
+  .f-step b { display: block; font-family: var(--font-heading); font-weight: 400; font-size: clamp(2.4rem, 4.4vw, 3.4rem); line-height: 1; margin: 6px 0 6px; }
+  .f-step span { font-size: 13px; opacity: .9; }
+  .f-step .f-k { font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; opacity: .85; }
+  .f1 { background: linear-gradient(150deg, #ff6b5c, #d92d2d); }
+  .f2 { background: linear-gradient(150deg, #ffb24a, #ec7a1c); }
+  .f3 { background: linear-gradient(150deg, #4fd1c5, #1a8f86); }
+  .f-arrow { width: 26px; height: 26px; stroke: #e0453a; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; opacity: .6; }
+  .series-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin: 56px 0 16px; }
+  .series-head span { font-size: 14px; color: var(--text-faint); }
+  .series-nav { display: flex; gap: 6px; flex-shrink: 0; }
+  .series-nav button { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border-strong); background: #fff; color: var(--text); font-size: 16px; cursor: pointer; transition: all .2s; }
+  .series-nav button:hover { background: var(--text); color: #fff; }
+  .series { display: grid; grid-auto-flow: column; grid-auto-columns: 260px; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 18px; scrollbar-width: none; }
+  .series::-webkit-scrollbar { display: none; }
+  .yt-card { scroll-snap-align: start; background: #fff; border: 1px solid var(--border-strong); border-radius: 18px; padding: 10px 10px 14px; transition: transform .25s, box-shadow .25s; }
+  .yt-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px color-mix(in srgb, var(--c) 25%, transparent); border-color: color-mix(in srgb, var(--c) 35%, transparent); }
+  .yt-thumb { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: var(--cream-dark); margin-bottom: 12px; }
+  .yt-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+  .yt-card:hover .yt-thumb img { transform: scale(1.05); }
+  .yt-play { position: absolute; inset: 0; margin: auto; width: 40px; height: 28px; border-radius: 8px; background: #ff0033 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l8 5-8 5z' fill='white'/%3E%3C/svg%3E") center / 18px no-repeat; box-shadow: 0 4px 12px #0000004d; }
+  .yt-iit { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .04em; color: color-mix(in srgb, var(--c) 85%, #000); background: color-mix(in srgb, var(--c) 12%, #fff); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); padding: 2px 9px; border-radius: 999px; margin: 0 4px 6px; }
+  .yt-card b { display: block; font-family: var(--font-heading); font-weight: 400; font-size: 19px; color: var(--text); line-height: 1.2; padding: 0 4px; }
+  #growth .activity-grid { margin-top: 44px; }
+  @media (max-width: 760px) {
+    .funnel { grid-template-columns: minmax(0,1fr); gap: 8px; }
+    .f-arrow { transform: rotate(90deg); justify-self: center; }
+  }
+  @media (max-width: 640px) {
+    .series { grid-auto-columns: 230px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; scroll-padding-left: 16px; }
+    .series-nav { display: none; }
+  }
+
+  /* Card images */
+  .card-shot { display: block; position: relative; aspect-ratio: 16 / 10; margin: -8px -8px 18px; border-radius: 16px; overflow: hidden; background: color-mix(in srgb, var(--c) 8%, #fff); border: 1px solid color-mix(in srgb, var(--c) 18%, transparent); box-shadow: 0 8px 20px color-mix(in srgb, var(--c) 14%, transparent); }
+  .card-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .5s ease; }
+  .build-card:hover .card-shot img { transform: scale(1.05); }
+  .build-card .build-top { margin-top: -40px; position: relative; z-index: 1; padding: 0 2px; }
+  .build-card .build-top .build-tag { margin-top: 26px; }
+  .build-card.featured .build-top { margin-top: 0; }
+  .build-card.featured .build-top .build-tag { margin-top: 0; }
+  .build-card:not(.featured) .build-icon.color { outline: 3px solid var(--cream-card); }
+  .build-card:hover:not(.featured) .build-icon.color { outline-color: #fff; }
+
+  /* Illustrations (generic, no real data) */
+  .il { position: absolute; inset: 0; padding: 14px; }
+  .il-dash { background: linear-gradient(160deg, #fff0f5, #ffe1ec); display: flex; flex-direction: column; gap: 10px; }
+  .il-top { display: flex; gap: 6px; } .il-top i { height: 8px; border-radius: 4px; background: #c2336a33; flex: 1; } .il-top i:first-child { flex: 2; background: #c2336a66; }
+  .il-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; } .il-kpis span { height: 30px; border-radius: 8px; background: #fff; box-shadow: 0 2px 6px #c2336a1f; border-left: 3px solid #c2336a; }
+  .il-bars { flex: 1; display: flex; align-items: flex-end; gap: 6px; background: #fff; border-radius: 10px; padding: 10px; }
+  .il-bars b { flex: 1; border-radius: 4px 4px 2px 2px; background: linear-gradient(180deg, #ff8ab0, #c2336a); }
+  .il-tower { background: radial-gradient(circle at 30% 50%, #2a3480, #151a4a); display: grid; grid-template-columns: 1fr 1.1fr; gap: 14px; align-items: center; }
+  .il-radar { position: relative; aspect-ratio: 1; border-radius: 50%; overflow: hidden; }
+  .il-radar i { position: absolute; inset: 0; margin: auto; border-radius: 50%; border: 1px solid #8f9bff55; }
+  .il-radar i:nth-child(2) { inset: 18%; } .il-radar i:nth-child(3) { inset: 36%; background: #8f9bff33; }
+  .il-radar em { position: absolute; inset: 0; background: conic-gradient(from 0deg, #8f9bff00 0deg, #8f9bff88 50deg, #8f9bff00 52deg); animation: sweep 4s linear infinite; }
+  @keyframes sweep { to { transform: rotate(360deg); } }
+  .il-rows { display: grid; gap: 9px; } .il-rows span { height: 12px; border-radius: 6px; background: #ffffff14; overflow: hidden; } .il-rows b { display: block; height: 100%; border-radius: 6px; background: linear-gradient(90deg, #7f8cff, #c49bff); }
+  .il-tg { background: linear-gradient(160deg, #e6f6ff, #d2ecfb); display: flex; flex-direction: column; justify-content: center; gap: 7px; }
+  .il-tg p { max-width: 78%; font-size: 11.5px; line-height: 1.35; padding: 6px 10px; border-radius: 12px; box-shadow: 0 2px 6px #1f9bd11f; }
+  .il-tg .l { background: #fff; color: #2b3a44; border-bottom-left-radius: 4px; }
+  .il-tg .r { align-self: flex-end; background: linear-gradient(160deg, #6fd0ff, #1f9bd1); color: #fff; border-bottom-right-radius: 4px; }
+  .il-cmp { background: linear-gradient(160deg, #f4fbe8, #e7f5d2); display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 18px; }
+  .il-cmp .row { display: grid; grid-template-columns: 64px 1fr auto; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 600; color: #3b4a2a; }
+  .il-cmp .bar { height: 14px; border-radius: 7px; background: #ffffffb3; overflow: hidden; } .il-cmp .bar b { display: block; height: 100%; border-radius: 7px; }
+  .il-cmp em { font-style: normal; font-size: 10px; font-weight: 700; color: #fff; background: #5a9e1f; padding: 2px 7px; border-radius: 999px; }
+  .il-pause { background: linear-gradient(160deg, #e3f7f5, #cdeeea); display: flex; align-items: center; gap: 14px; padding: 18px; }
+  .il-pause .ring { position: relative; width: 70px; height: 70px; flex-shrink: 0; }
+  .il-pause svg { width: 100%; height: 100%; transform: rotate(-90deg); } .il-pause circle { fill: none; stroke: #22998f33; stroke-width: 3.5; } .il-pause circle.p { stroke: #22998f; stroke-dasharray: 94; stroke-dashoffset: 30; stroke-linecap: round; }
+  .il-pause .ring span { position: absolute; inset: 0; display: grid; place-items: center; font-size: 13px; font-weight: 600; color: #1a6b64; }
+  .il-pause .ask { background: #fff; border-radius: 12px; padding: 10px 12px; box-shadow: 0 4px 12px #22998f26; display: grid; gap: 3px; }
+  .il-pause small { font-size: 10px; color: #6b7c7a; } .il-pause .ask b { font-size: 12.5px; color: #1f2d2c; } .il-pause .ask i { font-style: normal; font-size: 10.5px; color: #22998f; border-bottom: 1.5px solid #22998f55; padding-bottom: 2px; }
+
+  /* Hero: readable intro + recruiter proof */
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: #fff; padding: 7px 15px; border-radius: 999px; background: #0b2a5a40; border: 1px solid #ffffff4d; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); margin-bottom: 22px; transition: background .2s; }
+  .hero-badge:hover { background: #0b2a5a66; }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
+  .hero-sub { background: #0b2a5a4d; border: 1px solid #ffffff2e; backdrop-filter: blur(12px) saturate(1.2); -webkit-backdrop-filter: blur(12px) saturate(1.2); border-radius: 18px; padding: 14px 22px; font-size: 17.5px; text-shadow: 0 1px 2px #0b2a5a66; max-width: 640px; }
+  .hero-sub b { font-weight: 600; color: #fff; }
+  .hero-ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+  .btn-ghost { display: inline-flex; align-items: center; font-size: 15px; font-weight: 500; color: #fff; padding: 13px 22px; border-radius: var(--radius-btn); background: #ffffff26; border: 1px solid #ffffff59; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: background .2s, transform .2s; }
+  .btn-ghost:hover { background: #ffffff40; transform: translateY(-2px); }
+  .hero-proof { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; max-width: 880px; width: calc(100% - 48px); margin: 0 auto 34px; }
+  .proof { background: #ffffffc7; border: 1px solid #ffffffe6; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 18px; padding: 14px 16px; box-shadow: 0 10px 30px #1a3d1a26; text-align: left; transition: transform .25s; }
+  .proof:hover { transform: translateY(-3px); }
+  .proof b { display: block; font-family: var(--font-heading); font-weight: 400; font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.05; background: linear-gradient(90deg, #e3702a, #c2336a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .proof:nth-child(2) b { background-image: linear-gradient(90deg, #2f9e5a, #1f9bd1); }
+  .proof:nth-child(3) b { background-image: linear-gradient(90deg, #5b4ee0, #c2336a); }
+  .proof:nth-child(4) b { background-image: linear-gradient(90deg, #1f6fe0, #8a4fd8); }
+  .proof span { display: block; margin-top: 4px; font-size: 12.5px; line-height: 1.4; color: #3b4a3b; }
+  @media (max-width: 760px) {
+    .hero-proof { grid-template-columns: repeat(2, minmax(0, 1fr)); width: calc(100% - 32px); gap: 8px; margin-bottom: 24px; }
+    .proof { padding: 12px 14px; }
+    .hero-sub { font-size: 15.5px; padding: 12px 16px; }
+    .hero-content { padding-top: 96px; }
+  }
 </style>
 </head>
 <body>
@@ -404,7 +505,7 @@
     <a href="#top" class="nav-logo">kumargautam</a>
     <div class="nav-links">
       <a class="nav-link-item" href="#builds">Builds</a>
-      <a class="nav-link-item" href="#activity">Activity</a>
+      <a class="nav-link-item" href="#growth">Growth</a>
       <a class="nav-link-item" href="#story">Story</a>
       <a class="nav-link-item" href="#questions">Questions</a>
     </div>
@@ -415,6 +516,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero-content">
+    <a href="#connect" class="hero-badge"><span class="live-dot"></span>Open to Product roles · PM @ PhysicsWallah</a>
     <h1 class="hero-headline">
       <span class="hero-line">I ship
         <span class="hero-squircle sq-green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span>
@@ -426,28 +528,17 @@
         <em>actually use.</em>
       </span>
     </h1>
-    <p class="hero-sub">Gautam Kumar is a Product Manager at PhysicsWallah. He took Pi Lens from 0 to 400K downloads, is growing PW Test Series, and ships side projects on weekends.</p>
-    <a href="#builds" class="btn-hero">See the Work</a>
-  </div>
-  <div class="hero-brands">
-    <span class="hero-brand"><svg viewBox="0 0 24 24"><path d="M4.2 2.3c-.2.2-.3.6-.3 1v17.4c0 .4.1.8.3 1l9.6-9.7zM17.2 15.3l-3.2-3.2-9.3 9.4c.4.3 1 .3 1.6 0zM20.6 10.7l-2.8-1.6-3.4 3.3 3.4 3.4 2.8-1.6c.8-.5.8-1.9 0-3.5zM6.3 2.5c-.6-.3-1.2-.3-1.6 0l9.3 9.4 3.2-3.2z"/></svg>Play Store</span>
-    <span class="hero-brand"><svg viewBox="0 0 24 24"><path d="M12 7.2h8.9A10 10 0 0 0 3.4 6.7l4.4 7.6A4.8 4.8 0 0 1 12 7.2zm0 9.6a4.8 4.8 0 0 1-4.2-2.4L3.4 6.7A10 10 0 0 0 11 22l4.4-7.6a4.8 4.8 0 0 1-3.4 2.4zM16.2 9.6A4.8 4.8 0 0 1 15.4 14.4L11 22A10 10 0 0 0 20.9 7.2h-8.9a4.8 4.8 0 0 1 4.2 2.4zM12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z"/></svg>Chrome Web Store</span>
-    <span class="hero-brand"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15V9l5.8 3z"/></svg>YouTube</span>
-    <span class="hero-brand"><svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub</span>
-  </div>
-</section>
-
-<!-- ============ GAP ============ -->
-<section>
-  <div class="container">
-    <p class="section-label reveal">The Product Gap</p>
-    <h2 class="section-title reveal">Most features never <em class="accent-orange">move a metric.</em></h2>
-    <p class="section-sub reveal">The ideas usually aren't bad. The trouble is that shipping is easy — <em>and most teams stop at the release.</em></p>
-    <div class="gap-grid">
-      <div class="gap-card t1 reveal"><div class="gap-ico sq-orange"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Shipped, then forgotten.</h3><p>It went out on the release train and nobody looked at it again, or checked whether anyone came back on day seven.</p><span class="big">01</span></div>
-      <div class="gap-card t2 reveal"><div class="gap-ico sq-green"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-13 8l-5 1 1-5a9 9 0 1 1 17-4z"/></svg></div><h3>Built on opinions.</h3><p>Roadmaps decided by whoever spoke loudest, while users and data were saying something else.</p><span class="big">02</span></div>
-      <div class="gap-card t3 reveal"><div class="gap-ico sq-blue"><svg viewBox="0 0 24 24"><path d="m3 7 6 6 4-4 8 8"/><path d="M21 11v6h-6"/></svg></div><h3>Great launch, no retention.</h3><p>Downloads went up, the rating went down and onboarding leaked users. Growth that doesn't stick ends up costing more than it brings in.</p><span class="big">03</span></div>
+    <p class="hero-sub">Product Manager at <b>PhysicsWallah</b>. I took <b>Pi Lens from 0 to 400K downloads</b>, I'm growing <b>PW Test Series</b> with product-led growth, and I ship side projects on weekends.</p>
+    <div class="hero-ctas">
+      <a href="#builds" class="btn-hero">See the Work</a>
+      <a href="https://www.linkedin.com/in/gautamkumar42" target="_blank" rel="noopener" class="btn-ghost">LinkedIn ↗</a>
     </div>
+  </div>
+  <div class="hero-proof">
+    <div class="proof"><b>400K+</b><span>Pi Lens downloads,<br>0 → 400K as PM</span></div>
+    <div class="proof"><b>4.3→4.7★</b><span>Play Store rating<br>lift on Pi Lens</span></div>
+    <div class="proof"><b>₹320 Cr</b><span>IITJEE category<br>business led at PW</span></div>
+    <div class="proof"><b>18+</b><span>products shipped,<br>work + weekends</span></div>
   </div>
 </section>
 
@@ -476,15 +567,30 @@
   </div>
 </section>
 
-<!-- ============ ACTIVITY ============ -->
-<section id="activity" style="padding-top:40px">
+<!-- ============ GROWTH CHAPTER ============ -->
+<section id="growth">
   <div class="container">
-    <p class="section-label reveal">Build in Public</p>
-    <h2 class="section-title reveal">From <em class="accent-blue">the workbench.</em></h2>
-    <p class="section-sub reveal">Launches, walkthroughs, and the numbers that moved.</p>
+    <p class="section-label reveal">The Growth Chapter</p>
+    <h2 class="section-title reveal">YouTube was my <em class="accent-red">growth engine.</em></h2>
+    <p class="section-sub reveal">At MathonGo I grew the MARKS channel into the app's biggest acquisition channel <em>by talking to students about the futures they wanted.</em> At PW, YouTube is where Pi Lens launches.</p>
+
+    <div class="funnel reveal">
+      <div class="f-step f1"><span class="f-k">Views</span><b>15.4M</b><span>on MARKS YouTube</span></div>
+      <svg class="f-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="f-step f2"><span class="f-k">Subscribers</span><b>52K+</b><span>who came back for more</span></div>
+      <svg class="f-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="f-step f3"><span class="f-k">Downloads</span><b>100K+</b><span>MARKS app installs at 4.8★</span></div>
+    </div>
+
+    <div class="series-head reveal">
+      <div><p class="col-label" style="margin:0">MARKS · Know Your Branch</p><span>IIT students on what their branch is really like, made for JEE aspirants choosing one.</span></div>
+      <div class="series-nav"><button aria-label="Scroll left" data-d="-1">←</button><button aria-label="Scroll right" data-d="1">→</button></div>
+    </div>
+    <div class="series reveal" id="series"></div>
+
     <div class="activity-grid">
       <div class="reveal">
-        <p class="col-label">Latest on YouTube</p>
+        <p class="col-label">Pi Lens · launches on YouTube</p>
         <div class="videos" id="videos"></div>
         <a class="follow" href="https://www.youtube.com/@gautamkumarproduct" target="_blank" rel="noopener">Watch more on YouTube ↗</a>
       </div>
@@ -567,14 +673,13 @@
 // Showcase carousel: screenshots live in /assets/showcase/
 const SHOWCASE = [
   { name: 'Pi Lens', url: 'pi-lens.pw.live', href: 'https://pi-lens.pw.live/', img: 'pilens', line: '0 → 400K downloads' },
-  { name: 'PW · Test Series', url: 'pw.live', href: 'https://www.pw.live/', img: 'pw', line: 'Product-led growth' },
+  { name: 'PW · Test Series', url: 'pw.live/test-series', href: 'https://www.pw.live/test-series', img: 'pwtest', line: 'Product-led growth' },
   { name: 'MARKS', url: 'getmarks.app', href: 'https://www.getmarks.app/', img: 'marks', line: 'JEE/NEET PYQ practice' },
   { name: 'YESPYQ', url: 'yespyq.com', href: 'https://yespyq.com/', img: 'yespyq', line: '20,000+ PYQs · paid pass' },
   { name: 'Padhle Beta', url: 'padhlebeta.live', href: 'https://padhlebeta.live/', img: 'padhlebeta', line: 'Black notes → white PDF' },
   { name: 'ILoveExams', url: 'ilovexams.in', href: 'https://ilovexams.in/', img: 'ilovexams', line: 'Resize for 80+ exams' },
   { name: 'PYQ Daily', url: 'pyq-daily.vercel.app', href: 'https://pyq-daily.vercel.app/', img: 'pyqdaily', line: '3 PYQs a day + leaderboard' },
   { name: 'Brain Games', url: 'brain-games-pi-lens.netlify.app', href: 'https://brain-games-pi-lens.netlify.app/', img: 'braingames', line: 'Vibe-coded for Pi Lens' },
-  { name: 'Merge', url: 'merge-carpool', href: 'https://gautamproduct.github.io/merge-carpool/', img: 'merge', line: 'Carpool, matched' },
   { name: 'ReaderSpace', url: 'readerspace', href: 'https://gautamproduct.github.io/readerspace/', img: 'readerspace', line: 'WhatsApp news · 4K members' }
 ];
 
@@ -590,6 +695,7 @@ const ICONS = {
   car: '<path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M3 12h18"/>',
   focus: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
   pause: '<circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/>',
+  send: '<path d="m22 3-20 8 7 2 2 7 4-5 5 4z"/>',
   chat: '<path d="M21 12a9 9 0 0 1-13 8l-5 1 1-5a9 9 0 1 1 17-4z"/>',
   book: '<path d="M4 19V5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2"/><path d="M8 7h8M8 11h6"/>',
   print: '<path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/>',
@@ -612,62 +718,72 @@ const C = {
   slate: ['#4b5563', 'linear-gradient(160deg,#9aa4b2,#4b5563)'], rose: ['#d6456b', 'linear-gradient(160deg,#ff9fb5,#d6456b)']
 };
 const BUILDS = [
-  { name: 'Pi Lens', cat: 'work', tag: 'feat', icon: 'lens', color: 'orange', shot: 'pilens',
+  { name: 'Pi Lens', cat: 'pw', tag: 'feat', icon: 'lens', color: 'orange', shot: 'pilens',
     desc: "India's first YouTube-layer learning app, with notes, PYQs, quizzes and AI answers on any video. 0 → 400K downloads, rating up from 4.3★ to 4.7★.",
     links: [['Website', 'https://pi-lens.pw.live/'], ['Play Store', 'https://play.google.com/store/apps/details?id=live.pw.pilens'], ['Chrome', 'https://chromewebstore.google.com/detail/pi-lens-notes-pyqs-quizze/plomhepammojlpjfipjoekjfdbadccgh']] },
-  { name: 'PW · Test Series', cat: 'work', tag: 'now', icon: 'test', color: 'violet',
+  { name: 'PW · Test Series', cat: 'pw', tag: 'now', icon: 'test', color: 'violet', shot: 'pwtest',
     desc: "Driving product-led growth for Test Series on PW, India's learning platform (50M+ downloads), so the product itself does more of the selling.",
-    links: [['Play Store', 'https://play.google.com/store/apps/details?id=xyz.penpencil.physicswala'], ['Website', 'https://www.pw.live/']] },
-  { name: 'YouTube Lens', cat: 'work', tag: 'Internal', icon: 'chart', color: 'pink',
+    links: [['Test Series', 'https://www.pw.live/test-series'], ['Play Store', 'https://play.google.com/store/apps/details?id=xyz.penpencil.physicswala']] },
+  { name: 'YouTube Lens', cat: 'pw', tag: 'Internal', icon: 'chart', color: 'pink', illus: 'dash',
     desc: 'An internal analytics dashboard for Pi Lens. It covers channel summaries, daily insights, poll participants and the top YouTube lives with polls.',
     links: [], note: 'Internal tool · PW only' },
-  { name: 'YouTube Watch Tower', cat: 'work', tag: 'Internal', icon: 'tower', color: 'indigo',
+  { name: 'YouTube Watch Tower', cat: 'pw', tag: 'Internal', icon: 'tower', color: 'indigo', illus: 'tower',
     desc: 'Pi Lens intelligence: tracks watch data and poll performance across PW YouTube channels, behind PW sign-in.',
     links: [], note: 'Internal tool · PW only' },
-  { name: 'MARKS App', cat: 'work', tag: 'App', icon: 'phone', color: 'teal',
+  { name: 'MARKS App', cat: 'mathongo', tag: 'App', icon: 'phone', color: 'teal', shot: 'marks',
     desc: 'A JEE/NEET PYQ practice app. As an early team member I helped scale it to 100K+ downloads at a 4.8★ rating.',
     links: [['Play Store', 'https://play.google.com/store/apps/details?id=com.scoremarks.marks'], ['Website', 'https://www.getmarks.app/']] },
-  { name: 'Brain Games', cat: 'side', tag: 'AI', icon: 'brain', color: 'purple',
+  { name: 'Brain Games', cat: 'side', tag: 'AI', icon: 'brain', color: 'purple', shot: 'braingames',
     desc: 'A prototype I vibe-coded myself. It earned a spot on the Pi Lens roadmap.',
     links: [['Visit', 'https://brain-games-pi-lens.netlify.app/']] },
-  { name: 'YESPYQ', cat: 'side', tag: 'Web', icon: 'book', color: 'blue',
+  { name: 'YESPYQ', cat: 'side', tag: 'Web', icon: 'book', color: 'blue', shot: 'yespyq',
     desc: 'Free previous-year papers with answers: 20,000+ questions for UPSC, JEE, NEET, SSC, Defence and Boards, plus a ₹149/year PYQ Pass.',
     links: [['Visit', 'https://yespyq.com/']] },
-  { name: 'Padhle Beta', cat: 'side', tag: 'Web', icon: 'print', color: 'green',
+  { name: 'Padhle Beta', cat: 'side', tag: 'Web', icon: 'print', color: 'green', shot: 'padhlebeta',
     desc: 'Turns black-background coaching notes into white, A4-printable PDFs, saving up to 60% ink. It comes with 12 more PDF tools, with no signup and no upload.',
     links: [['Visit', 'https://padhlebeta.live/']] },
-  { name: 'PYQ Wallah', cat: 'side', tag: 'Soon', icon: 'spark', color: 'amber',
+  { name: 'PYQ Wallah', cat: 'side', tag: 'Soon', icon: 'spark', color: 'amber', shot: 'pyqwallah',
     desc: 'The next PYQ experiment, cooking now.',
     links: [['Peek', 'https://pyqwallah.live/']] },
-  { name: 'ILoveExams', cat: 'side', tag: 'Web', icon: 'image', color: 'red',
+  { name: 'ILoveExams', cat: 'side', tag: 'Web', icon: 'image', color: 'red', shot: 'ilovexams',
     desc: 'Resizes photos and signatures for 80+ Indian exams, compressing to an exact KB. Free and private, with no upload.',
     links: [['Visit', 'https://ilovexams.in/']] },
-  { name: 'PYQ Daily', cat: 'side', tag: 'Web', icon: 'cal', color: 'sky',
+  { name: 'PYQ Daily', cat: 'side', tag: 'Web', icon: 'cal', color: 'sky', shot: 'pyqdaily',
     desc: 'Three previous-year JEE/NEET questions a day, with a daily leaderboard for your class.',
     links: [['Visit', 'https://pyq-daily.vercel.app/']] },
-  { name: 'Comparely', cat: 'side', tag: 'Web', icon: 'cart', color: 'lime',
+  { name: 'Comparely', cat: 'side', tag: 'Web', icon: 'cart', color: 'lime', illus: 'compare',
     desc: 'Compares live grocery prices across Blinkit, Zepto and Instamart, per unit.',
     links: [['GitHub', 'https://github.com/gautamproduct/comparely']] },
-  { name: 'Merge', cat: 'side', tag: 'Web', icon: 'car', color: 'slate',
-    desc: 'A carpool app where you can offer a ride, find one, or team up and take turns driving.',
-    links: [['Visit', 'https://gautamproduct.github.io/merge-carpool/']] },
-  { name: 'Focus', cat: 'chrome', tag: 'Chrome', icon: 'focus', color: 'blue',
+  { name: 'Focus', cat: 'chrome', tag: 'Chrome', icon: 'focus', color: 'blue', shot: 'focus',
     desc: 'Turns Chrome into a calm, motivating space for deep study.',
     links: [['Chrome Store', 'https://chromewebstore.google.com/detail/focus-stay-productive-on/pmlcfgopppbiajbdpfkldieodhcdmpeo']] },
-  { name: 'Pause', cat: 'chrome', tag: 'Chrome', icon: 'pause', color: 'teal',
+  { name: 'Pause', cat: 'chrome', tag: 'Chrome', icon: 'pause', color: 'teal', illus: 'pause',
     desc: 'Asks you to set an intention before you open a distracting site, then keeps you on track with mindful timers.',
     links: [['GitHub', 'https://github.com/gautamproduct/Pause-Chrome-Extension']] },
-  { name: 'ReaderSpace', cat: 'side', tag: 'Startup', icon: 'chat', color: 'green',
+  { name: 'ReaderSpace', cat: 'side', tag: 'Startup', icon: 'chat', color: 'green', shot: 'readerspace',
     desc: 'My first startup, a WhatsApp news-analysis service. It reached 4,000+ members, 500 of them paying, and ₹18K ARR.',
     links: [['Visit', 'https://gautamproduct.github.io/readerspace/']] },
-  { name: 'MARKS on YouTube', cat: 'content', tag: 'YouTube', icon: 'play', color: 'red',
-    desc: 'Grew the channel into an acquisition engine for the app: 52K+ subscribers and 15.4M views.',
-    links: [['YouTube', 'https://www.youtube.com/@getmarksapp']] },
-  { name: 'My YouTube', cat: 'content', tag: 'YouTube', icon: 'play', color: 'rose',
+  { name: 'MARKS on YouTube', cat: 'mathongo', tag: 'Growth', icon: 'play', color: 'red', shot: 'marksyt',
+    desc: 'Turned YouTube into the acquisition engine for the app, with series like Know Your Branch: 52K+ subscribers and 15.4M views.',
+    links: [['YouTube', 'https://www.youtube.com/@getmarksapp'], ['See the growth chapter', '#growth']] },
+  { name: 'MARKS Telegram', cat: 'mathongo', tag: 'Community', icon: 'send', color: 'sky', illus: 'telegram',
+    desc: 'A peer community of 30,000+ JEE/NEET aspirants who share doubts, resources and motivation.',
+    links: [], note: 'Community · 30K+ students' },
+  { name: 'Pi Lens on YouTube', cat: 'pw', tag: 'YouTube', icon: 'play', color: 'rose', shot: 'https://i.ytimg.com/vi/GGSH2z09Ewg/mqdefault.jpg',
     desc: 'Pi Lens launches, install guides and walkthroughs, posted by the team that builds it.',
     links: [['YouTube', 'https://www.youtube.com/@gautamkumarproduct']] }
 ];
-const FILTERS = [['all', 'All'], ['work', 'At PW & MARKS'], ['side', 'Side Projects'], ['chrome', 'Chrome'], ['content', 'Content']];
+const FILTERS = [['all', 'All'], ['pw', 'PhysicsWallah'], ['mathongo', 'MathonGo'], ['side', 'Side Projects'], ['chrome', 'Chrome']];
+
+const SERIES = [
+  ['ANm3bSTvb3k', 'Computer Science', 'IIT Kharagpur', 'blue'],
+  ['B2eUWYSLGL8', 'Mechanical Engineering', 'IIT Delhi', 'orange'],
+  ['FIQ4hD_uxcw', 'Biological Engineering', 'IIT Madras', 'green'],
+  ['x_U5zoPM4hw', 'Civil Engineering', 'IIT Kharagpur', 'amber'],
+  ['SyNAZmCuU1I', 'Chemical Engineering', 'IIT Gandhinagar', 'violet'],
+  ['rE_uvnUES18', 'Chemical Engineering', 'IIT Guwahati', 'pink'],
+  ['x54YdQKi7Is', 'Pharmaceutics Engineering', 'IIT BHU', 'teal']
+];
 
 const VIDEOS = [
   ['GGSH2z09Ewg', 'Meet Pi Lens: PYQs and notes on YouTube', 'Launch · Play Store & Chrome'],
@@ -722,18 +838,36 @@ const tagHtml = b => b.tag === 'feat' ? '<span class="build-tag feat">★ Featur
   : b.tag === 'now' ? '<span class="build-tag now">Now</span>'
   : `<span class="build-tag cat">${b.tag}</span>`;
 const linksHtml = b => b.links.length
-  ? b.links.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener">${l} →</a>`).join('')
+  ? b.links.map(([l, u]) => `<a href="${u}" ${u.startsWith('#') ? '' : 'target="_blank" rel="noopener"'}>${l} →</a>`).join('')
   : `<span class="muted">${b.note || ''}</span>`;
+const ILLUS = {
+  dash: `<div class="il il-dash"><div class="il-top"><i></i><i></i><i></i></div><div class="il-kpis"><span></span><span></span><span></span></div>
+    <div class="il-bars">${[40, 62, 48, 80, 66, 92, 74, 58, 86].map(h => `<b style="height:${h}%"></b>`).join('')}</div></div>`,
+  tower: `<div class="il il-tower"><div class="il-radar"><i></i><i></i><i></i><em></em></div>
+    <div class="il-rows">${[78, 54, 66, 40].map(w => `<span><b style="width:${w}%"></b></span>`).join('')}</div></div>`,
+  telegram: `<div class="il il-tg"><p class="l">Doubt in rotational motion Q12?</p><p class="r">Use torque about the hinge 🙌</p><p class="l">PYQ set for today is up!</p><p class="r">Done ✅ 18/20</p></div>`,
+  compare: `<div class="il il-cmp">${[['Blinkit', 72, '#f8cb46'], ['Zepto', 58, '#8b5cf6'], ['Instamart', 84, '#fc8019']].map(([n, w, c], i) =>
+    `<div class="row"><span>${n}</span><div class="bar"><b style="width:${w}%;background:${c}"></b></div>${i === 1 ? '<em>Best</em>' : ''}</div>`).join('')}</div>`,
+  pause: `<div class="il il-pause"><div class="ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15"/><circle class="p" cx="18" cy="18" r="15"/></svg><span>5:00</span></div>
+    <div class="ask"><small>Before you open YouTube…</small><b>What's your intention?</b><i>Watch one lecture, then back to notes</i></div></div>`
+};
+const shotHtml = b => {
+  if (b.illus) return `<div class="card-shot">${ILLUS[b.illus]}</div>`;
+  const src = b.shot.startsWith('http') ? b.shot : `assets/showcase/${b.shot}.jpg`;
+  const href = b.links[0] ? b.links[0][1] : null;
+  const img = `<img src="${src}" alt="${esc(b.name)} preview" loading="lazy">`;
+  return href ? `<a class="card-shot" href="${href}" target="_blank" rel="noopener">${img}</a>` : `<div class="card-shot">${img}</div>`;
+};
 $('grid').innerHTML = BUILDS.map(b => {
   const [c, g] = C[b.color];
   const body = `
     <div class="build-top"><div class="build-icon color" style="background:${g}"><svg viewBox="0 0 24 24">${ICONS[b.icon]}</svg></div>${tagHtml(b)}</div>
     <h3>${esc(b.name)}</h3><p>${esc(b.desc)}</p>
     <div class="build-links">${linksHtml(b)}</div>`;
-  return b.shot
+  return b.tag === 'feat'
     ? `<div class="build-card featured reveal" data-cat="${b.cat}" style="--c:${c}"><div class="feat-body">${body}</div>
         <a class="feat-shot" href="${b.links[0][1]}" target="_blank" rel="noopener"><img src="assets/showcase/${b.shot}.jpg" alt="${esc(b.name)} preview" loading="lazy"></a></div>`
-    : `<div class="build-card reveal" data-cat="${b.cat}" style="--c:${c}">${body}</div>`;
+    : `<div class="build-card reveal" data-cat="${b.cat}" style="--c:${c}">${shotHtml(b)}${body}</div>`;
 }).join('');
 $('count').textContent = `${BUILDS.length}+ products`;
 $('filters').innerHTML = FILTERS.map(([k, l], i) => `<button data-f="${k}" class="${i ? '' : 'on'}">${l}</button>`).join('');
@@ -744,9 +878,19 @@ $('filters').addEventListener('click', e => {
     const show = b.dataset.f === 'all' || c.dataset.cat === b.dataset.f;
     c.classList.toggle('hide', !show);
     if (show) c.classList.add('in');
-    if (c.classList.contains('featured')) c.style.gridColumn = b.dataset.f === 'all' || b.dataset.f === 'work' ? '' : 'auto';
+    if (c.classList.contains('featured')) c.style.gridColumn = b.dataset.f === 'all' || b.dataset.f === 'pw' ? '' : 'auto';
   });
 });
+
+// Know Your Branch series
+$('series').innerHTML = SERIES.map(([id, branch, iit, col]) => {
+  const [c] = C[col];
+  return `<a class="yt-card" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener" style="--c:${c}">
+    <div class="yt-thumb"><img src="https://i.ytimg.com/vi/${id}/mqdefault.jpg" alt="" loading="lazy"><span class="yt-play"></span></div>
+    <span class="yt-iit">${iit}</span><b>${branch}</b></a>`;
+}).join('');
+document.querySelectorAll('.series-nav button').forEach(btn => btn.addEventListener('click', () =>
+  $('series').scrollBy({ left: +btn.dataset.d * 300, behavior: 'smooth' })));
 
 // Videos
 $('videos').innerHTML = VIDEOS.map(([id, title, meta]) => `
