@@ -999,6 +999,9 @@
   .rot { width: 100%; }
   .rot-item { max-width: 100%; }
   @media (max-width: 640px) { .rot-item { max-width: calc(100vw - 32px); padding-right: 12px; } .pm-co img { width: 22px; height: 22px; } }
+  a.pm-co { color: #fff; text-decoration: none; border-bottom: 1px solid #ffffff66; transition: border-color .2s, transform .2s; }
+  a.pm-co:hover { border-bottom-color: #fff; transform: translateY(-1px); }
+  .pm-line { gap: 8px 0; } .pm-line > .pm-co { margin-left: 8px; }
 </style>
 </head>
 <body>
@@ -1033,7 +1036,7 @@
         <em class="w" style="--i:7">actually</em> <em class="w" style="--i:8">use.</em>
       </span>
     </h1>
-    <p class="hero-sub"><span class="pm-line">Product Manager at <span class="pm-co"><img src="assets/logos/pw.png" alt="PhysicsWallah logo">PhysicsWallah.</span></span>
+    <p class="hero-sub"><span class="pm-line">Product Manager at <a class="pm-co" href="https://www.pw.live/" target="_blank" rel="noopener" title="Visit PhysicsWallah"><img src="assets/logos/pw.png" alt="PhysicsWallah logo">PhysicsWallah</a>.</span>
       <span class="rot" id="rot" aria-live="polite">
         <span class="rot-item on"><img src="assets/logos/pilens.png" alt="">Took Pi Lens from 0 → 400K downloads</span>
         <span class="rot-item"><span class="rot-emoji" style="background:linear-gradient(160deg,#9b8cff,#5b4ee0)"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 2h3v16H5V5h3z"/><path d="m9 13 2 2 4-4"/></svg></span>Growing PW Test Series with product-led growth</span>
