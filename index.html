@@ -1095,6 +1095,10 @@
   #growth .stat { aspect-ratio: 1 / 1.05; }
   @media (max-width: 900px) { #growth .videos { grid-template-columns: minmax(0,1fr); } #growth .video { grid-template-columns: 150px minmax(0,1fr); align-items: center; } #growth .stats { grid-template-columns: repeat(3, minmax(0,1fr)); } }
   @media (max-width: 640px) { #growth .video { grid-template-columns: 120px minmax(0,1fr); } }
+  .marks-head { margin: 52px 0 0; }
+  .marks-head > span { display: block; font-size: 14px; color: var(--text-faint); margin-top: 6px; }
+  .marks-head + .funnel { margin-top: 18px; }
+  .marks-head ~ .series-head { margin-top: 34px; }
 </style>
 </head>
 <body>
@@ -1176,6 +1180,10 @@
     <h2 class="section-title reveal">YouTube was my <em class="accent-red">growth engine.</em></h2>
     <p class="section-sub reveal">At MathonGo I grew the MARKS channel into the app's biggest acquisition channel <em>by talking to IIT and other college alumni about life on campus and in their branches.</em> At PW, YouTube is where Pi Lens App launches.</p>
 
+    <div class="marks-head reveal">
+      <p class="col-label lbl-logo" style="margin:0"><img src="assets/logos/marks.png" alt="MARKS logo">MARKS app · YouTube growth</p>
+      <span>How YouTube turned into installs for the MARKS app.</span>
+    </div>
     <div class="funnel reveal">
       <div class="f-step f1"><span class="f-k">Views</span><b>15.4M</b><span>on MARKS YouTube</span></div>
       <svg class="f-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
