@@ -1131,6 +1131,25 @@
     .faq summary { min-height: 48px; }
     .nav-cta { padding: 10px 14px; }
   }
+
+  /* Why hire me */
+  .why { padding-top: 70px; }
+  .why-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-top: 40px; }
+  .why-card { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 22px 22px 18px; border-radius: 20px; background: #fff; border: 1px solid var(--border-strong); text-decoration: none; overflow: hidden; transition: transform .25s, box-shadow .25s, border-color .25s; }
+  .why-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--c); }
+  .why-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--c) 40%, transparent); box-shadow: 0 16px 34px color-mix(in srgb, var(--c) 20%, transparent); }
+  .why-k { font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--c); }
+  .why-card b { font-family: var(--font-heading); font-weight: 400; font-size: 27px; line-height: 1.15; color: var(--text); }
+  .why-card p { font-size: 14.5px; color: var(--text-faint); line-height: 1.55; }
+  .why-more { margin-top: auto; padding-top: 8px; font-size: 13px; font-weight: 600; color: var(--c); }
+  .why-cta { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+  .why-ghost { display: inline-flex; align-items: center; padding: 13px 22px; border-radius: 12px; font-size: 15px; font-weight: 500; color: var(--text); background: #fff; border: 1px solid var(--border-strong); text-decoration: none; transition: transform .2s; }
+  .why-ghost:hover { transform: translateY(-2px); }
+  .why-note { text-align: center; margin-top: 14px; font-size: 14px; color: var(--text-faint); }
+  .connect-roles { color: #ffffffd9 !important; margin: -10px auto 22px !important; font-size: 15px; }
+  .connect-roles b { color: #fff; }
+  @media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  @media (max-width: 640px) { .why-grid { grid-template-columns: minmax(0,1fr); } .why-cta a { width: 100%; justify-content: center; } }
 </style>
 </head>
 <body>
@@ -1145,7 +1164,7 @@
       <a class="nav-link-item" href="#story">Story</a>
       <a class="nav-link-item" href="#questions">Questions</a>
     </div>
-    <a href="#connect" class="nav-cta">Get in touch</a>
+    <a href="#hire" class="nav-cta">Hire me</a>
   </div>
 </nav>
 
@@ -1153,7 +1172,7 @@
 <section class="hero" id="top">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-content" id="heroContent">
-    <a href="#connect" class="hero-badge"><span class="live-dot"></span>Open to Product roles</a>
+    <a href="#hire" class="hero-badge"><span class="live-dot"></span>Open to Product roles</a>
     <h1 class="hero-headline"><span class="hero-name">Hi, I’m Gautam Kumar</span>
       <span class="hero-line"><span class="w" style="--i:0">I</span> <span class="w verb" style="--i:1"><span class="verb-slot" id="verb" aria-label="ship"><span class="vw on">ship</span><span class="vw" aria-hidden="true">grow</span><span class="vw" aria-hidden="true">build</span><span class="vw" aria-hidden="true">scale</span></span></span>
         <span class="hero-squircle sq-green" style="--i:2;--px:-14;--py:-10" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span>
@@ -1183,6 +1202,22 @@
 <div class="ticker" aria-label="Companies and highlights">
   <div class="ticker-track"><span class="tk-logo"><em class="tk-yr">2019</em><img src="assets/logos/readerspace.png" alt="ReaderSpace logo">ReaderSpace</span><span class="tk-arrow">→</span><span class="tk-stat"><b>₹30,000 ARR</b>4,000+ readers, 500 paying</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/mathongo.png" alt="MathonGo logo">MathonGo</span><span class="tk-arrow">→</span><span class="tk-stat"><b>30K+</b>students in the Telegram community</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/marks.png" alt="MARKS logo">MARKS</span><span class="tk-arrow">→</span><span class="tk-stat"><b>100K+</b>downloads at 4.8★</span><span class="tk-sep">•</span><span class="tk-stat"><b>15.4M</b>YouTube views</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/quizrr.png" alt="Quizrr logo">Quizrr</span><span class="tk-arrow">→</span><span class="tk-stat"><b>Mock tests</b>for competitive exams</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2022</em><img src="assets/logos/yulu.png" alt="Yulu logo">Yulu</span><span class="tk-arrow">→</span><span class="tk-stat"><b>#YuSmart</b>seeded from my proposal</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2023</em><img src="assets/logos/indianrailways.png" alt="Indian Railways logo">Indian Railways</span><span class="tk-arrow">→</span><span class="tk-stat"><b>2,400</b>freight trains a month</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2025</em><img src="assets/logos/pw.png" alt="PhysicsWallah logo">PhysicsWallah</span><span class="tk-arrow">→</span><span class="tk-stat"><b>₹320 Cr</b>IITJEE category led</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">Now</em><img src="assets/logos/pilens.png" alt="Pi Lens App logo">Pi Lens App</span><span class="tk-arrow">→</span><span class="tk-stat"><b>0 → 400K</b>downloads, 4.3→4.7★</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">Now</em><img src="assets/logos/pw.png" alt="PW Test Series logo">PW Test Series</span><span class="tk-arrow">→</span><span class="tk-stat"><b><span id="proofCount">18</span>+</b>products shipped so far</span><span class="tk-sep">•</span><span aria-hidden="true" style="display:contents"><span class="tk-logo"><em class="tk-yr">2019</em><img src="assets/logos/readerspace.png" alt="">ReaderSpace</span><span class="tk-arrow">→</span><span class="tk-stat"><b>₹30,000 ARR</b>4,000+ readers, 500 paying</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/mathongo.png" alt="">MathonGo</span><span class="tk-arrow">→</span><span class="tk-stat"><b>30K+</b>students in the Telegram community</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/marks.png" alt="">MARKS</span><span class="tk-arrow">→</span><span class="tk-stat"><b>100K+</b>downloads at 4.8★</span><span class="tk-sep">•</span><span class="tk-stat"><b>15.4M</b>YouTube views</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/quizrr.png" alt="">Quizrr</span><span class="tk-arrow">→</span><span class="tk-stat"><b>Mock tests</b>for competitive exams</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2022</em><img src="assets/logos/yulu.png" alt="">Yulu</span><span class="tk-arrow">→</span><span class="tk-stat"><b>#YuSmart</b>seeded from my proposal</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2023</em><img src="assets/logos/indianrailways.png" alt="">Indian Railways</span><span class="tk-arrow">→</span><span class="tk-stat"><b>2,400</b>freight trains a month</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2025</em><img src="assets/logos/pw.png" alt="">PhysicsWallah</span><span class="tk-arrow">→</span><span class="tk-stat"><b>₹320 Cr</b>IITJEE category led</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">Now</em><img src="assets/logos/pilens.png" alt="">Pi Lens App</span><span class="tk-arrow">→</span><span class="tk-stat"><b>0 → 400K</b>downloads, 4.3→4.7★</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">Now</em><img src="assets/logos/pw.png" alt="">PW Test Series</span><span class="tk-arrow">→</span><span class="tk-stat"><b><span>18</span>+</b>products shipped so far</span><span class="tk-sep">•</span></span></div>
 </div>
+
+<!-- ============ WHY HIRE ============ -->
+<section id="hire" class="why">
+  <div class="container">
+    <p class="section-label reveal">For recruiters &amp; hiring managers</p>
+    <h2 class="section-title reveal">Why hire me as your <em class="accent-orange">Product Manager</em></h2>
+    <p class="section-sub reveal">Six things I bring to a product team, each backed by numbers you can check below.</p>
+    <div class="why-grid"><a class="why-card reveal" href="/pi-lens/" style="--c:#ee7d2b"><span class="why-k">0→1 product</span><b>Pi Lens App: 0 → 400K downloads</b><p>Took a new AI learning app from launch to 400K+ downloads and lifted its rating from 4.3★ to 4.7★, owning every feature, release and metric.</p><span class="why-more">See the proof →</span></a><a class="why-card reveal" href="/marks-app/" style="--c:#e0453a"><span class="why-k">Growth & GTM</span><b>15.4M views → 100K+ installs</b><p>Turned MARKS YouTube into the app's biggest acquisition channel, and now drive product-led growth for PW Test Series.</p><span class="why-more">See the proof →</span></a><a class="why-card reveal" href="/about/" style="--c:#2f9e5a"><span class="why-k">Business ownership</span><b>₹320 Cr category</b><p>Led PW's IITJEE category: pricing, GTM and engagement. Attendance went up 4% and I shipped the PYQ Blueprint.</p><span class="why-more">See the proof →</span></a><a class="why-card reveal" href="/side-projects/" style="--c:#8a4fd8"><span class="why-k">Builder PM</span><b>18+ products shipped</b><p>I prototype ideas myself. Brain Games went from a weekend build to the Pi Lens App roadmap.</p><span class="why-more">See the proof →</span></a><a class="why-card reveal" href="/indian-railways/" style="--c:#3b46b8"><span class="why-k">Ops & stakeholders</span><b>2,400 trains a month</b><p>Ran a major freight junction at Indian Railways, coordinating 5+ departments under real-time pressure.</p><span class="why-more">See the proof →</span></a><a class="why-card reveal" href="/entrepreneurship/" style="--c:#d98a12"><span class="why-k">Founder mindset</span><b>₹30,000 ARR</b><p>Started ReaderSpace: 4,000+ members and 500 paying subscribers. I know what it takes to make people pay.</p><span class="why-more">See the proof →</span></a></div>
+    <div class="why-cta reveal">
+      <a class="btn-hero" href="mailto:gautamprep@gmail.com?subject=Product%20Manager%20role%20%E2%80%93%20let%27s%20talk&body=Hi%20Gautam%2C%0A%0AI%20came%20across%20kumargautam.com%20and%20would%20like%20to%20talk%20about%20a%20Product%20Manager%20role%20at%20">Hiring a PM? Let's talk</a>
+      <a class="why-ghost" href="mailto:gautamprep@gmail.com?subject=R%C3%A9sum%C3%A9%20request%20%E2%80%93%20Product%20Manager&body=Hi%20Gautam%2C%0A%0ACould%20you%20share%20your%20latest%20r%C3%A9sum%C3%A9%3F%20We%27re%20hiring%20for%20a%20Product%20Manager%20role%20at%20">Request résumé</a>
+      <a class="why-ghost" href="https://www.linkedin.com/in/gautamkumar42" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <p class="why-note reveal">Open to Product Manager roles in consumer, edtech and AI products.</p>
+  </div>
+</section>
 
 <!-- ============ BUILDS ============ -->
 <section id="builds">
@@ -1296,8 +1331,10 @@
   <div class="connect-card reveal">
     <h2>Got a problem worth solving?<br><em>Let's talk.</em></h2>
     <p>Whether you're hiring a PM, building something new or stuck on a growth problem, one message is enough to start.</p>
+    <p class="connect-roles">Open to <b>Product Manager</b> roles in consumer, edtech and AI products.</p>
     <div class="connect-links">
       <a href="mailto:gautamprep@gmail.com" class="primary">Email ↗</a>
+      <a href="mailto:gautamprep@gmail.com?subject=R%C3%A9sum%C3%A9%20request%20%E2%80%93%20Product%20Manager&body=Hi%20Gautam%2C%0A%0ACould%20you%20share%20your%20latest%20r%C3%A9sum%C3%A9%3F%20We%27re%20hiring%20for%20a%20Product%20Manager%20role%20at%20">Request résumé ↗</a>
       <a href="https://www.linkedin.com/in/gautamkumar42" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a href="https://github.com/gautamproduct" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="https://www.youtube.com/@gautamkumarproduct" target="_blank" rel="noopener">YouTube ↗</a>
