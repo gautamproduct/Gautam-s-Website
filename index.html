@@ -978,6 +978,21 @@
   .foot-links a:hover { color: #fff; }
   .hero-sub { max-width: 560px !important; font-size: 19px !important; line-height: 1.6 !important; opacity: .95; }
   @media (max-width: 640px) { .hero-sub { font-size: 16.5px !important; } }
+
+  /* Rotating achievement line */
+  .rot { display: grid; justify-items: center; margin-top: 10px; min-height: 44px; }
+  .rot-item { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 7px; border-radius: 999px; background: #ffffff26; border: 1px solid #ffffff4d; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    font-size: 16px; font-weight: 500; color: #fff; white-space: nowrap; opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
+  .rot-item.on { opacity: 1; transform: none; pointer-events: auto; }
+  .rot-item.out { opacity: 0; transform: translateY(-14px); }
+  .rot-item img, .rot-emoji { width: 28px; height: 28px; border-radius: 50%; background: #fff; object-fit: contain; display: grid; place-items: center; font-size: 15px; flex-shrink: 0; }
+  @media (max-width: 640px) { .rot-item { font-size: 13.5px; white-space: normal; text-align: left; max-width: 92vw; } }
+
+  .tk-yr { font-style: normal; font-size: 11px; font-weight: 600; letter-spacing: .06em; color: #c2452f; background: #fff0e6; border: 1px solid #f6d3bd; padding: 2px 8px; border-radius: 999px; margin-right: 2px; }
+  .tk-arrow { color: #d9cbb8; font-size: 16px; margin: 0 -26px 0 -30px; }
+  .tk-sep { color: #d9cbb8; margin: 0 -24px; }
+  .tk-logo { filter: none !important; }
+  .ticker-track { animation-duration: 70s !important; }
 </style>
 </head>
 <body>
@@ -1012,7 +1027,13 @@
         <em class="w" style="--i:7">actually</em> <em class="w" style="--i:8">use.</em>
       </span>
     </h1>
-    <p class="hero-sub">Product Manager at PhysicsWallah. I took Pi Lens from 0 to 400K downloads.</p>
+    <p class="hero-sub">Product Manager at PhysicsWallah.
+      <span class="rot" id="rot" aria-live="polite">
+        <span class="rot-item on"><img src="assets/logos/pilens.png" alt="">Took Pi Lens from 0 → 400K downloads</span>
+        <span class="rot-item"><img src="assets/logos/pw.png" alt="">Growing PW Test Series with product-led growth</span>
+        <span class="rot-item"><img src="assets/logos/marks.png" alt="">Scaled the MARKS app to 100K+ downloads at 4.8★</span>
+        <span class="rot-item"><span class="rot-emoji">⚡</span>Ships side projects on weekends</span>
+      </span></p>
     <div class="hero-ctas">
       <a href="#builds" class="btn-hero">See the Work</a>
       <a href="https://www.linkedin.com/in/gautamkumar42" target="_blank" rel="noopener" class="btn-ghost">LinkedIn ↗</a>
@@ -1022,7 +1043,7 @@
 
 
 <div class="ticker" aria-label="Companies and highlights">
-  <div class="ticker-track"><span class="tk-logo"><img src="assets/logos/pw.png" alt="PhysicsWallah">PhysicsWallah</span><span class="tk-stat"><b>400K+</b>Pi Lens downloads</span><span class="tk-logo"><img src="assets/logos/mathongo.png" alt="MathonGo">MathonGo</span><span class="tk-stat"><b>4.3→4.7★</b>Pi Lens rating</span><span class="tk-logo"><img src="assets/logos/marks.png" alt="MARKS">MARKS</span><span class="tk-stat"><b>100K+</b>MARKS downloads</span><span class="tk-logo"><img src="assets/logos/quizrr.png" alt="Quizrr">Quizrr</span><span class="tk-stat"><b>₹320 Cr</b>category led at PW</span><span class="tk-logo"><img src="assets/logos/yulu.png" alt="Yulu">Yulu</span><span class="tk-stat"><b><span id="proofCount">18</span>+</b>products shipped</span><span class="tk-logo"><img src="assets/logos/indianrailways.png" alt="Indian Railways">Indian Railways</span><span class="tk-stat"><b>52K+</b>YouTube subscribers</span><span aria-hidden="true" style="display:contents"><span class="tk-logo"><img src="assets/logos/pw.png" alt="">PhysicsWallah</span><span class="tk-stat"><b>400K+</b>Pi Lens downloads</span><span class="tk-logo"><img src="assets/logos/mathongo.png" alt="">MathonGo</span><span class="tk-stat"><b>4.3→4.7★</b>Pi Lens rating</span><span class="tk-logo"><img src="assets/logos/marks.png" alt="">MARKS</span><span class="tk-stat"><b>100K+</b>MARKS downloads</span><span class="tk-logo"><img src="assets/logos/quizrr.png" alt="">Quizrr</span><span class="tk-stat"><b>₹320 Cr</b>category led at PW</span><span class="tk-logo"><img src="assets/logos/yulu.png" alt="">Yulu</span><span class="tk-stat"><b><span>18</span>+</b>products shipped</span><span class="tk-logo"><img src="assets/logos/indianrailways.png" alt="">Indian Railways</span><span class="tk-stat"><b>52K+</b>YouTube subscribers</span></span></div>
+  <div class="ticker-track"><span class="tk-logo"><em class="tk-yr">2019</em><img src="assets/logos/readerspace.png" alt="ReaderSpace logo">ReaderSpace</span><span class="tk-arrow">→</span><span class="tk-stat"><b>4,000+</b>WhatsApp readers, 500 paying</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/mathongo.png" alt="MathonGo logo">MathonGo</span><span class="tk-arrow">→</span><span class="tk-stat"><b>30K+</b>students in the Telegram community</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/marks.png" alt="MARKS logo">MARKS</span><span class="tk-arrow">→</span><span class="tk-stat"><b>100K+</b>downloads at 4.8★</span><span class="tk-sep">•</span><span class="tk-stat"><b>15.4M</b>YouTube views</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/quizrr.png" alt="Quizrr logo">Quizrr</span><span class="tk-arrow">→</span><span class="tk-stat"><b>Mock tests</b>for competitive exams</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2022</em><img src="assets/logos/yulu.png" alt="Yulu logo">Yulu</span><span class="tk-arrow">→</span><span class="tk-stat"><b>#YuSmart</b>seeded from my proposal</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2023</em><img src="assets/logos/indianrailways.png" alt="Indian Railways logo">Indian Railways</span><span class="tk-arrow">→</span><span class="tk-stat"><b>2,400</b>freight trains a month</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2025</em><img src="assets/logos/pw.png" alt="PhysicsWallah logo">PhysicsWallah</span><span class="tk-arrow">→</span><span class="tk-stat"><b>₹320 Cr</b>IITJEE category led</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">Now</em><img src="assets/logos/pilens.png" alt="Pi Lens logo">Pi Lens</span><span class="tk-arrow">→</span><span class="tk-stat"><b>0 → 400K</b>downloads, 4.3→4.7★</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">Now</em><img src="assets/logos/pw.png" alt="PW Test Series logo">PW Test Series</span><span class="tk-arrow">→</span><span class="tk-stat"><b><span id="proofCount">18</span>+</b>products shipped so far</span><span class="tk-sep">•</span><span aria-hidden="true" style="display:contents"><span class="tk-logo"><em class="tk-yr">2019</em><img src="assets/logos/readerspace.png" alt="">ReaderSpace</span><span class="tk-arrow">→</span><span class="tk-stat"><b>4,000+</b>WhatsApp readers, 500 paying</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/mathongo.png" alt="">MathonGo</span><span class="tk-arrow">→</span><span class="tk-stat"><b>30K+</b>students in the Telegram community</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/marks.png" alt="">MARKS</span><span class="tk-arrow">→</span><span class="tk-stat"><b>100K+</b>downloads at 4.8★</span><span class="tk-sep">•</span><span class="tk-stat"><b>15.4M</b>YouTube views</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2021</em><img src="assets/logos/quizrr.png" alt="">Quizrr</span><span class="tk-arrow">→</span><span class="tk-stat"><b>Mock tests</b>for competitive exams</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2022</em><img src="assets/logos/yulu.png" alt="">Yulu</span><span class="tk-arrow">→</span><span class="tk-stat"><b>#YuSmart</b>seeded from my proposal</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2023</em><img src="assets/logos/indianrailways.png" alt="">Indian Railways</span><span class="tk-arrow">→</span><span class="tk-stat"><b>2,400</b>freight trains a month</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">2025</em><img src="assets/logos/pw.png" alt="">PhysicsWallah</span><span class="tk-arrow">→</span><span class="tk-stat"><b>₹320 Cr</b>IITJEE category led</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">Now</em><img src="assets/logos/pilens.png" alt="">Pi Lens</span><span class="tk-arrow">→</span><span class="tk-stat"><b>0 → 400K</b>downloads, 4.3→4.7★</span><span class="tk-sep">•</span><span class="tk-logo"><em class="tk-yr">Now</em><img src="assets/logos/pw.png" alt="">PW Test Series</span><span class="tk-arrow">→</span><span class="tk-stat"><b><span>18</span>+</b>products shipped so far</span><span class="tk-sep">•</span></span></div>
 </div>
 
 <!-- ============ BUILDS ============ -->
@@ -1429,6 +1450,23 @@ $('fireflies').innerHTML = Array.from({ length: 14 }, () =>
       requestAnimationFrame(step);
     }, 1500 + i * 100);
   });
+})();
+
+
+// Hero: rotate one achievement at a time
+(() => {
+  const items = [...document.querySelectorAll('#rot .rot-item')];
+  if (items.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let i = 0, paused = false;
+  $('rot').addEventListener('mouseenter', () => paused = true);
+  $('rot').addEventListener('mouseleave', () => paused = false);
+  setInterval(() => {
+    if (paused || document.hidden) return;
+    const cur = items[i]; i = (i + 1) % items.length; const nxt = items[i];
+    cur.classList.remove('on'); cur.classList.add('out');
+    setTimeout(() => cur.classList.remove('out'), 600);
+    nxt.classList.add('on');
+  }, 3000);
 })();
 
 // Nav + reveal
