@@ -1121,6 +1121,16 @@
   .num-track .stat span:not(.stat-logo) { font-size: 13.5px; line-height: 1.4; opacity: .92; }
   .num-track .stat-logo { top: 16px; right: 16px; }
   @media (max-width: 640px) { .num-track .stat { flex-basis: 200px; padding: 14px 54px 14px 16px; } .num-track .stat b { font-size: 32px; } }
+
+  /* Mobile tap targets & legibility */
+  @media (max-width: 640px) {
+    .build-links { gap: 6px 8px; }
+    .build-links a { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border-radius: 10px; background: color-mix(in srgb, var(--c) 8%, #fff); border: 1px solid color-mix(in srgb, var(--c) 20%, transparent); font-size: 13.5px; }
+    .build-tag, .yt-iit, .ch-when, .tk-yr { font-size: 12px; }
+    .foot-links a { display: inline-block; padding: 6px 4px; }
+    .faq summary { min-height: 48px; }
+    .nav-cta { padding: 10px 14px; }
+  }
 </style>
 </head>
 <body>
@@ -1313,7 +1323,7 @@
 
 // Showcase carousel: screenshots live in /assets/showcase/
 const SHOWCASE = [
-  { name: 'Pi Lens App', url: 'Pi Lens App.pw.live', href: 'https://pi-lens.pw.live/', img: 'pilens', line: '0 → 400K downloads' },
+  { name: 'Pi Lens App', url: 'pi-lens.pw.live', href: 'https://pi-lens.pw.live/', img: 'pilens', line: '0 → 400K downloads' },
   { name: 'PW · Test Series', url: 'pw.live/test-series', href: 'https://www.pw.live/test-series', img: 'pwtest', line: 'Product-led growth' },
   { name: 'MARKS', url: 'getmarks.app', href: 'https://www.getmarks.app/', img: 'marks', line: 'JEE/NEET PYQ practice' },
   { name: 'YESPYQ', url: 'yespyq.com', href: 'https://yespyq.com/', img: 'yespyq', line: '20,000+ PYQs · paid pass' },
