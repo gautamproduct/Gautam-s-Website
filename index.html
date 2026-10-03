@@ -496,6 +496,18 @@
     .hero-sub { font-size: 15.5px; padding: 12px 16px; }
     .hero-content { padding-top: 96px; }
   }
+
+  /* Story: company logos */
+  .ch-head { gap: 12px; margin-bottom: 14px; }
+  .ch-logo { width: 52px; height: 52px; border-radius: 14px; background: #fff; display: grid; place-items: center; flex-shrink: 0; padding: 6px; box-shadow: 0 6px 16px color-mix(in srgb, var(--c) 30%, transparent), 0 0 0 1px color-mix(in srgb, var(--c) 22%, transparent); transition: transform .3s; }
+  .ch-logo.wide { width: 84px; padding: 6px 8px; }
+  .ch-logo img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 9px; display: block; }
+  .ch-card:hover .ch-logo { transform: rotate(-4deg) scale(1.06); }
+  .ch-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; min-width: 0; }
+  .ch-org { font-size: 13px; font-weight: 600; color: var(--text); }
+  .ch-head .ch-ico { width: 30px; height: 30px; border-radius: 9px; margin-left: auto; align-self: flex-start; }
+  .ch-head .ch-ico svg { width: 15px; height: 15px; }
+  .ch-card { border-left: 4px solid var(--c); }
 </style>
 </head>
 <body>
@@ -793,12 +805,12 @@ const VIDEOS = [
 ];
 
 const STORY = [
-  { icon: 'chat', color: 'green', when: '2019 – 21', title: 'Started a startup', role: 'Founder · ReaderSpace', text: 'A WhatsApp news service that grew to 4,000+ members, 500 of them paying. It taught me what entrepreneurship actually involves.' },
-  { icon: 'phone', color: 'teal', when: '2021 – 23', title: 'EdTech at scale', role: 'Early Member, Product & Growth · MathonGo', text: 'Took the MARKS app to 100K+ downloads at 4.8★, grew YouTube to 52K subscribers and 15.4M views, and built a 30K+ Telegram community.' },
-  { icon: 'bike', color: 'lime', when: '2022', title: 'Ground truth', role: 'Intern, Community Building · Yulu', text: 'Embedded with gig-economy riders across Bengaluru. The program I proposed seeded #YuSmart two years later.' },
-  { icon: 'train', color: 'indigo', when: '2023 – 25', title: '2,400 trains a month', role: 'Station Master · Indian Railways (DFC)', text: 'Ran a major freight junction and coordinated 5+ departments to keep the trains moving at real scale.' },
-  { icon: 'chart', color: 'pink', when: '2025', title: 'A ₹320 Cr category', role: 'Category Business Lead · PhysicsWallah', text: 'Led IITJEE pricing, GTM and engagement. Attendance went up 4%, and I shipped the PYQ Blueprint.' },
-  { icon: 'rocket', color: 'orange', when: 'Now', title: 'Pi Lens & Test Series', role: 'Product Manager · PhysicsWallah', text: 'Took Pi Lens from 0 to 400K downloads and from 4.3★ to 4.7★. Now also driving product-led growth for PW Test Series.', now: true }
+  { logo: 'readerspace', org: 'ReaderSpace', icon: 'chat', color: 'green', when: '2019 – 21', title: 'Started a startup', role: 'Founder · ReaderSpace', text: 'A WhatsApp news service that grew to 4,000+ members, 500 of them paying. It taught me what entrepreneurship actually involves.' },
+  { logo: 'mathongo', org: 'MathonGo', icon: 'phone', color: 'blue', when: '2021 – 23', title: 'EdTech at scale', role: 'Early Member, Product & Growth · MathonGo', text: 'Took the MARKS app to 100K+ downloads at 4.8★, grew YouTube to 52K subscribers and 15.4M views, and built a 30K+ Telegram community.' },
+  { logo: 'yulu', org: 'Yulu', icon: 'bike', color: 'sky', when: '2022', title: 'Ground truth', role: 'Intern, Community Building · Yulu', text: 'Embedded with gig-economy riders across Bengaluru. The program I proposed seeded #YuSmart two years later.' },
+  { logo: 'dfccil', org: 'DFCCIL · Indian Railways', wide: true, icon: 'train', color: 'red', when: '2023 – 25', title: '2,400 trains a month', role: 'Station Master · Indian Railways (DFC)', text: 'Ran a major freight junction and coordinated 5+ departments to keep the trains moving at real scale.' },
+  { logo: 'pw', org: 'PhysicsWallah', icon: 'chart', color: 'slate', when: '2025', title: 'A ₹320 Cr category', role: 'Category Business Lead · PhysicsWallah', text: 'Led IITJEE pricing, GTM and engagement. Attendance went up 4%, and I shipped the PYQ Blueprint.' },
+  { logo: 'pw', org: 'PhysicsWallah', icon: 'rocket', color: 'orange', when: 'Now', title: 'Pi Lens & Test Series', role: 'Product Manager · PhysicsWallah', text: 'Took Pi Lens from 0 to 400K downloads and from 4.3★ to 4.7★. Now also driving product-led growth for PW Test Series.', now: true }
 ];
 
 /* ============================================================ */
@@ -902,7 +914,9 @@ $('videos').innerHTML = VIDEOS.map(([id, title, meta]) => `
 $('chapters').innerHTML = STORY.map(ch => {
   const [c, g] = C[ch.color];
   return `<div class="ch reveal${ch.now ? ' now' : ''}" style="--c:${c};--g:${g}"><div class="ch-card">
-    <div class="ch-head"><div class="ch-ico"><svg viewBox="0 0 24 24">${ICONS[ch.icon]}</svg></div><span class="ch-when">${ch.when}</span></div>
+    <div class="ch-head"><div class="ch-logo${ch.wide ? ' wide' : ''}"><img src="assets/logos/${ch.logo}.png" alt="${esc(ch.org)} logo" loading="lazy"></div>
+      <div class="ch-meta"><span class="ch-org">${esc(ch.org)}</span><span class="ch-when">${ch.when}</span></div>
+      <div class="ch-ico"><svg viewBox="0 0 24 24">${ICONS[ch.icon]}</svg></div></div>
     <h3>${esc(ch.title)}</h3><div class="role">${esc(ch.role)}</div><p>${esc(ch.text)}</p></div></div>`;
 }).join('');
 
