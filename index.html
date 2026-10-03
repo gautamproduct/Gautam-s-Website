@@ -869,6 +869,18 @@
   .tk-stat b { font-family: var(--font-heading); font-weight: 400; font-size: 26px; color: #d9622a; }
   @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
   .showcase { margin-top: 36px; }
+
+  .series { padding: 18px 4px 26px !important; margin-top: -10px; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+  .yt-card.reveal:not(.in) { transform: none !important; }
+  .yt-card:hover { transform: translateY(-4px); }
+  .stat-logo { position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; border-radius: 9px; background: #fff; display: grid; place-items: center; padding: 3px; box-shadow: 0 4px 10px #0000002e; z-index: 1; }
+  .stat-logo.wide { width: 44px; }
+  .stat-logo img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
+  .edu-pill { display: inline-flex; align-items: center; gap: 8px; }
+  .edu-pill img { width: 22px; height: 22px; border-radius: 6px; background: #fff; object-fit: contain; padding: 1px; }
+  .edu-ico { width: 22px; height: 22px; border-radius: 6px; background: #fff; display: grid; place-items: center; }
+  .edu-ico svg { width: 15px; height: 15px; stroke: #5b4795; fill: none; stroke-width: 2; stroke-linejoin: round; }
+  @media (max-width: 640px) { .stat-logo { width: 24px; height: 24px; top: 8px; right: 8px; } .stat-logo.wide { width: 36px; } }
 </style>
 </head>
 <body>
@@ -968,12 +980,12 @@
       <div class="reveal">
         <p class="col-label">By the numbers</p>
         <div class="stats">
-          <div class="stat"><b>400K+</b><span>Pi Lens downloads, from zero</span></div>
-          <div class="stat"><b>₹320Cr</b><span>IITJEE category business run at PW</span></div>
-          <div class="stat"><b>4.7★</b><span>Pi Lens rating, up from 4.3★</span></div>
-          <div class="stat"><b>15.4M</b><span>Views on the MARKS YouTube channel</span></div>
-          <div class="stat"><b>30K+</b><span>Students in the Telegram community</span></div>
-          <div class="stat"><b>2,400</b><span>Freight trains a month at Indian Railways</span></div>
+          <div class="stat"><span class="stat-logo"><img src="assets/logos/pilens.png" alt=""></span><b>400K+</b><span>Pi Lens downloads, from zero</span></div>
+          <div class="stat"><span class="stat-logo"><img src="assets/logos/pw.png" alt=""></span><b>₹320Cr</b><span>IITJEE category business run at PW</span></div>
+          <div class="stat"><span class="stat-logo"><img src="assets/logos/pilens.png" alt=""></span><b>4.7★</b><span>Pi Lens rating, up from 4.3★</span></div>
+          <div class="stat"><span class="stat-logo"><img src="assets/logos/marks.png" alt=""></span><b>15.4M</b><span>Views on the MARKS YouTube channel</span></div>
+          <div class="stat"><span class="stat-logo"><img src="assets/logos/mathongo.png" alt=""></span><b>30K+</b><span>Students in the Telegram community</span></div>
+          <div class="stat"><span class="stat-logo wide"><img src="assets/logos/dfccil.png" alt=""></span><b>2,400</b><span>Freight trains a month at Indian Railways</span></div>
         </div>
       </div>
     </div>
@@ -989,9 +1001,9 @@
     <p class="section-sub reveal">Building for people at scale, whether they were readers, students, riders, trains or learners.</p>
     <div class="timeline" id="chapters"></div>
     <div class="edu reveal">
-      <span class="edu-pill main">🎓 <b>BBA, Transportation Management</b> · Gati Shakti Vishwavidyalaya</span>
-      <span class="edu-pill">IIM · MBA offer</span>
-      <span class="edu-pill">Mesa · PGP offer</span>
+      <span class="edu-pill main"><img src="assets/logos/gsv.png" alt="Gati Shakti Vishwavidyalaya logo"><b>BBA, Transportation Management</b> · Gati Shakti Vishwavidyalaya</span>
+      <span class="edu-pill"><i class="edu-ico"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></i>IIM · MBA offer</span>
+      <span class="edu-pill"><img src="assets/logos/mesaschool.png" alt="Mesa School of Business logo">Mesa · PGP offer</span>
       <span class="edu-note">offers declined to keep building</span>
     </div>
   </div>
