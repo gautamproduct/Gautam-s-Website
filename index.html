@@ -814,6 +814,41 @@
   .showcase.reveal:not(.in) { transform: translateX(120px); }
   @media (max-width: 760px) { .ch.reveal:not(.in), .ch.reveal:not(.in):nth-child(even) { transform: translateY(50px) scale(.95); } }
   @media (prefers-reduced-motion: reduce) { .reveal:not(.in) { opacity: 1 !important; transform: none !important; filter: none !important; } }
+
+  /* Intro: no box, text floats on the sky */
+  .hero-content::before { content: ""; position: absolute; left: 50%; top: 52%; width: min(1100px, 120%); height: 70%; transform: translate(-50%, -50%); background: radial-gradient(ellipse at center, #0b2a5a59 0%, #0b2a5a26 45%, transparent 72%); z-index: -1; pointer-events: none; }
+  .hero-sub { background: none !important; border: 0 !important; box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; padding: 0 8px !important;
+    color: #fff !important; font-size: 18.5px; line-height: 1.85; max-width: 720px; text-shadow: 0 1px 2px #0b2a5a99, 0 2px 14px #0b2a5acc; }
+  .hero-sub .chip { background: #ffffffeb; text-shadow: none; box-shadow: 0 4px 14px #0b2a5a40; }
+  .hero-sub mark { color: #fff; background-size: 0% 3px !important; background-position: 0 96%; padding: 0 1px 2px; }
+  @keyframes highlight { to { background-size: 100% 3px; } }
+  .hero-sub .m1 { background-image: linear-gradient(90deg, #ffb563, #ffd36b); }
+  .hero-sub .m2 { background-image: linear-gradient(90deg, #b9adff, #e0c4ff); }
+  .hero-sub .m3 { background-image: linear-gradient(90deg, #8fe0ff, #9be7a8); }
+  .hero-sub mark { animation: highlight2 1s cubic-bezier(.2,.8,.2,1) forwards; } .hero-sub .m1 { animation-delay: 1.9s; } .hero-sub .m2 { animation-delay: 2.2s; } .hero-sub .m3 { animation-delay: 2.5s; }
+  @keyframes highlight2 { to { background-size: 100% 3px; } }
+  @media (max-width: 640px) { .hero-sub { font-size: 16px; } }
+  @media (prefers-reduced-motion: reduce) { .hero-sub mark { background-size: 100% 3px !important; } }
+
+  .hero-sub mark { animation: none !important; background-size: 100% 3px !important; }
+  /* Proof: one slim strip instead of four big cards */
+  .hero-proof { display: flex !important; justify-content: center; align-items: center; gap: 0 !important; width: auto !important; max-width: none !important; margin: 0 auto 30px !important; padding: 8px 6px; border-radius: 999px; background: #ffffff2e; border: 1px solid #ffffff59; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 10px 30px #0b2a5a26; }
+  .proof { background: none !important; border: 0 !important; box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; padding: 2px 22px !important; border-radius: 0; display: flex; align-items: baseline; gap: 8px; }
+  .proof + .proof { border-left: 1px solid #ffffff59 !important; }
+  .proof:hover { transform: none; }
+  .proof b { font-size: 24px !important; background: none !important; -webkit-background-clip: border-box !important; background-clip: border-box !important; color: #fff !important; text-shadow: 0 1px 8px #0b2a5a80; }
+  .proof span { margin: 0 !important; font-size: 13px !important; color: #ffffffd9 !important; white-space: nowrap; text-shadow: 0 1px 6px #0b2a5a80; }
+  @media (max-width: 760px) {
+    .hero-proof { flex-wrap: wrap; border-radius: 20px; padding: 6px 4px; margin: 0 16px 22px !important; }
+    .proof { width: 50%; padding: 6px 12px !important; flex-direction: column; gap: 0; align-items: center; }
+    .proof + .proof { border-left: 0 !important; }
+    .proof b { font-size: 21px !important; }
+  }
+
+  .hero-sub mark { background-color: transparent !important; }
+  .proof b span { font-size: inherit !important; color: inherit !important; white-space: nowrap; }
+  .hero-proof { background: #0b2a5a4d !important; border-color: #ffffff40 !important; }
+  .hero::after { height: 90px; }
 </style>
 </head>
 <body>
@@ -862,10 +897,10 @@
     </div>
   </div>
   <div class="hero-proof">
-    <div class="proof"><b><span data-count="400">400</span>K+</b><span>Pi Lens downloads,<br>0 → 400K as PM</span></div>
-    <div class="proof"><b>4.3→<span data-count="4.7" data-from="4.3" data-dec="1">4.7</span>★</b><span>Play Store rating<br>lift on Pi Lens</span></div>
-    <div class="proof"><b>₹<span data-count="320">320</span> Cr</b><span>IITJEE category<br>business led at PW</span></div>
-    <div class="proof"><b><span data-count="18" id="proofCount">18</span>+</b><span>products shipped,<br>work + weekends</span></div>
+    <div class="proof"><b><span data-count="400">400</span>K+</b><span>Pi Lens downloads</span></div>
+    <div class="proof"><b>4.3→<span data-count="4.7" data-from="4.3" data-dec="1">4.7</span>★</b><span>Pi Lens rating</span></div>
+    <div class="proof"><b>₹<span data-count="320">320</span> Cr</b><span>category led at PW</span></div>
+    <div class="proof"><b><span data-count="18" id="proofCount">18</span>+</b><span>products shipped</span></div>
   </div>
 </section>
 
