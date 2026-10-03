@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://kumargautam.com/">
 <meta property="og:site_name" content="Gautam Kumar">
 <meta property="og:title" content="Gautam Kumar — Product Manager Who Ships">
-<meta property="og:description" content="Product Manager at PhysicsWallah. Pi Lens 0→400K downloads, PLG for PW Test Series, and 16+ products shipped.">
+<meta property="og:description" content="Product Manager at PhysicsWallah. Pi Lens 0→400K downloads, PLG for PW Test Series, and 18+ products shipped.">
 <meta property="og:image" content="https://kumargautam.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -25,7 +25,7 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Gautam Kumar — Product Manager Who Ships">
-<meta name="twitter:description" content="Product Manager at PhysicsWallah. Pi Lens 0→400K downloads, PLG for PW Test Series, and 16+ products shipped.">
+<meta name="twitter:description" content="Product Manager at PhysicsWallah. Pi Lens 0→400K downloads, PLG for PW Test Series, and 18+ products shipped.">
 <meta name="twitter:image" content="https://kumargautam.com/assets/og-image.png">
 
 <!-- Favicons -->
@@ -261,6 +261,140 @@
     .chapter { grid-template-columns: 1fr; gap: 4px; }
     #connect { padding: 32px 16px 72px; }
   }
+
+  /* =========================================================
+     COLOUR PASS: day → sunset → night as you scroll
+     ========================================================= */
+  .accent-orange { color: #e0662f; } .accent-green { color: #2f9e5a; } .accent-blue { color: #3a6ee6; }
+
+  /* Gap: tinted cards with squircle icons */
+  .gap-card { position: relative; overflow: hidden; transition: transform .25s, box-shadow .25s; }
+  .gap-card:hover { transform: translateY(-4px) rotate(-.4deg); }
+  .gap-card.t1 { background: linear-gradient(160deg, #fff3e8, #fff9f3); border-color: #f6dcc4; }
+  .gap-card.t2 { background: linear-gradient(160deg, #ecf9f0, #f6fcf8); border-color: #cdebd7; }
+  .gap-card.t3 { background: linear-gradient(160deg, #edf3ff, #f7f9ff); border-color: #d3e0fb; }
+  .gap-card.t1:hover { box-shadow: 0 16px 34px #ee7d2b26; } .gap-card.t2:hover { box-shadow: 0 16px 34px #3fa25726; } .gap-card.t3:hover { box-shadow: 0 16px 34px #3a6ee626; }
+  .gap-ico { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; margin-bottom: 16px; box-shadow: 0 6px 14px var(--glow), inset 0 1px 0 #ffffff8c; }
+  .gap-ico svg { width: 19px; height: 19px; stroke: #fff; fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+  .gap-card .big { position: absolute; right: -6px; bottom: -22px; font-family: var(--font-heading); font-size: 110px; line-height: 1; opacity: .07; pointer-events: none; }
+
+  /* Builds: every card gets its own colour */
+  .filters button.on { background: linear-gradient(135deg, #ee7d2b, #e0453a); border-color: transparent; box-shadow: 0 6px 16px #ee7d2b40; }
+  .build-card { --c: #8c857c; }
+  .build-card:hover { border-color: color-mix(in srgb, var(--c) 45%, transparent); box-shadow: 0 16px 36px color-mix(in srgb, var(--c) 22%, transparent); }
+  .build-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; border-radius: var(--radius-card) var(--radius-card) 0 0; background: var(--c); opacity: 0; transition: opacity .25s; }
+  .build-card:hover::before { opacity: 1; }
+  .build-icon.color { width: 44px; height: 44px; border-radius: 13px; box-shadow: 0 6px 14px color-mix(in srgb, var(--c) 40%, transparent), inset 0 1px 0 #ffffff8c; transition: transform .3s; }
+  .build-card:hover .build-icon.color { transform: rotate(-8deg) scale(1.06); }
+  .build-tag.cat { color: color-mix(in srgb, var(--c) 85%, #000); border-color: color-mix(in srgb, var(--c) 30%, transparent); background: color-mix(in srgb, var(--c) 9%, #fff); }
+  .build-links a { color: color-mix(in srgb, var(--c) 80%, #000); }
+  .build-links .muted { font-size: 13px; color: var(--text-faint); }
+  .build-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1.05fr; gap: 22px; background: linear-gradient(140deg, #fff4e9, #fffaf4 55%, #f3f0ff); border-color: #f2d6bd; }
+  .build-card.featured .feat-body { display: flex; flex-direction: column; }
+  .build-card.featured .feat-shot { border-radius: 14px; overflow: hidden; align-self: center; box-shadow: 0 14px 30px #2a1c4a33; transform: rotate(1.5deg); transition: transform .4s; }
+  .build-card.featured:hover .feat-shot { transform: rotate(0) scale(1.02); }
+  .build-card.featured .feat-shot img { display: block; width: 100%; }
+  .build-card.featured h3 { font-size: 26px; }
+
+  .count-band { background: linear-gradient(180deg, var(--cream), #fff7ef); }
+  .count-band b { background: linear-gradient(90deg, #ee7d2b, #e0453a 30%, #a24bd8 65%, #3a6ee6); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: clamp(2.8rem, 6vw, 4rem); }
+  .chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chips span { font-size: 12.5px; font-weight: 500; padding: 5px 12px; border-radius: 999px; color: var(--k); background: color-mix(in srgb, var(--k) 10%, #fff); border: 1px solid color-mix(in srgb, var(--k) 25%, transparent); }
+
+  /* Activity: afternoon tint + vivid tiles */
+  #activity { background: linear-gradient(180deg, #fff7ef 0%, #eef5ff 45%, #fff3e2 100%); }
+  .stat { border-radius: 16px; position: relative; overflow: hidden; box-shadow: 0 10px 22px #0000001a; transition: transform .25s; }
+  .stat:hover { transform: translateY(-3px) rotate(-1deg); }
+  .stat::after { content: ""; position: absolute; width: 120%; height: 60%; left: -10%; top: -30%; background: radial-gradient(closest-side, #ffffff40, transparent); pointer-events: none; }
+  .stat:nth-child(1) { background: linear-gradient(150deg, #ff8a5c, #e0453a); color: #fff; }
+  .stat:nth-child(2) { background: linear-gradient(150deg, #57cf93, #1f8a5b); color: #fff; }
+  .stat:nth-child(3) { background: linear-gradient(150deg, #ffcf5c, #ef8f1c); color: #fff; }
+  .stat:nth-child(4) { background: linear-gradient(150deg, #ff6b8b, #c2336a); color: #fff; }
+  .stat:nth-child(5) { background: linear-gradient(150deg, #6eb1ff, #2f6fe0); color: #fff; }
+  .stat:nth-child(6) { background: linear-gradient(150deg, #a983ff, #5b3fc9); color: #fff; }
+  .video:hover { box-shadow: 0 12px 28px #3a6ee626; border-color: #cfdcf7; }
+
+  /* Story: sunset */
+  #story { position: relative; overflow: hidden; padding-bottom: 110px;
+    background: linear-gradient(180deg, #fff3e2 0%, #ffe2bf 14%, #ffc796 30%, #ff9f7d 48%, #ea7579 64%, #b05c96 80%, #5b4795 100%); }
+  #story .sunset-sun { position: absolute; width: 360px; height: 360px; right: -60px; top: 34%; border-radius: 50%; background: radial-gradient(circle, #fff7d9 0%, #ffd98a 35%, #ffb06a00 70%); pointer-events: none; }
+  #story .section-title em { color: #c2452f; }
+  .timeline { position: relative; max-width: 900px; margin: 56px auto 0; }
+  .timeline::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%); background: linear-gradient(180deg, #ffffff00, #ffffffcc 8%, #ffffffcc 92%, #ffffff00); }
+  .ch { position: relative; width: 50%; padding: 0 42px 34px 0; }
+  .ch:nth-child(even) { margin-left: 50%; padding: 0 0 34px 42px; }
+  .ch-card { position: relative; background: #ffffffc4; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid #ffffffcc; border-radius: 20px; padding: 20px 22px; box-shadow: 0 14px 34px #7a2d4a26; transition: transform .25s; }
+  .ch-card:hover { transform: translateY(-3px); }
+  .ch::after { content: ""; position: absolute; top: 24px; right: -9px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--c); box-shadow: 0 0 0 5px #ffffff55; }
+  .ch:nth-child(even)::after { right: auto; left: -9px; }
+  .ch-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .ch-ico { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: var(--g); box-shadow: 0 6px 14px color-mix(in srgb, var(--c) 40%, transparent), inset 0 1px 0 #ffffff8c; flex-shrink: 0; }
+  .ch-ico svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+  .ch-when { font-size: 11.5px; font-weight: 600; letter-spacing: .06em; color: color-mix(in srgb, var(--c) 85%, #000); background: color-mix(in srgb, var(--c) 12%, #fff); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); padding: 3px 10px; border-radius: 999px; }
+  .ch-card h3 { font-family: var(--font-heading); font-weight: 400; font-size: 23px; color: var(--text); line-height: 1.15; }
+  .ch-card .role { font-size: 12.5px; font-weight: 500; color: var(--text-muted); margin: 2px 0 8px; }
+  .ch-card p { font-size: 14px; color: #5a5550cc; }
+  .ch.now .ch-card { background: #fffffff0; box-shadow: 0 0 0 2px #fff, 0 18px 44px #5b479566; }
+  #story .edu-line { color: #ffffffd9; margin-top: 30px; }
+  #story .edu-line b { color: #fff; }
+
+  /* FAQ: dusk */
+  #questions { position: relative; overflow: hidden; background: linear-gradient(180deg, #5b4795 0%, #3a3478 45%, #1d2152 100%); color: #fff; }
+  #questions .section-label { color: #ffffffb3; }
+  #questions .section-title { color: #fff; }
+  #questions .section-title em { color: #ffc98f; }
+  #questions .faq { position: relative; z-index: 1; display: grid; gap: 10px; }
+  .faq details { background: #ffffff12; border: 1px solid #ffffff21; border-radius: 16px; padding: 0 20px; backdrop-filter: blur(6px); transition: background .25s; }
+  .faq details[open] { background: #ffffff1f; }
+  .faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 16px 0; font-size: 15.5px; font-weight: 600; color: #fff; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; margin-left: auto; font-weight: 300; font-size: 22px; color: #ffffffa6; transition: transform .25s; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq .q { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; font-size: 13px; font-weight: 600; flex-shrink: 0; background: var(--g); box-shadow: inset 0 1px 0 #ffffff8c; }
+  .faq details p { color: #ffffffbf; font-size: 14.5px; padding: 0 0 18px 42px; }
+
+  /* Stars (FAQ + Connect) */
+  .stars { position: absolute; inset: 0; pointer-events: none; }
+  .stars i { position: absolute; border-radius: 50%; background: #fff; animation: twinkle var(--t) ease-in-out infinite; animation-delay: var(--d); }
+  @keyframes twinkle { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+
+  /* Connect: night meadow */
+  #connect { position: relative; overflow: hidden; padding: 70px 24px 220px; background: linear-gradient(180deg, #1d2152 0%, #141a40 55%, #0f1f2c 100%); }
+  .moon { position: absolute; top: 60px; right: 12%; width: 74px; height: 74px; border-radius: 50%; background: radial-gradient(circle at 38% 38%, #fffef4, #f4ecc8 60%, #e5d9a8); box-shadow: 0 0 40px 12px #fff6c94d, 0 0 120px 40px #fff6c91f; }
+  .night-hills { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 210px; }
+  .firefly { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #fff3a0; box-shadow: 0 0 10px 3px #ffe56a99; animation: fly var(--t) ease-in-out infinite alternate; animation-delay: var(--d); opacity: .9; }
+  @keyframes fly { 0% { transform: translate(0, 0); opacity: .2; } 50% { opacity: 1; } 100% { transform: translate(var(--x), var(--y)); opacity: .3; } }
+  .connect-card { position: relative; z-index: 2; background: #ffffff10; border: 1px solid #ffffff24; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 30px 60px #0000004d; }
+  .connect-card h2 { color: #fff; }
+  .connect-card h2 em { color: #ffd59a; }
+  .connect-card p { color: #ffffffbf; }
+  .connect-links a { background: #ffffff14; color: #fff; border-color: #ffffff30; box-shadow: none; }
+  .connect-links a:hover { background: #ffffff26; box-shadow: none; }
+  .connect-links a.primary { background: linear-gradient(180deg, #f39a48, #e3802c); border-color: transparent; box-shadow: 0 8px 22px #ed893666; }
+  footer { background: #0b1a12; border-top: 0; }
+  .foot-logo { color: #ffffff8c; }
+  .foot small { color: #ffffff73; }
+
+  /* Nav over night sections */
+  .nav.night { background: #12163ad1; box-shadow: 0 1px 0 #ffffff14; }
+  .nav.night .nav-logo { color: #fff; }
+  .nav.night .nav-link-item { color: #ffffffb3; }
+  .nav.night .nav-link-item:hover { color: #fff; }
+  .nav.night .nav-cta { color: #fff; background: #ffffff1a; border-color: #ffffff33; }
+
+  @media (max-width: 900px) {
+    .build-card.featured { grid-column: span 2; }
+  }
+  @media (max-width: 640px) {
+    .build-card.featured { grid-column: auto; grid-template-columns: 1fr; }
+    .timeline::before { left: 10px; }
+    .ch, .ch:nth-child(even) { width: 100%; margin-left: 0; padding: 0 0 22px 34px; }
+    .ch::after, .ch:nth-child(even)::after { left: 0; right: auto; }
+    #story .sunset-sun { width: 220px; height: 220px; right: -80px; }
+    .moon { width: 54px; height: 54px; right: 8%; top: 40px; }
+    #connect { padding: 56px 16px 190px; }
+    .night-hills { height: 170px; }
+  }
 </style>
 </head>
 <body>
@@ -307,12 +441,12 @@
 <section>
   <div class="container">
     <p class="section-label reveal">The Product Gap</p>
-    <h2 class="section-title reveal">Most features never <em>move a metric.</em></h2>
+    <h2 class="section-title reveal">Most features never <em class="accent-orange">move a metric.</em></h2>
     <p class="section-sub reveal">The ideas usually aren't bad. The trouble is that shipping is easy — <em>and most teams stop at the release.</em></p>
     <div class="gap-grid">
-      <div class="gap-card reveal"><h3>Shipped, then forgotten.</h3><p>It went out on the release train and nobody looked at it again, or checked whether anyone came back on day seven.</p></div>
-      <div class="gap-card reveal"><h3>Built on opinions.</h3><p>Roadmaps decided by whoever spoke loudest, while users and data were saying something else.</p></div>
-      <div class="gap-card reveal"><h3>Great launch, no retention.</h3><p>Downloads went up, the rating went down and onboarding leaked users. Growth that doesn't stick ends up costing more than it brings in.</p></div>
+      <div class="gap-card t1 reveal"><div class="gap-ico sq-orange"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Shipped, then forgotten.</h3><p>It went out on the release train and nobody looked at it again, or checked whether anyone came back on day seven.</p><span class="big">01</span></div>
+      <div class="gap-card t2 reveal"><div class="gap-ico sq-green"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-13 8l-5 1 1-5a9 9 0 1 1 17-4z"/></svg></div><h3>Built on opinions.</h3><p>Roadmaps decided by whoever spoke loudest, while users and data were saying something else.</p><span class="big">02</span></div>
+      <div class="gap-card t3 reveal"><div class="gap-ico sq-blue"><svg viewBox="0 0 24 24"><path d="m3 7 6 6 4-4 8 8"/><path d="M21 11v6h-6"/></svg></div><h3>Great launch, no retention.</h3><p>Downloads went up, the rating went down and onboarding leaked users. Growth that doesn't stick ends up costing more than it brings in.</p><span class="big">03</span></div>
     </div>
   </div>
 </section>
@@ -321,7 +455,7 @@
 <section id="builds">
   <div class="container">
     <p class="section-label reveal">The Work</p>
-    <h2 class="section-title reveal">Shipped, <em>and measured.</em></h2>
+    <h2 class="section-title reveal">Shipped, <em class="accent-green">and measured.</em></h2>
     <p class="section-sub reveal">Everything below started as a user problem and shipped to real people, on the Play Store, the Chrome Web Store, YouTube and the web.</p>
 
     <div class="showcase-bar reveal">Live now — quick view
@@ -333,8 +467,12 @@
     <div class="builds-grid" id="grid"></div>
   </div>
   <div class="count-band reveal">
-    <b id="count">16+ products</b>
+    <b id="count">18+ products</b>
     <span>Shipped at PhysicsWallah, at MathonGo and on weekends: apps, AI features, Chrome extensions and communities.</span>
+    <div class="chips">
+      <span style="--k:#2f9e5a">Play Store</span><span style="--k:#3a6ee6">Chrome Web Store</span><span style="--k:#e0453a">YouTube</span>
+      <span style="--k:#ee7d2b">Web apps</span><span style="--k:#7553e0">AI features</span><span style="--k:#22998f">WhatsApp &amp; Telegram</span><span style="--k:#c2336a">Internal tools</span>
+    </div>
   </div>
 </section>
 
@@ -342,7 +480,7 @@
 <section id="activity" style="padding-top:40px">
   <div class="container">
     <p class="section-label reveal">Build in Public</p>
-    <h2 class="section-title reveal">From <em>the workbench.</em></h2>
+    <h2 class="section-title reveal">From <em class="accent-blue">the workbench.</em></h2>
     <p class="section-sub reveal">Launches, walkthroughs, and the numbers that moved.</p>
     <div class="activity-grid">
       <div class="reveal">
@@ -365,41 +503,51 @@
   </div>
 </section>
 
-<!-- ============ STORY ============ -->
+<!-- ============ STORY (sunset) ============ -->
 <section id="story">
-  <div class="container">
+  <div class="sunset-sun" aria-hidden="true"></div>
+  <div class="container" style="position:relative">
     <p class="section-label reveal">The Story</p>
     <h2 class="section-title reveal">Six chapters. <em>One thread.</em></h2>
     <p class="section-sub reveal">Building for people at scale, whether they were readers, students, riders, trains or learners.</p>
-    <div class="story" id="chapters"></div>
+    <div class="timeline" id="chapters"></div>
     <p class="edu-line reveal"><b>Education</b> · BBA, Transportation Management, Gati Shakti Vishwavidyalaya · IIM MBA offer and Mesa School PGP offer, both declined to keep building</p>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
+<!-- ============ FAQ (dusk) ============ -->
 <section id="questions">
+  <div class="stars" data-n="40" data-max="1.6"></div>
   <div class="container">
     <p class="section-label reveal">Before You Reach Out</p>
     <h2 class="section-title reveal">Questions <em>you might ask</em></h2>
     <div class="faq">
-      <div class="faq-item reveal"><h3>What kind of PM are you?</h3><p>0→1 and 1→N. I'm most useful where there's a real user problem and a metric that won't move. I own it end to end: research, strategy, GTM, shipping and iterating.</p></div>
-      <div class="faq-item reveal"><h3>What are you working on right now?</h3><p>Pi Lens, PW's YouTube-layer learning app, and product-led growth for PW Test Series.</p></div>
-      <div class="faq-item reveal"><h3>Do you build things yourself?</h3><p>Yes. On weekends I vibe-code side projects like YESPYQ, Padhle Beta, ILoveExams, PYQ Daily and two Chrome extensions. Brain Games started that way, and it's now on the Pi Lens roadmap.</p></div>
-      <div class="faq-item reveal"><h3>Are you open to roles or collabs?</h3><p>Yes, especially with teams building consumer, edtech or AI products for India-scale audiences.</p></div>
+      <details class="reveal" open><summary><span class="q" style="--g:linear-gradient(160deg,#ffb563,#ee7d2b)">01</span>What kind of PM are you?</summary><p>0→1 and 1→N. I'm most useful where there's a real user problem and a metric that won't move. I own it end to end: research, strategy, GTM, shipping and iterating.</p></details>
+      <details class="reveal"><summary><span class="q" style="--g:linear-gradient(160deg,#7dd68f,#3fa257)">02</span>What are you working on right now?</summary><p>Pi Lens, PW's YouTube-layer learning app, and product-led growth for PW Test Series. I also build internal tools that help the team see what's working on YouTube.</p></details>
+      <details class="reveal"><summary><span class="q" style="--g:linear-gradient(160deg,#78aaff,#3a6ee6)">03</span>Do you build things yourself?</summary><p>Yes. On weekends I vibe-code side projects like YESPYQ, Padhle Beta, ILoveExams, PYQ Daily and two Chrome extensions. Brain Games started that way, and it's now on the Pi Lens roadmap.</p></details>
+      <details class="reveal"><summary><span class="q" style="--g:linear-gradient(160deg,#ff8ab0,#c2336a)">04</span>Are you open to roles or collabs?</summary><p>Yes, especially with teams building consumer, edtech or AI products for India-scale audiences.</p></details>
     </div>
   </div>
 </section>
 
-<!-- ============ CONNECT ============ -->
+<!-- ============ CONNECT (night) ============ -->
 <section id="connect">
+  <div class="stars" data-n="90" data-max="2.2"></div>
+  <div class="moon" aria-hidden="true"></div>
+  <div id="fireflies" aria-hidden="true"></div>
+  <svg class="night-hills" viewBox="0 0 1440 210" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 90 C 220 40, 460 40, 700 80 S 1160 50, 1440 70 V210 H0Z" fill="#14302a"/>
+    <path d="M0 140 C 260 100, 560 105, 820 140 S 1220 110, 1440 130 V210 H0Z" fill="#10261c"/>
+    <path d="M0 180 C 300 155, 640 160, 900 182 S 1260 168, 1440 176 V210 H0Z" fill="#0b1a12"/>
+  </svg>
   <div class="connect-card reveal">
     <h2>Got a problem worth solving?<br><em>Let's talk.</em></h2>
     <p>Whether you're hiring a PM, building something new or stuck on a growth problem, one message is enough to start.</p>
     <div class="connect-links">
+      <a href="mailto:gautamprep@gmail.com" class="primary">Email ↗</a>
       <a href="https://www.linkedin.com/in/gautamkumar42" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a href="https://github.com/gautamproduct" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="https://www.youtube.com/@gautamkumarproduct" target="_blank" rel="noopener">YouTube ↗</a>
-      <a href="mailto:gautamprep@gmail.com">Email ↗</a>
     </div>
   </div>
 </section>
@@ -446,55 +594,76 @@ const ICONS = {
   book: '<path d="M4 19V5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2"/><path d="M8 7h8M8 11h6"/>',
   print: '<path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/>',
   spark: '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',
-  play: '<rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/>'
+  play: '<rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/>',
+  chart: '<path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="5"/><rect x="12" y="8" width="3" height="9"/><rect x="17" y="5" width="3" height="12"/>',
+  tower: '<path d="M12 2v3M8 22l4-17 4 17M6.5 15h11M7.5 10h9"/><path d="M4 5a11 11 0 0 1 3-3M20 5a11 11 0 0 0-3-3"/>',
+  rocket: '<path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/>',
+  bike: '<circle cx="6" cy="17" r="3.5"/><circle cx="18" cy="17" r="3.5"/><path d="M6 17 10 9h5l3 8M9 6h3"/>',
+  train: '<rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4"/>'
+};
+// cat: work | side | chrome | content    c: card accent colour    g: icon gradient
+const C = {
+  orange: ['#ee7d2b', 'linear-gradient(160deg,#ffb563,#ee7d2b)'], violet: ['#5b4ee0', 'linear-gradient(160deg,#9b8cff,#5b4ee0)'],
+  teal: ['#22998f', 'linear-gradient(160deg,#5fd6cf,#22998f)'], pink: ['#c2336a', 'linear-gradient(160deg,#ff8ab0,#c2336a)'],
+  indigo: ['#3b46b8', 'linear-gradient(160deg,#7f8cff,#3b46b8)'], purple: ['#8a4fd8', 'linear-gradient(160deg,#c49bff,#8a4fd8)'],
+  blue: ['#3a6ee6', 'linear-gradient(160deg,#78aaff,#3a6ee6)'], green: ['#2f9e5a', 'linear-gradient(160deg,#7dd68f,#2f9e5a)'],
+  amber: ['#d98a12', 'linear-gradient(160deg,#ffd36b,#e9951a)'], red: ['#e0453a', 'linear-gradient(160deg,#ff8a7a,#e0453a)'],
+  sky: ['#1f9bd1', 'linear-gradient(160deg,#6fd0ff,#1f9bd1)'], lime: ['#5a9e1f', 'linear-gradient(160deg,#b4e36b,#5a9e1f)'],
+  slate: ['#4b5563', 'linear-gradient(160deg,#9aa4b2,#4b5563)'], rose: ['#d6456b', 'linear-gradient(160deg,#ff9fb5,#d6456b)']
 };
 const BUILDS = [
-  { name: 'Pi Lens', cat: 'work', tag: 'feat', icon: 'lens', color: 'linear-gradient(160deg,#ffb563,#ee7d2b)',
+  { name: 'Pi Lens', cat: 'work', tag: 'feat', icon: 'lens', color: 'orange', shot: 'pilens',
     desc: "India's first YouTube-layer learning app, with notes, PYQs, quizzes and AI answers on any video. 0 → 400K downloads, rating up from 4.3★ to 4.7★.",
     links: [['Website', 'https://pi-lens.pw.live/'], ['Play Store', 'https://play.google.com/store/apps/details?id=live.pw.pilens'], ['Chrome', 'https://chromewebstore.google.com/detail/pi-lens-notes-pyqs-quizze/plomhepammojlpjfipjoekjfdbadccgh']] },
-  { name: 'PW · Test Series', cat: 'work', tag: 'now', icon: 'test', color: 'linear-gradient(160deg,#8f84ff,#5b4ee0)',
+  { name: 'PW · Test Series', cat: 'work', tag: 'now', icon: 'test', color: 'violet',
     desc: "Driving product-led growth for Test Series on PW, India's learning platform (50M+ downloads), so the product itself does more of the selling.",
     links: [['Play Store', 'https://play.google.com/store/apps/details?id=xyz.penpencil.physicswala'], ['Website', 'https://www.pw.live/']] },
-  { name: 'MARKS App', cat: 'work', tag: 'App', icon: 'phone', color: 'linear-gradient(160deg,#5fd6cf,#22998f)',
+  { name: 'YouTube Lens', cat: 'work', tag: 'Internal', icon: 'chart', color: 'pink',
+    desc: 'An internal analytics dashboard for Pi Lens. It covers channel summaries, daily insights, poll participants and the top YouTube lives with polls.',
+    links: [], note: 'Internal tool · PW only' },
+  { name: 'YouTube Watch Tower', cat: 'work', tag: 'Internal', icon: 'tower', color: 'indigo',
+    desc: 'Pi Lens intelligence: tracks watch data and poll performance across PW YouTube channels, behind PW sign-in.',
+    links: [], note: 'Internal tool · PW only' },
+  { name: 'MARKS App', cat: 'work', tag: 'App', icon: 'phone', color: 'teal',
     desc: 'A JEE/NEET PYQ practice app. As an early team member I helped scale it to 100K+ downloads at a 4.8★ rating.',
     links: [['Play Store', 'https://play.google.com/store/apps/details?id=com.scoremarks.marks'], ['Website', 'https://www.getmarks.app/']] },
-  { name: 'Brain Games', cat: 'side', tag: 'AI', icon: 'brain',
+  { name: 'Brain Games', cat: 'side', tag: 'AI', icon: 'brain', color: 'purple',
     desc: 'A prototype I vibe-coded myself. It earned a spot on the Pi Lens roadmap.',
     links: [['Visit', 'https://brain-games-pi-lens.netlify.app/']] },
-  { name: 'YESPYQ', cat: 'side', tag: 'Web', icon: 'book',
+  { name: 'YESPYQ', cat: 'side', tag: 'Web', icon: 'book', color: 'blue',
     desc: 'Free previous-year papers with answers: 20,000+ questions for UPSC, JEE, NEET, SSC, Defence and Boards, plus a ₹149/year PYQ Pass.',
     links: [['Visit', 'https://yespyq.com/']] },
-  { name: 'Padhle Beta', cat: 'side', tag: 'Web', icon: 'print',
+  { name: 'Padhle Beta', cat: 'side', tag: 'Web', icon: 'print', color: 'green',
     desc: 'Turns black-background coaching notes into white, A4-printable PDFs, saving up to 60% ink. It comes with 12 more PDF tools, with no signup and no upload.',
     links: [['Visit', 'https://padhlebeta.live/']] },
-  { name: 'PYQ Wallah', cat: 'side', tag: 'Soon', icon: 'spark',
+  { name: 'PYQ Wallah', cat: 'side', tag: 'Soon', icon: 'spark', color: 'amber',
     desc: 'The next PYQ experiment, cooking now.',
     links: [['Peek', 'https://pyqwallah.live/']] },
-  { name: 'ILoveExams', cat: 'side', tag: 'Web', icon: 'image',
+  { name: 'ILoveExams', cat: 'side', tag: 'Web', icon: 'image', color: 'red',
     desc: 'Resizes photos and signatures for 80+ Indian exams, compressing to an exact KB. Free and private, with no upload.',
     links: [['Visit', 'https://ilovexams.in/']] },
-  { name: 'PYQ Daily', cat: 'side', tag: 'Web', icon: 'cal',
+  { name: 'PYQ Daily', cat: 'side', tag: 'Web', icon: 'cal', color: 'sky',
     desc: 'Three previous-year JEE/NEET questions a day, with a daily leaderboard for your class.',
     links: [['Visit', 'https://pyq-daily.vercel.app/']] },
-  { name: 'Comparely', cat: 'side', tag: 'Web', icon: 'cart',
+  { name: 'Comparely', cat: 'side', tag: 'Web', icon: 'cart', color: 'lime',
     desc: 'Compares live grocery prices across Blinkit, Zepto and Instamart, per unit.',
     links: [['GitHub', 'https://github.com/gautamproduct/comparely']] },
-  { name: 'Merge', cat: 'side', tag: 'Web', icon: 'car',
+  { name: 'Merge', cat: 'side', tag: 'Web', icon: 'car', color: 'slate',
     desc: 'A carpool app where you can offer a ride, find one, or team up and take turns driving.',
     links: [['Visit', 'https://gautamproduct.github.io/merge-carpool/']] },
-  { name: 'Focus', cat: 'chrome', tag: 'Chrome', icon: 'focus',
+  { name: 'Focus', cat: 'chrome', tag: 'Chrome', icon: 'focus', color: 'blue',
     desc: 'Turns Chrome into a calm, motivating space for deep study.',
     links: [['Chrome Store', 'https://chromewebstore.google.com/detail/focus-stay-productive-on/pmlcfgopppbiajbdpfkldieodhcdmpeo']] },
-  { name: 'Pause', cat: 'chrome', tag: 'Chrome', icon: 'pause',
+  { name: 'Pause', cat: 'chrome', tag: 'Chrome', icon: 'pause', color: 'teal',
     desc: 'Asks you to set an intention before you open a distracting site, then keeps you on track with mindful timers.',
     links: [['GitHub', 'https://github.com/gautamproduct/Pause-Chrome-Extension']] },
-  { name: 'ReaderSpace', cat: 'side', tag: 'Startup', icon: 'chat',
+  { name: 'ReaderSpace', cat: 'side', tag: 'Startup', icon: 'chat', color: 'green',
     desc: 'My first startup, a WhatsApp news-analysis service. It reached 4,000+ members, 500 of them paying, and ₹18K ARR.',
     links: [['Visit', 'https://gautamproduct.github.io/readerspace/']] },
-  { name: 'MARKS on YouTube', cat: 'content', tag: 'YouTube', icon: 'play',
+  { name: 'MARKS on YouTube', cat: 'content', tag: 'YouTube', icon: 'play', color: 'red',
     desc: 'Grew the channel into an acquisition engine for the app: 52K+ subscribers and 15.4M views.',
     links: [['YouTube', 'https://www.youtube.com/@getmarksapp']] },
-  { name: 'My YouTube', cat: 'content', tag: 'YouTube', icon: 'play',
+  { name: 'My YouTube', cat: 'content', tag: 'YouTube', icon: 'play', color: 'rose',
     desc: 'Pi Lens launches, install guides and walkthroughs, posted by the team that builds it.',
     links: [['YouTube', 'https://www.youtube.com/@gautamkumarproduct']] }
 ];
@@ -508,12 +677,12 @@ const VIDEOS = [
 ];
 
 const STORY = [
-  { when: '2019 – 21', title: 'Started a startup', role: 'Founder · ReaderSpace', text: 'A WhatsApp news service that grew to 4,000+ members, 500 of them paying. It taught me what entrepreneurship actually involves.' },
-  { when: '2021 – 23', title: 'EdTech at scale', role: 'Early Member, Product & Growth · MathonGo', text: 'Took the MARKS app to 100K+ downloads at 4.8★, grew YouTube to 52K subscribers and 15.4M views, and built a 30K+ Telegram community.' },
-  { when: '2022', title: 'Ground truth', role: 'Intern, Community Building · Yulu', text: 'Embedded with gig-economy riders across Bengaluru. The program I proposed seeded #YuSmart two years later.' },
-  { when: '2023 – 25', title: '2,400 trains a month', role: 'Station Master · Indian Railways (DFC)', text: 'Ran a major freight junction and coordinated 5+ departments to keep the trains moving at real scale.' },
-  { when: '2025', title: 'A ₹320 Cr category', role: 'Category Business Lead · PhysicsWallah', text: 'Led IITJEE pricing, GTM and engagement. Attendance went up 4%, and I shipped the PYQ Blueprint.' },
-  { when: 'Now', title: 'Pi Lens & Test Series', role: 'Product Manager · PhysicsWallah', text: 'Took Pi Lens from 0 to 400K downloads and from 4.3★ to 4.7★. Now also driving product-led growth for PW Test Series.', now: true }
+  { icon: 'chat', color: 'green', when: '2019 – 21', title: 'Started a startup', role: 'Founder · ReaderSpace', text: 'A WhatsApp news service that grew to 4,000+ members, 500 of them paying. It taught me what entrepreneurship actually involves.' },
+  { icon: 'phone', color: 'teal', when: '2021 – 23', title: 'EdTech at scale', role: 'Early Member, Product & Growth · MathonGo', text: 'Took the MARKS app to 100K+ downloads at 4.8★, grew YouTube to 52K subscribers and 15.4M views, and built a 30K+ Telegram community.' },
+  { icon: 'bike', color: 'lime', when: '2022', title: 'Ground truth', role: 'Intern, Community Building · Yulu', text: 'Embedded with gig-economy riders across Bengaluru. The program I proposed seeded #YuSmart two years later.' },
+  { icon: 'train', color: 'indigo', when: '2023 – 25', title: '2,400 trains a month', role: 'Station Master · Indian Railways (DFC)', text: 'Ran a major freight junction and coordinated 5+ departments to keep the trains moving at real scale.' },
+  { icon: 'chart', color: 'pink', when: '2025', title: 'A ₹320 Cr category', role: 'Category Business Lead · PhysicsWallah', text: 'Led IITJEE pricing, GTM and engagement. Attendance went up 4%, and I shipped the PYQ Blueprint.' },
+  { icon: 'rocket', color: 'orange', when: 'Now', title: 'Pi Lens & Test Series', role: 'Product Manager · PhysicsWallah', text: 'Took Pi Lens from 0 to 400K downloads and from 4.3★ to 4.7★. Now also driving product-led growth for PW Test Series.', now: true }
 ];
 
 /* ============================================================ */
@@ -551,13 +720,21 @@ $('speed').addEventListener('click', e => {
 // Builds
 const tagHtml = b => b.tag === 'feat' ? '<span class="build-tag feat">★ Featured</span>'
   : b.tag === 'now' ? '<span class="build-tag now">Now</span>'
-  : `<span class="build-tag">${b.tag}</span>`;
-$('grid').innerHTML = BUILDS.map(b => `
-  <div class="build-card reveal" data-cat="${b.cat}">
-    <div class="build-top"><div class="build-icon${b.color ? ' color' : ''}" ${b.color ? `style="background:${b.color}"` : ''}><svg viewBox="0 0 24 24">${ICONS[b.icon]}</svg></div>${tagHtml(b)}</div>
+  : `<span class="build-tag cat">${b.tag}</span>`;
+const linksHtml = b => b.links.length
+  ? b.links.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener">${l} →</a>`).join('')
+  : `<span class="muted">${b.note || ''}</span>`;
+$('grid').innerHTML = BUILDS.map(b => {
+  const [c, g] = C[b.color];
+  const body = `
+    <div class="build-top"><div class="build-icon color" style="background:${g}"><svg viewBox="0 0 24 24">${ICONS[b.icon]}</svg></div>${tagHtml(b)}</div>
     <h3>${esc(b.name)}</h3><p>${esc(b.desc)}</p>
-    <div class="build-links">${b.links.map(([l, u]) => `<a href="${u}" ${u.startsWith('mailto') ? '' : 'target="_blank" rel="noopener"'}>${l} →</a>`).join('')}</div>
-  </div>`).join('');
+    <div class="build-links">${linksHtml(b)}</div>`;
+  return b.shot
+    ? `<div class="build-card featured reveal" data-cat="${b.cat}" style="--c:${c}"><div class="feat-body">${body}</div>
+        <a class="feat-shot" href="${b.links[0][1]}" target="_blank" rel="noopener"><img src="assets/showcase/${b.shot}.jpg" alt="${esc(b.name)} preview" loading="lazy"></a></div>`
+    : `<div class="build-card reveal" data-cat="${b.cat}" style="--c:${c}">${body}</div>`;
+}).join('');
 $('count').textContent = `${BUILDS.length}+ products`;
 $('filters').innerHTML = FILTERS.map(([k, l], i) => `<button data-f="${k}" class="${i ? '' : 'on'}">${l}</button>`).join('');
 $('filters').addEventListener('click', e => {
@@ -567,6 +744,7 @@ $('filters').addEventListener('click', e => {
     const show = b.dataset.f === 'all' || c.dataset.cat === b.dataset.f;
     c.classList.toggle('hide', !show);
     if (show) c.classList.add('in');
+    if (c.classList.contains('featured')) c.style.gridColumn = b.dataset.f === 'all' || b.dataset.f === 'work' ? '' : 'auto';
   });
 });
 
@@ -577,13 +755,31 @@ $('videos').innerHTML = VIDEOS.map(([id, title, meta]) => `
     <div><b>${esc(title)}</b><span>${esc(meta)}</span></div></a>`).join('');
 
 // Story
-$('chapters').innerHTML = STORY.map(c => `
-  <div class="chapter reveal${c.now ? ' now' : ''}"><time>${c.when}</time>
-    <div><h3>${esc(c.title)}</h3><div class="role">${esc(c.role)}</div><p>${esc(c.text)}</p></div></div>`).join('');
+$('chapters').innerHTML = STORY.map(ch => {
+  const [c, g] = C[ch.color];
+  return `<div class="ch reveal${ch.now ? ' now' : ''}" style="--c:${c};--g:${g}"><div class="ch-card">
+    <div class="ch-head"><div class="ch-ico"><svg viewBox="0 0 24 24">${ICONS[ch.icon]}</svg></div><span class="ch-when">${ch.when}</span></div>
+    <h3>${esc(ch.title)}</h3><div class="role">${esc(ch.role)}</div><p>${esc(ch.text)}</p></div></div>`;
+}).join('');
+
+// Stars + fireflies
+document.querySelectorAll('.stars').forEach(el => {
+  const n = +el.dataset.n, max = +el.dataset.max;
+  el.innerHTML = Array.from({ length: n }, () => {
+    const sz = (Math.random() * max + .6).toFixed(1);
+    return `<i style="left:${(Math.random() * 100).toFixed(2)}%;top:${(Math.random() * 70).toFixed(2)}%;width:${sz}px;height:${sz}px;--t:${(2 + Math.random() * 4).toFixed(1)}s;--d:${(-Math.random() * 5).toFixed(1)}s"></i>`;
+  }).join('');
+});
+$('fireflies').innerHTML = Array.from({ length: 14 }, () =>
+  `<span class="firefly" style="left:${(Math.random() * 96).toFixed(1)}%;bottom:${(30 + Math.random() * 150).toFixed(0)}px;--x:${(Math.random() * 80 - 40).toFixed(0)}px;--y:${(Math.random() * -60).toFixed(0)}px;--t:${(3 + Math.random() * 4).toFixed(1)}s;--d:${(-Math.random() * 6).toFixed(1)}s"></span>`).join('');
 
 // Nav + reveal
 const nav = $('nav');
-const onScroll = () => nav.classList.toggle('scrolled', scrollY > innerHeight - 80);
+const qs = $('questions');
+const onScroll = () => {
+  nav.classList.toggle('scrolled', scrollY > innerHeight - 80);
+  nav.classList.toggle('night', scrollY + 68 > qs.offsetTop);
+};
 addEventListener('scroll', onScroll, { passive: true }); onScroll();
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
