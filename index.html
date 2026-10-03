@@ -101,7 +101,9 @@
   .nav.scrolled .nav-cta { color: var(--text); background: #fff; border-color: var(--border-strong); }
 
   /* ---------- Hero ---------- */
-  .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; overflow: hidden; background: #5d97d8 var(--hero-img) center 62% / cover no-repeat; padding: 0; }
+  .hero { position: relative; isolation: isolate; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; overflow: hidden; background: #5d97d8; padding: 0; }
+  .hero-bg { position: absolute; inset: -4% 0 -8%; z-index: -1; background: var(--hero-img) center 62% / cover no-repeat; animation: kenburns 2.8s cubic-bezier(.2,.7,.2,1) both; will-change: transform; }
+  @keyframes kenburns { from { transform: scale(1.14); filter: saturate(.8) brightness(1.08); } to { transform: scale(1); filter: none; } }
   .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #0b2a5a66 0%, #0b2a5a29 30%, #0b2a5a1f 55%, #00000014 80%, #0000002e 100%); pointer-events: none; }
   .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 140px; background: linear-gradient(180deg, #fefcf800, var(--cream)); pointer-events: none; }
   .hero-content { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 110px 24px 40px; }
@@ -504,6 +506,57 @@
   .host-badge { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; vertical-align: 1px; font-size: 10.5px; font-weight: 600; letter-spacing: .08em; color: #c2332a; background: #fff0ee; border: 1px solid #f6cbc6; padding: 3px 9px; border-radius: 999px; }
   .host-badge .live-dot { width: 6px; height: 6px; background: #e0453a; }
   .series-head > div:first-child > span { display: block; max-width: 640px; margin-top: 6px; }
+
+  /* ===== Hero motion ===== */
+  .hero-headline .w { display: inline-block; animation: rise .9s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(.25s + var(--i) * .09s); }
+  @keyframes rise { from { opacity: 0; transform: translateY(.45em) rotate(2deg); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+  .hero-squircle { animation: pop .8s cubic-bezier(.34,1.56,.64,1) both, bob 5s ease-in-out infinite; animation-delay: calc(.3s + var(--i) * .09s), calc(1.6s + var(--i) * .3s);
+    translate: calc(var(--mx, 0) * var(--px, 0) * 1px) calc(var(--my, 0) * var(--py, 0) * 1px); transition: translate .6s cubic-bezier(.2,.8,.2,1); }
+  @keyframes pop { from { opacity: 0; transform: scale(0) rotate(-25deg); } to { opacity: 1; transform: translateY(.02em); } }
+  @keyframes bob { 0%, 100% { transform: translateY(.02em) rotate(0); } 50% { transform: translateY(-.08em) rotate(-4deg); } }
+  .hero-squircle:hover { filter: brightness(1.1) drop-shadow(0 0 18px var(--glow)); }
+  .hero-badge, .hero-sub, .hero-ctas, .hero-worked { animation: fadeUp .8s cubic-bezier(.2,.8,.2,1) both; }
+  .hero-badge { animation-delay: .1s; } .hero-sub { animation-delay: 1.05s; } .hero-ctas { animation-delay: 1.2s; } .hero-worked { animation-delay: 1.35s; }
+  .proof { animation: fadeUp .8s cubic-bezier(.2,.8,.2,1) both; }
+  .proof:nth-child(1) { animation-delay: 1.45s; } .proof:nth-child(2) { animation-delay: 1.55s; } .proof:nth-child(3) { animation-delay: 1.65s; } .proof:nth-child(4) { animation-delay: 1.75s; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+  /* button sheen */
+  .btn-hero { position: relative; overflow: hidden; }
+  .btn-hero::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, transparent, #ffffff73, transparent); transform: skewX(-20deg); animation: sheen 4.5s ease-in-out 2.4s infinite; }
+  @keyframes sheen { 0%, 70% { left: -60%; } 100% { left: 130%; } }
+
+  /* Built at */
+  .hero-worked { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin-top: 22px; }
+  .hero-worked .lbl { font-size: 10.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #fff; background: #1f3a1f66; padding: 5px 10px; border-radius: 999px; backdrop-filter: blur(6px); margin-right: 2px; }
+  .hero-worked .co { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; color: #1f2a1f; background: #ffffffd9; border: 1px solid #ffffff; padding: 4px 12px 4px 4px; border-radius: 999px; box-shadow: 0 4px 14px #0b2a5a26; transition: transform .2s; }
+  .hero-worked .co:hover { transform: translateY(-2px); }
+  .hero-worked img { width: 22px; height: 22px; object-fit: contain; border-radius: 6px; background: #fff; }
+  .hero-worked img.wide { width: 34px; }
+  .nav-link-item { position: relative; }
+  .nav-link-item::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; border-radius: 2px; background: currentColor; transform: scaleX(0); transition: transform .25s; }
+  .nav-link-item:hover::after { transform: scaleX(1); }
+  @media (max-width: 640px) {
+    .hero-worked .co { font-size: 12px; }
+    .hero-worked .lbl { width: 100%; margin: 0 0 2px; background: none; backdrop-filter: none; -webkit-backdrop-filter: none; text-shadow: 0 1px 8px #000a; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-bg { animation: none; } }
+  .ch-kind { font-style: normal; font-weight: 500; color: var(--text-faint); }
+
+  /* Hero intro card */
+  .hero-sub { background: #ffffffd6; border: 1px solid #ffffff; backdrop-filter: blur(16px) saturate(1.3); -webkit-backdrop-filter: blur(16px) saturate(1.3);
+    color: #2b2f3a; text-shadow: none; font-size: 17px; line-height: 1.9; max-width: 720px; padding: 18px 26px; border-radius: 22px; box-shadow: 0 18px 40px #0b2a5a33; }
+  .hero-sub .chip { display: inline-flex; align-items: center; gap: 6px; vertical-align: -5px; font-weight: 600; font-size: .94em; line-height: 1; color: #1f2430; background: #fff; border: 1px solid #e6e1d8; padding: 3px 10px 3px 3px; border-radius: 999px; box-shadow: 0 2px 6px #0b2a5a14; white-space: nowrap; transition: transform .2s; }
+  .hero-sub .chip:hover { transform: translateY(-2px) rotate(-1deg); }
+  .hero-sub .chip img { width: 22px; height: 22px; border-radius: 7px; object-fit: contain; background: #fff; }
+  .hero-sub mark { color: inherit; font-weight: 600; padding: 0 2px; background-repeat: no-repeat; background-size: 0% 34%; background-position: 0 102%; animation: highlight 1s cubic-bezier(.2,.8,.2,1) forwards; }
+  .hero-sub .m1 { background-image: linear-gradient(90deg, #ffb563, #ffd36b); animation-delay: 1.9s; }
+  .hero-sub .m2 { background-image: linear-gradient(90deg, #9b8cff, #c49bff); animation-delay: 2.2s; }
+  .hero-sub .m3 { background-image: linear-gradient(90deg, #6fd0ff, #7dd68f); animation-delay: 2.5s; }
+  @keyframes highlight { to { background-size: 100% 34%; } }
+  .proof b span { display: inline; margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+  @media (max-width: 640px) { .hero-sub { font-size: 15px; line-height: 1.85; padding: 14px 16px; } .hero-sub .chip img { width: 18px; height: 18px; } }
+  @media (prefers-reduced-motion: reduce) { .hero-sub mark { background-size: 100% 34%; } }
 </style>
 </head>
 <body>
@@ -523,30 +576,38 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <div class="hero-content">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-content" id="heroContent">
     <a href="#connect" class="hero-badge"><span class="live-dot"></span>Open to Product roles · PM @ PhysicsWallah</a>
     <h1 class="hero-headline">
-      <span class="hero-line">I ship
-        <span class="hero-squircle sq-green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span>
-        products
-        <span class="hero-squircle sq-orange" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg></span>
+      <span class="hero-line"><span class="w" style="--i:0">I</span> <span class="w" style="--i:1">ship</span>
+        <span class="hero-squircle sq-green" style="--i:2;--px:-14;--py:-10" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span>
+        <span class="w" style="--i:3">products</span>
+        <span class="hero-squircle sq-orange" style="--i:4;--px:18;--py:-14" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg></span>
       </span>
-      <span class="hero-line"><em>people</em>
-        <span class="hero-squircle sq-blue" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
-        <em>actually use.</em>
+      <span class="hero-line"><em class="w" style="--i:5">people</em>
+        <span class="hero-squircle sq-blue" style="--i:6;--px:-10;--py:14" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+        <em class="w" style="--i:7">actually</em> <em class="w" style="--i:8">use.</em>
       </span>
     </h1>
-    <p class="hero-sub">Product Manager at <b>PhysicsWallah</b>. I took <b>Pi Lens from 0 to 400K downloads</b>, I'm growing <b>PW Test Series</b> with product-led growth, and I ship side projects on weekends.</p>
+    <p class="hero-sub">Product Manager at <span class="chip"><img src="assets/logos/pw.png" alt="">PhysicsWallah</span>. I took <span class="chip"><img src="assets/logos/pilens.png" alt="">Pi Lens</span> from <mark class="m1">0 → 400K downloads</mark> and I'm growing <span class="chip"><img src="assets/logos/pw.png" alt="">PW Test Series</span> with <mark class="m2">product-led growth</mark>. Before that, I scaled the <span class="chip"><img src="assets/logos/marks.png" alt="">MARKS app</span> to <mark class="m3">100K+ downloads at 4.8★</mark>. On weekends I ship side projects.</p>
     <div class="hero-ctas">
       <a href="#builds" class="btn-hero">See the Work</a>
       <a href="https://www.linkedin.com/in/gautamkumar42" target="_blank" rel="noopener" class="btn-ghost">LinkedIn ↗</a>
     </div>
+    <div class="hero-worked">
+      <span class="lbl">Built at</span>
+      <span class="co"><img src="assets/logos/pw.png" alt="">PhysicsWallah</span>
+      <span class="co"><img src="assets/logos/mathongo.png" alt="">MathonGo</span>
+      <span class="co"><img src="assets/logos/yulu.png" alt="">Yulu</span>
+      <span class="co"><img src="assets/logos/dfccil.png" alt="" class="wide">Indian Railways</span>
+    </div>
   </div>
   <div class="hero-proof">
-    <div class="proof"><b>400K+</b><span>Pi Lens downloads,<br>0 → 400K as PM</span></div>
-    <div class="proof"><b>4.3→4.7★</b><span>Play Store rating<br>lift on Pi Lens</span></div>
-    <div class="proof"><b>₹320 Cr</b><span>IITJEE category<br>business led at PW</span></div>
-    <div class="proof"><b>16+</b><span>products shipped,<br>work + weekends</span></div>
+    <div class="proof"><b><span data-count="400">400</span>K+</b><span>Pi Lens downloads,<br>0 → 400K as PM</span></div>
+    <div class="proof"><b>4.3→<span data-count="4.7" data-from="4.3" data-dec="1">4.7</span>★</b><span>Play Store rating<br>lift on Pi Lens</span></div>
+    <div class="proof"><b>₹<span data-count="320">320</span> Cr</b><span>IITJEE category<br>business led at PW</span></div>
+    <div class="proof"><b><span data-count="16" id="proofCount">16</span>+</b><span>products shipped,<br>work + weekends</span></div>
   </div>
 </section>
 
@@ -622,7 +683,7 @@
   <div class="sunset-sun" aria-hidden="true"></div>
   <div class="container" style="position:relative">
     <p class="section-label reveal">The Story</p>
-    <h2 class="section-title reveal">Six chapters. <em>One thread.</em></h2>
+    <h2 class="section-title reveal"><span id="chapterCount">Eight</span> chapters. <em>One thread.</em></h2>
     <p class="section-sub reveal">Building for people at scale, whether they were readers, students, riders, trains or learners.</p>
     <div class="timeline" id="chapters"></div>
     <p class="edu-line reveal"><b>Education</b> · BBA, Transportation Management, Gati Shakti Vishwavidyalaya · IIM MBA offer and Mesa School PGP offer, both declined to keep building</p>
@@ -669,7 +730,7 @@
 <footer>
   <div class="foot">
     <span class="foot-logo">kumargautam</span>
-    <small>Built with care · © <span id="yr">2026</span> Gautam Kumar · Hero photo via <a href="https://unsplash.com/photos/a-green-field-with-a-few-clouds-in-the-sky-FQkQxgO9Kh8" target="_blank" rel="noopener">Unsplash</a></small>
+    <small>Built with love for solving problems · © <span id="yr">2026</span> Gautam Kumar · Hero photo via <a href="https://unsplash.com/photos/a-green-field-with-a-few-clouds-in-the-sky-FQkQxgO9Kh8" target="_blank" rel="noopener">Unsplash</a></small>
   </div>
 </footer>
 
@@ -796,7 +857,9 @@ const VIDEOS = [
 
 const STORY = [
   { logo: 'readerspace', org: 'ReaderSpace', icon: 'chat', color: 'green', when: '2019 – 21', title: 'Started a startup', role: 'Founder · ReaderSpace', text: 'A WhatsApp news service that grew to 4,000+ members, 500 of them paying. It taught me what entrepreneurship actually involves.' },
-  { logo: 'mathongo', org: 'MathonGo', icon: 'phone', color: 'blue', when: '2021 – 23', title: 'EdTech at scale', role: 'Early Member, Product & Growth · MathonGo', text: 'Took the MARKS app to 100K+ downloads at 4.8★, grew YouTube to 52K subscribers and 15.4M views, and built a 30K+ Telegram community.' },
+  { logo: 'mathongo', org: 'MathonGo', kind: 'Parent company', icon: 'send', color: 'blue', when: '2021 – 23', title: 'EdTech at scale', role: 'Early Member, Product & Growth · MathonGo', text: 'Joined early at the JEE/NEET edtech company behind MARKS and Quizrr. Grew the MathonGo YouTube channel and built a 30K+ student Telegram community.' },
+  { logo: 'marks', org: 'MARKS', kind: 'PYQ practice app', icon: 'phone', color: 'sky', when: '2021 – 23', title: '100K+ downloads at 4.8★', role: 'Product & Growth · MARKS App (MathonGo)', text: 'Scaled the chapter-wise PYQ app for JEE/NEET. Grew the MARKS YouTube channel to 52K+ subscribers and 15.4M views, and hosted the Know Your Branch podcast.' },
+  { logo: 'quizrr', org: 'Quizrr', kind: 'Online test series', icon: 'test', color: 'purple', when: '2021 – 23', title: 'Mock tests for JEE', role: 'Product & Growth · Quizrr (MathonGo)', text: 'Worked on growth for MathonGo’s online test series for JEE Main, JEE Advanced, BITSAT, WBJEE and MHT CET.' },
   { logo: 'yulu', org: 'Yulu', icon: 'bike', color: 'sky', when: '2022', title: 'Ground truth', role: 'Intern, Community Building · Yulu', text: 'Embedded with gig-economy riders across Bengaluru. The program I proposed seeded #YuSmart two years later.' },
   { logo: 'dfccil', org: 'DFCCIL · Indian Railways', wide: true, icon: 'train', color: 'red', when: '2023 – 25', title: '2,400 trains a month', role: 'Station Master · Indian Railways (DFC)', text: 'Ran a major freight junction and coordinated 5+ departments to keep the trains moving at real scale.' },
   { logo: 'pw', org: 'PhysicsWallah', icon: 'chart', color: 'slate', when: '2025', title: 'A ₹320 Cr category', role: 'Category Business Lead · PhysicsWallah', text: 'Led IITJEE pricing, GTM and engagement. Attendance went up 4%, and I shipped the PYQ Blueprint.' },
@@ -898,11 +961,12 @@ $('videos').innerHTML = VIDEOS.map(([id, title, meta]) => `
     <div><b>${esc(title)}</b><span>${esc(meta)}</span></div></a>`).join('');
 
 // Story
+$('chapterCount').textContent = ['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'][STORY.length] || STORY.length;
 $('chapters').innerHTML = STORY.map(ch => {
   const [c, g] = C[ch.color];
   return `<div class="ch reveal${ch.now ? ' now' : ''}" style="--c:${c};--g:${g}"><div class="ch-card">
     <div class="ch-head"><div class="ch-logo${ch.wide ? ' wide' : ''}"><img src="assets/logos/${ch.logo}.png" alt="${esc(ch.org)} logo" loading="lazy"></div>
-      <div class="ch-meta"><span class="ch-org">${esc(ch.org)}</span><span class="ch-when">${ch.when}</span></div>
+      <div class="ch-meta"><span class="ch-org">${esc(ch.org)}${ch.kind ? ` <i class="ch-kind">· ${esc(ch.kind)}</i>` : ''}</span><span class="ch-when">${ch.when}</span></div>
       <div class="ch-ico"><svg viewBox="0 0 24 24">${ICONS[ch.icon]}</svg></div></div>
     <h3>${esc(ch.title)}</h3><div class="role">${esc(ch.role)}</div><p>${esc(ch.text)}</p></div></div>`;
 }).join('');
@@ -917,6 +981,33 @@ document.querySelectorAll('.stars').forEach(el => {
 });
 $('fireflies').innerHTML = Array.from({ length: 14 }, () =>
   `<span class="firefly" style="left:${(Math.random() * 96).toFixed(1)}%;bottom:${(30 + Math.random() * 150).toFixed(0)}px;--x:${(Math.random() * 80 - 40).toFixed(0)}px;--y:${(Math.random() * -60).toFixed(0)}px;--t:${(3 + Math.random() * 4).toFixed(1)}s;--d:${(-Math.random() * 6).toFixed(1)}s"></span>`).join('');
+
+
+// Hero: parallax, mouse-follow icons, count-up proofs
+(() => {
+  const hero = $('top'), bg = $('heroBg'), reduceM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceM) {
+    addEventListener('scroll', () => { if (scrollY < innerHeight * 1.2) bg.style.translate = `0 ${scrollY * 0.28}px`; }, { passive: true });
+    hero.addEventListener('pointermove', e => {
+      const r = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5).toFixed(3));
+      hero.style.setProperty('--my', ((e.clientY - r.top) / r.height - .5).toFixed(3));
+    });
+    hero.addEventListener('pointerleave', () => { hero.style.setProperty('--mx', 0); hero.style.setProperty('--my', 0); });
+  }
+  $('proofCount').dataset.count = BUILDS.length; $('proofCount').textContent = BUILDS.length;
+  document.querySelectorAll('.hero-proof [data-count]').forEach((el, i) => {
+    const end = +el.dataset.count, from = +(el.dataset.from || 0), dec = +(el.dataset.dec || 0);
+    if (reduceM) return;
+    el.textContent = from.toFixed(dec);
+    setTimeout(() => {
+      const t0 = performance.now(), dur = 1400;
+      const step = t => { const p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = (from + (end - from) * e).toFixed(dec); if (p < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    }, 1500 + i * 100);
+  });
+})();
 
 // Nav + reveal
 const nav = $('nav');
