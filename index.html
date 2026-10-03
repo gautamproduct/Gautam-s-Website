@@ -500,6 +500,10 @@
   .ch-head .ch-ico { width: 30px; height: 30px; border-radius: 9px; margin-left: auto; align-self: flex-start; }
   .ch-head .ch-ico svg { width: 15px; height: 15px; }
   .ch-card { border-left: 4px solid var(--c); }
+
+  .host-badge { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; vertical-align: 1px; font-size: 10.5px; font-weight: 600; letter-spacing: .08em; color: #c2332a; background: #fff0ee; border: 1px solid #f6cbc6; padding: 3px 9px; border-radius: 999px; }
+  .host-badge .live-dot { width: 6px; height: 6px; background: #e0453a; }
+  .series-head > div:first-child > span { display: block; max-width: 640px; margin-top: 6px; }
 </style>
 </head>
 <body>
@@ -587,7 +591,7 @@
     </div>
 
     <div class="series-head reveal">
-      <div><p class="col-label" style="margin:0">MARKS · Know Your Branch</p><span>IIT students on what their branch is really like, made for JEE aspirants choosing one.</span></div>
+      <div><p class="col-label" style="margin:0">MARKS · Know Your Branch <span class="host-badge"><span class="live-dot"></span>Hosted by me</span></p><span>A podcast where IIT students say what their branch is really like, made for JEE aspirants choosing one. I was the host and ran it end to end, from bringing guests on board to bringing users to the app.</span></div>
       <div class="series-nav"><button aria-label="Scroll left" data-d="-1">←</button><button aria-label="Scroll right" data-d="1">→</button></div>
     </div>
     <div class="series reveal" id="series"></div>
@@ -765,7 +769,7 @@ const BUILDS = [
     desc: 'My first startup, a WhatsApp news-analysis service. It reached 4,000+ members, 500 of them paying, and ₹18K ARR.',
     links: [['Visit', 'https://gautamproduct.github.io/readerspace/']] },
   { name: 'MARKS on YouTube', cat: 'mathongo', tag: 'Growth', icon: 'play', color: 'red', shot: 'marksyt',
-    desc: 'Turned YouTube into the acquisition engine for the app, with series like Know Your Branch: 52K+ subscribers and 15.4M views.',
+    desc: 'Turned YouTube into the acquisition engine for the app. I hosted the Know Your Branch podcast with IIT students. 52K+ subscribers and 15.4M views.',
     links: [['YouTube', 'https://www.youtube.com/@getmarksapp'], ['See the growth chapter', '#growth']] },
   { name: 'Pi Lens on YouTube', cat: 'pw', tag: 'YouTube', icon: 'play', color: 'rose', shot: 'https://i.ytimg.com/vi/GGSH2z09Ewg/mqdefault.jpg',
     desc: 'Pi Lens launches, install guides and walkthroughs, posted by the team that builds it.',
