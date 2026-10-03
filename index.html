@@ -562,10 +562,36 @@
   .edu-pill b { font-weight: 600; }
   .edu-note { font-size: 12px; font-style: italic; color: #ffffffbf; }
   @media (max-width: 640px) { .edu-pill { white-space: normal; text-align: center; } }
+
+  /* ===== Site-wide motion ===== */
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; z-index: 60; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, #ee7d2b, #e0453a, #a24bd8, #3a6ee6); pointer-events: none; }
+  .reveal { transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1), filter .8s; transition-delay: var(--sd, 0s); }
+  .section-title.reveal { transform: translateY(26px); filter: blur(8px); }
+  .section-title.reveal.in { filter: none; }
+  .build-card.reveal, .yt-card.reveal, .stat.reveal, .f-step.reveal, .faq details.reveal, .video.reveal { transform: translateY(28px) scale(.97); }
+  .build-card.reveal.in, .yt-card.reveal.in, .stat.reveal.in, .f-step.reveal.in, .faq details.reveal.in, .video.reveal.in { transform: none; }
+  .ch.reveal { transform: translateX(-46px); } .ch.reveal:nth-child(even) { transform: translateX(46px); }
+  .ch.reveal.in { transform: none; }
+  .timeline::before { transform: translateX(-50%) scaleY(var(--draw, 0)); transform-origin: top; transition: transform .2s linear; }
+  .f-arrow { animation: nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge { 50% { transform: translateX(5px); opacity: 1; } }
+  .chips span { animation: floaty 4s ease-in-out infinite; animation-delay: calc(var(--n, 0) * .3s); }
+  @keyframes floaty { 50% { transform: translateY(-4px); } }
+  @media (hover: hover) and (min-width: 900px) {
+    .build-card, .ch-card, .stat, .f-step { transform-style: preserve-3d; will-change: transform; }
+    .tilt { transition: transform .15s ease-out !important; }
+  }
+  @media (max-width: 760px) {
+    .f-arrow { animation-name: nudgeDown; } @keyframes nudgeDown { 50% { transform: rotate(90deg) translateX(5px); } }
+    .ch.reveal, .ch.reveal:nth-child(even) { transform: translateY(24px); }
+    .timeline::before { transform: scaleY(var(--draw, 0)); }
+  }
+  @media (prefers-reduced-motion: reduce) { .progress { display: none; } .timeline::before { transform: translateX(-50%); } .reveal { filter: none !important; } }
 </style>
 </head>
 <body>
 
+<div class="progress" id="progress"></div>
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="#top" class="nav-logo">kumargautam</a>
@@ -1036,6 +1062,44 @@ addEventListener('scroll', onScroll, { passive: true }); onScroll();
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 $('yr').textContent = new Date().getFullYear();
+
+// Site-wide motion: stagger, progress bar, timeline draw, tilt
+(() => {
+  const reduceM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // mark more things to reveal and stagger siblings
+  document.querySelectorAll('.yt-card, .stat, .f-step, .video, .chips span').forEach(el => { if (!el.classList.contains('reveal') && !el.closest('.chips')) { el.classList.add('reveal'); io.observe(el); } });
+  document.querySelectorAll('.chips span').forEach((el, i) => el.style.setProperty('--n', i));
+  [['#grid', '.build-card'], ['#series', '.yt-card'], ['.stats', '.stat'], ['.funnel', '.f-step'], ['#videos', '.video'], ['.faq', 'details']].forEach(([p, c]) => {
+    document.querySelectorAll(`${p} > ${c}`).forEach((el, i) => el.style.setProperty('--sd', `${(i % 6) * 0.07}s`));
+  });
+  const bar = $('progress'), tl = $('chapters');
+  const onS = () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
+    const r = tl.getBoundingClientRect();
+    const d = Math.min(Math.max((innerHeight * 0.75 - r.top) / r.height, 0), 1);
+    tl.style.setProperty('--draw', reduceM ? 1 : d.toFixed(3));
+    // fallback: anything already on/above screen is revealed even if the observer missed it
+    pending = pending.filter(el => {
+      if (el.classList.contains('in')) return false;
+      const t = el.getBoundingClientRect().top;
+      if (t < innerHeight * 0.95 && !el.closest('#series')) { el.classList.add('in'); return false; }
+      return true;
+    });
+  };
+  let pending = [...document.querySelectorAll('.reveal')];
+  addEventListener('scroll', onS, { passive: true }); addEventListener('resize', onS); onS();
+  if (reduceM || !matchMedia('(hover: hover) and (min-width: 900px)').matches) return;
+  document.querySelectorAll('.build-card, .ch-card, .stat, .f-step').forEach(el => {
+    el.addEventListener('pointermove', e => {
+      const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      el.classList.add('tilt');
+      el.style.transform = `perspective(900px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-4px)`;
+    });
+    el.addEventListener('pointerleave', () => { el.style.transform = ''; setTimeout(() => el.classList.remove('tilt'), 150); });
+  });
+})();
+
 </script>
 </body>
 </html>
