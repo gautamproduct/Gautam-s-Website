@@ -555,6 +555,7 @@
   @media (max-width: 640px) { .hero-sub { font-size: 15px; line-height: 1.85; padding: 14px 16px; } .hero-sub .chip img { width: 18px; height: 18px; } }
   @media (prefers-reduced-motion: reduce) { .hero-sub mark { background-size: 100% 34%; } }
   .build-card.hide, .build-card.featured.hide { display: none !important; }
+  .creator-note { font-size: 14px; color: var(--text-faint); margin: -6px 0 14px; max-width: 460px; }
 </style>
 </head>
 <body>
@@ -657,9 +658,10 @@
 
     <div class="activity-grid">
       <div class="reveal">
-        <p class="col-label">Pi Lens · launches on YouTube</p>
+        <p class="col-label">Pi Lens · created &amp; presented by me <span class="host-badge"><span class="live-dot"></span>Creator</span></p>
+        <p class="creator-note">I script, record and present the Pi Lens launch and how-to videos myself, so students hear about the product from the person who builds it.</p>
         <div class="videos" id="videos"></div>
-        <a class="follow" href="https://www.youtube.com/@gautamkumarproduct" target="_blank" rel="noopener">Watch more on YouTube ↗</a>
+        <a class="follow" href="https://www.youtube.com/@gautamkumarproduct" target="_blank" rel="noopener">Watch my channel on YouTube ↗</a>
       </div>
       <div class="reveal">
         <p class="col-label">By the numbers</p>
@@ -853,9 +855,9 @@ const SERIES = [
 ];
 
 const VIDEOS = [
-  ['PrMyjmJV0n4', 'Meet Pi Lens: PYQs and notes on any YouTube video', 'Launch · Play Store & Chrome'],
-  ['GFTES9bikTc', 'How to install the Pi Lens app on mobile', 'Install guide'],
-  ['NezTj3EZpFc', 'How to install Pi Lens on a laptop', 'Install guide']
+  ['PrMyjmJV0n4', 'Meet Pi Lens: PYQs and notes on any YouTube video', 'Launch video · Created & presented by me'],
+  ['GFTES9bikTc', 'How to install the Pi Lens app on mobile', 'Tutorial · Created & presented by me'],
+  ['NezTj3EZpFc', 'How to install Pi Lens on a laptop', 'Tutorial · Created & presented by me']
 ];
 
 const STORY = [
