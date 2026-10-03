@@ -993,6 +993,12 @@
   .tk-sep { color: #d9cbb8; margin: 0 -24px; }
   .tk-logo { filter: none !important; }
   .ticker-track { animation-duration: 70s !important; }
+  .pm-line { display: inline-flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .pm-co { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; }
+  .pm-co img { width: 26px; height: 26px; border-radius: 50%; background: #fff; box-shadow: 0 3px 10px #0b2a5a4d; }
+  .rot { width: 100%; }
+  .rot-item { max-width: 100%; }
+  @media (max-width: 640px) { .rot-item { max-width: calc(100vw - 32px); padding-right: 12px; } .pm-co img { width: 22px; height: 22px; } }
 </style>
 </head>
 <body>
@@ -1027,10 +1033,10 @@
         <em class="w" style="--i:7">actually</em> <em class="w" style="--i:8">use.</em>
       </span>
     </h1>
-    <p class="hero-sub">Product Manager at PhysicsWallah.
+    <p class="hero-sub"><span class="pm-line">Product Manager at <span class="pm-co"><img src="assets/logos/pw.png" alt="PhysicsWallah logo">PhysicsWallah.</span></span>
       <span class="rot" id="rot" aria-live="polite">
         <span class="rot-item on"><img src="assets/logos/pilens.png" alt="">Took Pi Lens from 0 → 400K downloads</span>
-        <span class="rot-item"><img src="assets/logos/pw.png" alt="">Growing PW Test Series with product-led growth</span>
+        <span class="rot-item"><span class="rot-emoji" style="background:linear-gradient(160deg,#9b8cff,#5b4ee0)"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l1 2h3v16H5V5h3z"/><path d="m9 13 2 2 4-4"/></svg></span>Growing PW Test Series with product-led growth</span>
         <span class="rot-item"><img src="assets/logos/marks.png" alt="">Scaled the MARKS app to 100K+ downloads at 4.8★</span>
         <span class="rot-item"><span class="rot-emoji">⚡</span>Ships side projects on weekends</span>
       </span></p>
