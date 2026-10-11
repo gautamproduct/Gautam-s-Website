@@ -341,6 +341,27 @@
   @media(min-width:780px){.series{grid-auto-columns:230px}}
   .series .polaroid{width:auto;scroll-snap-align:start}
   .series .polaroid span{white-space:normal;line-height:1.2;min-height:44px;display:flex;align-items:center;justify-content:center}
+  .talk-head{text-align:center;margin:72px auto 22px}
+  .talk-head h3{font-family:var(--font-heading);font-weight:400;font-size:clamp(2rem,5vw,2.8rem);color:var(--text);line-height:1.1}
+  .talk-head h3 em{color:var(--c)}
+  .talk-head p{font-size:15px;color:var(--text-faint);margin-top:6px}
+  .talk-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:1000px;margin:0 auto}
+  @media(min-width:820px){.talk-grid{grid-template-columns:1.7fr 1fr;grid-template-rows:auto auto}.talk-grid .feat{grid-row:span 2}}
+  .yt-card.feat{padding:12px 12px 18px;box-shadow:0 0 0 3px #fff,0 0 0 5px #e0457b55,0 30px 60px -20px #e0457b66;animation:glowc 3.5s ease-in-out infinite}
+  @keyframes glowc{50%{box-shadow:0 0 0 3px #fff,0 0 0 7px #e0457b33,0 30px 70px -18px #e0457b88}}
+  .talk-grid .yt-card{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch}
+  .yt-card.feat .yt-thumb{aspect-ratio:16/10}
+  @media(min-width:820px){.yt-card.feat .yt-thumb{flex:1;aspect-ratio:auto;min-height:320px}}
+  .yt-card.feat b{font-size:24px}
+  @media(min-width:820px){.talk-grid .yt-card:not(.feat) b{font-size:17px}.talk-grid .yt-card:not(.feat) span{font-size:12px}}
+  .yt-thumb::after{display:none}
+  .yt-thumb::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,#2b0f2e55)}
+  .yt-thumb .play{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:#fff;box-shadow:0 8px 24px #0006;z-index:1;transition:transform .25s}
+  .yt-thumb .play::before{content:"";position:absolute;left:23px;top:18px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #e0457b}
+  .yt-thumb .play::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid #ffffffaa;animation:ripple 2s ease-out infinite}
+  @keyframes ripple{0%{transform:scale(.85);opacity:1}100%{transform:scale(1.5);opacity:0}}
+  .yt-card:not(.feat) .play{width:44px;height:44px;margin:-22px 0 0 -22px}.yt-card:not(.feat) .play::before{left:17px;top:13px;border-width:9px 0 9px 14px}
+  .yt-card:hover .play{transform:scale(1.12)}
   .yt-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:14px;overflow-x:auto;scrollbar-width:none;max-width:1040px;margin:0 auto;padding:4px 2px 10px}
   .yt-row::-webkit-scrollbar{display:none}
   .yt-card{background:#fff;border:1px solid var(--border-strong);border-radius:18px;padding:10px 10px 14px;transition:transform .25s,box-shadow .25s;cursor:pointer;text-align:left;font:inherit;color:inherit}
@@ -629,11 +650,11 @@
   <div class="container">
 
 
-    <div class="sub-head reveal"><div><h3>See how <em>I talk</em> 🎙️</h3><p>A few videos where I explain things on camera.</p></div></div>
-    <div class="yt-row stagger">
-      <button class="yt-card" data-id="GGSH2z09Ewg" type="button"><div class="yt-thumb"></div><b>Explaining an app I built</b><span>Pi Lens: notes &amp; quizzes beside any lecture</span></button>
-      <button class="yt-card" data-id="oIdbqAX5uFI" type="button"><div class="yt-thumb"></div><b>A product walkthrough</b><span>Live polls with TeacherX</span></button>
-      <button class="yt-card" data-id="ohrhN4VyxGY" type="button"><div class="yt-thumb"></div><b>A quick how-to</b><span>Getting started on mobile</span></button>
+    <div class="talk-head reveal"><h3>See how <em>I talk</em> 🎙️</h3><p>Me, on camera, explaining things I've built.</p></div>
+    <div class="talk-grid stagger">
+      <button class="yt-card feat" data-id="ohrhN4VyxGY" type="button"><div class="yt-thumb"><span class="play"></span></div><b>A quick how-to, on camera</b><span>Walking students through an app I built</span></button>
+      <button class="yt-card" data-id="oIdbqAX5uFI" type="button"><div class="yt-thumb"><span class="play"></span></div><b>A product walkthrough</b><span>Live polls for teachers</span></button>
+      <button class="yt-card" data-id="GGSH2z09Ewg" type="button"><div class="yt-thumb"><span class="play"></span></div><b>Launch video</b><span>Pi Lens app goes live</span></button>
     </div>
   </div>
 </section>
@@ -679,26 +700,10 @@
   <div class="stars" id="stars" aria-hidden="true"></div>
   <div class="moon" aria-hidden="true"></div>
   <div class="container">
-    <div class="chapter-tag reveal" style="--c:#ffd59a"><span>A note from me</span><b>दो शब्द</b></div>
+    <div class="chapter-tag reveal" style="--c:#ffd59a"><span>Connect</span><b>संपर्क</b></div>
     <h2 class="section-title reveal">Thank you for <em>visiting.</em></h2>
 
-    <div class="notes stagger">
-      <div class="note">
-        <div class="to">For the family · <span class="hi">परिवार के लिए</span></div>
-        <h3>Namaste 🙏</h3>
-        <p>A simple, close-knit family that values education, hard work and respect. Would love to meet over chai.</p>
-      </div>
-      <div class="note">
-        <div class="to">For you</div>
-        <h3>Hello 😊</h3>
-        <p>If you feel we'd get along, I'd be glad to talk, with our families in the loop.</p>
-      </div>
-    </div>
 
-    <div class="looking reveal">
-      <div class="chapter-tag" style="--c:#ffd59a"><span>Who I'm hoping to meet</span><b>जीवनसाथी</b></div>
-      <p class="q">Someone who is <em>passionate about life &amp; career</em>, enjoys trying new things, and believes in <em>growing together</em>, both as individuals and as a couple.</p>
-    </div>
 
     <div class="connect-card reveal">
       <h2>Let's take it <em>forward :)</em></h2>
@@ -845,7 +850,7 @@
   else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');if(x.target.classList.contains('stats')){var ag=document.getElementById('age');countUp(ag,+ag.dataset.v||+ag.textContent,1400);}io.unobserve(x.target);}});},{threshold:.08,rootMargin:'0px 0px -30px 0px'});els.forEach(function(e){io.observe(e);});}
 
   // ---------------- YouTube (load on tap) ----------------
-  document.querySelectorAll('.yt-card').forEach(function(b){var id=b.dataset.id,th=b.querySelector('.yt-thumb');th.style.backgroundImage='url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)';
+  document.querySelectorAll('.yt-card').forEach(function(b){var id=b.dataset.id,th=b.querySelector('.yt-thumb');th.style.backgroundImage='url(https://i.ytimg.com/vi/'+id+'/'+(b.classList.contains('feat')?'maxresdefault':'hqdefault')+'.jpg),url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)';
     b.addEventListener('click',function(){th.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Video"></iframe>';},{once:true});});
 
   // ---------------- Age ----------------
