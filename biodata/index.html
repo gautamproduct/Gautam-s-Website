@@ -522,8 +522,8 @@
       <div class="ch reveal" style="--k:#3a6ee6;--g:linear-gradient(160deg,#78aaff,#3a6ee6)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🎒</span><span class="ch-when">School</span></div><h3>Ambe School, Manjalpur → Baroda High School, Bagikhana</h3><p>School years in Vadodara.</p></div></div>
       <div class="ch reveal" style="--k:#a24bd8;--g:linear-gradient(160deg,#c49bff,#7b45d8)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🎓</span><span class="ch-when">Class of 2023</span></div><h3>BBA, National Rail &amp; Transportation Institute, Vadodara</h3><div class="role">Now Gati Shakti Vishwavidyalaya</div><p>Received my degree at the university's first convocation. Also got IIM interview calls, and chose to start working.</p>
         <div class="ch-pics"><img data-i="47" alt=""><img data-i="48" alt=""><img data-i="49" alt=""></div></div></div>
-      <div class="ch reveal" style="--k:#2f8a4f;--g:linear-gradient(160deg,#7dd68f,#3fa257)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🚉</span><span class="ch-when">2023 – 2025</span></div><h3>Station Master, DFCCIL</h3><div class="role">Indian Railways PSU · Government role · Vadodara</div><p>1.5 years of rail days I'm proud of, before moving to tech. I even made a Ghibli-style series when I moved on!</p>
-        <div class="ch-pics"><img data-i="59" alt=""><img data-i="55" alt=""><img data-i="10" alt=""><img data-i="12" alt=""><img data-i="13" alt=""><img data-i="52" alt=""></div></div></div>
+      <div class="ch reveal" style="--k:#2f8a4f;--g:linear-gradient(160deg,#7dd68f,#3fa257)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🚉</span><span class="ch-when">2023 – 2025</span></div><h3>Station Master, DFCCIL</h3><div class="role">Indian Railways PSU · Government role · Vadodara</div><p>1.5 years of rail days I'm proud of, before moving to tech.</p>
+        <div class="ch-pics"><img data-i="59" alt=""><img data-i="55" alt=""><img data-i="53" alt=""><img data-i="52" alt=""><img data-i="30" alt=""></div></div></div>
       <div class="ch now reveal" style="--k:#c2452f;--g:linear-gradient(160deg,#ff8a5c,#e0453a)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🤖</span><span class="ch-when">2025 – Now</span></div><h3>Product Manager, AI · PhysicsWallah</h3><div class="role">IPO-listed · Noida · Hybrid</div><p>Building AI and learning products used by lakhs of students. Grew Pi Lens from 0 to 4 lakh downloads, and MARKS past 1 lakh.</p>
         <div class="ch-pics"><img data-i="09" alt=""><img data-i="15" alt=""><img data-i="54" alt=""></div></div></div>
     </div>
@@ -536,7 +536,7 @@
   <div class="container">
     <div class="chapter-tag reveal" style="--c:#e0457b"><span>Moments</span><b>कुछ पल</b></div>
     <h2 class="section-title reveal">A little peek <em>into my life.</em></h2>
-    <p class="section-sub reveal">Some real, some Ghibli-style. Tap any photo to see it bigger.</p>
+    <p class="section-sub reveal">Tap any photo to see it bigger.</p>
   </div>
   <div class="showcase reveal"><div class="showcase-track" id="showcase"></div></div>
   <div class="container">
@@ -667,8 +667,7 @@
 
 <footer>
   <div style="color:#ffd98a;font-size:18px;margin-bottom:6px">卐</div>
-  <p>Shared privately with families. Kindly don't post this page publicly. 🙏</p>
-</footer>
+  </footer>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
   <button class="x" aria-label="Close" type="button">✕</button>
@@ -688,9 +687,7 @@
   // FACES -> Moments gallery.  LENS (no face) -> "Through my lens".  Delete a line to remove a photo.
   var FACES=[
     ["04","me","Behind the wheel (not my car 😄)"],["09","me","Suited up"],["54","me","Work days"],["46","me","Casual days"],
-    ["15","me","With Harsha, co-founder of Swiggy"],["55","me","DFCCIL Foundation Day"],["53","me","With an ex-Member, Railway Board"],
-    ["10","ghibli","Rail days, Ghibli-style"],["12","ghibli","Rail days, Ghibli-style"],["13","ghibli","Rail days, Ghibli-style"],
-    ["11","ghibli","Rail days, Ghibli-style"],["14","ghibli","Rail days, Ghibli-style"],["50","ghibli","Rail days, Ghibli-style"]
+    ["15","me","With Harsha, co-founder of Swiggy"],["55","me","DFCCIL Foundation Day"],["53","me","With an ex-Member, Railway Board"]
   ];
   var LENS=[
     ["30","rail","Tejas Rajdhani"],["29","rail","Rajdhani H1 corridor, on my bucket list"],["52","rail","Vande Bharat"],["51","rail","The old diesel loco"],
@@ -705,7 +702,7 @@
     ["40","city","This week's reads"],["25","city","Art I loved"],["08","city","Hyderabad"],["19","city","Gurugram"],["20","city","Gurugram"],["23","city","Noida"]
   ];
   var EXTRA=[["47","grad","Convocation, Gati Shakti Vishwavidyalaya"],["48","grad","Class of 2023"],["49","grad","Graduation, done & dusted"]];
-  var SHOW=["09","54","10","04","15","12","46","55","13","53","14","11","50"];
+  var SHOW=["09","54","04","15","46","55","53"];
   var byId={};FACES.concat(LENS,EXTRA).forEach(function(p){byId[p[0]]=p;});
   function thumb(id){return 'photos/t'+id+'.jpg';}function full(id){return 'photos/'+id+'.jpg';}
 
@@ -730,6 +727,7 @@
   // ---------------- Galleries ----------------
   function gallery(o){
     var tabs=document.getElementById(o.tabs),grid=document.getElementById(o.grid),chapter='all';
+    if(o.chapters.length<2){tabs.hidden=true;}
     tabs.innerHTML=o.chapters.map(function(c){var n=c[0]==='all'?o.items.length:o.items.filter(function(p){return p[1]===c[0];}).length;
       return n?'<button type="button" class="'+(c[0]==='all'?'on':'')+'" data-c="'+c[0]+'">'+c[1]+'<small>'+n+'</small></button>':'';}).join('');
     function render(){
@@ -743,7 +741,7 @@
     tabs.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(tabs.children,function(t){t.classList.toggle('on',t===b);});chapter=b.dataset.c;render();});
     render();
   }
-  gallery({items:FACES,tabs:'tabs',grid:'grid',chapters:[["all","All"],["me","Me"],["ghibli","Ghibli-style"]]});
+  gallery({items:FACES,tabs:'tabs',grid:'grid',chapters:[["all","All"]]});
   gallery({items:LENS,tabs:'ltabs',grid:'lgrid',polaroid:true,chapters:[["all","All"],["rail","Rails"],["sky","Skies & flights"],["city","Cities & drives"]]});
   document.querySelectorAll('.series-nav button').forEach(function(b){var g=document.getElementById('lgrid');
     b.addEventListener('click',function(){g.scrollBy({left:(+b.dataset.d)*g.clientWidth*.8,behavior:'smooth'});});});
