@@ -87,6 +87,11 @@
       radial-gradient(60% 45% at 50% 78%,#ffcf7ab0,#ff9a5a40 45%,transparent 70%),
       linear-gradient(180deg,#22092b 0%,#4a1240 28%,#8e2347 52%,#d9573a 76%,#f6a04a 100%)}
   @keyframes kenburns{from{transform:scale(1.14);filter:saturate(.8) brightness(1.08)}to{transform:scale(1);filter:none}}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(40% 30% at 20% 30%,#ff7aa833,transparent 70%),radial-gradient(35% 28% at 80% 25%,#ffb35a2e,transparent 70%);animation:drift 14s ease-in-out infinite alternate}
+  @keyframes drift{0%{transform:translate(0,0)}100%{transform:translate(-4%,3%)}}
+  .dust{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+  .dust i{position:absolute;bottom:-10px;border-radius:50%;background:#ffe3a3;box-shadow:0 0 8px 2px #ffd27a99;animation:dustup linear infinite}
+  @keyframes dustup{0%{transform:translate(0,0);opacity:0}15%{opacity:.9}100%{transform:translate(var(--x),-100vh);opacity:0}}
   .hero-stars{position:absolute;inset:0 0 40%;z-index:-1;pointer-events:none}
   .hero-stars i{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--t) ease-in-out infinite;animation-delay:var(--d)}
   .palace{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;z-index:-1;pointer-events:none}
@@ -106,12 +111,13 @@
   .petals i{position:absolute;top:-24px;width:11px;height:15px;border-radius:12px 0 12px 0;opacity:.85;animation:fall linear infinite}
   @keyframes fall{0%{transform:translate3d(0,-5vh,0) rotate(0)}100%{transform:translate3d(var(--x),110vh,0) rotate(540deg)}}
 
-  .hero-content{position:relative;z-index:4;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:150px 24px 120px}
+  .hero-content{position:relative;z-index:4;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px 24px 120px}
   .jharokha{position:relative;width:128px;aspect-ratio:4/5;margin-bottom:20px;animation:fadeUp .9s .05s both,floaty 5s 1s ease-in-out infinite}
   @media(min-width:780px){.jharokha{width:150px}}
   .jharokha .frame{position:absolute;inset:0;border-radius:999px 999px 18px 18px;padding:6px;
     background:linear-gradient(110deg,#b8892f,#f6e3a8,#c99a3b,#f6e3a8,#b8892f);background-size:220% 100%;animation:sheenbg 5s linear infinite;
-    box-shadow:0 0 0 1px #ffe6a855,0 20px 50px #00000066,0 0 60px #ffcf7a55}
+    box-shadow:0 0 0 1px #ffe6a855,0 20px 50px #00000066,0 0 60px #ffcf7a55;animation:sheenbg 5s linear infinite,halo 3.5s ease-in-out infinite}
+  @keyframes halo{0%,100%{box-shadow:0 0 0 1px #ffe6a855,0 20px 50px #00000066,0 0 40px #ffcf7a44}50%{box-shadow:0 0 0 1px #ffe6a8aa,0 20px 50px #00000066,0 0 90px #ffcf7a99}}
   .jharokha img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;border-radius:999px 999px 13px 13px;display:block;border:2px solid #fff8e8}
   .jharokha::before{content:"";position:absolute;inset:-14px;border:1px dashed #ffe1a080;border-radius:999px 999px 26px 26px}
   @keyframes sheenbg{to{background-position:220% 50%}}
@@ -342,7 +348,8 @@
   .connect-links a{display:inline-flex;align-items:center;gap:6px;font:500 13.5px var(--font-body);color:#fff;padding:10px 16px;border-radius:10px;background:#ffffff14;border:1px solid #ffffff30;cursor:pointer;transition:transform .2s,background .2s}
   .connect-links a:hover{background:#ffffff26;transform:translateY(-2px)}
   .connect-links .primary{background:linear-gradient(180deg,#f39a48,#e3802c);border-color:transparent;box-shadow:0 8px 22px #ed893666}
-  .contact-line{margin-top:18px;font-size:13px;color:#ffffffa6}
+  .contact-line{margin-top:18px;font-size:13px;line-height:1.9;color:#ffffffa6}
+  .dlink{text-decoration:underline;text-underline-offset:3px;text-decoration-color:#ffcf7a}
   .contact-line b{color:#fff;font-weight:500}
   .night-palace{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;pointer-events:none}
   .night-palace .win{fill:#ffd36b;animation:flicker 3s ease-in-out infinite;animation-delay:var(--d,0s)}
@@ -383,7 +390,7 @@
   @media(max-width:640px){
     section{padding:68px 16px}
     .nav{padding:0 16px}
-    .hero-content{padding:130px 16px 110px}
+    .hero-content{padding:96px 16px 110px}
     .hero-sub{font-size:16px}
     .showcase{margin:36px -16px 0}
     .moon{width:54px;height:54px;right:8%;top:50px}
@@ -391,9 +398,7 @@
     .toran{height:96px;top:60px}
   }
   @media (prefers-reduced-motion:reduce){
-    *,*::before,*::after{animation:none!important;transition:none!important}
-    .js .reveal,.js .stagger>*{opacity:1!important;transform:none!important}
-    .petals,.confetti,.lantern{display:none}
+    .petals i,.confetti i{animation-duration:24s!important}
   }
 
   /* ============ Print / Save as PDF ============ */
@@ -436,8 +441,8 @@
 <section class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="hero-stars" id="heroStars" aria-hidden="true"></div>
-  <div class="toran" id="toran" aria-hidden="true"></div>
   <div class="petals" id="petals" aria-hidden="true"></div>
+  <div class="dust" id="dust" aria-hidden="true"></div>
 
   <svg class="palace" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
     <path fill="#5a1a3e" opacity=".55" d="M0 220V120c160-50 320-60 520-20s360 40 520-10 280-40 400 0v130z"/>
@@ -447,7 +452,7 @@
   <div class="hero-content">
     <div class="om">卐</div>
     <div class="jharokha"><div class="frame"><img src="photo.jpg" alt="Gautam Kumar"></div></div>
-    <span class="hero-badge"><span class="live-dot"></span>Marriage biodata · shared privately</span>
+    <span class="hero-badge"><span class="live-dot"></span>Marriage biodata</span>
     <h1 class="hero-headline">
       <span class="hero-name">Namaste 🙏 I'm Gautam Kumar</span>
       <span class="hero-line">
@@ -483,9 +488,9 @@
 
     <div class="stats stagger">
       <div class="stat"><b id="age">26</b><span>Years</span></div>
-      <div class="stat"><b>5′7″</b><span>Height</span></div>
+      <div class="stat"><b>5′9″</b><span>Height</span></div>
       <div class="stat"><b>Veg</b><span>Diet</span></div>
-      <div class="stat"><b>Noida</b><span>Works here, hybrid</span></div>
+      <div class="stat"><b>PM</b><span>Product Manager, AI</span></div>
       <div class="stat"><b>Vadodara</b><span>Family home</span></div>
       <div class="stat"><b>₹10–15L</b><span>Annual income</span></div>
     </div>
@@ -493,7 +498,7 @@
     <div class="about-wrap">
       <div class="letter reveal">
         <p>Namaste! I'm Gautam. I was born in Patna, Bihar and grew up in Gujarat, a few years in Bharuch and then in Vadodara, which I still call home.</p>
-        <p>I'm a BBA graduate and currently work as a Product Manager in the AI space at PhysicsWallah, an IPO-listed company in Noida, in a hybrid setup. I started my career with an Indian Railways PSU in a government role and, after 1.5 years, moved to the corporate world to pursue my interest in technology, AI &amp; business.</p>
+        <p>I'm a BBA graduate and currently work as a Product Manager in the AI space at PhysicsWallah, an IPO-listed company, in a hybrid setup. I started my career with an Indian Railways PSU in a government role and, after 1.5 years, moved to the corporate world to pursue my interest in technology, AI &amp; business.</p>
         <p>My father is a government servant, my mother is a homemaker, and my brother is an IIT Kanpur graduate currently teaching at a reputed coaching institute in Hyderabad.</p>
         <p>Outside work, I enjoy long drives, exploring new places, watching movies and reading about business &amp; technology.</p>
         <div class="sign">— Gautam</div>
@@ -514,7 +519,7 @@
 <section id="mehendi">
   <div class="container">
     <div class="chapter-tag reveal" style="--c:#3f7a32"><span>My journey</span><b>मेरा सफ़र</b></div>
-    <h2 class="section-title reveal">Patna to Vadodara <em>to Noida.</em></h2>
+    <h2 class="section-title reveal">Patna, Vadodara <em>&amp; beyond.</em></h2>
     <p class="section-sub reveal">Where I grew up, studied and worked, so far.</p>
     <div class="timeline">
       <div class="ch reveal" style="--k:#ee7d2b;--g:linear-gradient(160deg,#ffb563,#ee7d2b)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🌅</span><span class="ch-when">1999</span></div><h3>Born in Patna, Bihar</h3><p>Where it all began.</p></div></div>
@@ -522,9 +527,9 @@
       <div class="ch reveal" style="--k:#3a6ee6;--g:linear-gradient(160deg,#78aaff,#3a6ee6)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🎒</span><span class="ch-when">School</span></div><h3>Ambe School, Manjalpur → Baroda High School, Bagikhana</h3><p>School years in Vadodara.</p></div></div>
       <div class="ch reveal" style="--k:#a24bd8;--g:linear-gradient(160deg,#c49bff,#7b45d8)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🎓</span><span class="ch-when">Class of 2023</span></div><h3>BBA, National Rail &amp; Transportation Institute, Vadodara</h3><div class="role">Now Gati Shakti Vishwavidyalaya</div><p>Received my degree at the university's first convocation. Also got IIM interview calls, and chose to start working.</p>
         <div class="ch-pics"><img data-i="47" alt=""><img data-i="48" alt=""><img data-i="49" alt=""></div></div></div>
-      <div class="ch reveal" style="--k:#2f8a4f;--g:linear-gradient(160deg,#7dd68f,#3fa257)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🚉</span><span class="ch-when">2023 – 2025</span></div><h3>Station Master, DFCCIL</h3><div class="role">Indian Railways PSU · Government role · Vadodara</div><p>1.5 years of rail days I'm proud of, before moving to tech.</p>
+      <div class="ch reveal" style="--k:#2f8a4f;--g:linear-gradient(160deg,#7dd68f,#3fa257)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🚉</span><span class="ch-when">2023 – 2025</span></div><h3>Station Master, Indian Railways PSU</h3><div class="role">Government role · Vadodara</div><p>1.5 years of rail days I'm proud of, before moving to tech.</p>
         <div class="ch-pics"><img data-i="59" alt=""><img data-i="55" alt=""><img data-i="53" alt=""><img data-i="52" alt=""><img data-i="30" alt=""></div></div></div>
-      <div class="ch now reveal" style="--k:#c2452f;--g:linear-gradient(160deg,#ff8a5c,#e0453a)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🤖</span><span class="ch-when">2025 – Now</span></div><h3>Product Manager, AI · PhysicsWallah</h3><div class="role">IPO-listed · Noida · Hybrid</div><p>Building AI and learning products used by lakhs of students. Grew Pi Lens from 0 to 4 lakh downloads, and MARKS past 1 lakh.</p>
+      <div class="ch now reveal" style="--k:#c2452f;--g:linear-gradient(160deg,#ff8a5c,#e0453a)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🤖</span><span class="ch-when">2025 – Now</span></div><h3>Product Manager, AI · PhysicsWallah</h3><div class="role">IPO-listed · Hybrid</div><p>PhysicsWallah (PW) is one of India's leading ed-tech companies, known for making quality education affordable for crores of students. I build AI and learning products there; I grew Pi Lens from 0 to 4 lakh downloads, and MARKS past 1 lakh.</p>
         <div class="ch-pics"><img data-i="09" alt=""><img data-i="15" alt=""><img data-i="54" alt=""></div></div></div>
     </div>
   </div>
@@ -574,7 +579,7 @@
           <div class="row"><dt>Date of birth</dt><dd>22 November 1999</dd></div>
           <div class="row"><dt>Place of birth</dt><dd>Patna, Bihar</dd></div>
           <div class="row"><dt>Raised in</dt><dd>Bharuch &amp; Vadodara, Gujarat</dd></div>
-          <div class="row"><dt>Height</dt><dd>5′ 7″ (170 cm)</dd></div>
+          <div class="row"><dt>Height</dt><dd>5′ 9″ (175 cm)</dd></div>
           <div class="row"><dt>Marital status</dt><dd>Never married</dd></div>
           <div class="row"><dt>Diet</dt><dd>Vegetarian</dd></div>
           <div class="row"><dt>Religion</dt><dd>Hindu</dd></div>
@@ -592,8 +597,8 @@
           <div class="row"><dt>Post-graduation</dt><dd>IIM interview calls (chose to keep working)</dd></div>
           <div class="row"><dt>Occupation</dt><dd>Product Manager, AI</dd></div>
           <div class="row"><dt>Company</dt><dd>PhysicsWallah (IPO-listed)</dd></div>
-          <div class="row"><dt>Work location</dt><dd>Noida · hybrid</dd></div>
-          <div class="row"><dt>Previously</dt><dd>Station Master, DFCCIL (Indian Railways PSU), 1.5 years</dd></div>
+          <div class="row"><dt>Work setup</dt><dd>Hybrid</dd></div>
+          <div class="row"><dt>Previously</dt><dd>Station Master, Indian Railways PSU (government role), 1.5 years</dd></div>
           <div class="row"><dt>Annual income</dt><dd>₹10–15 lakh</dd></div>
         </dl>
       </div>
@@ -602,6 +607,7 @@
         <dl>
           <div class="row"><dt>Father</dt><dd>Shri Rajkumar</dd></div>
           <div class="row"><dt>Father's occupation</dt><dd>Civil Engineer, Indian Railways (Government)</dd></div>
+          <div class="row"><dt>Father's contact</dt><dd><a data-c="dtel2" class="dlink">Tap to call</a></dd></div>
           <div class="row"><dt>Mother</dt><dd>Smt. Amola Devi</dd></div>
           <div class="row"><dt>Mother's occupation</dt><dd>Homemaker</dd></div>
           <div class="row"><dt>Brother</dt><dd>1 · B.Tech, IIT Kanpur</dd></div>
@@ -650,8 +656,10 @@
       <h2>Let's take it <em>forward :)</em></h2>
       <p>Families are most welcome to reach out directly, on call or WhatsApp.</p>
       <div class="connect-links">
-        <a class="primary" data-c="wa" target="_blank" rel="noopener">WhatsApp ↗</a>
-        <a data-c="tel">Call</a>
+        <a class="primary" data-c="wa" target="_blank" rel="noopener">WhatsApp Gautam ↗</a>
+        <a data-c="tel">Call Gautam</a>
+        <a class="primary" data-c="dwa" target="_blank" rel="noopener">WhatsApp Father ↗</a>
+        <a data-c="dtel">Call Father</a>
         <a data-c="mail">Email</a>
         <a href="https://www.instagram.com/gautam.talks/" target="_blank" rel="noopener">Instagram ↗</a>
         <a href="https://www.linkedin.com/in/gautamkumar42/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -680,26 +688,26 @@
 
 <script>
 (function(){
-  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce=false; // animations stay on for everyone
   var small=window.innerWidth<640;
 
   // ---------------- Photos ----------------
   // FACES -> Moments gallery.  LENS (no face) -> "Through my lens".  Delete a line to remove a photo.
   var FACES=[
     ["04","me","Behind the wheel (not my car 😄)"],["09","me","Suited up"],["54","me","Work days"],["46","me","Casual days"],
-    ["15","me","With Harsha, co-founder of Swiggy"],["55","me","DFCCIL Foundation Day"],["53","me","With an ex-Member, Railway Board"]
+    ["15","me","With Harsha, co-founder of Swiggy"],["55","me","Foundation Day at work"],["53","me","With an ex-Member, Railway Board"]
   ];
   var LENS=[
     ["30","rail","Tejas Rajdhani"],["29","rail","Rajdhani H1 corridor, on my bucket list"],["52","rail","Vande Bharat"],["51","rail","The old diesel loco"],
     ["35","rail","Rails & tails"],["27","rail","Destination"],["28","rail","Rails & rails"],["42","rail","18° N, 73° E"],["44","rail","Platform days"],
-    ["59","rail","Officially joining the railway legacy"],["26","rail","First day, new journey"],["56","rail","DFCCIL Foundation Day"],["58","rail","DFC Noida unit office"],["57","rail","Rail expo"],
+    ["59","rail","Officially joining the railway legacy"],["26","rail","First day, new journey"],["56","rail","Foundation Day at work"],["58","rail","Unit office"],["57","rail","Rail expo"],
     ["41","sky","My first ever flight ✈️"],["32","sky","So close to the runway"],["34","sky","Inches from takeoff"],["33","sky","Sunset serenity"],
-    ["06","sky","Up in the air"],["07","sky","How time flies"],["31","sky","Clouds over the city"],["05","sky","Noida skies"],
-    ["00","sky","Monsoon in Noida"],["01","sky","Monsoon in Noida"],["02","sky","Monsoon in Noida"],
+    ["06","sky","Up in the air"],["07","sky","How time flies"],["31","sky","Clouds over the city"],["05","sky","City skies"],
+    ["00","sky","Monsoon days"],["01","sky","Monsoon days"],["02","sky","Monsoon days"],
     ["36","city","Echoes of time, India Gate"],["39","city","Independence Day 🇮🇳"],["24","city","Chasing the sun on my cycle"],["22","city","Early-morning ride"],
     ["03","city","Weekend drive"],["43","city","Here & there"],["17","city","Bandra Kurla, Mumbai"],["18","city","IPL Qualifier, KKR vs SRH"],
     ["16","city","Ahmedabad Metro"],["21","city","G20 days, Delhi"],["37","city","Hyatt Centric"],["38","city","Delhi Metro"],
-    ["40","city","This week's reads"],["25","city","Art I loved"],["08","city","Hyderabad"],["19","city","Gurugram"],["20","city","Gurugram"],["23","city","Noida"]
+    ["40","city","This week's reads"],["25","city","Art I loved"],["08","city","Hyderabad"],["19","city","Gurugram"],["20","city","Gurugram"],["23","city","City views"]
   ];
   var EXTRA=[["47","grad","Convocation, Gati Shakti Vishwavidyalaya"],["48","grad","Class of 2023"],["49","grad","Graduation, done & dusted"]];
   var SHOW=["09","54","04","15","46","55","53"];
@@ -754,31 +762,16 @@
   });
 
   // ---------------- Ticker ----------------
-  var T=[['1999','Born in Patna'],['','Raised in Bharuch & Vadodara'],['2023','BBA, NRTI Vadodara'],['2023','Station Master, DFCCIL'],['2025','Product Manager, AI · PhysicsWallah'],['','5′7″ · Vegetarian'],['','Hindu · Yadav'],['','Family home: Vadodara'],['','Works in Noida (hybrid)'],['','Calm · Affectionate · Curious']];
+  var T=[['1999','Born in Patna'],['','Raised in Bharuch & Vadodara'],['2023','BBA, NRTI Vadodara'],['2023','Station Master, Indian Railways PSU'],['2025','Product Manager, AI · PhysicsWallah'],['','5′9″ · Vegetarian'],['','Hindu · Yadav'],['','Family home: Vadodara'],['','Calm · Affectionate · Curious']];
   var tk=T.map(function(t){return '<span class="tk">'+(t[0]?'<em>'+t[0]+'</em>':'')+t[1]+'</span><span class="tk-sep">✦</span>';}).join('');
   document.getElementById('ticker').innerHTML=tk+tk;
 
-  // ---------------- Marigold toran ----------------
-  (function(){
-    var W=1440,n=small?11:19,step=W/(n-1),sag=function(x){return 6+28*(1-Math.pow((x-W/2)/(W/2),2));},s='<svg viewBox="0 0 '+W+' 150" preserveAspectRatio="none">';
-    for(var i=0;i<n;i++){var x0=i*step,y0=sag(x0),len=(i%2?62:92)+(i%3)*12,d=(-i*.37)+'s';
-      s+='<g class="strand" style="--d:'+d+';transform-origin:'+x0+'px '+y0+'px">';
-      s+='<line x1="'+x0+'" y1="'+y0+'" x2="'+x0+'" y2="'+(y0+len)+'" stroke="#7a3b10" stroke-width="1.2"/>';
-      for(var k=14;k<len;k+=14){var col=(k/14)%2?'#ee7d2b':'#f4b324';s+='<circle cx="'+x0+'" cy="'+(y0+k)+'" r="6.5" fill="'+col+'"/><circle cx="'+x0+'" cy="'+(y0+k)+'" r="2.4" fill="#b8481a" opacity=".5"/>';}
-      if(i%2===0){s+='<path d="M'+(x0-8)+' '+(y0+len+2)+' q8 -12 16 0 q-8 16 -16 0z" fill="#3f8f3a"/>';}
-      else{s+='<g class="bell" style="--d:'+d+';transform-origin:'+x0+'px '+(y0+len)+'px"><path d="M'+(x0-7)+' '+(y0+len+15)+' q7 -20 14 0z" fill="#d8a945"/><circle cx="'+x0+'" cy="'+(y0+len+17)+'" r="2.5" fill="#b8892f"/></g>';}
-      s+='</g>';}
-    s+='<path d="M0 6 Q '+W/2+' 62 '+W+' 6" fill="none" stroke="#7a3b10" stroke-width="2"/>';
-    for(var x=0;x<=W;x+=small?30:22){var y=sag(x),c=(Math.round(x/22)%3===0)?'#f4b324':'#ee7d2b';
-      s+='<circle cx="'+x+'" cy="'+y+'" r="11" fill="'+c+'"/><circle cx="'+x+'" cy="'+y+'" r="4.5" fill="#c2561a" opacity=".55"/>';}
-    for(var j=0;j<n-1;j++){var lx=j*step+step/2,ly=sag(lx);s+='<path d="M'+lx+' '+(ly+8)+' q-8 14 0 28 q8 -14 0 -28z" fill="#2f7a32"/>';}
-    document.getElementById('toran').innerHTML=s+'</svg>';
-  })();
 
   // ---------------- Particles ----------------
   function sprinkle(el,count,make){if(!el||reduce)return;var h='';for(var i=0;i<count;i++)h+=make(i);el.innerHTML=h;}
   var PET=['#e7b8a0,#c9705c','#ffb3c7,#e0457b','#ffd76a,#ee9a1c','#ff9a7a,#c8281e'];
-  sprinkle(document.getElementById('petals'),small?7:12,function(i){return '<i style="left:'+(Math.random()*100)+'%;background:linear-gradient(135deg,'+PET[i%4]+');animation-duration:'+(10+Math.random()*10)+'s;animation-delay:-'+(Math.random()*18)+'s;--x:'+(Math.random()*120-60)+'px"></i>';});
+  sprinkle(document.getElementById('petals'),small?9:16,function(i){return '<i style="left:'+(Math.random()*100)+'%;background:linear-gradient(135deg,'+PET[i%4]+');animation-duration:'+(10+Math.random()*10)+'s;animation-delay:-'+(Math.random()*18)+'s;--x:'+(Math.random()*120-60)+'px"></i>';});
+  sprinkle(document.getElementById('dust'),small?14:26,function(){var z=(Math.random()*3+1.5).toFixed(1);return '<i style="left:'+(Math.random()*100)+'%;width:'+z+'px;height:'+z+'px;animation-duration:'+(7+Math.random()*8)+'s;animation-delay:-'+(Math.random()*12)+'s;--x:'+(Math.random()*80-40)+'px"></i>';});
   var CON=['#ee7d2b','#e0457b','#a24bd8','#3a6ee6','#f4b324','#2f9e5a'];
   sprinkle(document.getElementById('confetti'),small?16:30,function(i){return '<i style="left:'+(Math.random()*100)+'%;background:'+CON[i%6]+';animation-duration:'+(9+Math.random()*9)+'s;animation-delay:-'+(Math.random()*16)+'s;--x:'+(Math.random()*100-50)+'px"></i>';});
   function starHTML(n){var h='';for(var i=0;i<n;i++){var s=Math.random()*2+1;h+='<i style="left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;width:'+s+'px;height:'+s+'px;--t:'+(2+Math.random()*3)+'s;--d:-'+(Math.random()*4)+'s"></i>';}return h;}
@@ -814,7 +807,11 @@
   document.querySelector('[data-c="tel"]').href='tel:+91'+p;
   document.querySelector('[data-c="mail"]').href='mailto:'+e;
   document.querySelector('[data-c="wa"]').href='https://wa.me/91'+p+'?text='+encodeURIComponent('Namaste Gautam ji, we saw your biodata and would like to connect.');
-  document.getElementById('contactLine').innerHTML='📞 <b>+91 '+p.slice(0,5)+' '+p.slice(5)+'</b> &nbsp;·&nbsp; ✉️ <b>'+e+'</b>';
+  var dp=['97240','98256'].join(''),fmt=function(x){return '+91 '+x.slice(0,5)+' '+x.slice(5);};
+  document.querySelector('[data-c="dtel"]').href='tel:+91'+dp;
+  var d2=document.querySelector('[data-c="dtel2"]');d2.href='tel:+91'+dp;d2.textContent=fmt(dp);
+  document.querySelector('[data-c="dwa"]').href='https://wa.me/91'+dp+'?text='+encodeURIComponent('Namaste Rajkumar ji, we saw Gautam\'s biodata and would like to connect.');
+  document.getElementById('contactLine').innerHTML='Gautam: <b>'+fmt(p)+'</b><br>Father, Shri Rajkumar: <b>'+fmt(dp)+'</b><br>✉️ <b>'+e+'</b>';
 
   // ---------------- Share ----------------
   document.getElementById('share').addEventListener('click',function(){var url=location.href.split('#')[0],btn=this;
