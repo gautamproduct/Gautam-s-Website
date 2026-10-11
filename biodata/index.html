@@ -819,12 +819,12 @@
   // ---------------- Photos ----------------
   // FACES -> Moments gallery. LENS/EXTRA are only used in the journey. Delete a line to remove a photo.
   var FACES=[
-    ["04","me","Behind the wheel (not my car 😄)"],["46","me","Casual days"],
+    ["04","me","Behind the wheel (not my car 😄)"],["46","me","Random me"],["45","me","Random me"],
     ["15","me","With Harsha, co-founder of Swiggy"],["55","me","Foundation Day at work"]
   ];
   var LENS=[["30","rail","Tejas Rajdhani"],["52","rail","Vande Bharat"],["59","rail","Officially joining the railway legacy"]];
   var EXTRA=[["47","grad","Convocation, Gati Shakti Vishwavidyalaya"],["48","grad","Class of 2023"],["49","grad","Graduation, done & dusted"]];
-  var SHOW=["04","15","46","55"];
+  var SHOW=["46","04","45","15","55"];
   var byId={};FACES.concat(LENS,EXTRA).forEach(function(p){byId[p[0]]=p;});
   function thumb(id){return 'photos/t'+id+'.jpg';}function full(id){return 'photos/'+id+'.jpg';}
 
