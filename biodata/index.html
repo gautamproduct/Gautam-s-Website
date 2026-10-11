@@ -356,12 +356,12 @@
   @media(min-width:820px){.talk-grid .yt-card:not(.feat) b{font-size:17px}.talk-grid .yt-card:not(.feat) span{font-size:12px}}
   .yt-thumb::after{display:none}
   .yt-thumb::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,#2b0f2e55)}
-  .yt-thumb .play{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:#fff;box-shadow:0 8px 24px #0006;z-index:1;transition:transform .25s}
-  .yt-thumb .play::before{content:"";position:absolute;left:23px;top:18px;border-style:solid;border-width:11px 0 11px 17px;border-color:transparent transparent transparent #e0457b}
-  .yt-thumb .play::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid #ffffffaa;animation:ripple 2s ease-out infinite}
-  @keyframes ripple{0%{transform:scale(.85);opacity:1}100%{transform:scale(1.5);opacity:0}}
-  .yt-card:not(.feat) .play{width:44px;height:44px;margin:-22px 0 0 -22px}.yt-card:not(.feat) .play::before{left:17px;top:13px;border-width:9px 0 9px 14px}
-  .yt-card:hover .play{transform:scale(1.12)}
+  .yt-thumb .play{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 8px;border-radius:999px;background:#fffffff0;color:#2b0f2e;font:600 13px var(--font-body);box-shadow:0 6px 18px #0005;z-index:1;transition:transform .25s}
+  .yt-thumb .play::before{content:"";width:26px;height:26px;border-radius:50%;background:#e0457b url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l8 5-8 5z' fill='white'/%3E%3C/svg%3E") center/16px no-repeat;animation:ripple2 2s ease-out infinite}
+  .yt-thumb .play::after{content:"Watch"}
+  @keyframes ripple2{0%{box-shadow:0 0 0 0 #e0457b88}100%{box-shadow:0 0 0 10px #e0457b00}}
+  .yt-card:not(.feat) .play{padding:5px 11px 5px 6px;font-size:12px}.yt-card:not(.feat) .play::before{width:22px;height:22px;background-size:14px}
+  .yt-card:hover .play{transform:scale(1.06)}
   .yt-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:14px;overflow-x:auto;scrollbar-width:none;max-width:1040px;margin:0 auto;padding:4px 2px 10px}
   .yt-row::-webkit-scrollbar{display:none}
   .yt-card{background:#fff;border:1px solid var(--border-strong);border-radius:18px;padding:10px 10px 14px;transition:transform .25s,box-shadow .25s;cursor:pointer;text-align:left;font:inherit;color:inherit}
@@ -696,6 +696,10 @@
         <div class="mt"><span>💍</span><b>Never married</b><i>Marital status</i></div>
         <div class="mt"><span>🪔</span><b>Yadav</b><i>Community</i></div>
         <div class="mt"><span>🌿</span><b>Yadav · Yadav</b><i>Gotra (paternal · maternal)</i></div>
+        <div class="mt"><span>📍</span><b>Patna, Bihar</b><i>Place of birth</i></div>
+        <div class="mt"><span>🏡</span><b>Vadodara, Gujarat</b><i>Family home</i></div>
+        <div class="mt"><span>🎓</span><b>BBA</b><i>NRTI (Gati Shakti Vishwavidyalaya)</i></div>
+        <div class="mt"><span>👨‍👦</span><b>1 brother</b><i>No sisters</i></div>
       </div>
       <div class="tree-label">My family <span class="hi">· मेरा परिवार</span></div>
       <div class="tree stagger">
