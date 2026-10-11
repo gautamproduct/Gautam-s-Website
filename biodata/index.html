@@ -388,12 +388,33 @@
   .details{display:grid;grid-template-columns:1fr;gap:14px;max-width:1040px;margin:40px auto 0;position:relative}
   @media(min-width:900px){.details{grid-template-columns:repeat(3,1fr)}.details.two{grid-template-columns:1fr 1fr}}
   .details-wrap{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;max-width:1040px;margin:34px auto 0;position:relative}
-  @media(min-width:900px){.details-wrap{grid-template-columns:230px 1fr}}
+  @media(min-width:900px){.details-wrap{grid-template-columns:220px 1fr;gap:32px}}
   .details-wrap .details{margin:0}
-  .toon{justify-self:center;width:180px;text-align:center;animation:floaty 5s ease-in-out infinite}
+  .toon{justify-self:center;width:140px;text-align:center;animation:floaty 5s ease-in-out infinite}
   @media(min-width:900px){.toon{width:220px}}
   .toon img{width:100%;aspect-ratio:3/5;object-fit:cover;object-position:50% 10%;border-radius:120px 120px 22px 22px;border:3px solid #ffcf7a;box-shadow:0 0 0 6px #ffffff14,0 24px 50px #00000055}
   .toon figcaption{margin-top:10px;font-family:var(--font-heading);font-style:italic;font-size:20px;color:#ffcf7a}
+  .fam{position:relative}
+  .me-tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(min-width:900px){.me-tiles{grid-template-columns:repeat(4,1fr)}}
+  .mt{background:#ffffff14;border:1px solid #ffffff26;border-radius:18px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:2px;transition:transform .25s,background .25s;backdrop-filter:blur(8px)}
+  .mt:hover{transform:translateY(-4px) rotate(-1deg);background:#ffffff22}
+  .mt span{font-size:22px;animation:bob2 3.6s ease-in-out infinite}
+  .mt:nth-child(2) span{animation-delay:.4s}.mt:nth-child(3) span{animation-delay:.8s}.mt:nth-child(4) span{animation-delay:1.2s}
+  .mt b{font-family:var(--font-heading);font-weight:400;font-size:21px;color:#fff;line-height:1.15;margin-top:4px}
+  .mt i{font-style:normal;font-size:11.5px;color:#ffffffa6;letter-spacing:.02em}
+  .tree-label{margin:26px 0 12px;font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#ffcf7a}
+  .tree-label .hi{letter-spacing:0;text-transform:none;font-size:14px;color:#ffffffa6}
+  .tree{position:relative;display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:700px){.tree{grid-template-columns:repeat(3,1fr)}.tree::before{content:"";position:absolute;left:16%;right:16%;top:38px;height:2px;background:linear-gradient(90deg,#ffcf7a00,#ffcf7a99,#ffcf7a00)}}
+  .member{position:relative;background:#ffffff12;border:1px solid #ffffff26;border-radius:22px;padding:18px 16px;text-align:center;backdrop-filter:blur(10px);transition:transform .3s,background .3s}
+  .member:hover{transform:translateY(-6px);background:#ffffff1f}
+  .av{width:60px;height:60px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:radial-gradient(circle at 35% 30%,#fff3c4,#e9bd5a);box-shadow:0 0 0 4px #ffffff1f,0 10px 24px #0005;position:relative;z-index:1}
+  .av.logo{background:#fff}
+  .av.logo img{width:72%;height:72%;object-fit:contain}
+  .member em{display:inline-block;font-style:normal;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ffcf7a;background:#ffcf7a1a;border:1px solid #ffcf7a40;border-radius:999px;padding:2px 10px}
+  .member b{display:block;font-family:var(--font-heading);font-weight:400;font-size:22px;color:#fff;margin-top:8px;line-height:1.15}
+  .member p{font-size:13px;color:#ffffffb3;margin-top:4px;line-height:1.45}
   .dcard{background:#ffffff12;border:1px solid #ffffff26;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:var(--radius-card);padding:22px 22px 12px;transition:transform .25s,background .25s}
   .dcard:hover{transform:translateY(-4px);background:#ffffff1c}
   .dcard h3{font-family:var(--font-heading);font-weight:400;font-size:26px;color:#fff;display:flex;align-items:center;gap:10px}
@@ -669,27 +690,20 @@
 
     <div class="details-wrap">
     <figure class="toon reveal"><img src="photos/cartoon.jpg" alt="Cartoon illustration of Gautam"><figcaption>Cartoon me 😄</figcaption></figure>
-    <div class="details two stagger">
-      <div class="dcard">
-        <h3><span class="gap-ico" style="background:linear-gradient(160deg,#ffd76a,#ee9a1c);--glow:#ee9a1c55"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>Personal<small>व्यक्तिगत</small></h3>
-        <dl>
-          <div class="row"><dt>Full name</dt><dd>Gautam Kumar</dd></div>
-          <div class="row"><dt>Date of birth</dt><dd>22 November 1999</dd></div>
-          <div class="row"><dt>Marital status</dt><dd>Never married</dd></div>
-          <div class="row"><dt>Community</dt><dd>Yadav</dd></div>
-          <div class="row"><dt>Gotra</dt><dd>Paternal: Yadav · Maternal: Yadav</dd></div>
-        </dl>
+    <div class="fam">
+      <div class="me-tiles stagger">
+        <div class="mt"><span>🎂</span><b>22 Nov 1999</b><i>Date of birth</i></div>
+        <div class="mt"><span>💍</span><b>Never married</b><i>Marital status</i></div>
+        <div class="mt"><span>🪔</span><b>Yadav</b><i>Community</i></div>
+        <div class="mt"><span>🌿</span><b>Yadav · Yadav</b><i>Gotra (paternal · maternal)</i></div>
       </div>
-      <div class="dcard">
-        <h3><span class="gap-ico" style="background:linear-gradient(160deg,#ff8fb1,#e0457b);--glow:#e0457b55"><svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></svg></span>Family<small>परिवार</small></h3>
-        <dl>
-          <div class="row"><dt>Father</dt><dd>Shri Rajkumar · Civil Engineer, Indian Railways (Govt.)</dd></div>
-          <div class="row"><dt>Mother</dt><dd>Smt. Amola Devi · Homemaker</dd></div>
-          <div class="row"><dt>Brother</dt><dd>IIT Kanpur graduate · Teaches at a reputed coaching institute, Hyderabad</dd></div>
-          <div class="row"><dt>Sisters</dt><dd>None</dd></div>
-          <div class="row"><dt>Family home</dt><dd>Vadodara, Gujarat</dd></div>
-        </dl>
+      <div class="tree-label">My family <span class="hi">· मेरा परिवार</span></div>
+      <div class="tree stagger">
+        <div class="member"><div class="av logo"><img src="../assets/logos/indianrailways.png" alt="Indian Railways"></div><em>Father</em><b>Shri Rajkumar</b><p>Civil Engineer, Indian Railways (Govt.)</p></div>
+        <div class="member"><div class="av">🏡</div><em>Mother</em><b>Smt. Amola Devi</b><p>Homemaker</p></div>
+        <div class="member"><div class="av logo"><img src="iitk.png" alt="IIT Kanpur"></div><em>Brother</em><b>IIT Kanpur graduate</b><p>Teaches at a reputed coaching institute, Hyderabad</p></div>
       </div>
+    </div>
     </div>
     </div>
   </div>
