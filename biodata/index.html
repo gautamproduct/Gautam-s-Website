@@ -313,7 +313,7 @@
   }
 
   /* ============ SANGEET (photos + videos) ============ */
-  #sangeet{--c:#e0457b;background:linear-gradient(180deg,#f7efe1 0%,#ffe9ef 18%,#fbe1f1 50%,#efe3ff 82%,#f3e9ff 100%)}
+  #sangeet{--c:#e0457b;padding-top:60px;padding-bottom:40px;background:linear-gradient(180deg,var(--cream) 0%,#ffeef3 30%,#fbe6f2 65%,var(--cream) 100%)}
   .confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}
   .confetti i{position:absolute;top:-20px;width:8px;height:12px;border-radius:2px;opacity:.7;animation:fall linear infinite}
   .showcase{overflow:hidden;margin:44px -24px 0;padding:14px 0 26px;
@@ -356,12 +356,13 @@
   .series .polaroid{width:auto;scroll-snap-align:start}
   .series .polaroid span{white-space:normal;line-height:1.2;min-height:44px;display:flex;align-items:center;justify-content:center}
   .talk-head{text-align:center;margin:72px auto 22px}
+  .talk-head.night{margin-top:10px}.talk-head.night h3{color:#fff}.talk-head.night h3 em{color:#ffd59a}.talk-head.night p{color:#ffffffb3}
   .talk-head h3{font-family:var(--font-heading);font-weight:400;font-size:clamp(2rem,5vw,2.8rem);color:var(--text);line-height:1.1}
   .talk-head h3 em{color:var(--c)}
   .talk-head p{font-size:15px;color:var(--text-faint);margin-top:6px}
   .talk-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:1000px;margin:0 auto}
   @media(min-width:820px){.talk-grid{grid-template-columns:1.5fr 1fr;align-items:center}}
-  .yt-card.feat{padding:12px 12px 18px;box-shadow:0 0 0 3px #fff,0 0 0 5px #e0457b55,0 30px 60px -20px #e0457b66;animation:glowc 3.5s ease-in-out infinite}
+  .yt-card.feat{padding:12px 12px 18px;box-shadow:0 0 0 3px #ffffff22,0 0 0 5px #ffd59a55,0 30px 60px -20px #e0457b66;animation:glowc 3.5s ease-in-out infinite}
   @keyframes glowc{50%{box-shadow:0 0 0 3px #fff,0 0 0 7px #e0457b33,0 30px 70px -18px #e0457b88}}
   .talk-grid .yt-card{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch}
   .yt-card.feat .yt-thumb{aspect-ratio:16/10}
@@ -387,7 +388,7 @@
   .yt-card span{display:block;font-size:12.5px;color:var(--text-faint);padding:4px 4px 0}
 
   /* ============ PHERAS (details) ============ */
-  #pheras{--c:#ffcf7a;color:#fff;background:linear-gradient(180deg,#f3e9ff 0%,#c75a6b 10%,#8e2347 30%,#6b1d3a 60%,#3d1236 100%)}
+  #pheras{--c:#ffcf7a;color:#fff;background:linear-gradient(180deg,#f7efe1 0%,#c75a6b 10%,#8e2347 30%,#6b1d3a 60%,#3d1236 100%)}
   #pheras .chapter-tag span{color:#ffffffb3}
   #pheras .section-title{color:#fff}
   #pheras .section-sub{color:#ffffffbf}
@@ -617,7 +618,7 @@
   <div class="nav-inner">
     <a href="#top" class="nav-logo">kumargautam<small>biodata</small></a>
     <div class="nav-links">
-      <a href="#haldi">About</a><a href="#mehendi">Journey</a><a href="#sangeet">Moments</a><a href="#pheras">Family</a><a href="#reception">Connect</a>
+      <a href="#sangeet">Moments</a><a href="#haldi">About</a><a href="#mehendi">Journey</a><a href="#pheras">Family</a><a href="#reception">Connect</a>
     </div>
     <a href="#reception" class="nav-cta">Let's talk</a>
   </div>
@@ -656,13 +657,28 @@
     <div class="hero-ctas">
       <a href="#reception" class="btn-hero">Get in touch</a>
       <button class="btn-ghost" id="share" type="button"><span>Share with family</span></button>
-      <button class="btn-ghost" type="button" onclick="window.print()">Save as PDF</button>
     </div>
   </div>
   <div class="scroll-hint" aria-hidden="true">Scroll<i></i></div>
 </section>
 
 <div class="ticker" aria-label="Quick facts"><div class="ticker-track" id="ticker"></div></div>
+
+<!-- =================== SANGEET: moments =================== -->
+<section id="sangeet">
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+  <div class="container">
+    <div class="chapter-tag reveal" style="--c:#e0457b"><span>Moments</span><b>कुछ पल</b></div>
+    <h2 class="section-title reveal">A little peek <em>into my life.</em></h2>
+    <p class="section-sub reveal">Tap a photo to see it bigger.</p>
+  </div>
+  <div class="showcase reveal"><div class="showcase-track" id="showcase"></div></div>
+  <div class="container">
+
+
+  </div>
+</section>
 
 <!-- =================== HALDI: about =================== -->
 <section id="haldi">
@@ -729,26 +745,6 @@
   </div>
 </section>
 
-<!-- =================== SANGEET: moments =================== -->
-<section id="sangeet">
-  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
-  <div class="confetti" id="confetti" aria-hidden="true"></div>
-  <div class="container">
-    <div class="chapter-tag reveal" style="--c:#e0457b"><span>Moments</span><b>कुछ पल</b></div>
-    <h2 class="section-title reveal">A little peek <em>into my life.</em></h2>
-    <p class="section-sub reveal">Tap a photo to see it bigger.</p>
-  </div>
-  <div class="showcase reveal"><div class="showcase-track" id="showcase"></div></div>
-  <div class="container">
-
-
-    <div class="talk-head reveal"><h3>See how <em>I talk</em> 🎙️</h3><p>Me, on camera, explaining things I've built.</p></div>
-    <div class="talk-grid stagger">
-      <button class="yt-card feat" data-id="ohrhN4VyxGY" type="button"><div class="yt-thumb"><span class="play"></span></div><b>A quick how-to, on camera</b><span>Walking students through an app I built</span></button>
-      <button class="yt-card" data-id="oIdbqAX5uFI" type="button"><div class="yt-thumb"><span class="play"></span></div><b>A product walkthrough</b><span>Live polls for teachers</span></button>
-    </div>
-  </div>
-</section>
 
 <!-- =================== PHERAS: details =================== -->
 <section id="pheras">
@@ -786,6 +782,13 @@
   <div class="stars" id="stars" aria-hidden="true"></div>
   <div class="moon" aria-hidden="true"></div>
   <div class="container">
+    <div class="talk-head night reveal"><h3>See how <em>I talk</em> 🎙️</h3><p>Me, on camera, explaining things I've built.</p></div>
+    <div class="talk-grid stagger">
+      <button class="yt-card feat" data-id="ohrhN4VyxGY" type="button"><div class="yt-thumb"><span class="play"></span></div><b>A quick how-to, on camera</b><span>Walking students through an app I built</span></button>
+      <button class="yt-card" data-id="oIdbqAX5uFI" type="button"><div class="yt-thumb"><span class="play"></span></div><b>A product walkthrough</b><span>Live polls for teachers</span></button>
+    </div>
+
+    <div style="height:70px"></div>
     <div class="chapter-tag reveal" style="--c:#ffd59a"><span>Connect</span><b>संपर्क</b></div>
     <h2 class="section-title reveal">Thank you for <em>visiting.</em></h2>
 
