@@ -287,10 +287,11 @@
   .ch-card h3{font-family:var(--font-heading);font-weight:400;font-size:23px;color:var(--text);line-height:1.15}
   .ch-card .role{font-size:12.5px;font-weight:500;color:var(--text-muted);margin:2px 0 6px}
   .ch-card p{font-size:14px;color:#5a5550cc}
-  .ch-pics{display:flex;gap:8px;margin-top:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  .ch-pics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
   .ch-pics::-webkit-scrollbar{display:none}
-  .ch-pics img{flex:none;width:76px;height:94px;object-fit:cover;border-radius:10px;cursor:zoom-in;box-shadow:0 6px 14px #0000001f;transition:transform .3s}
-  .ch-pics img:hover{transform:translateY(-3px) rotate(-2deg)}
+  .ch-pics img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px;cursor:zoom-in;box-shadow:0 10px 22px #0000002a;transition:transform .35s,box-shadow .35s}
+  .ch-pics img:hover{box-shadow:0 18px 34px #00000040}
+  .ch-pics img:hover{transform:translateY(-5px) scale(1.04) rotate(-1.5deg)}
   .ch.now .ch-card{background:#fff;box-shadow:0 0 0 2px #fff,0 18px 44px #c2452f40}
   @media(max-width:640px){
     .timeline::before{left:10px}
@@ -346,7 +347,7 @@
   .talk-head h3 em{color:var(--c)}
   .talk-head p{font-size:15px;color:var(--text-faint);margin-top:6px}
   .talk-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:1000px;margin:0 auto}
-  @media(min-width:820px){.talk-grid{grid-template-columns:1.7fr 1fr;grid-template-rows:auto auto}.talk-grid .feat{grid-row:span 2}}
+  @media(min-width:820px){.talk-grid{grid-template-columns:1.5fr 1fr;align-items:center}}
   .yt-card.feat{padding:12px 12px 18px;box-shadow:0 0 0 3px #fff,0 0 0 5px #e0457b55,0 30px 60px -20px #e0457b66;animation:glowc 3.5s ease-in-out infinite}
   @keyframes glowc{50%{box-shadow:0 0 0 3px #fff,0 0 0 7px #e0457b33,0 30px 70px -18px #e0457b88}}
   .talk-grid .yt-card{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch}
@@ -729,7 +730,6 @@
     <div class="talk-grid stagger">
       <button class="yt-card feat" data-id="ohrhN4VyxGY" type="button"><div class="yt-thumb"><span class="play"></span></div><b>A quick how-to, on camera</b><span>Walking students through an app I built</span></button>
       <button class="yt-card" data-id="oIdbqAX5uFI" type="button"><div class="yt-thumb"><span class="play"></span></div><b>A product walkthrough</b><span>Live polls for teachers</span></button>
-      <button class="yt-card" data-id="GGSH2z09Ewg" type="button"><div class="yt-thumb"><span class="play"></span></div><b>Launch video</b><span>Pi Lens app goes live</span></button>
     </div>
   </div>
 </section>
@@ -955,7 +955,7 @@
 
   // ---------------- YouTube (load on tap) ----------------
   document.querySelectorAll('.yt-card').forEach(function(b){var id=b.dataset.id,th=b.querySelector('.yt-thumb');th.style.backgroundImage='url(https://i.ytimg.com/vi/'+id+'/'+(b.classList.contains('feat')?'maxresdefault':'hqdefault')+'.jpg),url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)';
-    b.addEventListener('click',function(){th.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Video"></iframe>';},{once:true});});
+    b.addEventListener('click',function(){th.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1&origin='+encodeURIComponent(location.origin)+'" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen title="Video"></iframe>';},{once:true});});
 
   // ---------------- Age ----------------
   var d=new Date(1999,10,22),n=new Date(),a=n.getFullYear()-d.getFullYear();if(n.getMonth()<d.getMonth()||(n.getMonth()===d.getMonth()&&n.getDate()<d.getDate()))a--;var ageEl=document.getElementById('age');ageEl.textContent=a;ageEl.dataset.v=a;
