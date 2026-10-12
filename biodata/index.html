@@ -645,6 +645,10 @@
   @media (prefers-reduced-motion:reduce){.curtain{display:none}.js .stats.stagger>.stat{opacity:1;transform:none}.section-title em{background-size:100% 28%}.tree::before{transform:none}.showcase{transform:none}.map-plane{display:none}}
   .pinfo .pname{font-style:normal;font-weight:500;opacity:.75}
   .pav.ini.mom{background:linear-gradient(160deg,#ff9db8,#c2335f)}
+  .hero-sub .pm-co{display:inline-flex;align-items:center;gap:7px;margin-left:6px;font-weight:600;color:#fff;text-decoration:none;border-bottom:1px solid #ffffff66;vertical-align:middle;transition:border-color .2s,transform .2s}
+  .hero-sub .pm-co:hover{border-bottom-color:#fff;transform:translateY(-1px)}
+  .hero-sub .pm-co img{width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 3px 10px #0000004d}
+  @media(max-width:640px){.hero-sub .pm-co img{width:22px;height:22px}}
 </style>
 </head>
 <body>
@@ -691,7 +695,7 @@
         <span class="hero-squircle sq-mehendi" style="--i:8" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></svg></span>
       </span>
     </h1>
-    <p class="hero-sub"><b>Product Manager, AI</b> at PhysicsWallah</p>
+    <p class="hero-sub"><b>Product Manager, AI</b> at <a class="pm-co" href="https://www.pw.live/" target="_blank" rel="noopener" title="Visit PhysicsWallah"><img src="../assets/logos/pw.png" alt="PhysicsWallah logo" fetchpriority="high">PhysicsWallah</a></p>
     <div class="hero-ctas">
       <a href="#reception" class="btn-hero">Get in touch</a>
       <button class="btn-ghost" id="share" type="button"><span>Share with family</span></button>
