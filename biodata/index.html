@@ -607,6 +607,41 @@
     #reception{padding-bottom:10px!important}
     footer{background:#fff}footer p{color:#666}
   }
+
+  /* ===== Next-level motion ===== */
+  /* 1 Opening curtain */
+  .curtain{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;pointer-events:none}
+  .curtain::before,.curtain::after{content:"";position:absolute;top:0;bottom:0;width:50.5%;background:linear-gradient(160deg,#5a1a3e,#2a0f2a);transition:transform .9s cubic-bezier(.7,0,.2,1)}
+  .curtain::before{left:0}.curtain::after{right:0}
+  .curtain .c-in{position:relative;z-index:1;text-align:center;color:#ffd59a;transition:opacity .4s,transform .6s}
+  .curtain .c-om{font-size:54px;line-height:1;animation:cpulse 1s ease-in-out infinite;text-shadow:0 0 24px #ffcf7a99}
+  .curtain .c-name{margin-top:10px;font-family:var(--font-heading,serif);font-size:30px;letter-spacing:.02em;color:#fff4e0;opacity:0;animation:cname .6s .15s forwards}
+  @keyframes cpulse{50%{transform:scale(1.08)}} @keyframes cname{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .curtain.open::before{transform:translateX(-101%)}.curtain.open::after{transform:translateX(101%)}
+  .curtain.open .c-in{opacity:0;transform:scale(.92)}
+  /* 2 3D photo frame */
+  .jharokha{perspective:800px}.jharokha .frame{transition:transform .25s ease-out;transform-style:preserve-3d;will-change:transform}
+  /* 4 Tiles flip */
+  .js .stats.stagger{perspective:900px}
+  .js .stats.stagger>.stat{opacity:0;transform:rotateY(-90deg);transform-origin:left center;transition:opacity .5s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .js .stats.stagger.in>.stat{opacity:1;transform:none}
+  .js .stats.stagger.in>.stat:nth-child(2){transition-delay:.08s}.js .stats.stagger.in>.stat:nth-child(3){transition-delay:.16s}.js .stats.stagger.in>.stat:nth-child(4){transition-delay:.24s}.js .stats.stagger.in>.stat:nth-child(5){transition-delay:.32s}.js .stats.stagger.in>.stat:nth-child(6){transition-delay:.4s}
+  /* 5 Photo strip lean */
+  .showcase{transform:skewX(var(--sk,0deg));transition:transform .35s ease-out}
+  /* 6 Petal burst */
+  .burst{position:fixed;width:10px;height:14px;border-radius:60% 0 60% 0;pointer-events:none;z-index:9998;animation:burst .9s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes burst{0%{transform:translate(0,0) rotate(0) scale(.6);opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(1);opacity:0}}
+  /* 8 Marker sweep under highlighted words */
+  .section-title em{background-image:linear-gradient(90deg,#ffcf7a88,#ff9db888);background-repeat:no-repeat;background-position:0 92%;background-size:0% 28%;transition:background-size 1s cubic-bezier(.2,.8,.2,1) .35s;padding:0 .06em}
+  .section-title.in em{background-size:100% 28%}
+  /* 9 Polaroids drop in */
+  @keyframes pdrop{0%{opacity:0;transform:translateY(-90px) rotate(-12deg)}70%{opacity:1}100%{opacity:1;transform:translateY(0) rotate(0)}}
+  .showcase.drop .polaroid{animation:sway2 5s ease-in-out infinite,pdrop .9s cubic-bezier(.34,1.56,.64,1) backwards;animation-delay:0s,calc(var(--pi,0)*.09s)}
+  .showcase.drop .polaroid:nth-child(even){animation-delay:-2.5s,calc(var(--pi,0)*.09s)}
+  /* 10 Family line draws itself */
+  @media(min-width:700px){.tree::before{transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,.8,.2,1) .2s}.tree.in::before{transform:scaleX(1)}}
+  .map-plane{pointer-events:none}
+  @media (prefers-reduced-motion:reduce){.curtain{display:none}.js .stats.stagger>.stat{opacity:1;transform:none}.section-title em{background-size:100% 28%}.tree::before{transform:none}.showcase{transform:none}.map-plane{display:none}}
 </style>
 </head>
 <body>
@@ -991,6 +1026,64 @@
   document.getElementById('share').addEventListener('click',function(){var url=location.href.split('#')[0],btn=this;
     if(navigator.share){navigator.share({title:'Gautam Kumar · Biodata',url:url}).catch(function(){});}
     else if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){btn.querySelector('span').textContent='Link copied ✓';setTimeout(function(){btn.querySelector('span').textContent='Share with family';},2000);});}});
+})();
+
+/* ===== Next-level motion ===== */
+(function(){
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce)return;
+  /* 1 Opening curtain (once per visit) */
+  var seen=false;try{seen=sessionStorage.getItem('curtain')==='1';sessionStorage.setItem('curtain','1');}catch(e){}
+  if(!seen){var c=document.createElement('div');c.className='curtain';c.setAttribute('aria-hidden','true');
+    c.innerHTML='<div class="c-in"><div class="c-om">卐</div><div class="c-name">Gautam Kumar</div></div>';
+    document.body.appendChild(c);
+    setTimeout(function(){c.classList.add('open');},850);setTimeout(function(){c.remove();},1900);}
+  /* 2 3D photo frame: mouse on laptops, tilt on Android */
+  var fr=document.querySelector('.jharokha .frame'),hero=document.getElementById('top');
+  if(fr&&hero){
+    var set=function(x,y){fr.style.transform='rotateY('+(x*14).toFixed(2)+'deg) rotateX('+(-y*12).toFixed(2)+'deg)';};
+    if(matchMedia('(hover:hover)').matches){hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();set((e.clientX-r.left)/r.width-.5,(e.clientY-r.top)/r.height-.5);});hero.addEventListener('pointerleave',function(){fr.style.transform='';});}
+    else if(window.DeviceOrientationEvent&&typeof DeviceOrientationEvent.requestPermission!=='function'){window.addEventListener('deviceorientation',function(e){if(e.gamma==null)return;set(Math.max(-1,Math.min(1,e.gamma/30))/2,Math.max(-1,Math.min(1,(e.beta-45)/30))/2);},{passive:true});}
+  }
+  /* 3 Plane flies Patna -> Vadodara */
+  var route=document.querySelector('#mapCard .route'),svg=document.querySelector('#mapCard svg');
+  if(route&&svg){var NS='http://www.w3.org/2000/svg',g=document.createElementNS(NS,'g');g.setAttribute('class','map-plane');
+    g.innerHTML='<path d="M-10 -1 L6 -1 L12 0 L6 1 L-10 1 Z M-2 -1 L-6 -9 L-2 -9 L4 -1 Z M-2 1 L-6 9 L-2 9 L4 1 Z M-10 -1 L-12 -5 L-9 -5 L-6 -1 Z M-10 1 L-12 5 L-9 5 L-6 1 Z" fill="#c2335f" stroke="#fff" stroke-width=".8"/>';
+    var am=document.createElementNS(NS,'animateMotion');am.setAttribute('dur','4.5s');am.setAttribute('repeatCount','indefinite');am.setAttribute('rotate','auto');am.setAttribute('keyPoints','0;1');am.setAttribute('keyTimes','0;1');am.setAttribute('calcMode','spline');am.setAttribute('keySplines','.45 0 .55 1');am.setAttribute('path',route.getAttribute('d'));
+    g.appendChild(am);svg.appendChild(g);}
+  /* 5 Photo strip speeds up & leans on fast scroll */
+  var sc=document.querySelector('.showcase'),tr=document.querySelector('.showcase-track'),ly=scrollY,lt=performance.now(),idle;
+  if(sc&&tr){addEventListener('scroll',function(){var t=performance.now(),v=(scrollY-ly)/Math.max(16,t-lt);ly=scrollY;lt=t;
+      var sk=Math.max(-8,Math.min(8,v*-6));sc.style.setProperty('--sk',sk.toFixed(2)+'deg');
+      var a=tr.getAnimations?tr.getAnimations()[0]:null;if(a)a.playbackRate=1+Math.min(4,Math.abs(v)*3);
+      clearTimeout(idle);idle=setTimeout(function(){sc.style.setProperty('--sk','0deg');if(a)a.playbackRate=1;},140);},{passive:true});
+    /* 9 polaroids drop in when strip first appears */
+    [].forEach.call(sc.querySelectorAll('.polaroid'),function(el,i){el.style.setProperty('--pi',i%10);});
+    if('IntersectionObserver' in window){var po=new IntersectionObserver(function(en){if(en[0].isIntersecting){sc.classList.add('drop');po.disconnect();}},{threshold:.2});po.observe(sc);}}
+  /* 6 Petal burst on WhatsApp / Call / Get in touch */
+  var cols=['#ff9db8','#ffcf7a','#e0457b','#ffffff','#f7a25c'];
+  document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('.ib,.btn-hero');if(!t)return;
+    for(var i=0;i<16;i++){var d=document.createElement('span');d.className='burst';var a=Math.random()*Math.PI*2,r=50+Math.random()*70;
+      d.style.left=e.clientX+'px';d.style.top=e.clientY+'px';d.style.background=cols[i%cols.length];
+      d.style.setProperty('--dx',Math.cos(a)*r+'px');d.style.setProperty('--dy',Math.sin(a)*r+'px');d.style.setProperty('--r',(Math.random()*540-270)+'deg');
+      document.body.appendChild(d);setTimeout(function(n){return function(){n.remove();};}(d),950);}});
+})();
+
+/* Auto-scroll once at the start if the visitor hasn't scrolled */
+(function(){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(location.hash&&location.hash!=='#top')return;
+  var done=false,timer,evs=['scroll','wheel','touchstart','keydown','pointerdown'];
+  function cancel(){done=true;clearTimeout(timer);evs.forEach(function(e){removeEventListener(e,onAct,true);});}
+  function onAct(e){if(e.type==='scroll'&&scrollY<40)return;cancel();}
+  evs.forEach(function(e){addEventListener(e,onAct,{capture:true,passive:true});});
+  timer=setTimeout(function(){
+    if(done||scrollY>40)return cancel();
+    var next=document.querySelector('.hero')&&document.querySelector('.hero').nextElementSibling;
+    while(next&&next.offsetHeight<60)next=next.nextElementSibling;
+    var y=next?next.getBoundingClientRect().top+scrollY-10:innerHeight*.9;
+    cancel();window.scrollTo({top:y,behavior:'smooth'});
+  },4000);
 })();
 </script>
 </body>
