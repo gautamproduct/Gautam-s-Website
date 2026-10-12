@@ -652,6 +652,11 @@
   .iim-chip{display:inline-flex;align-items:center;gap:6px;padding:2px 10px 2px 3px;margin:0 2px;border-radius:999px;background:linear-gradient(135deg,#fff4e0,#ffe2ec);border:1px solid #f3c7a3;font-weight:700;color:#7a2a12;vertical-align:middle;box-shadow:0 3px 10px #e0457b26;white-space:nowrap}
   .iim-chip img{width:22px;height:22px;border-radius:50%;background:#fff;object-fit:contain}
   .iim-card{background:linear-gradient(135deg,#fff7ee,#fff0f5)}
+  .ch-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .ch-links a{display:inline-flex;align-items:center;min-height:32px;padding:5px 12px;border-radius:999px;font-size:12.5px;font-weight:600;text-decoration:none;color:var(--k,#7a2a12);background:color-mix(in srgb,var(--k,#c2335f) 9%,#fff);border:1px solid color-mix(in srgb,var(--k,#c2335f) 28%,transparent);transition:transform .2s,background .2s}
+  .ch-links a:hover{transform:translateY(-2px);background:color-mix(in srgb,var(--k,#c2335f) 16%,#fff)}
+  .ch-logos{display:inline-flex}.ch-logos .ch-logo+.ch-logo{margin-left:-10px}
+  .ch-links a img{width:18px;height:18px;border-radius:50%;background:#fff;object-fit:contain;margin:-2px 6px -2px -6px}
 </style>
 </head>
 <body>
@@ -784,13 +789,13 @@
       </svg>
     </div>
     <div class="timeline" id="timeline"><div class="tl-fill" id="tlFill"></div>
-      <div class="ch reveal" style="--k:#3a6ee6;--g:linear-gradient(160deg,#78aaff,#3a6ee6)"><div class="ch-card"><div class="ch-head"><span class="ch-ico">🎒</span><span class="ch-when">School</span></div><h3>Ambe School, Manjalpur</h3><h3 class="then">Baroda High School, Bagikhana</h3></div></div>
-      <div class="ch reveal" style="--k:#a24bd8;--g:linear-gradient(160deg,#c49bff,#7b45d8)"><div class="ch-card"><div class="ch-head"><span class="ch-logo"><img loading="lazy" decoding="async" src="../assets/logos/gsv.png" alt="Gati Shakti Vishwavidyalaya"></span><span class="ch-when">BBA · 2023</span></div><h3>NRTI, now Gati Shakti Vishwavidyalaya</h3><p>BBA in Transportation Management.</p>
+      <div class="ch reveal" style="--k:#3a6ee6;--g:linear-gradient(160deg,#78aaff,#3a6ee6)"><div class="ch-card"><div class="ch-head"><span class="ch-logos"><span class="ch-logo"><img loading="lazy" decoding="async" src="../assets/logos/ambe.png" alt="Ambe School"></span><span class="ch-logo"><img loading="lazy" decoding="async" src="../assets/logos/bhs.png" alt="Baroda High School"></span></span><span class="ch-when">School</span></div><h3>Ambe School, Manjalpur</h3><h3 class="then">Baroda High School, Bagikhana</h3><div class="ch-links"><a href="https://www.ambevidyalaya.org/" target="_blank" rel="noopener"><img src="../assets/logos/ambe.png" alt="" loading="lazy">Ambe School ↗</a><a href="https://barodahighschool.com/" target="_blank" rel="noopener"><img src="../assets/logos/bhs.png" alt="" loading="lazy">Baroda High School ↗</a></div></div></div>
+      <div class="ch reveal" style="--k:#a24bd8;--g:linear-gradient(160deg,#c49bff,#7b45d8)"><div class="ch-card"><div class="ch-head"><span class="ch-logo"><img loading="lazy" decoding="async" src="../assets/logos/gsv.png" alt="Gati Shakti Vishwavidyalaya"></span><span class="ch-when">BBA · 2023</span></div><h3>NRTI, now Gati Shakti Vishwavidyalaya</h3><p>BBA in Transportation Management.</p><div class="ch-links"><a href="https://gsv.ac.in/" target="_blank" rel="noopener">Visit gsv.ac.in ↗</a></div>
         <div class="ch-pics"><img loading="lazy" decoding="async" data-i="47" alt=""><img loading="lazy" decoding="async" data-i="48" alt=""><img loading="lazy" decoding="async" data-i="49" alt=""></div></div></div>
-      <div class="ch reveal" style="--k:#c2335f;--g:linear-gradient(160deg,#ff9db8,#c2335f)"><div class="ch-card iim-card"><div class="ch-head"><span class="ch-logo"><img loading="lazy" decoding="async" src="../assets/logos/iimsambalpur.png" alt="IIM Sambalpur"></span><span class="ch-when">MBA offer · 2023</span></div><h3>IIM Sambalpur</h3><p>Got an MBA offer from IIM Sambalpur; chose to start working instead.</p></div></div>
-      <div class="ch reveal" style="--k:#2f8a4f;--g:linear-gradient(160deg,#7dd68f,#3fa257)"><div class="ch-card"><div class="ch-head"><span class="ch-logo"><img loading="lazy" decoding="async" src="../assets/logos/indianrailways.png" alt="Indian Railways"></span><span class="ch-when">2023 – 2025</span></div><h3>Station Master, Indian Railways PSU</h3><p>A government role for 1.5 years, then tech, for my love of AI &amp; business.</p>
+      <div class="ch reveal" style="--k:#2f8a4f;--g:linear-gradient(160deg,#7dd68f,#3fa257)"><div class="ch-card"><div class="ch-head"><span class="ch-logo"><img loading="lazy" decoding="async" src="../assets/logos/indianrailways.png" alt="Indian Railways"></span><span class="ch-when">2023 – 2025</span></div><h3>Station Master, Indian Railways PSU</h3><p>A government role for 1.5 years, then tech, for my love of AI &amp; business.</p><div class="ch-links"><a href="https://dfccil.com/" target="_blank" rel="noopener">Visit dfccil.com ↗</a></div>
         <div class="ch-pics"><img loading="lazy" decoding="async" data-i="59" alt=""><img loading="lazy" decoding="async" data-i="52" alt=""><img loading="lazy" decoding="async" data-i="30" alt=""></div></div></div>
-      <div class="ch now reveal" style="--k:#c2452f;--g:linear-gradient(160deg,#ff8a5c,#e0453a)"><div class="ch-card"><div class="ch-head"><span class="ch-logo"><img loading="lazy" decoding="async" src="../assets/logos/pw.png" alt="PhysicsWallah"></span><span class="ch-when">2025 – Now</span></div><h3>Product Manager, AI · PhysicsWallah</h3><p>One of India's leading ed-tech companies (IPO-listed).</p>
+      <div class="ch reveal" style="--k:#c2335f;--g:linear-gradient(160deg,#ff9db8,#c2335f)"><div class="ch-card iim-card"><div class="ch-head"><span class="ch-logo"><img loading="lazy" decoding="async" src="../assets/logos/iimsambalpur.png" alt="IIM Sambalpur"></span><span class="ch-when">MBA offer · 2025</span></div><h3>IIM Sambalpur</h3><p>Got an MBA offer from IIM Sambalpur; chose to keep working instead.</p><div class="ch-links"><a href="https://iimsambalpur.ac.in/" target="_blank" rel="noopener">Visit iimsambalpur.ac.in ↗</a></div></div></div>
+      <div class="ch now reveal" style="--k:#c2452f;--g:linear-gradient(160deg,#ff8a5c,#e0453a)"><div class="ch-card"><div class="ch-head"><span class="ch-logo"><img loading="lazy" decoding="async" src="../assets/logos/pw.png" alt="PhysicsWallah"></span><span class="ch-when">2025 – Now</span></div><h3>Product Manager, AI · PhysicsWallah</h3><p>One of India's leading ed-tech companies (IPO-listed).</p><div class="ch-links"><a href="https://www.pw.live/" target="_blank" rel="noopener">Visit pw.live ↗</a></div>
         <div class="apps"><span><img loading="lazy" decoding="async" src="../assets/logos/pw.png" alt="">PW App</span></div></div></div>
     </div>
     </div>
@@ -821,7 +826,7 @@
       <div class="tree stagger">
         <div class="member"><div class="av logo"><img loading="lazy" decoding="async" src="../assets/logos/indianrailways.png" alt="Indian Railways"></div><em>Father</em><b>Shri Rajkumar</b><p>Civil Engineer, Indian Railways (Govt.)</p></div>
         <div class="member"><div class="av">🏡</div><em>Mother</em><b>Smt. Amola Devi</b><p>Homemaker</p></div>
-        <div class="member"><div class="av logo"><img loading="lazy" decoding="async" src="iitk.png" alt="IIT Kanpur"></div><em>Brother</em><b>IIT Kanpur graduate</b><p>Teaches at a reputed coaching institute, Hyderabad</p></div>
+        <div class="member"><div class="av logo"><img loading="lazy" decoding="async" src="iitk.png" alt="IIT Kanpur"></div><em>Brother</em><b>Anshu Kumar</b><p>IIT Kanpur graduate · Teaches at a reputed coaching institute, Hyderabad</p></div>
       </div>
     </div>
     </div>
