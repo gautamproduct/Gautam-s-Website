@@ -83,5 +83,26 @@ main:has(.pgrid){max-width:1080px}
   <div class='more'><b style='display:block;margin-bottom:8px;color:#433d38'>More about Gautam Kumar</b><a href='/'>Home</a><a href='/about/'>About</a><a href='/pi-lens/'>Pi Lens App</a><a href='/pw-test-series/'>PW Test Series</a><a href='/marks-app/'>MARKS App</a><a href='/know-your-branch/'>Know Your Branch</a><a href='/mathongo-quizrr/'>MathonGo & Quizrr</a><a href='/entrepreneurship/'>Entrepreneurship</a><a href='/indian-railways/'>Indian Railways</a></div>
 </main>
 <footer>Built with love for solving problems · © 2026 Gautam Kumar · <a href="/">kumargautam.com</a><br><small style="font-size:10px;opacity:.5">Cookieless analytics · no personal data collected</small></footer>
+<script>
+/* Anonymous engagement events for GoatCounter (cookieless, no prompts) */
+(function(){
+  function gc(cb){ if(window.goatcounter&&window.goatcounter.count){cb();} else {setTimeout(function(){gc(cb);},250);} }
+  function ev(path,title){ gc(function(){ try{window.goatcounter.count({path:path,title:title,event:true});}catch(e){} }); }
+  // 1) Returning-visit count (device-local anonymous number)
+  try{ var n=(parseInt(localStorage.getItem('gc_visits')||'0',10)||0)+1; localStorage.setItem('gc_visits',n);
+       var vb=n>=10?'10+':n>=6?'6-9':n>=3?'3-5':String(n); ev('visit-count/'+vb,'Returning visit: '+vb); }catch(e){}
+  // 2) Time on page (sent when tab hidden / page closed)
+  var t0=Date.now(),sent=false;
+  function sendTime(){ if(sent)return; sent=true; var s=Math.round((Date.now()-t0)/1000);
+    var b=s<10?'0-10s':s<30?'10-30s':s<60?'30-60s':s<180?'1-3m':s<600?'3-10m':'10m+'; ev('time/'+b,'Time on page: '+b); }
+  document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden')sendTime(); });
+  window.addEventListener('pagehide',sendTime);
+  // 3) Clicks on links & buttons (by their label)
+  document.addEventListener('click',function(e){ var a=e.target.closest('a,button'); if(!a)return;
+    var l=(a.getAttribute('aria-label')||a.textContent||'').replace(/\s+/g,' ').trim().slice(0,40);
+    if(l) ev('click/'+l,'Click: '+l); },{passive:true});
+})();
+</script>
 </body>
+
 </html>
