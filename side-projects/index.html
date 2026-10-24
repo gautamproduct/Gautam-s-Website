@@ -99,6 +99,8 @@ main:has(.pgrid){max-width:1080px}
   window.addEventListener('pagehide',sendTime);
   // 3) Clicks on links & buttons (by their label)
   document.addEventListener('click',function(e){ var a=e.target.closest('a,button'); if(!a)return;
+    try{ if(a.tagName==='A'&&a.href){ var u=new URL(a.href,location.href);
+      if(u.host&&u.host!==location.host){ ev('outbound/'+u.host,'Outbound: '+u.host); return; } } }catch(_){}
     var l=(a.getAttribute('aria-label')||a.textContent||'').replace(/\s+/g,' ').trim().slice(0,40);
     if(l) ev('click/'+l,'Click: '+l); },{passive:true});
 })();
