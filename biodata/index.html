@@ -378,6 +378,13 @@
   @keyframes ripple2{0%{box-shadow:0 0 0 0 #e0457b88}100%{box-shadow:0 0 0 10px #e0457b00}}
   .yt-card:not(.feat) .play{padding:5px 11px 5px 6px;font-size:12px}.yt-card:not(.feat) .play::before{width:22px;height:22px;background-size:14px}
   .yt-card:hover .play{transform:scale(1.06)}
+  .reel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,280px));justify-content:center;gap:16px;max-width:1000px;margin:16px auto 0}
+  .yt-card.reel .yt-thumb{aspect-ratio:9/16;background-color:#2b0f2e}
+  .yt-card.reel .play::after{content:"Watch reel"}
+  .reel-modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;background:#14060fe6;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+  .reel-modal.open{opacity:1;visibility:visible}
+  .reel-modal video{height:min(88vh,calc((100vw - 32px)*16/9));aspect-ratio:9/16;max-width:100%;border-radius:18px;background:#000;box-shadow:0 30px 80px #000a}
+  .reel-close{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:0;background:#ffffffe6;color:#2b0f2e;font:600 22px/1 var(--font-body);cursor:pointer}
   .yt-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:14px;overflow-x:auto;scrollbar-width:none;max-width:1040px;margin:0 auto;padding:4px 2px 10px}
   .yt-row::-webkit-scrollbar{display:none}
   .yt-card{background:#fff;border:1px solid var(--border-strong);border-radius:18px;padding:10px 10px 14px;transition:transform .25s,box-shadow .25s;cursor:pointer;text-align:left;font:inherit;color:inherit}
@@ -766,6 +773,11 @@
       <button class="yt-card" data-id="oIdbqAX5uFI" type="button"><div class="yt-thumb"><span class="play"></span></div><b>A product walkthrough</b><span>Live polls for teachers</span></button>
       <button class="yt-card" data-id="WaHqL-AvS20" type="button"><div class="yt-thumb"><span class="play"></span></div><b>Setting it up, step by step</b><span>Installing the app on smart boards &amp; laptops</span></button>
     </div>
+    <div class="reel-grid stagger">
+      <button class="yt-card reel" data-src="../assets/reels/at-the-board.mp4" type="button"><div class="yt-thumb" style="background-image:url(../assets/reels/at-the-board.jpg)"><span class="play"></span></div><b>At the board</b><span>Instagram reel · 0:12</span></button>
+      <button class="yt-card reel" data-src="../assets/reels/mark-your-attendance.mp4" type="button"><div class="yt-thumb" style="background-image:url(../assets/reels/mark-your-attendance.jpg)"><span class="play"></span></div><b>Mark your attendance</b><span>Instagram reel · 0:40</span></button>
+    </div>
+    <div class="reel-modal" id="reelModal" role="dialog" aria-modal="true" aria-label="Instagram reel"><button class="reel-close" type="button" aria-label="Close">×</button><video playsinline controls preload="none"></video></div>
   </div>
 </section>
 
@@ -1031,8 +1043,16 @@
   else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');if(x.target.classList.contains('stats')){var ag=document.getElementById('age');countUp(ag,+ag.dataset.v||+ag.textContent,1400);}io.unobserve(x.target);}});},{threshold:.08,rootMargin:'0px 0px -30px 0px'});els.forEach(function(e){io.observe(e);});}
 
   // ---------------- YouTube (load on tap) ----------------
-  document.querySelectorAll('.yt-card').forEach(function(b){var id=b.dataset.id,th=b.querySelector('.yt-thumb');th.style.backgroundImage='url(https://i.ytimg.com/vi/'+id+'/'+(b.classList.contains('feat')?'maxresdefault':'hqdefault')+'.jpg),url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)';
+  document.querySelectorAll('.yt-card:not(.reel)').forEach(function(b){var id=b.dataset.id,th=b.querySelector('.yt-thumb');th.style.backgroundImage='url(https://i.ytimg.com/vi/'+id+'/'+(b.classList.contains('feat')?'maxresdefault':'hqdefault')+'.jpg),url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)';
     b.addEventListener('click',function(){th.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1&origin='+encodeURIComponent(location.origin)+'" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen title="Video"></iframe>';},{once:true});});
+
+  // ---------------- Instagram reels (self-hosted, play on tap) ----------------
+  var rm=document.getElementById('reelModal'),rv=rm.querySelector('video');document.body.appendChild(rm);
+  function closeReel(){rm.classList.remove('open');rv.pause();document.body.style.overflow='';}
+  document.querySelectorAll('.yt-card.reel').forEach(function(b){b.addEventListener('click',function(){
+    rv.poster=b.dataset.src.replace('.mp4','.jpg');rv.src=b.dataset.src;rm.classList.add('open');document.body.style.overflow='hidden';rv.play();});});
+  rm.addEventListener('click',function(e){if(e.target!==rv)closeReel();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&rm.classList.contains('open'))closeReel();});
 
   // ---------------- Age ----------------
   var d=new Date(1999,10,22),n=new Date(),a=n.getFullYear()-d.getFullYear();if(n.getMonth()<d.getMonth()||(n.getMonth()===d.getMonth()&&n.getDate()<d.getDate()))a--;var ageEl=document.getElementById('age');ageEl.textContent=a;ageEl.dataset.v=a;
