@@ -6,14 +6,213 @@
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="googlebot" content="noindex, nofollow">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="refresh" content="0; url=https://kumargautam.goatcounter.com/">
-  <title>Admin</title>
+  <title>Admin · kumargautam</title>
   <style>
-    body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0b1418;color:#ffffffcc;font:15px/1.5 system-ui,-apple-system,sans-serif}
-    a{color:#7fd3ff}
+    :root{--bg:#0b1418;--card:#121e23;--line:#ffffff14;--text:#e9eef0;--mute:#ffffff8c;--accent:#7fd3ff;--bar:#3fa9d6;--bad:#ff8a80}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+    a{color:var(--accent)}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+    header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:20px}
+    header h1{font-size:18px;margin:0;font-weight:600}
+    header h1 span{color:var(--mute);font-weight:400}
+    .ctrls{display:flex;gap:8px;flex-wrap:wrap}
+    button,select,input{font:inherit;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 12px}
+    button{cursor:pointer}button:hover{border-color:var(--accent)}
+    .seg button[aria-pressed="true"]{background:var(--accent);color:#06222e;border-color:var(--accent)}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:16px}
+    .kpi,.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+    .kpi b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+    .kpi i{font-style:normal;color:var(--mute);font-size:12.5px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+    .card h2{font-size:13px;font-weight:600;margin:0 0 10px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em}
+    .wide{grid-column:1/-1}
+    .chart{display:flex;align-items:flex-end;gap:2px;height:140px}
+    .chart div{flex:1;background:var(--bar);border-radius:3px 3px 0 0;min-height:2px;position:relative}
+    .chart div:hover{background:var(--accent)}
+    .axis{display:flex;justify-content:space-between;color:var(--mute);font-size:11.5px;margin-top:6px}
+    table{width:100%;border-collapse:collapse}
+    td{padding:6px 0;border-top:1px solid var(--line);vertical-align:top}
+    tr:first-child td{border-top:0}
+    td.n{text-align:right;font-variant-numeric:tabular-nums;width:64px;color:var(--mute)}
+    td .meter{height:3px;background:var(--bar);border-radius:2px;margin-top:4px;opacity:.6}
+    td small{display:block;color:var(--mute);font-size:12px;word-break:break-all}
+    .empty{color:var(--mute);font-style:italic}
+    .login{max-width:340px;margin:12vh auto 0;display:grid;gap:10px}
+    .login h1{font-size:18px;margin:0 0 6px}
+    .err{color:var(--bad);min-height:1.5em;font-size:13px}
+    .note{color:var(--mute);font-size:12px;margin-top:20px}
+    [hidden]{display:none!important}
   </style>
 </head>
 <body>
-  <p>Opening analytics… <a href="https://kumargautam.goatcounter.com/" rel="nofollow noreferrer">continue</a></p>
+  <form class="login wrap" id="login" hidden>
+    <h1>Admin</h1>
+    <input id="api" type="url" placeholder="Worker URL (https://…workers.dev)" hidden>
+    <input id="pw" type="password" placeholder="Password" autocomplete="current-password" required autofocus>
+    <button type="submit">Sign in</button>
+    <div class="err" id="loginErr" role="alert"></div>
+  </form>
+
+  <main class="wrap" id="dash" hidden>
+    <header>
+      <h1>Analytics <span id="rangeLbl"></span></h1>
+      <div class="ctrls">
+        <div class="seg" id="seg">
+          <button type="button" data-d="1">Today</button>
+          <button type="button" data-d="7">7d</button>
+          <button type="button" data-d="30">30d</button>
+          <button type="button" data-d="90">90d</button>
+          <button type="button" data-d="365">1y</button>
+        </div>
+        <button type="button" id="refresh">Refresh</button>
+        <button type="button" id="logout">Sign out</button>
+      </div>
+    </header>
+    <div class="err" id="dashErr" role="alert"></div>
+    <section class="kpis" id="kpis"></section>
+    <section class="grid">
+      <div class="card wide"><h2>Visitors per day</h2><div class="chart" id="chart"></div><div class="axis" id="axis"></div></div>
+      <div class="card"><h2>Top pages</h2><table id="pages"></table></div>
+      <div class="card"><h2>Came from (referrers)</h2><table id="referrers"></table></div>
+      <div class="card"><h2>Locations</h2><table id="locations"></table></div>
+      <div class="card"><h2>Time on page</h2><table id="time"></table></div>
+      <div class="card"><h2>Visit number (returning)</h2><table id="visitCount"></table></div>
+      <div class="card"><h2>Clicks</h2><table id="clicks"></table></div>
+      <div class="card"><h2>Went to (outbound)</h2><table id="outbound"></table></div>
+      <div class="card"><h2>Browsers</h2><table id="browsers"></table></div>
+      <div class="card"><h2>Systems</h2><table id="systems"></table></div>
+      <div class="card"><h2>Screen sizes</h2><table id="sizes"></table></div>
+    </section>
+    <p class="note">Data from GoatCounter (UTC). Full dashboard: <a href="https://kumargautam.goatcounter.com/" rel="noreferrer">kumargautam.goatcounter.com</a></p>
+  </main>
+
+<script>
+(function(){
+  // Set this to your Worker's URL after deploying it. Until then the login form asks for it once.
+  var WORKER_URL = "https://kg-admin.REPLACE_ME.workers.dev";
+
+  var $ = function(id){ return document.getElementById(id); };
+  function store(k,v){ try{ v==null ? sessionStorage.removeItem(k) : sessionStorage.setItem(k,v); }catch(e){} }
+  function load(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } }
+  function pref(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v); }catch(e){ return null; } }
+
+  var api = /REPLACE_ME/.test(WORKER_URL) ? (pref("kg_admin_api") || "") : WORKER_URL;
+  var days = parseInt(pref("kg_admin_days") || "30",10) || 30;
+
+  function session(){
+    var t = load("kg_admin_tok"), exp = t && Number(t.split(".")[0]);
+    return exp && exp > Date.now() ? t : null;
+  }
+
+  function showLogin(msg){
+    $("dash").hidden = true; $("login").hidden = false;
+    $("api").hidden = !!api; $("api").required = !api;
+    $("loginErr").textContent = msg || "";
+    $("pw").value = ""; $("pw").focus();
+  }
+
+  $("login").addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!api){ api = $("api").value.trim().replace(/\/+$/,""); pref("kg_admin_api", api); }
+    $("loginErr").textContent = "Checking…";
+    fetch(api + "/login", { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({ password: $("pw").value }) })
+      .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, j:j }; }); })
+      .then(function(res){
+        if(!res.ok) return showLogin(res.j.error || "Sign-in failed");
+        store("kg_admin_tok", res.j.token); openDash();
+      })
+      .catch(function(){ showLogin("Can't reach the Worker. Check its URL."); });
+  });
+
+  $("logout").addEventListener("click", function(){ store("kg_admin_tok", null); showLogin(); });
+  $("refresh").addEventListener("click", fetchStats);
+  $("seg").addEventListener("click", function(e){
+    var d = e.target.getAttribute("data-d"); if(!d) return;
+    days = parseInt(d,10); pref("kg_admin_days", String(days)); fetchStats();
+  });
+
+  function openDash(){ $("login").hidden = true; $("dash").hidden = false; fetchStats(); }
+
+  function fetchStats(){
+    var tok = session(); if(!tok) return showLogin("Session expired. Sign in again.");
+    [].forEach.call($("seg").children, function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-d") == days)); });
+    $("dashErr").textContent = "Loading…";
+    fetch(api + "/stats?days=" + days, { headers:{ Authorization: "Bearer " + tok } })
+      .then(function(r){ return r.json().then(function(j){ return { status:r.status, j:j }; }); })
+      .then(function(res){
+        if(res.status === 401){ store("kg_admin_tok", null); return showLogin("Session expired. Sign in again."); }
+        if(res.status !== 200) { $("dashErr").textContent = res.j.error || "Couldn't load stats"; return; }
+        $("dashErr").textContent = ""; render(res.j);
+      })
+      .catch(function(){ $("dashErr").textContent = "Can't reach the Worker."; });
+  }
+
+  // All values from GoatCounter (titles, referrers…) are visitor-supplied, so only ever use textContent.
+  function el(tag, text, cls){ var n = document.createElement(tag); if(text != null) n.textContent = text; if(cls) n.className = cls; return n; }
+  function sum(a){ return a.reduce(function(s,x){ return s + x.count; },0); }
+  function fmt(n){ return n.toLocaleString("en-IN"); }
+
+  var ORDER = {
+    time: ["0-10s","10-30s","30-60s","1-3m","3-10m","10m+"],
+    visitCount: ["1","2","3-5","6-9","10+"]
+  };
+  var VISIT_LBL = {"1":"1st visit","2":"2nd visit","3-5":"3–5 visits","6-9":"6–9 visits","10+":"10+ visits"};
+
+  function table(id, rows, opt){
+    opt = opt || {};
+    var t = $(id); t.textContent = "";
+    if(opt.order) rows = rows.slice().sort(function(a,b){ return opt.order.indexOf(a.name) - opt.order.indexOf(b.name); });
+    if(!rows.length){ var r0 = t.insertRow(); r0.insertCell().appendChild(el("span","No data yet","empty")); return; }
+    var max = Math.max.apply(null, rows.map(function(r){ return r.count; })) || 1;
+    rows.slice(0, opt.limit || 10).forEach(function(r){
+      var tr = t.insertRow(), c = tr.insertCell();
+      c.appendChild(document.createTextNode(opt.label ? opt.label(r.name) : r.name));
+      if(r.title) c.appendChild(el("small", r.title));
+      var m = el("div", null, "meter"); m.style.width = Math.max(2, r.count / max * 100) + "%"; c.appendChild(m);
+      var n = tr.insertCell(); n.className = "n"; n.textContent = fmt(r.count);
+    });
+  }
+
+  function kpi(label, value){
+    var d = el("div", null, "kpi"); d.appendChild(el("b", value)); d.appendChild(el("i", label)); return d;
+  }
+
+  function render(s){
+    $("rangeLbl").textContent = s.range.start === s.range.end ? s.range.start : s.range.start + " → " + s.range.end;
+
+    var vc = sum(s.visitCount), first = (s.visitCount.filter(function(r){ return r.name === "1"; })[0] || {count:0}).count;
+    var timed = sum(s.time), long = sum(s.time.filter(function(r){ return ["1-3m","3-10m","10m+"].indexOf(r.name) > -1; }));
+    var k = $("kpis"); k.textContent = "";
+    k.appendChild(kpi("Visitors", fmt(s.totals.visits)));
+    k.appendChild(kpi("Returning visitors", vc ? Math.round((vc - first) / vc * 100) + "%" : "–"));
+    k.appendChild(kpi("Stayed over 1 min", timed ? Math.round(long / timed * 100) + "%" : "–"));
+    k.appendChild(kpi("Countries", String(s.locations.length)));
+    k.appendChild(kpi("Outbound clicks", fmt(sum(s.outbound))));
+
+    var c = $("chart"); c.textContent = "";
+    var mx = Math.max.apply(null, s.daily.map(function(d){ return d.count; }).concat([1]));
+    s.daily.forEach(function(d){
+      var b = el("div"); b.style.height = (d.count / mx * 100) + "%"; b.title = d.day + ": " + d.count; c.appendChild(b);
+    });
+    var a = $("axis"); a.textContent = "";
+    if(s.daily.length){ a.appendChild(el("span", s.daily[0].day)); a.appendChild(el("span", "peak " + mx)); a.appendChild(el("span", s.daily[s.daily.length-1].day)); }
+
+    table("pages", s.pages);
+    table("referrers", s.referrers);
+    table("locations", s.locations);
+    table("time", s.time, { order: ORDER.time });
+    table("visitCount", s.visitCount, { order: ORDER.visitCount, label: function(n){ return VISIT_LBL[n] || n; } });
+    table("clicks", s.clicks);
+    table("outbound", s.outbound);
+    table("browsers", s.browsers);
+    table("systems", s.systems);
+    table("sizes", s.sizes);
+    if(s.truncated) $("dashErr").textContent = "Showing the top 100 paths only.";
+  }
+
+  session() && api ? openDash() : showLogin();
+})();
+</script>
 </body>
 </html>
