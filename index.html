@@ -551,6 +551,8 @@
   .build-tag.now::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #3fbf68; animation: pulse 2s infinite; }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 #3fbf6880; } 70% { box-shadow: 0 0 0 6px #3fbf6800; } 100% { box-shadow: 0 0 0 0 #3fbf6800; } }
   .build-card h3 { font-family: var(--font-heading); font-weight: 400; font-size: 21px; color: var(--text); line-height: 1.2; margin-bottom: 6px; }
+  .build-card h3 a { color: inherit; text-decoration: none; }
+  .build-card h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
   .build-card p { font-size: 14px; color: var(--text-faint); line-height: 1.55; flex: 1; }
   .build-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 16px; }
   .build-links a { font-size: 13.5px; font-weight: 500; color: var(--text); }
@@ -965,7 +967,7 @@
   }
   @media (max-width: 760px) {
     .f-arrow { animation-name: nudgeDown; } @keyframes nudgeDown { 50% { transform: rotate(90deg) translateX(5px); } }
-    .ch.reveal, .ch.reveal:nth-child(even) { transform: translateY(24px); }
+    .ch.reveal:not(.in), .ch.reveal:not(.in):nth-child(even) { transform: translateY(24px); }
     .timeline::before { transform: scaleY(var(--draw, 0)); }
   }
   @media (prefers-reduced-motion: reduce) { .progress { display: none; } .timeline::before { transform: translateX(-50%); } .reveal { filter: none !important; } }
@@ -1180,6 +1182,7 @@
       <a class="nav-link-item" href="#growth">Growth</a>
       <a class="nav-link-item" href="#story">Story</a>
       <a class="nav-link-item" href="#questions">Questions</a>
+      <a class="nav-link-item" href="/about/">About</a>
     </div>
     <a href="#hire" class="nav-cta">Hire me</a>
   </div>
@@ -1558,7 +1561,7 @@ $('grid').innerHTML = BUILDS.map(b => {
   const [c, g] = C[b.color];
   const body = `
     <div class="build-top"><div class="build-icon color" style="background:${g}"><svg viewBox="0 0 24 24">${ICONS[b.icon]}</svg></div>${tagHtml(b)}</div>
-    <h3>${esc(b.name)}</h3><p>${esc(b.desc)}</p>
+    <h3>${STORYPAGE[b.name] ? `<a href="${STORYPAGE[b.name]}">${esc(b.name)}</a>` : esc(b.name)}</h3><p>${esc(b.desc)}</p>
     <div class="build-links">${linksHtml(b)}</div>`;
   return b.tag === 'feat'
     ? `<div class="build-card featured reveal" data-cat="${b.cat}" style="--c:${c}"><div class="feat-body">${body}</div>
