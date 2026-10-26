@@ -1198,6 +1198,9 @@
   .pm-arrow { align-self: center; width: 22px; height: 22px; stroke: #e3802c; fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: .7; animation: nudge 1.6s ease-in-out infinite; }
   @media (max-width: 1000px) { .pm-flow { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; } .pm-arrow { display: none; } }
   @media (max-width: 600px) { .pm-flow { grid-template-columns: minmax(0,1fr); } }
+  /* scroll performance: no live blur on scrolling content */
+  body > section:not(.hero) *, footer * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
 </style>
   <script data-goatcounter="https://kumargautam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
@@ -1674,7 +1677,7 @@ $('fireflies').innerHTML = Array.from({ length: 7 }, () =>
 (() => {
   const hero = $('top'), bg = $('heroBg'), reduceM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduceM) {
-    addEventListener('scroll', () => { if (scrollY < innerHeight * 1.2) bg.style.translate = `0 ${scrollY * 0.28}px`; }, { passive: true });
+    let bgT = false; addEventListener('scroll', () => { if (bgT) return; bgT = true; requestAnimationFrame(() => { bgT = false; if (scrollY < innerHeight * 1.2) bg.style.translate = `0 ${scrollY * 0.28}px`; }); }, { passive: true });
     hero.addEventListener('pointermove', e => {
       const r = hero.getBoundingClientRect();
       hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5).toFixed(3));
@@ -1736,7 +1739,7 @@ const onScroll = () => {
   nav.classList.toggle('scrolled', scrollY > innerHeight - 80);
   nav.classList.toggle('night', scrollY + 68 > qs.offsetTop);
 };
-addEventListener('scroll', onScroll, { passive: true }); onScroll();
+let navT = false; addEventListener('scroll', () => { if (navT) return; navT = true; requestAnimationFrame(() => { navT = false; onScroll(); }); }, { passive: true }); onScroll();
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 $('yr').textContent = new Date().getFullYear();
@@ -1766,7 +1769,7 @@ $('yr').textContent = new Date().getFullYear();
     });
   };
   let pending = [...document.querySelectorAll('.reveal')];
-  addEventListener('scroll', onS, { passive: true }); addEventListener('resize', onS); onS();
+  let sT = 0; addEventListener('scroll', () => { const n = performance.now(); if (n - sT < 160 || !pending.length) return; sT = n; requestAnimationFrame(onS); }, { passive: true }); addEventListener('resize', onS); onS();
   if (reduceM || !matchMedia('(hover: hover) and (min-width: 900px)').matches) return;
   document.querySelectorAll('.build-card, .ch-card, .stat, .f-step').forEach(el => {
     el.addEventListener('pointermove', e => {
@@ -1780,6 +1783,8 @@ $('yr').textContent = new Date().getFullYear();
 
 </script>
 <script src="/assets/motion.js" defer></script>
+<script src="/assets/lenis.min.js" defer></script>
+<script src="/assets/smooth.js" defer></script>
 <script>
 /* Anonymous engagement events for GoatCounter (cookieless, no prompts) */
 (function(){

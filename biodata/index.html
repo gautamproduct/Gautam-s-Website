@@ -693,6 +693,10 @@
   .ch-site:hover{background-size:100% 1px}.ch-site:hover i{opacity:.55}
   a.ch-logo{display:inline-flex;transition:transform .25s}a.ch-logo:hover{transform:translateY(-2px) scale(1.05)}
   @media(hover:none){.ch-site i{opacity:.35}}
+  /* scroll performance: no live blur on scrolling content */
+  body>section:not(.hero) *,footer *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .orbs i{filter:none}
+  html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
 </style>
   <script data-goatcounter="https://kumargautam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
@@ -1031,7 +1035,7 @@
     nav.classList.toggle('night',night);nav.classList.toggle('scrolled',!night&&y>hero.offsetHeight-70);}
   var tl=document.getElementById('timeline'),tf=document.getElementById('tlFill');
   function tlScroll(){var r=tl.getBoundingClientRect(),v=innerHeight*.6,h=Math.min(r.height,Math.max(0,v-r.top));tf.style.height=h+'px';}
-  addEventListener('scroll',function(){onScroll();tlScroll();},{passive:true});onScroll();tlScroll();
+  var navT=false;addEventListener('scroll',function(){if(navT)return;navT=true;requestAnimationFrame(function(){navT=false;onScroll();tlScroll();});},{passive:true});onScroll();tlScroll();
 
   // ---------------- Title word split ----------------
   document.querySelectorAll('.section-title').forEach(function(h){var j=0;
@@ -1045,7 +1049,7 @@
 
   // ---------------- Hero parallax ----------------
   var hc=document.querySelector('.hero-content'),jh=document.querySelector('.jharokha');
-  addEventListener('scroll',function(){var y=scrollY;if(y>innerHeight)return;hc.style.transform='translateY('+(y*.35)+'px)';hc.style.opacity=Math.max(0,1-y/(innerHeight*.75));},{passive:true});
+  var hcT=false;addEventListener('scroll',function(){if(hcT)return;hcT=true;requestAnimationFrame(function(){hcT=false;var y=scrollY;if(y>innerHeight)return;hc.style.transform='translate3d(0,'+(y*.35)+'px,0)';hc.style.opacity=Math.max(0,1-y/(innerHeight*.75));});},{passive:true});
 
 
   // ---------------- Extra motion: tilt + spotlight, magnetic buttons, cursor glow ----------------
@@ -1077,7 +1081,7 @@
   // 2) gentle scroll-linked parallax on tiles and cards (phones + desktop)
   var par=[].slice.call(document.querySelectorAll('.stats .stat,.value-row .value,.tree .member,.me-tiles .mt'));
   var ticking=false;
-  function parallax(){var vh=innerHeight;par.forEach(function(el,i){var r=el.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;var k=((r.top+r.height/2)-vh/2)/vh;el.style.translate='0 '+(k*(i%2?-14:14)).toFixed(1)+'px';});ticking=false;}
+  function parallax(){var vh=innerHeight,rs=par.map(function(el){return el.getBoundingClientRect();});par.forEach(function(el,i){var r=rs[i];if(r.bottom<0||r.top>vh)return;var k=((r.top+r.height/2)-vh/2)/vh;el.style.translate='0 '+(k*(i%2?-14:14)).toFixed(1)+'px';});ticking=false;}
   addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(parallax);}},{passive:true});parallax();
   // ---------------- Reveal ----------------
   var els=document.querySelectorAll('.reveal,.stagger,.reveal-title,.stats,.reveal-line');
@@ -1147,10 +1151,10 @@
     g.appendChild(am);(svg.querySelector('.zoomer')||svg).appendChild(g);}
   /* 5 Photo strip speeds up & leans on fast scroll */
   var sc=document.querySelector('.showcase'),tr=document.querySelector('.showcase-track'),ly=scrollY,lt=performance.now(),idle;
-  if(sc&&tr){addEventListener('scroll',function(){var t=performance.now(),v=(scrollY-ly)/Math.max(16,t-lt);ly=scrollY;lt=t;
+  if(sc&&tr){var scT=false;addEventListener('scroll',function(){if(scT)return;scT=true;requestAnimationFrame(function(){scT=false;var t=performance.now(),v=(scrollY-ly)/Math.max(16,t-lt);ly=scrollY;lt=t;
       var sk=Math.max(-8,Math.min(8,v*-6));sc.style.setProperty('--sk',sk.toFixed(2)+'deg');
       var a=tr.getAnimations?tr.getAnimations()[0]:null;if(a)a.playbackRate=1+Math.min(4,Math.abs(v)*3);
-      clearTimeout(idle);idle=setTimeout(function(){sc.style.setProperty('--sk','0deg');if(a)a.playbackRate=1;},140);},{passive:true});
+      clearTimeout(idle);idle=setTimeout(function(){sc.style.setProperty('--sk','0deg');if(a)a.playbackRate=1;},140);});},{passive:true});
     /* 9 polaroids drop in when strip first appears */
     [].forEach.call(sc.querySelectorAll('.polaroid'),function(el,i){el.style.setProperty('--pi',i%10);});
     if('IntersectionObserver' in window){var po=new IntersectionObserver(function(en){if(en[0].isIntersecting){sc.classList.add('drop');po.disconnect();}},{threshold:.2});po.observe(sc);}}
@@ -1181,6 +1185,8 @@
 })();
 </script>
 <script src="/assets/motion.js" defer></script>
+<script src="/assets/lenis.min.js" defer></script>
+<script src="/assets/smooth.js" defer></script>
 <script>
 /* Anonymous engagement events for GoatCounter (cookieless, no prompts) */
 (function(){
