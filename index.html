@@ -1201,6 +1201,7 @@
   /* scroll performance: no live blur on scrolling content */
   body > section:not(.hero) *, footer * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
   html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
+  html.lite .petals,html.lite .dust,html.lite .hero-stars,html.lite .stars,html.lite .confetti,html.lite .firefly,html.lite .orbs,html.lite .fireflies,html.lite #fireflies{display:none!important}html.lite *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 </style>
   <script data-goatcounter="https://kumargautam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
@@ -1781,6 +1782,13 @@ $('yr').textContent = new Date().getFullYear();
   });
 })();
 
+</script>
+<script>
+/* Lite mode: phones and low-power devices skip decorative looping effects */
+(function(){var lite=(navigator.hardwareConcurrency||8)<=4||(navigator.deviceMemory||8)<=4||(window.matchMedia&&matchMedia('(max-width: 800px)').matches);
+  if(!lite)return;document.documentElement.classList.add('lite');
+  function calm(){if(!document.getAnimations)return;document.getAnimations().forEach(function(a){var e=a.effect,t=e&&e.target;if(!e||e.getTiming().iterations!==Infinity)return;if(t&&t.closest&&t.closest('#mapCard,.ticker,.showcase,.showcase-track,.ticker-track'))return;a.cancel();});}
+  calm();setInterval(calm,2000);})();
 </script>
 <script src="/assets/motion.js" defer></script>
 <script src="/assets/lenis.min.js" defer></script>
