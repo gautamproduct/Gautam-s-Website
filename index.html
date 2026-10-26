@@ -21,7 +21,8 @@
 <link rel="me" href="https://www.youtube.com/@gautamkumarproduct">
 <link rel="me" href="https://x.com/__Gautam_Kumar">
 <link rel="me" href="https://www.instagram.com/gautam.talks/">
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1634664125468-6583a2cda747?auto=format&fit=crop&w=2400&q=80" fetchpriority="high">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1634664125468-6583a2cda747?auto=format&fit=crop&w=900&q=70" fetchpriority="high" media="(max-width: 800px)">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1634664125468-6583a2cda747?auto=format&fit=crop&w=1800&q=72" fetchpriority="high" media="(min-width: 801px)">
 
 <!-- Open Graph -->
 <meta property="og:type" content="profile">
@@ -481,7 +482,7 @@
     --radius-btn: 12px;
     --font-heading: "Instrument Serif", Georgia, serif;
     --font-body: "Inter", system-ui, -apple-system, sans-serif;
-    --hero-img: url("https://images.unsplash.com/photo-1634664125468-6583a2cda747?auto=format&fit=crop&w=2400&q=80");
+    --hero-img: url("https://images.unsplash.com/photo-1634664125468-6583a2cda747?auto=format&fit=crop&w=1800&q=72");
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -770,6 +771,7 @@
   .moon { position: absolute; top: 60px; right: 12%; width: 74px; height: 74px; border-radius: 50%; background: radial-gradient(circle at 38% 38%, #fffef4, #f4ecc8 60%, #e5d9a8); box-shadow: 0 0 40px 12px #fff6c94d, 0 0 120px 40px #fff6c91f; }
   .night-hills { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 210px; }
   .off, .off *, .off *::before, .off *::after { animation-play-state: paused !important; }
+  @media (max-width: 800px) { :root { --hero-img: url("https://images.unsplash.com/photo-1634664125468-6583a2cda747?auto=format&fit=crop&w=900&q=70"); } }
   .firefly { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #fff3a0; box-shadow: 0 0 10px 3px #ffe56a99; animation: fly var(--t) ease-in-out infinite alternate; animation-delay: var(--d); opacity: .9; }
   @keyframes fly { 0% { transform: translate(0, 0); opacity: .2; } 50% { opacity: 1; } 100% { transform: translate(var(--x), var(--y)); opacity: .3; } }
   .connect-card { position: relative; z-index: 2; background: #ffffff10; border: 1px solid #ffffff24; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 30px 60px #0000004d; }

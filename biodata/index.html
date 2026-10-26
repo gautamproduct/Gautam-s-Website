@@ -797,8 +797,8 @@
       <button class="yt-card" data-id="WaHqL-AvS20" type="button"><div class="yt-thumb"><span class="play"></span></div><b>Setting it up, step by step</b><span>Installing the app on smart boards &amp; laptops</span></button>
     </div>
     <div class="reel-grid stagger">
-      <button class="yt-card reel" data-src="../assets/reels/at-the-board.mp4" type="button"><div class="yt-thumb" style="background-image:url(../assets/reels/at-the-board.jpg)"><span class="play"></span></div><b>At the board</b><span>Instagram reel · 0:12</span></button>
-      <button class="yt-card reel" data-src="../assets/reels/mark-your-attendance.mp4" type="button"><div class="yt-thumb" style="background-image:url(../assets/reels/mark-your-attendance.jpg)"><span class="play"></span></div><b>Mark your attendance</b><span>Instagram reel · 0:40</span></button>
+      <button class="yt-card reel" data-src="../assets/reels/at-the-board.mp4" type="button"><div class="yt-thumb" data-bg="url(../assets/reels/at-the-board.jpg)"><span class="play"></span></div><b>At the board</b><span>Instagram reel · 0:12</span></button>
+      <button class="yt-card reel" data-src="../assets/reels/mark-your-attendance.mp4" type="button"><div class="yt-thumb" data-bg="url(../assets/reels/mark-your-attendance.jpg)"><span class="play"></span></div><b>Mark your attendance</b><span>Instagram reel · 0:40</span></button>
     </div>
     <div class="reel-modal" id="reelModal" role="dialog" aria-modal="true" aria-label="Instagram reel"><button class="reel-close" type="button" aria-label="Close">×</button><video playsinline controls preload="none"></video></div>
   </div>
@@ -1085,8 +1085,14 @@
   else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');if(x.target.classList.contains('stats')){var ag=document.getElementById('age');countUp(ag,+ag.dataset.v||+ag.textContent,1400);}io.unobserve(x.target);}});},{threshold:.08,rootMargin:'0px 0px -30px 0px'});els.forEach(function(e){io.observe(e);});}
 
   // ---------------- YouTube (load on tap) ----------------
-  document.querySelectorAll('.yt-card:not(.reel)').forEach(function(b){var id=b.dataset.id,th=b.querySelector('.yt-thumb');th.style.backgroundImage='url(https://i.ytimg.com/vi/'+id+'/'+(b.classList.contains('feat')?'maxresdefault':'hqdefault')+'.jpg),url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)';
+  document.querySelectorAll('.yt-card:not(.reel)').forEach(function(b){var id=b.dataset.id,th=b.querySelector('.yt-thumb');th.dataset.bg='url(https://i.ytimg.com/vi/'+id+'/'+(b.classList.contains('feat')?'sddefault':'hqdefault')+'.jpg),url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)';
     b.addEventListener('click',function(){th.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1&origin='+encodeURIComponent(location.origin)+'" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen title="Video"></iframe>';},{once:true});});
+
+  // ---------------- Lazy background images (load only when near the screen) ----------------
+  (function(){var els=document.querySelectorAll('[data-bg]');function put(e){e.style.backgroundImage=e.dataset.bg;e.removeAttribute('data-bg');}
+    if(!('IntersectionObserver' in window)){els.forEach(put);return;}
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){put(x.target);io.unobserve(x.target);}});},{rootMargin:'600px 0px'});
+    els.forEach(function(e){io.observe(e);});})();
 
   // ---------------- Instagram reels (self-hosted, play on tap) ----------------
   var rm=document.getElementById('reelModal'),rv=rm.querySelector('video');document.body.appendChild(rm);
@@ -1125,10 +1131,7 @@
   if(reduce)return;
   /* 1 Opening curtain (once per visit) */
   var seen=false;try{seen=sessionStorage.getItem('curtain')==='1';sessionStorage.setItem('curtain','1');}catch(e){}
-  if(!seen){var c=document.createElement('div');c.className='curtain';c.setAttribute('aria-hidden','true');
-    c.innerHTML='<div class="c-in"><div class="c-om">卐</div><div class="c-name">Gautam Kumar</div></div>';
-    document.body.appendChild(c);
-    setTimeout(function(){c.classList.add('open');},450);setTimeout(function(){c.remove();},1400);}
+  /* (opening curtain removed: it hid the hero for ~1.4s on first visit) */
   /* 2 3D photo frame: mouse on laptops, tilt on Android */
   var fr=document.querySelector('.jharokha .frame'),hero=document.getElementById('top');
   if(fr&&hero){
