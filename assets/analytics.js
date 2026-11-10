@@ -111,12 +111,8 @@
     try { window.clarity && window.clarity('event', path.replace(/[^a-z0-9]+/gi, '_')); } catch (e) {}
   };
   window.kaShareUrl = function (method) {
-    var u = new URL(location.origin + location.pathname);
-    u.searchParams.set('ref', 'share');
-    u.searchParams.set('hop', String(hop + 1));
-    u.searchParams.set('utm_source', 'shared-link');
-    u.searchParams.set('utm_medium', method || 'share-button');
-    return u.toString();
+    // Keep shared links short and clean (looks trustworthy in WhatsApp, quick preview)
+    return location.origin + location.pathname + '?hop=' + (hop + 1);
   };
 
   /* ---------- Richer GoatCounter events ---------- */
