@@ -1130,9 +1130,14 @@
   document.querySelector('[data-num="me"]').textContent=fmt(p);document.querySelector('[data-num="dad"]').textContent=fmt(dp);
 
   // ---------------- Share ----------------
-  document.getElementById('share').addEventListener('click',function(){var url=location.href.split('#')[0],btn=this;
-    if(navigator.share){navigator.share({title:'Gautam Kumar · Biodata',url:url}).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){btn.querySelector('span').textContent='Link copied ✓';setTimeout(function(){btn.querySelector('span').textContent='Share with family';},2000);});}});
+  function trk(p,t,g,gp){try{window.kaTrack&&window.kaTrack(p,t,g,gp);}catch(e){}}
+  function shareUrl(m){try{return window.kaShareUrl?window.kaShareUrl(m):location.href.split('#')[0];}catch(e){return location.href.split('#')[0];}}
+  document.getElementById('share').addEventListener('click',function(){var btn=this;
+    if(navigator.share){var url=shareUrl('share-sheet');trk('share/opened-menu','Share menu opened','share_open',{method:'share-sheet'});
+      navigator.share({title:'Gautam Kumar · Biodata',url:url}).then(function(){trk('share/sent','Share completed (app chosen in phone menu)','share',{method:'share-sheet'});}).catch(function(){trk('share/cancelled','Share menu closed without sending');});}
+    else if(navigator.clipboard){var url2=shareUrl('copy-link');navigator.clipboard.writeText(url2).then(function(){trk('share/link-copied','Share link copied','share',{method:'copy-link'});btn.querySelector('span').textContent='Link copied ✓';setTimeout(function(){btn.querySelector('span').textContent='Share with family';},2000);});}});
+  // Someone copying the page address by hand
+  document.addEventListener('copy',function(){var s=String(window.getSelection()||'');if(/kumargautam\.com/.test(s))trk('share/address-copied','Copied the page link');});
 })();
 
 /* ===== Next-level motion ===== */

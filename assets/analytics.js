@@ -46,6 +46,78 @@
     document.head.appendChild(s);
   }
   function ga(name, params) { if (GA4_ID && window.gtag) try { window.gtag('event', name, params || {}); } catch (e) {} }
+  function clarityTag(k, v) { try { window.clarity && window.clarity('set', k, v); } catch (e) {} }
+
+  /* ---------- Where did this visit come from? (app / site) ---------- */
+  var APP_PACKAGES = {
+    'com.whatsapp': 'WhatsApp', 'com.whatsapp.w4b': 'WhatsApp Business',
+    'org.telegram.messenger': 'Telegram', 'org.thunderdog.challegram': 'Telegram',
+    'com.instagram.android': 'Instagram', 'com.facebook.katana': 'Facebook',
+    'com.facebook.orca': 'Messenger', 'com.linkedin.android': 'LinkedIn',
+    'com.google.android.gm': 'Gmail', 'com.twitter.android': 'X (Twitter)',
+    'com.snapchat.android': 'Snapchat', 'com.google.android.googlequicksearchbox': 'Google app',
+    'com.truecaller': 'Truecaller', 'com.google.android.apps.messaging': 'SMS (Google Messages)',
+    'com.samsung.android.messaging': 'SMS (Samsung)', 'com.discord': 'Discord',
+    'com.slack': 'Slack', 'com.microsoft.teams': 'Teams'
+  };
+  var HOSTS = [
+    [/(^|\.)whatsapp\.com$|^wa\.me$/, 'WhatsApp'], [/(^|\.)t\.me$|telegram\.org$/, 'Telegram'],
+    [/instagram\.com$/, 'Instagram'], [/facebook\.com$|fb\.com$|messenger\.com$/, 'Facebook'],
+    [/linkedin\.com$|lnkd\.in$/, 'LinkedIn'], [/^t\.co$|twitter\.com$|^x\.com$/, 'X (Twitter)'],
+    [/mail\.google\.com$|gmail\.com$/, 'Gmail'], [/outlook\.|mail\.yahoo/, 'Email'],
+    [/(^|\.)google\./, 'Google'], [/bing\.com$/, 'Bing'], [/duckduckgo\.com$/, 'DuckDuckGo'],
+    [/youtube\.com$|youtu\.be$/, 'YouTube'], [/reddit\.com$/, 'Reddit'], [/snapchat\.com$/, 'Snapchat'],
+    [/chatgpt\.com$|openai\.com$/, 'ChatGPT'], [/claude\.ai$/, 'Claude'], [/perplexity\.ai$/, 'Perplexity']
+  ];
+  function cameFrom() {
+    var ua = navigator.userAgent, ref = document.referrer || '';
+    // 1) In-app browsers announce themselves in the user agent
+    if (/Instagram/i.test(ua)) return 'Instagram';
+    if (/FBAN|FBAV|FB_IAB/i.test(ua)) return 'Facebook';
+    if (/LinkedInApp/i.test(ua)) return 'LinkedIn';
+    if (/Snapchat/i.test(ua)) return 'Snapchat';
+    if (/Twitter/i.test(ua)) return 'X (Twitter)';
+    if (/Telegram/i.test(ua)) return 'Telegram';
+    if (/WhatsApp/i.test(ua)) return 'WhatsApp';
+    if (/Line\//i.test(ua)) return 'LINE';
+    // 2) Android apps pass android-app://<package> as the referrer
+    var m = ref.match(/^android-app:\/\/([^/]+)/);
+    if (m) return APP_PACKAGES[m[1]] || ('App: ' + m[1]);
+    // 3) Websites
+    if (ref) {
+      try {
+        var h = new URL(ref).hostname.replace(/^www\.|^m\.|^l\.|^lm\./, '');
+        if (h === location.hostname) return '';
+        for (var i = 0; i < HOSTS.length; i++) if (HOSTS[i][0].test(h)) return HOSTS[i][1];
+        return h;
+      } catch (e) {}
+    }
+    // 4) No referrer: WhatsApp/SMS/typed/bookmark usually land here
+    return 'Direct / WhatsApp / typed';
+  }
+
+  /* ---------- Share-chain: links made by the Share button carry ?ref=share&hop=N ---------- */
+  var params = new URLSearchParams(location.search);
+  var hop = parseInt(params.get('hop') || '0', 10) || 0;
+  try {
+    if (hop) sessionStorage.setItem('ka_hop', hop);
+    else hop = parseInt(sessionStorage.getItem('ka_hop') || '0', 10) || 0;
+  } catch (e) {}
+
+  // Public helpers for page scripts (e.g. the biodata Share button)
+  window.kaTrack = function (path, title, gaName, gaParams) {
+    ev(path, title || path);
+    if (gaName) ga(gaName, gaParams);
+    try { window.clarity && window.clarity('event', path.replace(/[^a-z0-9]+/gi, '_')); } catch (e) {}
+  };
+  window.kaShareUrl = function (method) {
+    var u = new URL(location.origin + location.pathname);
+    u.searchParams.set('ref', 'share');
+    u.searchParams.set('hop', String(hop + 1));
+    u.searchParams.set('utm_source', 'shared-link');
+    u.searchParams.set('utm_medium', method || 'share-button');
+    return u.toString();
+  };
 
   /* ---------- Richer GoatCounter events ---------- */
   function deviceAndSource() {
@@ -62,12 +134,16 @@
     try {
       if (!sessionStorage.getItem('ka_landed')) {
         sessionStorage.setItem('ka_landed', '1');
-        var q = new URLSearchParams(location.search), src = q.get('utm_source');
-        if (!src && document.referrer) { try { src = new URL(document.referrer).hostname.replace(/^www\./, ''); } catch (e) {} }
-        if (src && src === location.hostname) src = '';
-        src = (src || 'direct').slice(0, 40);
-        ev('source/' + src, 'Came from: ' + src);
+        var src = (cameFrom() || 'Direct / WhatsApp / typed').slice(0, 40);
+        ev('came-from/' + src, 'Came from: ' + src);
         ev('landing/' + page, 'Landed on: ' + page);
+        ga('came_from', { platform: src, landing: page, share_hop: hop });
+        clarityTag('came_from', src);
+        if (hop) {
+          ev('shared-open/hop-' + hop + '/' + src, 'Opened a shared link (hop ' + hop + ') via ' + src);
+          ga('shared_link_open', { hop: hop, platform: src });
+          clarityTag('share_hop', String(hop));
+        }
       }
     } catch (e) {}
   }
@@ -132,12 +208,12 @@
 
   /* ---------- Start after load + idle, so the page is never slowed ---------- */
   function start() {
+    loadGA4();          // set up the gtag queue first so early events aren't dropped
     deviceAndSource();
     loadSpeed();
     scrollDepth();
     sectionViews();
     errors();
-    loadGA4();
     loadClarity();
   }
   function whenIdle() {
