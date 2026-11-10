@@ -9,7 +9,7 @@
  * To switch a tool on, paste its ID below. Empty string = not loaded.
  */
 (function () {
-  var CLARITY_ID = '';   // Microsoft Clarity project ID, e.g. 'abcd1234ef'
+  var CLARITY_ID = 'zbghtj6c4a';   // Microsoft Clarity project ID
   var GA4_ID = '';       // Google Analytics 4 measurement ID, e.g. 'G-XXXXXXXXXX'
 
   var page = location.pathname.replace(/^\/|\/$/g, '').replace(/\/index\.html$/, '') || 'home';
