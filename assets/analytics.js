@@ -10,7 +10,7 @@
  */
 (function () {
   var CLARITY_ID = 'zbghtj6c4a';   // Microsoft Clarity project ID
-  var GA4_ID = '';       // Google Analytics 4 measurement ID, e.g. 'G-XXXXXXXXXX'
+  var GA4_ID = 'G-5GMMD7S2LP';   // Google Analytics 4 measurement ID (property "kumargautam.com")
 
   var page = location.pathname.replace(/^\/|\/$/g, '').replace(/\/index\.html$/, '') || 'home';
 
@@ -113,6 +113,8 @@
         if (!e.isIntersecting) return;
         var id = (e.target.getAttribute('data-track-section') || e.target.id).slice(0, 40);
         ev('section/' + page + '/' + id, 'Viewed section: ' + id + ' (' + page + ')');
+        ga('section_view', { section: id, page: page });
+        try { window.clarity && window.clarity('event', 'section_' + id); } catch (_) {}
         io.unobserve(e.target);
       });
     }, { threshold: 0.4 });
