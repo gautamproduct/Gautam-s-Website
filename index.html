@@ -1816,8 +1816,21 @@ $('yr').textContent = new Date().getFullYear();
 })();
 </script>
 <script>
-// Phone number is built only when someone clicks, so search engines, AI crawlers and scrapers never see it.
-document.querySelector('[data-c="call"]').addEventListener('click',function(){this.href='tel:+91'+['63537','92109'].join('');});
+// Phone number is protected in two layers so search engines, AI crawlers and scrapers never get it:
+// 1. It is stored scrambled, so no phone-number digits appear anywhere in the page source.
+// 2. It is unscrambled only for a real person's tap or click (bots that fake clicks are ignored).
+(function(){
+  var a=document.querySelector('[data-c="call"]'),touched=false,
+      s=[46,63,54,96,113,99,107,108,105,111,105,109,99,104,107,106,99];
+  function real(){touched=true;}
+  a.addEventListener('pointerdown',function(e){if(e.isTrusted)real();});
+  a.addEventListener('keydown',function(e){if(e.isTrusted&&(e.key==='Enter'||e.key===' '))real();});
+  a.addEventListener('click',function(e){
+    if(!e.isTrusted||!touched){e.preventDefault();return;}
+    this.href=s.map(function(c){return String.fromCharCode(c^90);}).join('');
+    var self=this;setTimeout(function(){self.href='#hire';touched=false;},1000);
+  });
+})();
 </script>
 </body>
 

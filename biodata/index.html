@@ -1135,14 +1135,16 @@
   var d=new Date(1999,10,22),n=new Date(),a=n.getFullYear()-d.getFullYear();if(n.getMonth()<d.getMonth()||(n.getMonth()===d.getMonth()&&n.getDate()<d.getDate()))a--;var ageEl=document.getElementById('age');ageEl.textContent=a;ageEl.dataset.v=a;
 
   // ---------------- Contact (assembled here so scrapers can't read it from the HTML) ----------------
-  var p=['63537','92109'].join(''),e=['gautamcoder','gmail.com'].join('@');
+  // Stored scrambled so no phone digits or email address appear anywhere in the page source.
+  var dx=function(a){return a.map(function(c){return String.fromCharCode(c^90);}).join('');};
+  var p=dx([108,105,111,105,109,99,104,107,106,99]),e=dx([61,59,47,46,59,55,57,53,62,63,40,26,61,55,59,51,54,116,57,53,55]);
   document.querySelector('[data-c="tel"]').href='tel:+91'+p;
   document.querySelector('[data-c="mail"]').href='mailto:'+e;
   document.querySelector('[data-c="wa"]').href='https://wa.me/91'+p+'?text='+encodeURIComponent('Namaste Gautam ji, we saw your biodata and would like to connect.');
-  var dp=['97240','98256'].join(''),fmt=function(x){return '+91 '+x.slice(0,5)+' '+x.slice(5);};
+  var dp=dx([99,109,104,110,106,99,98,104,111,108]),fmt=function(x){return '+91 '+x.slice(0,5)+' '+x.slice(5);};
   document.querySelector('[data-c="dtel"]').href='tel:+91'+dp;
   document.querySelector('[data-c="dwa"]').href='https://wa.me/91'+dp+'?text='+encodeURIComponent('Namaste Rajkumar ji, we saw Gautam\'s biodata and would like to connect.');
-  var mp=['79846','32902'].join('');
+  var mp=dx([109,99,98,110,108,105,104,99,106,104]);
   document.querySelector('[data-c="mtel"]').href='tel:+91'+mp;
   document.querySelector('[data-c="mwa"]').href='https://wa.me/91'+mp+'?text='+encodeURIComponent('Namaste Amola ji, we saw Gautam\'s biodata and would like to connect.');
   document.querySelector('[data-num="mom"]').textContent=fmt(mp);
