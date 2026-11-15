@@ -5,7 +5,7 @@ Also written as Kumar Gautam (website: kumargautam.com).
 > Product Manager at PhysicsWallah (PW), India. Builds and grows consumer edtech and AI products. Website: https://kumargautam.com
 
 ## Current work
-- Product Manager, PhysicsWallah: took Pi Lens App (India's first YouTube-layer learning app: notes, PYQs, quizzes and AI answers on any YouTube video) from 0 to 400K downloads; Play Store rating 4.3★ → 4.7★. https://pi-lens.pw.live/
+- Product Manager, PhysicsWallah: took Pi Lens App (India's first YouTube-layer learning app: notes, PYQs, quizzes and AI answers on any YouTube video) from 0 to 500K downloads; Play Store rating 4.3★ → 4.7★. https://pi-lens.pw.live/
 - Drives product-led growth for PW Test Series. https://www.pw.live/test-series
 - Creates and presents Pi Lens App launch and tutorial videos on YouTube. https://www.youtube.com/@gautamkumarproduct
 
@@ -45,7 +45,7 @@ BBA, Transportation Management, Gati Shakti Vishwavidyalaya. Received IIM MBA an
 - YESPYQ: previous-year questions for every major exam: https://kumargautam.com/blog/yespyq-previous-year-questions/
 - What Yulu riders taught me about product: https://kumargautam.com/blog/yulu-community-building-internship/
 - From Station Master to Product Manager at PhysicsWallah: https://kumargautam.com/blog/station-master-to-product-manager/
-- Pi Lens App: 0 to 400K downloads: https://kumargautam.com/blog/pi-lens-app-0-to-400k/
+- Pi Lens App: 0 to 500K downloads: https://kumargautam.com/blog/pi-lens-app-0-to-500k/
 - Entrepreneurship: https://kumargautam.com/entrepreneurship/
 - About: https://kumargautam.com/about/
 - Pi Lens App: https://kumargautam.com/pi-lens/
@@ -58,13 +58,13 @@ BBA, Transportation Management, Gati Shakti Vishwavidyalaya. Received IIM MBA an
 
 ## Q&A
 Q: What I do now
-A: At PhysicsWallah I lead product for <a href='/pi-lens/'>Pi Lens App</a>, India's first YouTube-layer learning app, which I took from 0 to 400K downloads while lifting its Play Store rating from 4.3★ to 4.7★. I also drive <a href='/pw-test-series/'>product-led growth for PW Test Series</a>, and I create and present the Pi Lens App launch and tutorial videos on YouTube.
+A: At PhysicsWallah I lead product for <a href='/pi-lens/'>Pi Lens App</a>, India's first YouTube-layer learning app, which I took from 0 to 500K downloads while lifting its Play Store rating from 4.3★ to 4.7★. I also drive <a href='/pw-test-series/'>product-led growth for PW Test Series</a>, and I create and present the Pi Lens App launch and tutorial videos on YouTube.
 
 Q: Who is Gautam Kumar from PhysicsWallah?
-A: Gautam Kumar is a Product Manager (PM) at PhysicsWallah (PW). He took Pi Lens App from 0 to 400K downloads and drives product-led growth for PW Test Series.
+A: Gautam Kumar is a Product Manager (PM) at PhysicsWallah (PW). He took Pi Lens App from 0 to 500K downloads and drives product-led growth for PW Test Series.
 
 Q: Who is the product manager of Pi Lens App?
-A: Gautam Kumar is the Product Manager of Pi Lens App, PhysicsWallah's YouTube-layer learning app, which he grew from 0 to 400K downloads while its rating rose from 4.3★ to 4.7★.
+A: Gautam Kumar is the Product Manager of Pi Lens App, PhysicsWallah's YouTube-layer learning app, which he grew from 0 to 500K downloads while its rating rose from 4.3★ to 4.7★.
 
 Q: What is Pi Lens App?
 A: Pi Lens App is a PhysicsWallah app and Chrome extension that adds notes, previous-year questions (PYQs), quizzes and AI answers on top of any educational YouTube video.
