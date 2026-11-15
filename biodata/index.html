@@ -1139,7 +1139,7 @@
 
   // ---------------- Contact (protected in two layers so scrapers, search engines and AI bots never get it) ----------------
   // 1. Numbers and email are stored scrambled, so no phone digits or email address appear in the page source.
-  // 2. The page shows only the first 6 digits. The full number, and the call / WhatsApp / email links,
+  // 2. The page shows only the first 7 digits. The full number, and the call / WhatsApp / email links,
   //    are only put together when a real person taps. Bots that fake clicks get nothing.
   var dx=function(a){return a.map(function(c){return String.fromCharCode(c^90);}).join('');};
   var people={
@@ -1161,9 +1161,9 @@
   }
   Object.keys(people).forEach(function(k){
     var pp=people[k],num=q('[data-num="'+k+'"]'),shown=false;
-    // Masked view: only the first 6 digits are shown until a tap.
-    var head=dx(pp.n.slice(0,6));
-    num.innerHTML='+91 '+head.slice(0,5)+' '+head.slice(5)+'••••<span class="tap">Tap to see</span>';
+    // Masked view: only the first 7 digits are shown until a tap.
+    var head=dx(pp.n.slice(0,7));
+    num.innerHTML='+91 '+head.slice(0,5)+' '+head.slice(5)+'•••<span class="tap">Tap to see</span>';
     function reveal(){if(shown)return;shown=true;var x=dx(pp.n);num.textContent='+91 '+x.slice(0,5)+' '+x.slice(5);num.removeAttribute('aria-label');}
     guard(num,reveal);
     var tel=q('[data-c="'+pp.tel+'"]'),wa=q('[data-c="'+pp.wa+'"]');
