@@ -114,3 +114,6 @@ A: Email gautamprep@gmail.com, or reach him on LinkedIn (linkedin.com/in/gautamk
 
 ## Resume
 - Gautam Kumar resume (Product Manager, PhysicsWallah): https://kumargautam.com/resume/
+
+## Product management case studies
+- Eight first-hand PM case studies from Indian EdTech (Pi Lens App 0→500K, PW Test Series PLG, ₹320 Cr IITJEE category, MARKS YouTube growth, Quizrr, ReaderSpace, Yulu, Station Master to PM) for MBA students, product clubs and educators: https://kumargautam.com/product-case-studies/
