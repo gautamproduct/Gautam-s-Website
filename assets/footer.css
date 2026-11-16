@@ -1,0 +1,19 @@
+footer.gk{background:#0b1a12;color:#ffffffb3;text-align:left;font-size:14px;padding:56px 24px 28px;margin-top:48px}
+footer.gk a{display:inline;padding:0}
+.gk .fz{max-width:1200px;margin:0 auto 36px;display:grid;grid-template-columns:1.3fr 1fr;gap:48px}
+.gk .fz-kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#ffffff80;margin:0 0 14px}
+.gk .fz-title{font-family:'Instrument Serif','Instrument Serif Fallback',Georgia,serif;font-weight:400;font-size:clamp(32px,5vw,52px);line-height:1.05;color:#fff;margin:0 0 14px}
+.gk .fz-title em{color:#8fd19e}
+.gk .fz-sub{color:#ffffffb3;font-size:15px;line-height:1.6;margin:0 0 22px;max-width:520px}
+.gk .fz-btns{display:flex;flex-wrap:wrap;gap:10px}
+.gk .fz-btn{display:inline-block;padding:11px 18px;border-radius:999px;background:#fff;color:#0b1a12;font-size:14px;font-weight:500;text-decoration:none;transition:transform .2s}
+.gk .fz-btn:hover{transform:translateY(-2px)}
+.gk .fz-ghost{background:transparent;color:#fff;border:1px solid #ffffff40}
+.gk .fz-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gk .fz-cols h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#ffffff73;font-weight:500;margin:0 0 12px;font-family:inherit}
+.gk .fz-cols a{display:block;color:#ffffffcc;font-size:14px;text-decoration:none;padding:5px 0}
+.gk .fz-cols a:hover{color:#fff}
+.gk .foot{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid #ffffff1a;padding-top:22px}
+.gk .foot-logo{font-family:'Instrument Serif','Instrument Serif Fallback',Georgia,serif;font-size:18px;color:#ffffff8c;text-decoration:none}
+.gk .foot small{font-size:12.5px;color:#ffffff73}
+@media(max-width:800px){.gk .fz{grid-template-columns:1fr;gap:32px}.gk .fz-cols{grid-template-columns:1fr 1fr}}
