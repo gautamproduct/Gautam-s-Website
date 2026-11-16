@@ -1079,6 +1079,21 @@
   .foot-links { max-width: 1200px; margin: 0 auto 18px; display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: center; }
   .foot-links a { font-size: 13px; color: #ffffffa6; text-decoration: none; }
   .foot-links a:hover { color: #fff; }
+  .fz { max-width: 1200px; margin: 0 auto 36px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; padding-top: 24px; }
+  .fz-kicker { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #ffffff80; margin: 0 0 14px; }
+  .fz-title { font-family: var(--font-heading); font-weight: 400; font-size: clamp(34px, 5vw, 56px); line-height: 1.05; color: #fff; margin: 0 0 14px; }
+  .fz-title em { color: #8fd19e; }
+  .fz-sub { color: #ffffffb3; font-size: 15px; line-height: 1.6; margin: 0 0 22px; max-width: 520px; }
+  .fz-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .fz-btn { display: inline-block; padding: 11px 18px; border-radius: 999px; background: #fff; color: #0b1a12; font-size: 14px; font-weight: 500; text-decoration: none; transition: transform .2s; }
+  .fz-btn:hover { transform: translateY(-2px); }
+  .fz-ghost { background: transparent; color: #fff; border: 1px solid #ffffff40; }
+  .fz-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .fz-cols h3 { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #ffffff73; font-weight: 500; margin: 0 0 12px; }
+  .fz-cols a { display: block; color: #ffffffcc; font-size: 14px; text-decoration: none; padding: 5px 0; }
+  .fz-cols a:hover { color: #fff; }
+  footer .foot { border-top: 1px solid #ffffff1a; padding-top: 22px; }
+  @media (max-width: 800px) { .fz { grid-template-columns: 1fr; gap: 32px; } .fz-cols { grid-template-columns: 1fr 1fr; } }
   .foot-seo { text-align: center; font-size: 12px; color: #ffffff80; margin: 0 auto 10px; }
   .hero-sub { max-width: 560px !important; font-size: 19px !important; line-height: 1.6 !important; opacity: .95; }
   @media (max-width: 640px) { .hero-sub { font-size: 16.5px !important; } }
@@ -1401,8 +1416,19 @@
 </section>
 
 <footer>
-  <p class="foot-seo">Gautam Kumar · Product Manager (PM) at PhysicsWallah (PW), India</p>
-  <nav class="foot-links" aria-label="Pages"><a href="/hire-product-manager/">Hire a Product Manager</a><a href="/about/">About</a><a href="/blog/">Blog</a><a href="/pi-lens/">Pi Lens App</a><a href="/pw-test-series/">PW Test Series</a><a href="/marks-app/">MARKS App</a><a href="/know-your-branch/">Know Your Branch</a><a href="/mathongo-quizrr/">MathonGo & Quizrr</a><a href="/entrepreneurship/">Entrepreneurship</a><a href="/side-projects/">Side Projects</a><a href="/indian-railways/">Indian Railways</a></nav>
+  <div class="fz">
+    <div class="fz-cta">
+      <p class="fz-kicker">Gautam Kumar · Product Manager (PM) at PhysicsWallah (PW), India</p>
+      <h2 class="fz-title">Building something people <em>actually use?</em></h2>
+      <p class="fz-sub">0 → 500K downloads on Pi Lens App, product-led growth for PW Test Series, ₹320 Cr IITJEE category. Happy to talk product.</p>
+      <div class="fz-btns"><a class="fz-btn" href="mailto:gautamprep@gmail.com">Email me</a><a class="fz-btn fz-ghost" href="https://www.linkedin.com/in/gautamkumar42" target="_blank" rel="noopener">LinkedIn ↗</a><a class="fz-btn fz-ghost" href="/hire-product-manager/">Hire a Product Manager →</a></div>
+    </div>
+    <nav class="fz-cols" aria-label="Pages">
+      <div><h3>Products</h3><a href="/pi-lens/">Pi Lens App</a><a href="/pw-test-series/">PW Test Series</a><a href="/marks-app/">MARKS App</a><a href="/side-projects/">Side Projects</a></div>
+      <div><h3>Story</h3><a href="/about/">About Gautam</a><a href="/indian-railways/">Indian Railways</a><a href="/mathongo-quizrr/">MathonGo &amp; Quizrr</a><a href="/entrepreneurship/">Entrepreneurship</a></div>
+      <div><h3>Writing &amp; media</h3><a href="/blog/">Blog</a><a href="/know-your-branch/">Know Your Branch</a><a href="https://www.youtube.com/@gautamkumarproduct" target="_blank" rel="noopener">YouTube ↗</a><a href="https://x.com/__Gautam_Kumar" target="_blank" rel="noopener">X ↗</a><a href="https://github.com/gautamproduct" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </nav>
+  </div>
   <div class="foot">
     <span class="foot-logo">kumargautam</span>
     <small>Built with love for solving problems · © <span id="yr">2026</span> Gautam Kumar</small><br><small style="font-size:10px;opacity:.5">This site uses analytics cookies (Google Analytics, Microsoft Clarity) to understand visits</small>
