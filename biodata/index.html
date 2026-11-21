@@ -538,6 +538,25 @@
   .contact-line b{color:#fff;font-weight:500}
   .night-palace{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;pointer-events:none}
   .night-palace .win{fill:#ffd36b;animation:flicker 3s ease-in-out infinite;animation-delay:var(--d,0s)}
+  .pro-cta{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;gap:16px;max-width:470px;margin:6px auto 28px;padding:18px 18px 18px 22px;border-radius:20px;text-align:left;color:#fff;text-decoration:none;background:radial-gradient(120% 140% at 0% 0%,#ffcf7a2e,transparent 55%),radial-gradient(120% 140% at 100% 100%,#c06bff26,transparent 55%),linear-gradient(135deg,#2a1830,#14232b);box-shadow:0 0 0 1px #ffffff12,0 18px 40px -16px #000c,0 0 36px -8px #ffb5634d;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;-webkit-tap-highlight-color:transparent}
+  .pro-cta::before{content:"";position:absolute;inset:0;z-index:-1;padding:1.5px;border-radius:inherit;background:linear-gradient(115deg,#ffd98a,#ff8fb1,#b58cff,#6fd0ff,#ffd98a);background-size:300% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:proGlow 6s linear infinite;animation-play-state:paused}
+  .pro-cta::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:45%;z-index:1;pointer-events:none;background:linear-gradient(100deg,transparent,#ffffff38 45%,#fff6 50%,#ffffff38 55%,transparent);transform:skewX(-18deg);animation:proSheen 4.2s ease-in-out infinite;animation-play-state:paused}
+  .pro-cta.live::before,.pro-cta.live::after,.pro-cta.live .pc-go::after,.pro-cta.live .pc-star{animation-play-state:running}
+  .pro-cta:hover{transform:translateY(-3px);box-shadow:0 0 0 1px #ffffff1f,0 24px 50px -18px #000d,0 0 50px -6px #ffb56380}
+  .pro-cta:active{transform:scale(.97)}
+  .pro-cta .pc-txt{flex:1;min-width:0;position:relative;z-index:2}
+  .pro-cta small{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:linear-gradient(90deg,#ffd98a,#ff9db8);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:5px}
+  .pro-cta .pc-star{display:inline-block;color:#ffd98a;-webkit-text-fill-color:#ffd98a;animation:proTwinkle 2.4s ease-in-out infinite;animation-play-state:paused}
+  .pro-cta b{display:block;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(22px,5.6vw,27px);line-height:1.12;background:linear-gradient(180deg,#fff 30%,#ffe7c2);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .pro-cta .pc-sub{display:block;font-size:13px;color:#ffffffad;margin-top:4px}
+  .pro-cta .pc-go{position:relative;z-index:2;flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:21px;color:#3a1608;background:linear-gradient(180deg,#ffe3a3,#f39a48);box-shadow:0 8px 22px #f39a4880,inset 0 1px 0 #fff8;transition:transform .25s}
+  .pro-cta .pc-go::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid #ffd98a;opacity:0;animation:proPulse 2.4s ease-out infinite;animation-play-state:paused}
+  .pro-cta:hover .pc-go{transform:translateX(4px) scale(1.05)}
+  @keyframes proGlow{to{background-position:300% 0}}
+  @keyframes proSheen{0%,55%{left:-60%}100%{left:130%}}
+  @keyframes proPulse{0%{transform:scale(.85);opacity:.7}100%{transform:scale(1.35);opacity:0}}
+  @keyframes proTwinkle{50%{opacity:.35;transform:scale(.75) rotate(20deg)}}
+  @media (prefers-reduced-motion:reduce){.pro-cta::before,.pro-cta::after,.pro-cta .pc-go::after,.pro-cta .pc-star{animation:none}.pro-cta::after{display:none}}
   footer{background:#0b1418;padding:28px 24px;text-align:center}
   footer p{font-size:12.5px;color:#ffffff80}
 
@@ -643,6 +662,7 @@
     .timeline::before{left:10px}.ch,.ch:nth-child(even){width:100%;margin-left:0;padding:0 0 10px 30px}.ch::after,.ch:nth-child(odd)::after{left:3px;right:auto}
     #reception{padding-bottom:10px!important}
     footer{background:#fff}footer p{color:#666}
+    .pro-cta{display:none}
   }
 
   /* ===== Next-level motion ===== */
@@ -959,6 +979,7 @@
 </section>
 
 <footer>
+  <a class="pro-cta" href="/" aria-label="See my professional profile"><span class="pc-txt"><small><span class="pc-star" aria-hidden="true">✦</span>Beyond the biodata</small><b>See my professional profile</b><span class="pc-sub">Work at PhysicsWallah, products I've built, my journey</span></span><span class="pc-go" aria-hidden="true">→</span></a>
   <div class="foot-om">卐</div>
   <p><small style="font-size:10px;opacity:.5">This site uses analytics cookies (Google Analytics, Microsoft Clarity) to understand visits</small></p>
   <details class="credits"><summary>Photo credits</summary><small>Wikimedia Commons: Golghar, Patna by Kumartheharshit (CC BY-SA 3.0); Golden Bridge, Bharuch by Vimleshchandra (CC BY-SA 3.0); Laxmi Vilas Palace, Vadodara by Emmanuel DYAN (CC BY 2.0)</small></details>
@@ -1232,7 +1253,7 @@
    Phones and low-power devices also drop blur via the "lite" class. */
 (function(){var lite=(navigator.hardwareConcurrency||8)<=4||(navigator.deviceMemory||8)<=4||(window.matchMedia&&matchMedia('(max-width: 800px)').matches);
   if(lite)document.documentElement.classList.add('lite');
-  var keep=/^(tick|mapZoom|zFade|zShow|ripple2g)$/;
+  var keep=/^(tick|mapZoom|zFade|zShow|ripple2g|proGlow|proSheen|proPulse|proTwinkle)$/;
   function calm(){if(!document.getAnimations)return;document.getAnimations().forEach(function(a){var e=a.effect;if(!e||e.getTiming().iterations!==Infinity)return;if(keep.test(a.animationName||''))return;a.cancel();});}
   calm();setInterval(calm,2000);})();
 </script>
@@ -1259,6 +1280,15 @@
       if(u.host&&u.host!==location.host){ ev('outbound/'+u.host,'Outbound: '+u.host); return; } } }catch(_){}
     var l=(a.getAttribute('aria-label')||a.textContent||'').replace(/\s+/g,' ').trim().slice(0,40);
     if(l) ev('click/'+l,'Click: '+l); },{passive:true});
+  // 4) Professional-profile CTA: seen, seconds visible before click, click
+  try{ var pc=document.querySelector('.pro-cta'); if(pc){ var seenAt=0;
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ es.forEach(function(x){
+      pc.classList.toggle('live',x.isIntersecting);
+      if(x.isIntersecting&&!seenAt){ seenAt=Date.now(); ev('cta/pro-profile/seen','Profile CTA: seen'); } }); },{threshold:.6}).observe(pc); }
+    else pc.classList.add('live');
+    pc.addEventListener('click',function(){ var d=seenAt?Math.round((Date.now()-seenAt)/1000):-1;
+      var b=d<0?'unknown':d<5?'0-5s':d<30?'5-30s':'30s+';
+      ev('cta/pro-profile/click','Profile CTA: clicked'); ev('cta/pro-profile/click-after/'+b,'Profile CTA: clicked after '+b+' in view'); }); } }catch(e){}
 })();
 </script>
 </body>
