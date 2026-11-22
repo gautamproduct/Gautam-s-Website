@@ -13,7 +13,7 @@ Also written as Kumar Gautam (website: kumargautam.com).
 - 2025: Category Manager, IITJEE at PhysicsWallah (₹320 Cr+ category).
 - 2023–2025: Station Master, Indian Railways (DFCCIL), ~2,400 freight trains a month.
 - 2022: Community Building intern, Yulu (seeded #YuSmart).
-- 2021–2023: Early member, Product & Growth at MathonGo: scaled the MARKS app (100K+ downloads, 4.8★), grew MARKS YouTube to 52K+ subscribers and 15.4M views, hosted the "Know Your Branch" podcast with IIT students, worked on growth for Quizrr (online mock test series for competitive exams), built a 30K+ student Telegram community.
+- 2021–2023: Founding member, Product & Growth at MathonGo: scaled the MARKS app (100K+ downloads, 4.8★), grew MARKS YouTube to 52K+ subscribers and 15.4M views, hosted the "Know Your Branch" podcast with IIT students, worked on growth for Quizrr (online mock test series for competitive exams), built a 30K+ student Telegram community.
 - 2019–2021: Founder, ReaderSpace (WhatsApp news analysis; 4,000+ members, 500 paid, ₹30,000 ARR).
 
 ## Side projects
@@ -36,7 +36,7 @@ BBA, Transportation Management, Gati Shakti Vishwavidyalaya. Received IIM MBA an
 - Leading PW's ₹320 Cr IITJEE category: https://kumargautam.com/blog/iitjee-category-business-lead-pw/
 - Hosting Know Your Branch: IIT students on their B.Tech branch: https://kumargautam.com/blog/know-your-branch-podcast/
 - MARKS app: 100K+ downloads at 4.8★: https://kumargautam.com/blog/marks-app-100k-downloads/
-- Early member at MathonGo: https://kumargautam.com/blog/mathongo-early-member/
+- Founding member at MathonGo: https://kumargautam.com/blog/mathongo-early-member/
 - NRTI to Gati Shakti Vishwavidyalaya: my BBA in Transportation Management: https://kumargautam.com/blog/nrti-gati-shakti-vishwavidyalaya-bba/
 - Product-led growth for PW Test Series: https://kumargautam.com/blog/pw-test-series-product-led-growth/
 - Growth for Quizrr, MathonGo's mock test series: https://kumargautam.com/blog/quizrr-mock-test-series-growth/
@@ -101,7 +101,7 @@ A: Email gautamprep@gmail.com, or reach him on LinkedIn (linkedin.com/in/gautamk
 - School: Amity School, Bharuch (Gujarat) → Ambe Vidyalaya → Baroda High School, Vadodara.
 - Degree: BBA at Gati Shakti Vishwavidyalaya (GSV, formerly NRTI), Vadodara: https://kumargautam.com/blog/nrti-gati-shakti-vishwavidyalaya-bba/
 - Internship: Community building at Yulu: https://kumargautam.com/blog/yulu-community-building-internship/
-- Early member at MathonGo: MARKS app to 100K+ downloads, Quizrr test series growth, MARKS YouTube to 15.4M views, Know Your Branch podcast host: https://kumargautam.com/mathongo-quizrr/
+- Founding member at MathonGo: MARKS app to 100K+ downloads, Quizrr test series growth, MARKS YouTube to 15.4M views, Know Your Branch podcast host: https://kumargautam.com/mathongo-quizrr/
 - Founder of ReaderSpace (WhatsApp news, 4,000+ readers): https://kumargautam.com/entrepreneurship/
 - 2023–2025: Station Master, Indian Railways (DFCCIL): https://kumargautam.com/indian-railways/
 - 2025: MBA admission offer from IIM Sambalpur and a PGP offer from Mesa School of Business; declined both to keep building products.
