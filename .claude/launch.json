@@ -1,0 +1,1 @@
+{"version":"0.0.1","configurations":[{"name":"site-preview","runtimeExecutable":"/bin/sh","runtimeArgs":["-c","cd /private/tmp/claude-501/-Users-gautam-Documents-claude-Gautam-s-Website/8deca906-067a-4987-9966-5334f765d655/scratchpad/site && exec python3 -m http.server 8765"],"port":8765}]}
