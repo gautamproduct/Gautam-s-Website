@@ -1074,7 +1074,7 @@
   .ch-ico svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
   .ch-when { font-size: 11.5px; font-weight: 600; letter-spacing: .06em; color: color-mix(in srgb, var(--c) 85%, #000); background: color-mix(in srgb, var(--c) 12%, #fff); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); padding: 3px 10px; border-radius: 999px; }
   .ch-card h3 { font-family: var(--font-heading); font-weight: 400; font-size: 23px; color: var(--text); line-height: 1.15; }
-  .ch-card .role { font-size: 12.5px; font-weight: 500; color: var(--text-muted); margin: 2px 0 8px; }
+  .ch-card .role { font-size: 14px; font-weight: 600; color: color-mix(in srgb, var(--c, #c2581c) 78%, #000); margin: 4px 0 10px; letter-spacing: .005em; }
   .ch-card p { font-size: 14px; color: #5a5550cc; }
   .ch.now .ch-card { background: #fffffff0; box-shadow: 0 0 0 2px #fff, 0 18px 44px #5b479566; }
   #story .edu-line { color: #ffffffd9; margin-top: 30px; }
@@ -1311,7 +1311,8 @@
   .edu-pill { font-size: 13px; color: #fff; background: #ffffff21; border: 1px solid #ffffff40; padding: 6px 12px; border-radius: 999px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); white-space: nowrap; }
   .edu-pill.main { background: #ffffffe6; color: #3a2f4f; border-color: #fff; }
   .edu-pill b { font-weight: 600; }
-  .edu-note { font-size: 12px; font-style: italic; color: #ffffffbf; }
+  .edu-note { flex-basis: 100%; text-align: center; font-size: 14px; font-weight: 500; color: #fff; margin-top: 6px; }
+  .edu-tag { font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #5b4795; background: #fff; border-radius: 999px; padding: 3px 8px; margin-left: 2px; }
   @media (max-width: 640px) { .edu-pill { white-space: normal; text-align: center; } }
 
   /* ===== Site-wide motion ===== */
@@ -1884,9 +1885,9 @@
     <h3>Pi Lens App &amp; Test Series</h3><div class="role">Product Manager · PhysicsWallah</div><p>Took Pi Lens App from 0 to 500K downloads and from 4.3★ to 4.7★. Now also driving product-led growth for PW Test Series.</p></div></div></div>
     <div class="edu reveal">
       <span class="edu-pill main"><img loading="lazy" decoding="async" src="assets/logos/gsv.png" alt="Gati Shakti Vishwavidyalaya logo"><b>BBA, Transportation Management</b> · Gati Shakti Vishwavidyalaya</span>
-      <span class="edu-pill"><i class="edu-ico"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></i>IIM · MBA offer</span>
-      <span class="edu-pill"><img loading="lazy" decoding="async" src="assets/logos/mesaschool.png" alt="Mesa School of Business logo">Mesa · PGP offer</span>
-      <span class="edu-note">offers declined to keep building</span>
+      <span class="edu-pill"><i class="edu-ico"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></i>IIM Sambalpur · MBA offer<b class="edu-tag">Declined</b></span>
+      <span class="edu-pill"><img loading="lazy" decoding="async" src="assets/logos/mesaschool.png" alt="Mesa School of Business logo">Mesa School · PGP offer<b class="edu-tag">Declined</b></span>
+      <span class="edu-note">Turned down both MBA offers to keep building products</span>
     </div>
   </div>
 </section>

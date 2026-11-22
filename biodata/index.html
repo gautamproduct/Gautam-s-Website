@@ -59,7 +59,7 @@
   /* ============ Tokens: kumargautam.com + wedding palette ============ */
   :root{
     --cream:#fefcf8; --cream-card:#fcf9f3; --cream-dark:#f5f1ea;
-    --text:#433d38; --text-muted:#5a5550; --text-faint:#5a555099;
+    --text:#433d38; --text-muted:#5a5550; --text-faint:#5a5550c9;
     --border:#5a55500f; --border-strong:#5a55501f;
     --radius-card:24px; --radius-btn:12px;
     --font-heading:"Instrument Serif","Instrument Serif Fallback",Georgia,serif; --font-body:"Inter","Inter Fallback",system-ui,-apple-system,sans-serif;
@@ -79,7 +79,7 @@
 
   /* ============ Progress + Nav (homepage style) ============ */
   .progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:60;transform-origin:0 50%;transform:scaleX(0);
-            background:linear-gradient(90deg,#f4b324,#ee7d2b,#e0457b,#a24bd8,#3a6ee6);pointer-events:none}
+            background:linear-gradient(90deg,#f4b324,#ee7d2b,#e0457b,#b0306a,#7a1f5c);pointer-events:none}
   .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:0 24px;transition:background .35s,box-shadow .35s}
   .nav-inner{max-width:1200px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
   .nav-logo{font-family:var(--font-heading);font-size:22px;color:#fff;letter-spacing:-.01em;transition:color .35s;white-space:nowrap}
@@ -228,8 +228,8 @@
   .stat:nth-child(2){background:linear-gradient(150deg,#d98a6a,#a8443a)}
   .stat:nth-child(3){background:linear-gradient(150deg,#b8456a,#7a2244)}
   .stat:nth-child(4){background:linear-gradient(150deg,#7a3561,#3d1236)}
-  .stat:nth-child(5){background:linear-gradient(150deg,#6eb1ff,#2f6fe0)}
-  .stat:nth-child(6){background:linear-gradient(150deg,#a983ff,#5b3fc9)}
+  .stat:nth-child(5){background:linear-gradient(150deg,#e07a8a,#a3243f)}
+  .stat:nth-child(6){background:linear-gradient(150deg,#f0a35e,#b85a1c)}
   .about-wrap{display:grid;grid-template-columns:1fr;gap:16px;max-width:920px;margin:44px auto 0}
   @media(min-width:860px){.about-wrap{grid-template-columns:1.35fr 1fr}}
   .letter{position:relative;background:#fffdf8;border:1px solid #f1dfb3;border-radius:var(--radius-card);padding:30px 28px 26px;box-shadow:0 20px 50px -24px #b8761a55}
@@ -313,7 +313,7 @@
   .apps b{color:#c2452f;font-weight:600}
   .timeline{position:relative;max-width:900px;margin:0 auto}
   .timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:#4d7c3a1f}
-  .tl-fill{position:absolute;left:9.5px;top:0;width:3px;height:0;border-radius:3px;background:linear-gradient(180deg,#ee7d2b,#e0457b,#a24bd8,#2f8a4f,#c2452f);box-shadow:0 0 12px #ee7d2b88;transition:height .15s linear}
+  .tl-fill{position:absolute;left:9.5px;top:0;width:3px;height:0;border-radius:3px;background:linear-gradient(180deg,#e07b2a,#b0306a,#c98a1e,#c2335f,#c2452f);box-shadow:0 0 12px #ee7d2b88;transition:height .15s linear}
   @media(max-width:640px){.tl-fill{left:10px}}
   .js .ch.reveal{transform:translateY(16px)}
   .js .ch.reveal.in{transform:none}
@@ -538,8 +538,8 @@
   .contact-line b{color:#fff;font-weight:500}
   .night-palace{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;pointer-events:none}
   .night-palace .win{fill:#ffd36b;animation:flicker 3s ease-in-out infinite;animation-delay:var(--d,0s)}
-  .pro-cta{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;gap:16px;max-width:470px;margin:6px auto 28px;padding:18px 18px 18px 22px;border-radius:20px;text-align:left;color:#fff;text-decoration:none;background:radial-gradient(120% 140% at 0% 0%,#ffcf7a2e,transparent 55%),radial-gradient(120% 140% at 100% 100%,#c06bff26,transparent 55%),linear-gradient(135deg,#2a1830,#14232b);box-shadow:0 0 0 1px #ffffff12,0 18px 40px -16px #000c,0 0 36px -8px #ffb5634d;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;-webkit-tap-highlight-color:transparent}
-  .pro-cta::before{content:"";position:absolute;inset:0;z-index:-1;padding:1.5px;border-radius:inherit;background:linear-gradient(115deg,#ffd98a,#ff8fb1,#b58cff,#6fd0ff,#ffd98a);background-size:300% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:proGlow 6s linear infinite;animation-play-state:paused}
+  .pro-cta{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;gap:16px;max-width:470px;margin:6px auto 28px;padding:18px 18px 18px 22px;border-radius:20px;text-align:left;color:#fff;text-decoration:none;background:radial-gradient(120% 140% at 0% 0%,#ffcf7a2e,transparent 55%),radial-gradient(120% 140% at 100% 100%,#ff8fb12b,transparent 55%),linear-gradient(135deg,#3d1636,#210a1e);box-shadow:0 0 0 1px #ffffff12,0 18px 40px -16px #000c,0 0 36px -8px #ffb5634d;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;-webkit-tap-highlight-color:transparent}
+  .pro-cta::before{content:"";position:absolute;inset:0;z-index:-1;padding:1.5px;border-radius:inherit;background:linear-gradient(115deg,#ffd98a,#ff8fb1,#f39a48,#ffe7a8,#ffd98a);background-size:300% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:proGlow 6s linear infinite;animation-play-state:paused}
   .pro-cta::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:45%;z-index:1;pointer-events:none;background:linear-gradient(100deg,transparent,#ffffff38 45%,#fff6 50%,#ffffff38 55%,transparent);transform:skewX(-18deg);animation:proSheen 4.2s ease-in-out infinite;animation-play-state:paused}
   .pro-cta.live::before,.pro-cta.live::after,.pro-cta.live .pc-go::after,.pro-cta.live .pc-star{animation-play-state:running}
   .pro-cta:hover{transform:translateY(-3px);box-shadow:0 0 0 1px #ffffff1f,0 24px 50px -18px #000d,0 0 50px -6px #ffb56380}
@@ -557,7 +557,7 @@
   @keyframes proPulse{0%{transform:scale(.85);opacity:.7}100%{transform:scale(1.35);opacity:0}}
   @keyframes proTwinkle{50%{opacity:.35;transform:scale(.75) rotate(20deg)}}
   @media (prefers-reduced-motion:reduce){.pro-cta::before,.pro-cta::after,.pro-cta .pc-go::after,.pro-cta .pc-star{animation:none}.pro-cta::after{display:none}}
-  footer{background:#0b1418;padding:28px 24px;text-align:center}
+  footer{background:#1c0819;padding:28px 24px;text-align:center}
   footer p{font-size:12.5px;color:#ffffff80}
 
 
@@ -899,10 +899,10 @@
       </svg>
     </div>
     <div class="timeline" id="timeline"><div class="tl-fill" id="tlFill"></div>
-      <div class="ch reveal" style="--k:#3a6ee6;--g:linear-gradient(160deg,#78aaff,#3a6ee6)"><div class="ch-card"><div class="ch-head"><span class="ch-logos"><a class="ch-logo" href="https://amityschool.net/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/amity.png" alt="Amity School, Bharuch"></a><a class="ch-logo" href="https://www.ambevidyalaya.org/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/ambe.png" alt="Ambe School"></a><a class="ch-logo" href="https://barodahighschool.com/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/bhs.png" alt="Baroda High School"></a></span><span class="ch-when">School</span></div><h3><a class="ch-site" href="https://amityschool.net/" target="_blank" rel="noopener">Amity School, Bharuch<i aria-hidden="true">↗</i></a></h3><h3 class="then"><a class="ch-site" href="https://www.ambevidyalaya.org/" target="_blank" rel="noopener">Ambe School, Manjalpur<i aria-hidden="true">↗</i></a></h3><h3 class="then"><a class="ch-site" href="https://barodahighschool.com/" target="_blank" rel="noopener">Baroda High School, Bagikhana<i aria-hidden="true">↗</i></a></h3></div></div>
-      <div class="ch reveal" style="--k:#a24bd8;--g:linear-gradient(160deg,#c49bff,#7b45d8)"><div class="ch-card"><div class="ch-head"><a class="ch-logo" href="https://gsv.ac.in/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/gsv.png" alt="Gati Shakti Vishwavidyalaya"></a><span class="ch-when">BBA · 2023</span></div><h3><a class="ch-site" href="https://gsv.ac.in/" target="_blank" rel="noopener">National Rail &amp; Transportation Institute (NRTI)<i aria-hidden="true">↗</i><br><span style="font-style:italic;font-weight:400;font-size:.8em;opacity:.75">now Gati Shakti Vishwavidyalaya</span></a></h3><p>BBA in Transportation Management.</p>
+      <div class="ch reveal" style="--k:#e07b2a;--g:linear-gradient(160deg,#ffc27a,#e07b2a)"><div class="ch-card"><div class="ch-head"><span class="ch-logos"><a class="ch-logo" href="https://amityschool.net/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/amity.png" alt="Amity School, Bharuch"></a><a class="ch-logo" href="https://www.ambevidyalaya.org/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/ambe.png" alt="Ambe School"></a><a class="ch-logo" href="https://barodahighschool.com/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/bhs.png" alt="Baroda High School"></a></span><span class="ch-when">School</span></div><h3><a class="ch-site" href="https://amityschool.net/" target="_blank" rel="noopener">Amity School, Bharuch<i aria-hidden="true">↗</i></a></h3><h3 class="then"><a class="ch-site" href="https://www.ambevidyalaya.org/" target="_blank" rel="noopener">Ambe School, Manjalpur<i aria-hidden="true">↗</i></a></h3><h3 class="then"><a class="ch-site" href="https://barodahighschool.com/" target="_blank" rel="noopener">Baroda High School, Bagikhana<i aria-hidden="true">↗</i></a></h3></div></div>
+      <div class="ch reveal" style="--k:#b0306a;--g:linear-gradient(160deg,#f08bb5,#a12a60)"><div class="ch-card"><div class="ch-head"><a class="ch-logo" href="https://gsv.ac.in/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/gsv.png" alt="Gati Shakti Vishwavidyalaya"></a><span class="ch-when">BBA · 2023</span></div><h3><a class="ch-site" href="https://gsv.ac.in/" target="_blank" rel="noopener">National Rail &amp; Transportation Institute (NRTI)<i aria-hidden="true">↗</i><br><span style="font-style:italic;font-weight:400;font-size:.8em;opacity:.75">now Gati Shakti Vishwavidyalaya</span></a></h3><p>BBA in Transportation Management.</p>
         <div class="ch-pics"><img loading="lazy" decoding="async" data-i="47" alt=""><img loading="lazy" decoding="async" data-i="48" alt=""><img loading="lazy" decoding="async" data-i="49" alt=""></div></div></div>
-      <div class="ch reveal" style="--k:#2f8a4f;--g:linear-gradient(160deg,#7dd68f,#3fa257)"><div class="ch-card"><div class="ch-head"><a class="ch-logo" href="https://dfccil.com/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/indianrailways.png" alt="Indian Railways"></a><span class="ch-when">2023 – 2025</span></div><h3><a class="ch-site" href="https://dfccil.com/" target="_blank" rel="noopener">Station Master, Indian Railways PSU<i aria-hidden="true">↗</i></a></h3><p>Served 1.5 years in this government role, then moved to tech for my love of AI and business.</p>
+      <div class="ch reveal" style="--k:#b8862b;--g:linear-gradient(160deg,#f0cf7a,#b8862b)"><div class="ch-card"><div class="ch-head"><a class="ch-logo" href="https://dfccil.com/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/indianrailways.png" alt="Indian Railways"></a><span class="ch-when">2023 – 2025</span></div><h3><a class="ch-site" href="https://dfccil.com/" target="_blank" rel="noopener">Station Master, Indian Railways PSU<i aria-hidden="true">↗</i></a></h3><p>Served 1.5 years in this government role, then moved to tech for my love of AI and business.</p>
         <div class="ch-pics"><img loading="lazy" decoding="async" data-i="59" alt=""><img loading="lazy" decoding="async" data-i="52" alt=""><img loading="lazy" decoding="async" data-i="30" alt=""></div></div></div>
       <div class="ch reveal" style="--k:#c2335f;--g:linear-gradient(160deg,#ff9db8,#c2335f)"><div class="ch-card iim-card"><div class="ch-head"><a class="ch-logo" href="https://iimsambalpur.ac.in/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/iimsambalpur.png" alt="IIM Sambalpur"></a><span class="ch-when">MBA offer · 2025</span></div><h3><a class="ch-site" href="https://iimsambalpur.ac.in/" target="_blank" rel="noopener">IIM Sambalpur<i aria-hidden="true">↗</i></a></h3><p>Got an MBA offer from IIM Sambalpur and a PGP offer from Mesa School of Business; chose to keep working instead.</p></div></div>
       <div class="ch now reveal" style="--k:#c2452f;--g:linear-gradient(160deg,#ff8a5c,#e0453a)"><div class="ch-card"><div class="ch-head"><a class="ch-logo" href="https://www.pw.live/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="../assets/logos/pw.png" alt="PhysicsWallah"></a><span class="ch-when">2025 – Now</span></div><h3><a class="ch-site" href="https://www.pw.live/" target="_blank" rel="noopener">Product Manager, AI · PhysicsWallah<i aria-hidden="true">↗</i></a></h3><p>One of India's leading ed-tech companies (IPO-listed).</p>
@@ -973,8 +973,8 @@
     </div>
   </div>
   <svg class="night-palace" viewBox="0 0 1440 210" preserveAspectRatio="none" aria-hidden="true">
-    <path fill="#16303a" d="M0 210V120c180-60 360-70 560-30s380 50 560 0 240-50 320-20v140z"/>
-    <path fill="#0f2229" d="M0 210V160c220-50 420-40 620-10s420 30 560-10 200-20 260 0v70z"/>
+    <path fill="#3a1433" d="M0 210V120c180-60 360-70 560-30s380 50 560 0 240-50 320-20v140z"/>
+    <path fill="#1c0819" d="M0 210V160c220-50 420-40 620-10s420 30 560-10 200-20 260 0v70z"/>
   </svg>
 </section>
 
